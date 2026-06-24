@@ -1,0 +1,128 @@
+[
+  {
+    "description": "The central Home illustration: card fronts fanned and overlapping, with a CSS-only entrance and an infinite gentle sway. Cards are passed in by the caller.",
+    "filePath": "components/CardFan.tsx",
+    "name": "CardFan",
+    "scenarios": [
+      "cardfan-three-cards",
+      "cardfan-single-card"
+    ]
+  },
+  {
+    "description": "React context provider for the active language (ES/EN); resolves initial language from the server and persists toggles to cookie + localStorage.",
+    "filePath": "lib/i18n.tsx",
+    "name": "CarotProvider",
+    "scenarios": [
+      "carotprovider-spanish",
+      "carotprovider-english"
+    ]
+  },
+  {
+    "description": "CodeYam-generated isolation layout shell.",
+    "filePath": "app/codeyam-isolate/layout.tsx",
+    "name": "CodeYamIsolateLayout",
+    "untestabilityReason": {
+      "justification": "codeyam-generated isolation shell",
+      "kind": "scaffold"
+    }
+  },
+  {
+    "description": "Full-width Home experience button with solid (sage block) and outline (sage keyline) variants; presses nudge down 1px.",
+    "filePath": "components/ExperienceButton.tsx",
+    "name": "ExperienceButton",
+    "scenarios": [
+      "experiencebutton-solid",
+      "experiencebutton-outline"
+    ]
+  },
+  {
+    "description": "The Home landing screen: composes the header, wordmark, fanned-cards illustration, and experience buttons. The fanned trio is server-picked and passed in.",
+    "filePath": "components/Home.tsx",
+    "name": "Home",
+    "scenarios": [
+      "home-spanish",
+      "home-english"
+    ]
+  },
+  {
+    "description": "The three Home experience buttons (message / question / daily) and their navigation.",
+    "filePath": "components/HomeActions.tsx",
+    "name": "HomeActions",
+    "scenarios": [
+      "homeactions-spanish",
+      "homeactions-english"
+    ]
+  },
+  {
+    "description": "Home top row: language toggle on the left and the welcome eyebrow centred.",
+    "filePath": "components/HomeHeader.tsx",
+    "name": "HomeHeader",
+    "scenarios": [
+      "homeheader-spanish",
+      "homeheader-english"
+    ]
+  },
+  {
+    "description": "ES / EN minimal segmented language switch; the active language is highlighted in sage.",
+    "filePath": "components/LangToggle.tsx",
+    "name": "LangToggle",
+    "scenarios": [
+      "langtoggle-spanish",
+      "langtoggle-english"
+    ]
+  },
+  {
+    "description": "Home landing route. Server-picks a random trio of cards (force-dynamic) and renders the Home screen.",
+    "filePath": "app/page.tsx",
+    "name": "Page",
+    "scenarios": [
+      "landing-spanish",
+      "landing-english"
+    ]
+  },
+  {
+    "description": "Root layout: resolves the request language from the x-carot-lang header, loads fonts, and wraps the app in CarotProvider.",
+    "filePath": "app/layout.tsx",
+    "name": "RootLayout",
+    "untestabilityReason": {
+      "justification": "reads request headers and renders the html/body shell",
+      "kind": "platform-glue"
+    }
+  },
+  {
+    "description": "CodeYam-generated scenario redirect route.",
+    "filePath": "app/scenario/[slug]/page.tsx",
+    "name": "ScenarioRedirectPage",
+    "untestabilityReason": {
+      "justification": "codeyam-generated scenario redirect",
+      "kind": "scaffold"
+    }
+  },
+  {
+    "description": "The EL CAROT wordmark — a single static display-serif heading. No props, no branching.",
+    "filePath": "components/Wordmark.tsx",
+    "name": "Wordmark",
+    "untestabilityReason": {
+      "justification": "single static h1 wordmark, no props or branching",
+      "kind": "trivial-wrapper"
+    }
+  },
+  {
+    "description": "Deterministic card-of-the-day index: hashes the local Y/M/D into a deck position so the whole calendar day shows the same card.",
+    "filePath": "lib/daily.ts",
+    "name": "dailyCardIndex",
+    "testFile": "lib/daily.test.ts"
+  },
+  {
+    "description": "Formats the drawn date for the daily badge in the active language (ES long form / EN month-day form).",
+    "filePath": "lib/daily.ts",
+    "name": "formatDailyDate",
+    "testFile": "lib/daily.test.ts"
+  },
+  {
+    "description": "Picks N distinct random cards (Fisher–Yates over deck indices, clamped to [0, deck.length]) for the Home fan illustration. RNG is injectable for deterministic tests.",
+    "filePath": "lib/pickFan.ts",
+    "name": "pickFan",
+    "testFile": "lib/pickFan.test.ts"
+  }
+]

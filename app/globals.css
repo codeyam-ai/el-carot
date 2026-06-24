@@ -1,38 +1,158 @@
 @import "tailwindcss" source(none);
 
+/* Josefin Sans + IBM Plex Mono load via a <link> in app/layout.tsx — Turbopack/
+   Lightning CSS strips a CSS @import of an external sheet, so the browser never
+   fetched them. Maragsa Display is the local @font-face below. */
+
 /* source(none) avoids Tailwind v4's auto-walker descending into
    .codeyam/run/pty-broker.sock — see codeyam-editor crates/pty-broker. */
 @source "../app/**/*.{ts,tsx,js,jsx,mdx}";
 @source "../components/**/*.{ts,tsx,js,jsx,mdx}";
 
+/* ── El Carot — Maragsa Display (local OTF) ───────────────────────── */
+@font-face {
+  font-family: 'Maragsa Display';
+  src: url('/fonts/Maragsa-Display.otf') format('opentype');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  /* System font stacks — no network fetch at dev-server start. A project
-     that wants a specific web font adds it deliberately (e.g. a <link>),
-     keeping the scaffold default zero-dependency and offline-instant. */
-  --font-geist-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  --font-geist-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas,
-    'Liberation Mono', monospace;
+  /* ---- Base neutrals (paper & ink) ---- */
+  --carot-cream: #eedbc4;
+  --carot-cream-soft: #f2e7d3;
+  --carot-taupe: #d5c3b2;
+  --carot-taupe-deep: #c7b39f;
+  --carot-ink: #353029;
+  --carot-ink-soft: #5b5247;
+  --carot-charcoal: #202020;
+  --carot-screen: #202020;
+  --carot-cream-text: #e9d9c7;
+
+  /* ---- Brand greens (sage) ---- */
+  --carot-sage: #9aa693;
+  --carot-sage-light: #afbca7;
+  --carot-sage-deep: #7e8c77;
+  --carot-sage-divider: #5b6256;
+
+  /* ---- Artwork accents (use sparingly) ---- */
+  --carot-red: #b2402e;
+  --carot-ochre: #d4a23a;
+
+  /* ---- Semantic aliases (dark-first) ---- */
+  --surface-page: var(--carot-screen);
+  --surface-card: var(--carot-cream);
+  --surface-panel: var(--carot-cream-soft);
+  --surface-dark: var(--carot-charcoal);
+  --surface-pattern: var(--carot-sage-light);
+
+  --text-body: var(--carot-cream-text);
+  --text-heading: var(--carot-sage-light);
+  --text-muted: var(--carot-sage-divider);
+  --text-on-card: var(--carot-ink);
+  --text-on-card-muted: var(--carot-ink-soft);
+  --text-on-sage: #2b2922;
+
+  --accent-primary: var(--carot-sage);
+  --accent-primary-hover: var(--carot-sage-deep);
+
+  --divider: var(--carot-sage-divider);
+  --border-hairline: var(--carot-taupe-deep);
+  --border-ink: var(--carot-ink);
+
+  --link-color: var(--carot-sage-light);
+  --link-underline: var(--carot-sage-divider);
+
+  /* ---- Typography ---- */
+  --font-display: 'Maragsa Display', Georgia, 'Times New Roman', serif;
+  --font-body: 'Josefin Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-bold: 700;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-md: 1.125rem;
+  --text-lg: 1.375rem;
+  --text-xl: 1.75rem;
+  --text-2xl: 2.25rem;
+  --text-3xl: 3rem;
+  --text-4xl: 4rem;
+
+  --leading-tight: 1.1;
+  --leading-snug: 1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.7;
+
+  --tracking-tight: -0.01em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.08em;
+  --tracking-wider: 0.18em;
+
+  /* ---- Spacing, radii, borders, shadows ---- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-pill: 999px;
+
+  --shadow-card: 0 6px 20px rgba(53, 48, 41, 0.18);
+  --shadow-card-lift: 0 14px 36px rgba(53, 48, 41, 0.26);
+  --shadow-button: 0 2px 0 rgba(53, 48, 41, 0.12);
+
+  --content-max: 600px;
+  --content-max-wide: 1080px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ── El Carot — global resets ─────────────────────────────────────── */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--carot-screen);
+  color: var(--carot-cream-text);
+  font-family: var(--font-body);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* hidden scrollbars — the ritual scrolls without chrome */
+* {
+  scrollbar-width: none;
+}
+*::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ── El Carot — animations ────────────────────────────────────────── */
+@keyframes carot-sway {
+  0%, 100% { transform: rotate(-1.1deg); }
+  50%      { transform: rotate(1.1deg); }
+}
+/* Card entrance — runs once on load via CSS (no JS gate), so the fanned
+   cards are visible in the server-rendered HTML and never flash blank. */
+@keyframes carot-open {
+  from { opacity: 0; transform: scale(.92) translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes carot-nudge-left {
+  0%, 100% { opacity: .45; transform: translate(0, -50%); }
+  50%      { opacity: .9;  transform: translate(-3px, -50%); }
+}
+@keyframes carot-nudge-right {
+  0%, 100% { opacity: .45; transform: translate(0, -50%); }
+  50%      { opacity: .9;  transform: translate(3px, -50%); }
 }

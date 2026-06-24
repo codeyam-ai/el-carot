@@ -1,0 +1,11 @@
+{
+  "name": "HomeActions - English",
+  "id": "3b71b6b9-920f-45b7-a207-ebadffee51b2",
+  "url": "/isolated-components/HomeActions?s=English",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "HomeActions",
+  "scenarioType": "component"
+}

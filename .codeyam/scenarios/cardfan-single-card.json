@@ -1,0 +1,11 @@
+{
+  "name": "CardFan - Single Card",
+  "id": "6733fb65-9e45-4471-89d5-84a1b7a5c18b",
+  "url": "/isolated-components/CardFan?s=SingleCard",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "CardFan",
+  "scenarioType": "component"
+}

@@ -1,0 +1,11 @@
+{
+  "name": "Home - English",
+  "id": "00a08384-c048-4992-b424-54ac57b5b29e",
+  "url": "/isolated-components/Home?s=English",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "Home",
+  "scenarioType": "component"
+}

@@ -1,0 +1,37 @@
+{
+  "views": {
+    "Home": {
+      "empty": {
+        "status": "n-a",
+        "reason": "static landing with no data collection to be empty"
+      },
+      "single": {
+        "status": "n-a",
+        "reason": "no list or collection rendered on this view"
+      },
+      "typical": {
+        "status": "added"
+      },
+      "many": {
+        "status": "n-a",
+        "reason": "no list or collection rendered on this view"
+      },
+      "loading": {
+        "status": "n-a",
+        "reason": "server-rendered page, no async data fetch"
+      },
+      "edge": {
+        "status": "n-a",
+        "reason": "fixed copy, no variable-length or optional fields"
+      },
+      "error": {
+        "status": "n-a",
+        "reason": "no data fetch or failable operation on this view"
+      },
+      "key-interaction": {
+        "status": "n-a",
+        "reason": "language toggle and navigation covered by LangToggle and HomeActions component scenarios"
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "HomeHeader - English",
+  "id": "676baa48-2185-4eb4-a48a-821081352eb5",
+  "url": "/isolated-components/HomeHeader?s=English",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "HomeHeader",
+  "scenarioType": "component"
+}

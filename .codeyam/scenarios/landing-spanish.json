@@ -1,0 +1,12 @@
+{
+  "name": "Landing - Spanish",
+  "id": "10c43639-12e3-4993-9ba7-6d9ce02bea6b",
+  "url": "/?lang=es",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "seed": {},
+  "scenarioType": "application",
+  "pageFilePath": "app/page.tsx"
+}

@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 4,
+  "version": 5,
+  "partition": "all",
+  "hash": "97003bf542f6cecf",
+  "runners": [
+    {
+      "name": "tests",
+      "format": "vitest-json",
+      "output": "{\"numTotalTestSuites\":5,\"numPassedTestSuites\":5,\"numFailedTestSuites\":0,\"numPendingTestSuites\":0,\"numTotalTests\":13,\"numPassedTests\":13,\"numFailedTests\":0,\"numPendingTests\":0,\"numTodoTests\":0,\"snapshot\":{\"added\":0,\"failure\":false,\"filesAdded\":0,\"filesRemoved\":0,\"filesRemovedList\":[],\"filesUnmatched\":0,\"filesUpdated\":0,\"matched\":0,\"total\":0,\"unchecked\":0,\"uncheckedKeysByFile\":[],\"unmatched\":0,\"updated\":0,\"didUpdate\":false},\"startTime\":1782311149550,\"success\":true,\"testResults\":[{\"assertionResults\":[{\"ancestorTitles\":[\"dailyCardIndex\"],\"fullName\":\"dailyCardIndex is stable across two Date instances on the same day\",\"status\":\"passed\",\"title\":\"is stable across two Date instances on the same day\",\"duration\":0.6135409999999979,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"dailyCardIndex\"],\"fullName\":\"dailyCardIndex changes from one day to the next\",\"status\":\"passed\",\"title\":\"changes from one day to the next\",\"duration\":0.3425420000000088,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"dailyCardIndex\"],\"fullName\":\"dailyCardIndex stays within the deck bounds\",\"status\":\"passed\",\"title\":\"stays within the deck bounds\",\"duration\":0.5589170000000081,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"formatDailyDate\"],\"fullName\":\"formatDailyDate formats Spanish dates with month names\",\"status\":\"passed\",\"title\":\"formats Spanish dates with month names\",\"duration\":0.05587500000001455,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"formatDailyDate\"],\"fullName\":\"formatDailyDate formats English dates with month names\",\"status\":\"passed\",\"title\":\"formats English dates with month names\",\"duration\":0.042709000000002106,\"failureMessages\":[],\"meta\":{}}],\"startTime\":1782311149813,\"endTime\":1782311149815.0427,\"status\":\"passed\",\"message\":\"\",\"name\":\"lib/daily.test.ts\"},{\"assertionResults\":[{\"ancestorTitles\":[\"pickFan\"],\"fullName\":\"pickFan returns the requested number of cards\",\"status\":\"passed\",\"title\":\"returns the requested number of cards\",\"duration\":0.7938330000000065,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"pickFan\"],\"fullName\":\"pickFan returns distinct cards with no duplicates\",\"status\":\"passed\",\"title\":\"returns distinct cards with no duplicates\",\"duration\":0.17783299999999258,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"pickFan\"],\"fullName\":\"pickFan only returns cards from the deck\",\"status\":\"passed\",\"title\":\"only returns cards from the deck\",\"duration\":0.4835419999999999,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"pickFan\"],\"fullName\":\"pickFan clamps a count larger than the deck to the deck length\",\"status\":\"passed\",\"title\":\"clamps a count larger than the deck to the deck length\",\"duration\":0.09274999999999523,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"pickFan\"],\"fullName\":\"pickFan returns an empty array for count 0\",\"status\":\"passed\",\"title\":\"returns an empty array for count 0\",\"duration\":0.18233399999999733,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"pickFan\"],\"fullName\":\"pickFan returns an empty array for a negative count\",\"status\":\"passed\",\"title\":\"returns an empty array for a negative count\",\"duration\":0.044375000000002274,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"pickFan\"],\"fullName\":\"pickFan is deterministic given a fixed RNG\",\"status\":\"passed\",\"title\":\"is deterministic given a fixed RNG\",\"duration\":0.06225000000000591,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"pickFan\"],\"fullName\":\"pickFan defaults to the full CAROT_CARDS deck\",\"status\":\"passed\",\"title\":\"defaults to the full CAROT_CARDS deck\",\"duration\":0.14416699999998173,\"failureMessages\":[],\"meta\":{}}],\"startTime\":1782311149815,\"endTime\":1782311149817.1824,\"status\":\"passed\",\"message\":\"\",\"name\":\"lib/pickFan.test.ts\"}]}\n",
+      "invoked_command": "npx vitest run --changed --reporter=json",
+      "exit_code": 0,
+      "tests": [
+        {
+          "key": "dailyCardIndex › is stable across two Date instances on the same day",
+          "status": "passed",
+          "file": "lib/daily.test.ts",
+          "line": null,
+          "runner": "tests",
+          "format": "vitest"
+        },
+        {
+          "key": "dailyCardIndex › changes from one day to the next",
+          "status": "passed",
+          "file": "lib/daily.test.ts",
+          "line": null,
+          "runner": "tests",
+          "format": "vitest"
+        },
+        {
+          "key": "dailyCardIndex › stays within the deck bounds",
+          "status": "passed",
+          "file": "lib/daily.test.ts",
+          "line": null,
+          "runner": "tests",
+          "format": "vitest"
+        },
+        {
+          "key": "formatDailyDate › formats Spanish dates with month names",
+          "status": "passed",
+          "file": "lib/daily.test.ts",
+          "line": null,
+          "runner": "tests",
+          "format": "vitest"
+        },
+        {
+          "key": "formatDailyDate › formats English dates with month names",
+          "status": "passed",
+          "file": "lib/daily.test.ts",
+          "line": null,
+          "runner": "tests",
+          "format": "vitest"
+        },
+        {
+          "key": "pickFan › returns the requested number of cards",
+          "status": "passed",
+          "file": "lib/pickFan.test.ts",
+          "line": null,
+          "runner": "tests",
+          "format": "vitest"
+        },
+        {
+          "key": "pickFan › returns distinct cards with no duplicates",
+          "status": "passed",
+          "file": "lib/pickFan.test.ts",
+          "line": null,
+          "runner": "tests",
+          "format": "vitest"
+        },
+        {
+          "key": "pickFan › only returns cards from the deck",
+          "status": "passed",
+          "file": "lib/pickFan.test.ts",
+          "line": null,
+          "runner": "tests",
+          "format": "vitest"
+        },
+        {
+          "key": "pickFan › clamps a count larger than the deck to the deck length",
+          "status": "passed",
+          "file": "lib/pickFan.test.ts",
+          "line": null,
+          "runner": "tests",
+          "format": "vitest"
+        },
+        {
+          "key": "pickFan › returns an empty array for count 0",
+          "status": "passed",
+          "file": "lib/pickFan.test.ts",
+          "line": null,
+          "runner": "tests",
+          "format": "vitest"
+        },
+        {
+          "key": "pickFan › returns an empty array for a negative count",
+          "status": "passed",
+          "file": "lib/pickFan.test.ts",
+          "line": null,
+          "runner": "tests",
+          "format": "vitest"
+        },
+        {
+          "key": "pickFan › is deterministic given a fixed RNG",
+          "status": "passed",
+          "file": "lib/pickFan.test.ts",
+          "line": null,
+          "runner": "tests",
+          "format": "vitest"
+        },
+        {
+          "key": "pickFan › defaults to the full CAROT_CARDS deck",
+          "status": "passed",
+          "file": "lib/pickFan.test.ts",
+          "line": null,
+          "runner": "tests",
+          "format": "vitest"
+        },
+        {
+          "key": "dailyCardIndex › stays within [0, deckSize)",
+          "status": "passed",
+          "file": "lib/daily.test.ts",
+          "line": null,
+          "runner": "tests",
+          "format": "vitest"
+        }
+      ]
+    }
+  ]
+}

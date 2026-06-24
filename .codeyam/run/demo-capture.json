@@ -1,0 +1,9 @@
+{
+  "feature": "Home Landing",
+  "verified": true,
+  "path": "http://localhost:3000/?lang=es",
+  "dimension": "Mobile",
+  "exception_reason": null,
+  "interacted": true,
+  "interaction_summary": "click \"button[aria-label=\"Menú\"]\""
+}

@@ -1,0 +1,11 @@
+{
+  "name": "CardFan - Three Cards",
+  "id": "b6b1df6c-d3b7-4ea4-bf3f-a0ecf1394f31",
+  "url": "/isolated-components/CardFan?s=ThreeCards",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "CardFan",
+  "scenarioType": "component"
+}

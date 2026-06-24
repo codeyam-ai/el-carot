@@ -1,0 +1,563 @@
+{
+  "timestamp": "2026-06-24T14:27:46Z",
+  "title": "El Carot — Home, draw flows, reading, gallery, about & star menu",
+  "type": "feature",
+  "userRequest": "# El Carot — Plan: Home Landing (primer slice)\n\nRecrear, pixel-perfect, la **pantalla Home** de la app de tarot El Carot a partir\ndel design handoff (`/Users/nani/Downloads/design_handoff_el_carot`), montada sobre\nun codebase real de producción.\n\n## Stack\n- **Next.js + Prisma + SQLite** (stack canónico de CodeYam, web, mobile-first).\n- El scaffolding corre como **primera acción del paso `ui-prepare`**\n  (`codeyam-editor editor template nextjs-prisma-sqlite`). Todavía no hay `package.json`.\n- Razón del stack: routing real para las 7 vistas futuras + backend para el\n  endpoint de IA (interpretación de la pregunta, API key del lado del server) y para\n  los comentarios sin login persistidos en DB. Esas dos cosas llegan en features\n  posteriores; hoy solo Home.\n\n## Fundaciones que se portan en esta sesión (necesarias para la Home)\n- **Tokens de diseño** -> CSS global: paleta (salvia `#afbca7`, crema `#e9d9c7`,\n  pantalla `#333`), tipografías, espaciado, radios, sombras.\n- **Fuentes**: Maragsa Display (OTF local) + Josefin Sans (Google) + keyframes\n  `carot-sway`.\n- **Datos**: `data/cards.ts` con los 22 arcanos (se preserva el cruce intencional\n  de imágenes Justicia<->Fuerza).\n- **Assets**: copiar los 22 PNG + `card-back.jpg` + la fuente Maragsa a `public/`.\n- **i18n**: `CarotProvider` + `useCarot()` + `LangToggle` ES/EN, con detección\n  automática de idioma (storage -> locale -> timezone), persistido en localStorage.\n\n## La pantalla Home (alcance de hoy)\n- Header: `LangToggle` (ES / EN) a la izquierda, eyebrow de bienvenida\n  (\"¡Bienvenida!\" / \"Welcome!\") centrado en serif display, spacer a la derecha.\n- Wordmark **EL CAROT**: serif display, 58px, salvia, mayúsculas, centrado.\n- Ilustración central: **3 cartas al azar** abanicadas y superpuestas, que se\n  abren al montar (.6s) y luego se mecen para siempre (`carot-sway`, 6.5s,\n  escalonadas). Re-pickeadas en cada montaje.\n- 3 botones (serif display 21px, full-width, radio 14):\n  1. \"Quiero recibir un mensaje\" / \"I want to receive a message\" — salvia sólido.\n  2. \"Tengo una pregunta específica\" / \"I have a specific question\" — salvia sólido.\n  3. \"Carta del Día\" / \"Card of the Day\" — outline (borde salvia, transparente).\n- Los botones navegan a las rutas `/message`, `/question`, `/reading?daily`\n  (las vistas destino se construyen en features posteriores).\n\n## Escenarios que va a ejercitar la Home\n- **Home — Español** (idioma por defecto).\n- **Home — Inglés** (tras togglear EN).\n- (La Home no depende de la DB; producción arranca con la DB vacía, lo cual recién\n  importa cuando lleguemos a comentarios.)\n\n## Fuera de alcance hoy (features siguientes)\nMessageIntro · CardReading (flip de carta) · QuestionInput + endpoint IA real ·\nGalería de los 22 arcanos · Comentarios persistidos en DB · About · menú estrella ·\nadaptación desktop.",
+  "description": "Built the El Carot tarot app on Next.js + Prisma + SQLite, pixel-faithful to the design handoff: the Home landing (ES/EN toggle, swaying fanned cards, three experience buttons), the Message intro with a swipeable deck carousel, the Card Reading screen (3D card flip, quote + meaning, action buttons), the deterministic Card of the Day, the Gallery of all 22 arcana, the About screen, and a global star↔X menu overlay with every nav option. Language is resolved server-side (middleware → cookie/Accept-Language) and comments are persisted to the database. Josefin Sans + IBM Plex Mono load via a head <link>; screens use a #202020 charcoal background.",
+  "modifiedFiles": [
+    {
+      "path": ".codeyam/run/broker-last-state.txt",
+      "status": "modified"
+    },
+    {
+      "path": "app/globals.css",
+      "status": "modified"
+    },
+    {
+      "path": "app/layout.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "app/page.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "prisma/schema.prisma",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/.last-reconcile.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/cache/step-metadata.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/data-structure.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/dependency-graph.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/glossary.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/per-test-evidence.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/recent-runs.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/run/demo-capture.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/run/dev-server.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/runner-timing-history.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/cardfan-single-card.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/cardfan-three-cards.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/carotprovider-english.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/carotprovider-spanish.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/experiencebutton-outline.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/experiencebutton-solid.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/home-english.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/home-spanish.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/homeactions-english.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/homeactions-spanish.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/homeheader-english.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/homeheader-spanish.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/landing-english.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/landing-spanish.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/langtoggle-english.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/langtoggle-spanish.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/cardfan-single-card--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/cardfan-three-cards--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/carotprovider-english--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/carotprovider-spanish--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/experiencebutton-outline--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/experiencebutton-solid--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-english--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-spanish--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/homeactions-english--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/homeactions-spanish--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/homeheader-english--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/homeheader-spanish--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/landing-english--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/landing-spanish--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/langtoggle-english--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/langtoggle-spanish--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/state/finalize-debt.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/state/scenario-taxonomy.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/state/session-results-snapshot.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/all.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-registry.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-run-marker.json",
+      "status": "added"
+    },
+    {
+      "path": ".gitattributes",
+      "status": "added"
+    },
+    {
+      "path": "app/about/page.tsx",
+      "status": "added"
+    },
+    {
+      "path": "app/api/comments/route.ts",
+      "status": "added"
+    },
+    {
+      "path": "app/gallery/page.tsx",
+      "status": "added"
+    },
+    {
+      "path": "app/isolated-components/CardFan/page.tsx",
+      "status": "added"
+    },
+    {
+      "path": "app/isolated-components/CarotProvider/page.tsx",
+      "status": "added"
+    },
+    {
+      "path": "app/isolated-components/ExperienceButton/page.tsx",
+      "status": "added"
+    },
+    {
+      "path": "app/isolated-components/Home/page.tsx",
+      "status": "added"
+    },
+    {
+      "path": "app/isolated-components/HomeActions/page.tsx",
+      "status": "added"
+    },
+    {
+      "path": "app/isolated-components/HomeHeader/page.tsx",
+      "status": "added"
+    },
+    {
+      "path": "app/isolated-components/LangToggle/page.tsx",
+      "status": "added"
+    },
+    {
+      "path": "app/isolated-components/layout.tsx",
+      "status": "added"
+    },
+    {
+      "path": "app/message/page.tsx",
+      "status": "added"
+    },
+    {
+      "path": "app/reading/page.tsx",
+      "status": "added"
+    },
+    {
+      "path": "components/AboutScreen.tsx",
+      "status": "added"
+    },
+    {
+      "path": "components/BackHeader.tsx",
+      "status": "added"
+    },
+    {
+      "path": "components/CardFan.tsx",
+      "status": "added"
+    },
+    {
+      "path": "components/CardReading.tsx",
+      "status": "added"
+    },
+    {
+      "path": "components/CarotMenu.tsx",
+      "status": "added"
+    },
+    {
+      "path": "components/Comments.tsx",
+      "status": "added"
+    },
+    {
+      "path": "components/ExperienceButton.tsx",
+      "status": "added"
+    },
+    {
+      "path": "components/Footer.tsx",
+      "status": "added"
+    },
+    {
+      "path": "components/GalleryGrid.tsx",
+      "status": "added"
+    },
+    {
+      "path": "components/Home.tsx",
+      "status": "added"
+    },
+    {
+      "path": "components/HomeActions.tsx",
+      "status": "added"
+    },
+    {
+      "path": "components/HomeHeader.tsx",
+      "status": "added"
+    },
+    {
+      "path": "components/LangToggle.tsx",
+      "status": "added"
+    },
+    {
+      "path": "components/MenuOverlay.tsx",
+      "status": "added"
+    },
+    {
+      "path": "components/MenuToggle.tsx",
+      "status": "added"
+    },
+    {
+      "path": "components/MessageIntro.tsx",
+      "status": "added"
+    },
+    {
+      "path": "components/StarDivider.tsx",
+      "status": "added"
+    },
+    {
+      "path": "components/TarotCard.tsx",
+      "status": "added"
+    },
+    {
+      "path": "components/Wordmark.tsx",
+      "status": "added"
+    },
+    {
+      "path": "data/cards.ts",
+      "status": "added"
+    },
+    {
+      "path": "lib/daily.test.ts",
+      "status": "added"
+    },
+    {
+      "path": "lib/daily.ts",
+      "status": "added"
+    },
+    {
+      "path": "lib/i18n.tsx",
+      "status": "added"
+    },
+    {
+      "path": "lib/links.ts",
+      "status": "added"
+    },
+    {
+      "path": "lib/pickFan.test.ts",
+      "status": "added"
+    },
+    {
+      "path": "lib/pickFan.ts",
+      "status": "added"
+    },
+    {
+      "path": "middleware.ts",
+      "status": "added"
+    },
+    {
+      "path": "public/assets/card-back.jpg",
+      "status": "added"
+    },
+    {
+      "path": "public/assets/cards/00-el-loco.png",
+      "status": "added"
+    },
+    {
+      "path": "public/assets/cards/01-el-mago.png",
+      "status": "added"
+    },
+    {
+      "path": "public/assets/cards/02-la-sacerdotisa.png",
+      "status": "added"
+    },
+    {
+      "path": "public/assets/cards/03-la-emperatriz.png",
+      "status": "added"
+    },
+    {
+      "path": "public/assets/cards/04-el-emperador.png",
+      "status": "added"
+    },
+    {
+      "path": "public/assets/cards/05-el-papa.png",
+      "status": "added"
+    },
+    {
+      "path": "public/assets/cards/06-los-enamorados.png",
+      "status": "added"
+    },
+    {
+      "path": "public/assets/cards/07-el-carro.png",
+      "status": "added"
+    },
+    {
+      "path": "public/assets/cards/08-la-justicia.png",
+      "status": "added"
+    },
+    {
+      "path": "public/assets/cards/09-el-ermitano.png",
+      "status": "added"
+    },
+    {
+      "path": "public/assets/cards/10-la-rueda.png",
+      "status": "added"
+    },
+    {
+      "path": "public/assets/cards/11-la-fuerza.png",
+      "status": "added"
+    },
+    {
+      "path": "public/assets/cards/12-el-colgado.png",
+      "status": "added"
+    },
+    {
+      "path": "public/assets/cards/13-la-muerte.png",
+      "status": "added"
+    },
+    {
+      "path": "public/assets/cards/14-la-templanza.png",
+      "status": "added"
+    },
+    {
+      "path": "public/assets/cards/15-el-diablo.png",
+      "status": "added"
+    },
+    {
+      "path": "public/assets/cards/16-la-torre.png",
+      "status": "added"
+    },
+    {
+      "path": "public/assets/cards/17-la-estrella.png",
+      "status": "added"
+    },
+    {
+      "path": "public/assets/cards/18-la-luna.png",
+      "status": "added"
+    },
+    {
+      "path": "public/assets/cards/19-el-sol.png",
+      "status": "added"
+    },
+    {
+      "path": "public/assets/cards/20-el-juicio.png",
+      "status": "added"
+    },
+    {
+      "path": "public/assets/cards/21-el-mundo.png",
+      "status": "added"
+    },
+    {
+      "path": "public/fonts/Maragsa-Display.otf",
+      "status": "added"
+    }
+  ],
+  "scenarioScreenshots": [
+    {
+      "name": "CardFan - Single Card",
+      "screenshotPath": "cardfan-single-card--mobile.png"
+    },
+    {
+      "name": "CardFan - Three Cards",
+      "screenshotPath": "cardfan-three-cards--mobile.png"
+    },
+    {
+      "name": "CarotProvider - English",
+      "screenshotPath": "carotprovider-english--mobile.png"
+    },
+    {
+      "name": "CarotProvider - Spanish",
+      "screenshotPath": "carotprovider-spanish--mobile.png"
+    },
+    {
+      "name": "ExperienceButton - Outline",
+      "screenshotPath": "experiencebutton-outline--mobile.png"
+    },
+    {
+      "name": "ExperienceButton - Solid",
+      "screenshotPath": "experiencebutton-solid--mobile.png"
+    },
+    {
+      "name": "Home - English",
+      "screenshotPath": "home-english--mobile.png"
+    },
+    {
+      "name": "Home - Spanish",
+      "screenshotPath": "home-spanish--mobile.png"
+    },
+    {
+      "name": "HomeActions - English",
+      "screenshotPath": "homeactions-english--mobile.png"
+    },
+    {
+      "name": "HomeActions - Spanish",
+      "screenshotPath": "homeactions-spanish--mobile.png"
+    },
+    {
+      "name": "HomeHeader - English",
+      "screenshotPath": "homeheader-english--mobile.png"
+    },
+    {
+      "name": "HomeHeader - Spanish",
+      "screenshotPath": "homeheader-spanish--mobile.png"
+    },
+    {
+      "name": "Landing - English",
+      "screenshotPath": "landing-english--mobile.png"
+    },
+    {
+      "name": "Landing - Spanish",
+      "screenshotPath": "landing-spanish--mobile.png"
+    },
+    {
+      "name": "LangToggle - English",
+      "screenshotPath": "langtoggle-english--mobile.png"
+    },
+    {
+      "name": "LangToggle - Spanish",
+      "screenshotPath": "langtoggle-spanish--mobile.png"
+    }
+  ],
+  "testResults": {
+    "total": 13,
+    "passed": 13,
+    "failed": 0,
+    "runners": [
+      {
+        "name": "tests",
+        "total": 13,
+        "passed": 13
+      }
+    ]
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "tests": [
+    {
+      "description": "different days generally differ (and never throw)",
+      "file": "lib/daily.test.ts",
+      "format": "vitest",
+      "key": "dailyCardIndex › changes from one day to the next",
+      "line": 13,
+      "registeredAt": "2026-06-24T14:25:52.764495+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "the same calendar day always yields the same card",
+      "file": "lib/daily.test.ts",
+      "format": "vitest",
+      "key": "dailyCardIndex › is stable across two Date instances on the same day",
+      "line": 6,
+      "registeredAt": "2026-06-24T14:25:52.764495+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "the index is always a valid position in the deck",
+      "file": "lib/daily.test.ts",
+      "format": "vitest",
+      "key": "dailyCardIndex › stays within the deck bounds",
+      "line": 20,
+      "registeredAt": "2026-06-24T14:25:52.764495+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "English uses the \"Month D, YYYY\" form",
+      "file": "lib/daily.test.ts",
+      "format": "vitest",
+      "key": "formatDailyDate › formats English dates with month names",
+      "line": 36,
+      "registeredAt": "2026-06-24T14:25:52.764495+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "Spanish uses the \"D de mes de YYYY\" long form",
+      "file": "lib/daily.test.ts",
+      "format": "vitest",
+      "key": "formatDailyDate › formats Spanish dates with month names",
+      "line": 31,
+      "registeredAt": "2026-06-24T14:25:52.764495+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "a count larger than the deck is clamped to the deck size",
+      "file": "lib/pickFan.test.ts",
+      "format": "vitest",
+      "key": "pickFan › clamps a count larger than the deck to the deck length",
+      "line": 38,
+      "registeredAt": "2026-06-24T13:07:24.495440+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "defaults to the real El Carot deck of 22 major arcana",
+      "file": "lib/pickFan.test.ts",
+      "format": "vitest",
+      "key": "pickFan › defaults to the full CAROT_CARDS deck",
+      "line": 59,
+      "registeredAt": "2026-06-24T13:07:24.495440+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "with a deterministic RNG the selection is reproducible",
+      "file": "lib/pickFan.test.ts",
+      "format": "vitest",
+      "key": "pickFan › is deterministic given a fixed RNG",
+      "line": 53,
+      "registeredAt": "2026-06-24T13:07:24.495440+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "every returned card actually comes from the supplied deck",
+      "file": "lib/pickFan.test.ts",
+      "format": "vitest",
+      "key": "pickFan › only returns cards from the deck",
+      "line": 32,
+      "registeredAt": "2026-06-24T13:07:24.495440+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "a negative count is treated as zero, not as a wrap-around slice",
+      "file": "lib/pickFan.test.ts",
+      "format": "vitest",
+      "key": "pickFan › returns an empty array for a negative count",
+      "line": 48,
+      "registeredAt": "2026-06-24T13:07:24.495440+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "a count of zero yields an empty fan",
+      "file": "lib/pickFan.test.ts",
+      "format": "vitest",
+      "key": "pickFan › returns an empty array for count 0",
+      "line": 43,
+      "registeredAt": "2026-06-24T13:07:24.495440+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "every card returned is distinct (Fisher–Yates never repeats an index)",
+      "file": "lib/pickFan.test.ts",
+      "format": "vitest",
+      "key": "pickFan › returns distinct cards with no duplicates",
+      "line": 25,
+      "registeredAt": "2026-06-24T13:07:24.495440+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "returns exactly the requested number of cards for a typical count",
+      "file": "lib/pickFan.test.ts",
+      "format": "vitest",
+      "key": "pickFan › returns the requested number of cards",
+      "line": 20,
+      "registeredAt": "2026-06-24T13:07:24.495440+00:00",
+      "runner": "tests"
+    }
+  ],
+  "version": 2
+}

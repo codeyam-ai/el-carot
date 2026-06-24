@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Comment",
+    "description": "A login-free comment left under a reading: a name, the comment text, and when it was posted. Production starts empty; scenarios seed example comments.",
+    "category": "datastore",
+    "order": 1,
+    "fields": [
+      { "name": "id", "type": "string", "isId": true, "required": true },
+      { "name": "name", "type": "string", "required": true },
+      { "name": "text", "type": "string", "required": true },
+      { "name": "createdAt", "type": "datetime", "required": true }
+    ]
+  }
+]

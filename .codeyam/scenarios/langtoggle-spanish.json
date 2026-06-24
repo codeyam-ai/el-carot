@@ -1,0 +1,11 @@
+{
+  "name": "LangToggle - Spanish",
+  "id": "9298d501-2e6a-4458-a13d-b970baf0a9ca",
+  "url": "/isolated-components/LangToggle?s=Spanish",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "LangToggle",
+  "scenarioType": "component"
+}

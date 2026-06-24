@@ -1,0 +1,7 @@
+{
+  "lastFinalizedAt": null,
+  "lastFinalizedSha": null,
+  "deferred": [],
+  "finalizeIntent": "fast",
+  "finalizeIntentBranch": "main"
+}

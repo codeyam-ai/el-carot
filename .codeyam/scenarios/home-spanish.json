@@ -1,0 +1,11 @@
+{
+  "name": "Home - Spanish",
+  "id": "7f0ec4ec-5876-475b-b172-eb67756fbe36",
+  "url": "/isolated-components/Home?s=Spanish",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "Home",
+  "scenarioType": "component"
+}

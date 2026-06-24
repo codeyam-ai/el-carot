@@ -1,0 +1,11 @@
+{
+  "name": "CarotProvider - Spanish",
+  "id": "3f611827-874d-46b1-8cf7-e877f66acf68",
+  "url": "/isolated-components/CarotProvider?s=Spanish",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "CarotProvider",
+  "scenarioType": "component"
+}

@@ -1,10 +1,9 @@
-export default function Home() {
-  return (
-    <main className="min-h-screen flex items-center justify-center">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome</h1>
-        <p className="text-gray-600">Your app is ready. Start building!</p>
-      </div>
-    </main>
-  );
+import Home from '@/components/Home';
+import { pickFan } from '@/lib/pickFan';
+
+// Re-pick the fanned trio on every visit (no static caching of the random pick).
+export const dynamic = 'force-dynamic';
+
+export default function Page() {
+  return <Home fan={pickFan(3)} />;
 }

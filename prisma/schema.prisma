@@ -15,9 +15,12 @@ datasource db {
 }
 
 // ──────────────────────────────────────────────
-// Define your models below, then run:
-//   npx prisma db push
-// A schema with zero models is valid — Prisma will
-// generate a client with no model accessors until
-// you add one.
+// El Carot — login-free comments left under a reading.
+// Production starts empty; scenarios carry seed rows.
 // ──────────────────────────────────────────────
+model Comment {
+  id        String   @id @default(cuid())
+  name      String
+  text      String
+  createdAt DateTime @default(now())
+}

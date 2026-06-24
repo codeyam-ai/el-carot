@@ -1,0 +1,186 @@
+{
+  "pickFan › clamps a count larger than the deck to the deck length": {
+    "file": "lib/pickFan.test.ts",
+    "lastRunAt": "2026-06-24T14:25:49.902193+00:00",
+    "lastStatus": "pass",
+    "lastRunKind": "changed",
+    "recentStatuses": [
+      {
+        "status": "pass",
+        "at": "2026-06-24T14:25:49.902193+00:00",
+        "kind": "changed"
+      },
+      {
+        "status": "pass",
+        "at": "2026-06-24T14:25:08.762641+00:00",
+        "kind": "changed"
+      },
+      {
+        "status": "pass",
+        "at": "2026-06-24T13:53:39.862115+00:00",
+        "kind": "changed"
+      }
+    ]
+  },
+  "pickFan › defaults to the full CAROT_CARDS deck": {
+    "file": "lib/pickFan.test.ts",
+    "lastRunAt": "2026-06-24T14:25:49.902193+00:00",
+    "lastStatus": "pass",
+    "lastRunKind": "changed",
+    "recentStatuses": [
+      {
+        "status": "pass",
+        "at": "2026-06-24T14:25:49.902193+00:00",
+        "kind": "changed"
+      },
+      {
+        "status": "pass",
+        "at": "2026-06-24T14:25:08.762641+00:00",
+        "kind": "changed"
+      },
+      {
+        "status": "pass",
+        "at": "2026-06-24T13:53:39.862115+00:00",
+        "kind": "changed"
+      }
+    ]
+  },
+  "pickFan › is deterministic given a fixed RNG": {
+    "file": "lib/pickFan.test.ts",
+    "lastRunAt": "2026-06-24T14:25:49.902193+00:00",
+    "lastStatus": "pass",
+    "lastRunKind": "changed",
+    "recentStatuses": [
+      {
+        "status": "pass",
+        "at": "2026-06-24T14:25:49.902193+00:00",
+        "kind": "changed"
+      },
+      {
+        "status": "pass",
+        "at": "2026-06-24T14:25:08.762641+00:00",
+        "kind": "changed"
+      },
+      {
+        "status": "pass",
+        "at": "2026-06-24T13:53:39.862115+00:00",
+        "kind": "changed"
+      }
+    ]
+  },
+  "pickFan › only returns cards from the deck": {
+    "file": "lib/pickFan.test.ts",
+    "lastRunAt": "2026-06-24T14:25:49.902193+00:00",
+    "lastStatus": "pass",
+    "lastRunKind": "changed",
+    "recentStatuses": [
+      {
+        "status": "pass",
+        "at": "2026-06-24T14:25:49.902193+00:00",
+        "kind": "changed"
+      },
+      {
+        "status": "pass",
+        "at": "2026-06-24T14:25:08.762641+00:00",
+        "kind": "changed"
+      },
+      {
+        "status": "pass",
+        "at": "2026-06-24T13:53:39.862115+00:00",
+        "kind": "changed"
+      }
+    ]
+  },
+  "pickFan › returns an empty array for a negative count": {
+    "file": "lib/pickFan.test.ts",
+    "lastRunAt": "2026-06-24T14:25:49.902193+00:00",
+    "lastStatus": "pass",
+    "lastRunKind": "changed",
+    "recentStatuses": [
+      {
+        "status": "pass",
+        "at": "2026-06-24T14:25:49.902193+00:00",
+        "kind": "changed"
+      },
+      {
+        "status": "pass",
+        "at": "2026-06-24T14:25:08.762641+00:00",
+        "kind": "changed"
+      },
+      {
+        "status": "pass",
+        "at": "2026-06-24T13:53:39.862115+00:00",
+        "kind": "changed"
+      }
+    ]
+  },
+  "pickFan › returns an empty array for count 0": {
+    "file": "lib/pickFan.test.ts",
+    "lastRunAt": "2026-06-24T14:25:49.902193+00:00",
+    "lastStatus": "pass",
+    "lastRunKind": "changed",
+    "recentStatuses": [
+      {
+        "status": "pass",
+        "at": "2026-06-24T14:25:49.902193+00:00",
+        "kind": "changed"
+      },
+      {
+        "status": "pass",
+        "at": "2026-06-24T14:25:08.762641+00:00",
+        "kind": "changed"
+      },
+      {
+        "status": "pass",
+        "at": "2026-06-24T13:53:39.862115+00:00",
+        "kind": "changed"
+      }
+    ]
+  },
+  "pickFan › returns distinct cards with no duplicates": {
+    "file": "lib/pickFan.test.ts",
+    "lastRunAt": "2026-06-24T14:25:49.902193+00:00",
+    "lastStatus": "pass",
+    "lastRunKind": "changed",
+    "recentStatuses": [
+      {
+        "status": "pass",
+        "at": "2026-06-24T14:25:49.902193+00:00",
+        "kind": "changed"
+      },
+      {
+        "status": "pass",
+        "at": "2026-06-24T14:25:08.762641+00:00",
+        "kind": "changed"
+      },
+      {
+        "status": "pass",
+        "at": "2026-06-24T13:53:39.862115+00:00",
+        "kind": "changed"
+      }
+    ]
+  },
+  "pickFan › returns the requested number of cards": {
+    "file": "lib/pickFan.test.ts",
+    "lastRunAt": "2026-06-24T14:25:49.902193+00:00",
+    "lastStatus": "pass",
+    "lastRunKind": "changed",
+    "recentStatuses": [
+      {
+        "status": "pass",
+        "at": "2026-06-24T14:25:49.902193+00:00",
+        "kind": "changed"
+      },
+      {
+        "status": "pass",
+        "at": "2026-06-24T14:25:08.762641+00:00",
+        "kind": "changed"
+      },
+      {
+        "status": "pass",
+        "at": "2026-06-24T13:53:39.862115+00:00",
+        "kind": "changed"
+      }
+    ]
+  }
+}
