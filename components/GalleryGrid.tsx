@@ -4,28 +4,35 @@ import React from 'react';
 import { useRouter } from 'next/navigation';
 import { useCarot } from '@/lib/i18n';
 import { CAROT_CARDS } from '@/data/cards';
+import { useIsDesktop } from '@/lib/useIsDesktop';
 import { BackHeader } from '@/components/BackHeader';
+import { DesktopNav } from '@/components/DesktopNav';
 import { Footer } from '@/components/Footer';
 
-/** "Ver todas las cartas" — the full deck in a two-column grid. Tap any card to open its reading. */
+/** "Ver todas las cartas" — the full deck. Two columns on mobile, a wider multi-column grid on desktop. Tap any card to open its reading. */
 export function GalleryGrid() {
   const { t } = useCarot();
   const router = useRouter();
+  const isDesktop = useIsDesktop();
   const sage = 'var(--carot-sage-light)';
 
   return (
-    <div style={{ minHeight: '100%', display: 'flex', flexDirection: 'column', background: 'var(--carot-screen)', boxSizing: 'border-box' }}>
-      <div style={{ padding: '0 22px 36px' }}>
-        <BackHeader title={t.galleryTitle} />
+    <div
+      data-fullbleed
+      style={{ minHeight: '100%', display: 'flex', flexDirection: 'column', background: 'var(--carot-screen)', boxSizing: 'border-box' }}
+    >
+      {isDesktop && <DesktopNav title={t.galleryTitle} />}
+      <div style={{ padding: '0 22px 36px', maxWidth: isDesktop ? 1040 : undefined, margin: '0 auto', width: '100%', boxSizing: 'border-box' }}>
+        {!isDesktop && <BackHeader title={t.galleryTitle} />}
 
-        <h1 style={{ margin: '22px 0 6px', textAlign: 'center', fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 34, lineHeight: 1.05, color: 'var(--carot-cream-text)' }}>
+        <h1 style={{ margin: '22px 0 6px', textAlign: 'center', fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: isDesktop ? 42 : 34, lineHeight: 1.05, color: 'var(--carot-cream-text)' }}>
           {t.galleryHeading}
         </h1>
         <p style={{ margin: '0 0 22px', textAlign: 'center', fontFamily: 'var(--font-body)', fontSize: 15, color: sage }}>
           {t.gallerySub}
         </p>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: isDesktop ? 'repeat(4, 1fr)' : '1fr 1fr', gap: isDesktop ? 24 : 18 }}>
           {CAROT_CARDS.map((card) => (
             <button
               key={card.n}

@@ -4,12 +4,15 @@ import React from 'react';
 import { useRouter } from 'next/navigation';
 import { useCarot } from '@/lib/i18n';
 import { CAROT_IG_URL } from '@/lib/links';
+import { useIsDesktop } from '@/lib/useIsDesktop';
 import { BackHeader } from '@/components/BackHeader';
+import { DesktopNav } from '@/components/DesktopNav';
 
 /** "¿Qué es esto?" — a short description of the El Carot project. */
 export function AboutScreen() {
   const { t } = useCarot();
   const router = useRouter();
+  const isDesktop = useIsDesktop();
   const display = 'var(--font-display)';
   const sage = 'var(--carot-sage-light)';
   const cream = 'var(--carot-cream-text)';
@@ -23,10 +26,12 @@ export function AboutScreen() {
   };
 
   return (
-    <div style={{ minHeight: '100%', display: 'flex', flexDirection: 'column', background: 'var(--carot-screen)', padding: '0 30px 40px', boxSizing: 'border-box' }}>
-      <BackHeader title={t.aboutTitle} />
+    <div data-fullbleed style={{ minHeight: '100%', display: 'flex', flexDirection: 'column', background: 'var(--carot-screen)' }}>
+      {isDesktop && <DesktopNav title={t.aboutTitle} />}
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', width: '100%', maxWidth: isDesktop ? 640 : undefined, margin: '0 auto', padding: '0 30px 40px', boxSizing: 'border-box' }}>
+        {!isDesktop && <BackHeader title={t.aboutTitle} />}
 
-      <h1 style={{ margin: '30px 0 22px', textAlign: 'center', fontFamily: display, fontWeight: 400, fontSize: 40, lineHeight: 1.05, color: cream }}>
+        <h1 style={{ margin: isDesktop ? '52px 0 24px' : '30px 0 22px', textAlign: 'center', fontFamily: display, fontWeight: 400, fontSize: isDesktop ? 52 : 40, lineHeight: 1.05, color: cream }}>
         El Carot
       </h1>
 
@@ -100,6 +105,7 @@ export function AboutScreen() {
         </svg>
         {t.followInstagram}
       </a>
+      </div>
     </div>
   );
 }

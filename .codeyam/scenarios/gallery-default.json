@@ -1,0 +1,12 @@
+{
+  "name": "Gallery - Default",
+  "id": "2826464e-369f-4f56-88fe-3e72c3d3d40d",
+  "url": "/gallery?lang=es",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "seed": {},
+  "scenarioType": "application",
+  "pageFilePath": "app/gallery/page.tsx"
+}

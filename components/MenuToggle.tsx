@@ -26,7 +26,7 @@ export function MenuToggle({
       aria-expanded={open}
       onClick={onToggle}
       style={{
-        position: 'fixed',
+        position: 'absolute',
         top: 22,
         right: 18,
         width: 44,

@@ -1,0 +1,527 @@
+{
+  "timestamp": "2026-06-24T19:42:54Z",
+  "title": "AI question flow + full desktop adaptation",
+  "type": "feature",
+  "userRequest": "# El Carot — Plan: Flujo de pregunta con IA (/question)\n\nConstruir el flujo \"Tengo una pregunta específica\" (el 2º botón de la Home), con\ninterpretación por IA y **fallback elegante** (funciona sin API key todavía).\n\n## Pantalla QuestionInput (/question)\n- Header con flecha de volver + título \"Tengo una pregunta específica\".\n- Heading \"Dejá tu pregunta\" + subtítulo sobre cuánto más específica, mejor.\n- Textarea full-height (placeholder \"Dejá tu pregunta aquí\").\n- Botón \"Sacar una carta\" (deshabilitado/atenuado hasta que escribas algo).\n- Al enviar → elige una carta al azar → navega a\n  `/reading?n=<n>&origin=question&q=<pregunta>`.\n\n## Lectura con pregunta (ya existe /reading, se le agrega el modo IA)\n- Carta que se da vuelta, divisor de 3 estrellas salvia.\n- Label \"TU PREGUNTA\" + la pregunta en cursiva.\n- Mientras la IA piensa: \"Interpretando tu carta…\" (como el diseño).\n- Cuando resuelve: la interpretación generada reemplaza el loading.\n\n## Backend: endpoint de interpretación (/api/interpret)\n- POST `{ cardN, question, lang }` → llama a Claude server-side con los prompts\n  del handoff (voseo ES / EN), tono El Carot, 3-5 oraciones, un párrafo.\n- Usa el **modelo más barato** (Claude Haiku 3) para minimizar tokens.\n- Lee `ANTHROPIC_API_KEY` del entorno. **Fallback:** si no hay key o falla la\n  llamada, devuelve el significado base de la carta. La key nunca se expone al\n  cliente.\n\n## Estados / escenarios\n- QuestionInput — vacío (botón deshabilitado).\n- QuestionInput — con texto (botón habilitado).\n- Lectura con pregunta — interpretando (loading).\n- Lectura con pregunta — interpretación mostrada (por ahora el significado base,\n  hasta cargar la key).\n\n## Notas\n- Sin base de datos nueva (producción sigue vacía).\n- Modo UI (página + variante de lectura + API route con impacto en UI).\n- Cuando se cargue `ANTHROPIC_API_KEY` en `.env.local`, la IA real se activa sin\n  cambios de código.",
+  "description": "Added the specific-question flow: a /question screen (textarea + draw) and a server-side /api/interpret endpoint that asks Claude (Haiku 4.5) to read the drawn card in light of the question — voseo ES / warm EN prompts, key kept server-side, graceful fallback to the card written meaning when no ANTHROPIC_API_KEY is set. The reading shows the question, an Interpretando tu carta… loading state, then the interpretation. Built a full desktop adaptation: a responsive shell (mobile unchanged, full-width on desktop), a consistent desktop nav bar (back + page title, EL CAROT centred, language + Instagram + star), the message deck spread as a wide card arc, the question screen centred with a wide textarea, the reading as a two-column card-left/reading-right layout with comments below, the gallery as a 4-column grid, and About centred. Registered component + app scenarios across the whole app (clearing the deferred coverage). Adds @anthropic-ai/sdk.",
+  "modifiedFiles": [
+    {
+      "path": ".codeyam/dependency-graph.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/glossary.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/per-test-evidence.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/recent-runs.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/run/broker-last-state.txt",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/run/demo-capture.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/run/dev-server.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/runner-timing-history.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-english--mobile.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-spanish--mobile.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/landing-english--mobile.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/landing-spanish--mobile.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/state/session-results-snapshot.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/all.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-registry.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-run-marker.json",
+      "status": "modified"
+    },
+    {
+      "path": "app/globals.css",
+      "status": "modified"
+    },
+    {
+      "path": "app/layout.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "app/reading/page.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/AboutScreen.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/CardFan.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/CardReading.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/CarotMenu.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/Comments.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/GalleryGrid.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/MenuToggle.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/MessageIntro.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "package-lock.json",
+      "status": "modified"
+    },
+    {
+      "path": "package.json",
+      "status": "modified"
+    },
+    {
+      "path": "\".codeyam/run/demo-flow/ai-question-flow/01-pantalla-de-pregunta-vac\\303\\255a.png\"",
+      "status": "added"
+    },
+    {
+      "path": "\".codeyam/run/demo-flow/ai-question-flow/02-pregunta-escrita-bot\\303\\263n-habilitado.png\"",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/run/demo-flow/ai-question-flow/flow.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/about-default.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/aboutscreen-mobile.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/backheader-default.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/cardreading-mobile.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/carotmenu-default.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/commentrow-default.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/comments-with-comments.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/deckarc-default.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/deckcarousel-default.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/desktopnav-default.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/footer-default.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/gallery-default.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/gallerygrid-mobile.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/menuoverlay-default.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/menutoggle-default.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/message-default.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/messageintro-mobile.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/question-empty.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/questioninput-mobile.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/reading-default.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/about-default--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/aboutscreen-mobile--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/backheader-default--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/cardreading-mobile--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/carotmenu-default--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/commentrow-default--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/comments-with-comments--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/deckarc-default--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/deckcarousel-default--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/desktopnav-default--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/footer-default--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/gallery-default--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/gallerygrid-mobile--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/menuoverlay-default--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/menutoggle-default--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/message-default--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/messageintro-mobile--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/question-empty--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/questioninput-mobile--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/reading-default--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/stardivider-default--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/tarotcard-default--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/stardivider-default.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/tarotcard-default.json",
+      "status": "added"
+    },
+    {
+      "path": "app/api/interpret/route.ts",
+      "status": "added"
+    },
+    {
+      "path": "app/isolated-components/AboutScreen/page.tsx",
+      "status": "added"
+    },
+    {
+      "path": "app/isolated-components/BackHeader/page.tsx",
+      "status": "added"
+    },
+    {
+      "path": "app/isolated-components/CardReading/page.tsx",
+      "status": "added"
+    },
+    {
+      "path": "app/isolated-components/CarotMenu/page.tsx",
+      "status": "added"
+    },
+    {
+      "path": "app/isolated-components/CommentRow/page.tsx",
+      "status": "added"
+    },
+    {
+      "path": "app/isolated-components/Comments/page.tsx",
+      "status": "added"
+    },
+    {
+      "path": "app/isolated-components/DeckArc/page.tsx",
+      "status": "added"
+    },
+    {
+      "path": "app/isolated-components/DeckCarousel/page.tsx",
+      "status": "added"
+    },
+    {
+      "path": "app/isolated-components/DesktopNav/page.tsx",
+      "status": "added"
+    },
+    {
+      "path": "app/isolated-components/Footer/page.tsx",
+      "status": "added"
+    },
+    {
+      "path": "app/isolated-components/GalleryGrid/page.tsx",
+      "status": "added"
+    },
+    {
+      "path": "app/isolated-components/MenuOverlay/page.tsx",
+      "status": "added"
+    },
+    {
+      "path": "app/isolated-components/MenuToggle/page.tsx",
+      "status": "added"
+    },
+    {
+      "path": "app/isolated-components/MessageIntro/page.tsx",
+      "status": "added"
+    },
+    {
+      "path": "app/isolated-components/QuestionInput/page.tsx",
+      "status": "added"
+    },
+    {
+      "path": "app/isolated-components/StarDivider/page.tsx",
+      "status": "added"
+    },
+    {
+      "path": "app/isolated-components/TarotCard/page.tsx",
+      "status": "added"
+    },
+    {
+      "path": "app/question/page.tsx",
+      "status": "added"
+    },
+    {
+      "path": "components/DeckArc.tsx",
+      "status": "added"
+    },
+    {
+      "path": "components/DesktopNav.tsx",
+      "status": "added"
+    },
+    {
+      "path": "components/QuestionInput.tsx",
+      "status": "added"
+    },
+    {
+      "path": "lib/interpret-prompts.test.ts",
+      "status": "added"
+    },
+    {
+      "path": "lib/interpret-prompts.ts",
+      "status": "added"
+    },
+    {
+      "path": "lib/useIsDesktop.ts",
+      "status": "added"
+    }
+  ],
+  "scenarioScreenshots": [
+    {
+      "name": "About - Default",
+      "screenshotPath": "about-default--mobile.png"
+    },
+    {
+      "name": "AboutScreen - Mobile",
+      "screenshotPath": "aboutscreen-mobile--mobile.png"
+    },
+    {
+      "name": "CardFan - Single Card",
+      "screenshotPath": "cardfan-single-card--mobile.png"
+    },
+    {
+      "name": "CardFan - Three Cards",
+      "screenshotPath": "cardfan-three-cards--mobile.png"
+    },
+    {
+      "name": "CardReading - Mobile",
+      "screenshotPath": "cardreading-mobile--mobile.png"
+    },
+    {
+      "name": "CarotMenu - Default",
+      "screenshotPath": "carotmenu-default--mobile.png"
+    },
+    {
+      "name": "CommentRow - Default",
+      "screenshotPath": "commentrow-default--mobile.png"
+    },
+    {
+      "name": "Comments - With Comments",
+      "screenshotPath": "comments-with-comments--mobile.png"
+    },
+    {
+      "name": "DeckArc - Default",
+      "screenshotPath": "deckarc-default--desktop.png"
+    },
+    {
+      "name": "DeckCarousel - Default",
+      "screenshotPath": "deckcarousel-default--mobile.png"
+    },
+    {
+      "name": "DesktopNav - Default",
+      "screenshotPath": "desktopnav-default--desktop.png"
+    },
+    {
+      "name": "Gallery - Default",
+      "screenshotPath": "gallery-default--mobile.png"
+    },
+    {
+      "name": "GalleryGrid - Mobile",
+      "screenshotPath": "gallerygrid-mobile--mobile.png"
+    },
+    {
+      "name": "Home - English",
+      "screenshotPath": "home-english--mobile.png"
+    },
+    {
+      "name": "Home - Spanish",
+      "screenshotPath": "home-spanish--mobile.png"
+    },
+    {
+      "name": "Landing - English",
+      "screenshotPath": "landing-english--mobile.png"
+    },
+    {
+      "name": "Landing - Spanish",
+      "screenshotPath": "landing-spanish--mobile.png"
+    },
+    {
+      "name": "MenuOverlay - Default",
+      "screenshotPath": "menuoverlay-default--mobile.png"
+    },
+    {
+      "name": "MenuToggle - Default",
+      "screenshotPath": "menutoggle-default--mobile.png"
+    },
+    {
+      "name": "Message - Default",
+      "screenshotPath": "message-default--mobile.png"
+    },
+    {
+      "name": "MessageIntro - Mobile",
+      "screenshotPath": "messageintro-mobile--mobile.png"
+    },
+    {
+      "name": "Question - Empty",
+      "screenshotPath": "question-empty--mobile.png"
+    },
+    {
+      "name": "QuestionInput - Mobile",
+      "screenshotPath": "questioninput-mobile--mobile.png"
+    },
+    {
+      "name": "Reading - Default",
+      "screenshotPath": "reading-default--mobile.png"
+    }
+  ],
+  "testResults": {
+    "total": 18,
+    "passed": 18,
+    "failed": 0,
+    "runners": [
+      {
+        "name": "tests",
+        "total": 18,
+        "passed": 18
+      }
+    ]
+  }
+}

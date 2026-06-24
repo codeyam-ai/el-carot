@@ -1,11 +1,51 @@
 [
   {
+    "description": "Route for the About screen.",
+    "filePath": "app/about/page.tsx",
+    "name": "AboutPage",
+    "scenarios": [
+      "about-default"
+    ]
+  },
+  {
+    "description": "The 'what is this' screen: the El Carot concept, tagline, and draw/Instagram actions.",
+    "filePath": "components/AboutScreen.tsx",
+    "name": "AboutScreen",
+    "scenarios": [
+      "aboutscreen-mobile"
+    ]
+  },
+  {
+    "description": "Shared mobile screen header: a sage back arrow and a centred title.",
+    "filePath": "components/BackHeader.tsx",
+    "name": "BackHeader",
+    "scenarios": [
+      "backheader-default"
+    ]
+  },
+  {
     "description": "The central Home illustration: card fronts fanned and overlapping, with a CSS-only entrance and an infinite gentle sway. Cards are passed in by the caller.",
     "filePath": "components/CardFan.tsx",
     "name": "CardFan",
     "scenarios": [
       "cardfan-three-cards",
       "cardfan-single-card"
+    ]
+  },
+  {
+    "description": "The reading screen: flipping card, quote/meaning or question/interpretation, actions; mobile column or desktop two-column.",
+    "filePath": "components/CardReading.tsx",
+    "name": "CardReading",
+    "scenarios": [
+      "cardreading-mobile"
+    ]
+  },
+  {
+    "description": "Full-screen star-menu overlay with the nav links and the love footer.",
+    "filePath": "components/CarotMenu.tsx",
+    "name": "CarotMenu",
+    "scenarios": [
+      "carotmenu-default"
     ]
   },
   {
@@ -27,12 +67,76 @@
     }
   },
   {
+    "description": "A single comment: the message, then name + date.",
+    "filePath": "components/Comments.tsx",
+    "name": "CommentRow",
+    "scenarios": [
+      "commentrow-default"
+    ]
+  },
+  {
+    "description": "Login-free comments persisted to the database: list, empty state, and an add form.",
+    "filePath": "components/Comments.tsx",
+    "name": "Comments",
+    "scenarios": [
+      "comments-with-comments"
+    ]
+  },
+  {
+    "description": "Desktop deck: the full face-down deck spread in a wide gentle arc; hover lifts, click draws.",
+    "filePath": "components/DeckArc.tsx",
+    "name": "DeckArc",
+    "scenarios": [
+      "deckarc-default"
+    ]
+  },
+  {
+    "description": "The mobile swipeable face-down deck with side arrows; tap to draw.",
+    "filePath": "components/MessageIntro.tsx",
+    "name": "DeckCarousel",
+    "scenarios": [
+      "deckcarousel-default"
+    ]
+  },
+  {
+    "description": "Desktop top nav bar: back + page title, EL CAROT centred, language + Instagram right.",
+    "filePath": "components/DesktopNav.tsx",
+    "name": "DesktopNav",
+    "scenarios": [
+      "desktopnav-default"
+    ]
+  },
+  {
     "description": "Full-width Home experience button with solid (sage block) and outline (sage keyline) variants; presses nudge down 1px.",
     "filePath": "components/ExperienceButton.tsx",
     "name": "ExperienceButton",
     "scenarios": [
       "experiencebutton-solid",
       "experiencebutton-outline"
+    ]
+  },
+  {
+    "description": "Dark footer with nav links, Instagram, credits and the wordmark.",
+    "filePath": "components/Footer.tsx",
+    "name": "Footer",
+    "scenarios": [
+      "footer-default"
+    ]
+  },
+  {
+    "description": "All 22 arcana as a grid (2 cols mobile, 4 cols desktop); tap a card to open its reading.",
+    "filePath": "components/GalleryGrid.tsx",
+    "name": "GalleryGrid",
+    "scenarios": [
+      "gallerygrid-mobile"
+    ]
+  },
+  {
+    "description": "Route for the gallery of all 22 arcana.",
+    "filePath": "app/gallery/page.tsx",
+    "name": "GalleryPage",
+    "scenarios": [
+      "gallery-default"
     ]
   },
   {
@@ -72,12 +176,68 @@
     ]
   },
   {
+    "description": "Global star-menu chrome: the fixed toggle plus the overlay; closes on navigation.",
+    "filePath": "components/MenuOverlay.tsx",
+    "name": "MenuOverlay",
+    "scenarios": [
+      "menuoverlay-default"
+    ]
+  },
+  {
+    "description": "The star to X toggle button that opens/closes the menu, spinning in place.",
+    "filePath": "components/MenuToggle.tsx",
+    "name": "MenuToggle",
+    "scenarios": [
+      "menutoggle-default"
+    ]
+  },
+  {
+    "description": "The message-intent screen: mobile carousel or desktop arc; draws a card into the reading.",
+    "filePath": "components/MessageIntro.tsx",
+    "name": "MessageIntro",
+    "scenarios": [
+      "messageintro-mobile"
+    ]
+  },
+  {
+    "description": "Route for the 'message' draw intent — renders the MessageIntro screen.",
+    "filePath": "app/message/page.tsx",
+    "name": "MessagePage",
+    "scenarios": [
+      "message-default"
+    ]
+  },
+  {
     "description": "Home landing route. Server-picks a random trio of cards (force-dynamic) and renders the Home screen.",
     "filePath": "app/page.tsx",
     "name": "Page",
     "scenarios": [
       "landing-spanish",
       "landing-english"
+    ]
+  },
+  {
+    "description": "The specific-question screen: a textarea and draw button; mobile and desktop layouts.",
+    "filePath": "components/QuestionInput.tsx",
+    "name": "QuestionInput",
+    "scenarios": [
+      "questioninput-mobile"
+    ]
+  },
+  {
+    "description": "Route for the specific-question flow — renders QuestionInput.",
+    "filePath": "app/question/page.tsx",
+    "name": "QuestionPage",
+    "scenarios": [
+      "question-empty"
+    ]
+  },
+  {
+    "description": "Reading route: resolves the card (drawn / daily) + comments and renders the reading.",
+    "filePath": "app/reading/page.tsx",
+    "name": "ReadingPage",
+    "scenarios": [
+      "reading-default"
     ]
   },
   {
@@ -99,6 +259,22 @@
     }
   },
   {
+    "description": "A row of the eight-point El Carot star glyph used as a section divider.",
+    "filePath": "components/StarDivider.tsx",
+    "name": "StarDivider",
+    "scenarios": [
+      "stardivider-default"
+    ]
+  },
+  {
+    "description": "A single tarot card with a 3D flip between its patterned back and the character face.",
+    "filePath": "components/TarotCard.tsx",
+    "name": "TarotCard",
+    "scenarios": [
+      "tarotcard-default"
+    ]
+  },
+  {
     "description": "The EL CAROT wordmark — a single static display-serif heading. No props, no branching.",
     "filePath": "components/Wordmark.tsx",
     "name": "Wordmark",
@@ -106,6 +282,12 @@
       "justification": "single static h1 wordmark, no props or branching",
       "kind": "trivial-wrapper"
     }
+  },
+  {
+    "description": "Builds the El Carot tarot-interpretation prompt (voseo ES / warm EN) for a drawn card + the user's question, embedding the base meaning and the tone/length constraints.",
+    "filePath": "lib/interpret-prompts.ts",
+    "name": "buildInterpretPrompt",
+    "testFile": "lib/interpret-prompts.test.ts"
   },
   {
     "description": "Deterministic card-of-the-day index: hashes the local Y/M/D into a deck position so the whole calendar day shows the same card.",
@@ -124,5 +306,14 @@
     "filePath": "lib/pickFan.ts",
     "name": "pickFan",
     "testFile": "lib/pickFan.test.ts"
+  },
+  {
+    "description": "matchMedia hook — true when the viewport is at least minWidth px; mobile-first/SSR-safe.",
+    "filePath": "lib/useIsDesktop.ts",
+    "name": "useIsDesktop",
+    "untestabilityReason": {
+      "justification": "window.matchMedia viewport boundary",
+      "kind": "platform-glue"
+    }
   }
 ]

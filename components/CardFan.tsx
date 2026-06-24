@@ -1,8 +1,8 @@
 import React from 'react';
 import { type Card } from '@/data/cards';
 
-const F_W = 190;
-const STEP_X = 168; // horizontal gap between card centres
+const F_W = 164; // sized so all three fanned cards fit within the mobile column (no clipping)
+const STEP_X = 110; // horizontal gap between card centres
 const STEP_ROT = 7; // tilt per step from centre
 
 /**

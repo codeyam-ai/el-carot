@@ -1,0 +1,15 @@
+{
+  "feature": "AI Question Flow",
+  "frames": [
+    {
+      "caption": "pantalla de pregunta vacía",
+      "order": 1,
+      "path": ".codeyam/run/demo-flow/ai-question-flow/01-pantalla-de-pregunta-vacía.png"
+    },
+    {
+      "caption": "pregunta escrita, botón habilitado",
+      "order": 2,
+      "path": ".codeyam/run/demo-flow/ai-question-flow/02-pregunta-escrita-botón-habilitado.png"
+    }
+  ]
+}

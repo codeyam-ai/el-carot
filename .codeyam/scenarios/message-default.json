@@ -1,0 +1,12 @@
+{
+  "name": "Message - Default",
+  "id": "53ddd0eb-f61d-474b-8622-bb0e07a63f21",
+  "url": "/message?lang=es",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "seed": {},
+  "scenarioType": "application",
+  "pageFilePath": "app/message/page.tsx"
+}

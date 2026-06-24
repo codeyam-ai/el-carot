@@ -3,6 +3,7 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import { useCarot } from '@/lib/i18n';
+import { useIsDesktop } from '@/lib/useIsDesktop';
 
 export interface CommentItem {
   id: string;
@@ -20,7 +21,7 @@ function formatDate(iso: string): string {
   return `${p(d.getDate())}.${p(d.getMonth() + 1)}.${d.getFullYear()}`;
 }
 
-function CommentRow({ name, date, text }: { name: string; date: string; text: string }) {
+export function CommentRow({ name, date, text }: { name: string; date: string; text: string }) {
   return (
     <div style={{ padding: '18px 0' }}>
       <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 12, marginBottom: 10 }}>
@@ -36,6 +37,7 @@ function CommentRow({ name, date, text }: { name: string; date: string; text: st
 export function Comments({ initial }: { initial: CommentItem[] }) {
   const { t } = useCarot();
   const router = useRouter();
+  const isDesktop = useIsDesktop();
   const [open, setOpen] = React.useState(false);
   const [form, setForm] = React.useState(false);
   const [name, setName] = React.useState('');
@@ -103,7 +105,7 @@ export function Comments({ initial }: { initial: CommentItem[] }) {
   };
 
   return (
-    <div style={{ padding: '14px 26px 16px', background: 'var(--carot-screen)' }}>
+    <div style={{ padding: '14px 26px 16px', background: 'var(--carot-screen)', maxWidth: isDesktop ? 1080 : undefined, margin: '0 auto', width: '100%', boxSizing: 'border-box' }}>
       <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 12, margin: '0 0 14px' }}>
         <span style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 19, color: C_MUTED }}>
           {t.commentsTitle} ({list.length})

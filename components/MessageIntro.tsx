@@ -4,16 +4,20 @@ import React from 'react';
 import { useRouter } from 'next/navigation';
 import { useCarot } from '@/lib/i18n';
 import { CAROT_CARDS } from '@/data/cards';
+import { useIsDesktop } from '@/lib/useIsDesktop';
 import { BackHeader } from '@/components/BackHeader';
+import { DesktopNav } from '@/components/DesktopNav';
+import { DeckArc } from '@/components/DeckArc';
 
 /**
- * Card-pick screen for the "message" intent: a heading, a short breathing
- * instruction, and the deck as a large swipeable face-down carousel. Tap the
- * centre card to draw a random card and open its reading.
+ * Card-pick screen for the "message" intent. Mobile shows a swipeable face-down
+ * carousel; desktop spreads the whole deck in a wide arc. Tapping a card draws a
+ * random card and opens its reading.
  */
 export function MessageIntro() {
   const { t } = useCarot();
   const router = useRouter();
+  const isDesktop = useIsDesktop();
   const sage = 'var(--carot-sage-light)';
   const cream = 'var(--carot-cream-text)';
 
@@ -21,6 +25,29 @@ export function MessageIntro() {
     const n = Math.floor(Math.random() * CAROT_CARDS.length);
     router.push(`/reading?n=${n}&origin=message`);
   };
+
+  if (isDesktop) {
+    return (
+      <div
+        data-fullbleed
+        style={{ minHeight: '100%', display: 'flex', flexDirection: 'column', background: 'var(--carot-screen)', overflow: 'hidden' }}
+      >
+        <DesktopNav title={t.messageTitle} />
+
+        <h1 style={{ margin: '38px 40px 0', textAlign: 'center', fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 44, lineHeight: 1.05, color: cream }}>
+          {t.messageHeading}
+        </h1>
+        <div style={{ margin: '18px 0 0', textAlign: 'center', fontFamily: 'var(--font-body)', fontWeight: 300, fontSize: 19, lineHeight: 1.8, color: sage }}>
+          <div>
+            {t.messageLines[0]} {t.messageLines[1]}
+          </div>
+          {t.messageLines[2] && <div>{t.messageLines[2]}</div>}
+        </div>
+
+        <DeckArc back="/assets/card-back.jpg" onDraw={draw} />
+      </div>
+    );
+  }
 
   return (
     <div style={{ minHeight: '100%', display: 'flex', flexDirection: 'column', background: 'var(--carot-screen)', overflow: 'hidden' }}>
@@ -43,8 +70,8 @@ export function MessageIntro() {
   );
 }
 
-/** The big swipeable face-down deck with side arrows. */
-function DeckCarousel({ back, onDraw }: { back: string; onDraw: () => void }) {
+/** The big swipeable face-down deck with side arrows (mobile). */
+export function DeckCarousel({ back, onDraw }: { back: string; onDraw: () => void }) {
   const { t } = useCarot();
   const N = CAROT_CARDS.length;
   const CARD_W = 214;

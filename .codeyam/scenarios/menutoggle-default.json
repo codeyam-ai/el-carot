@@ -1,0 +1,11 @@
+{
+  "name": "MenuToggle - Default",
+  "id": "3f4c6fb3-02b8-43f4-835b-68d13aa4e24b",
+  "url": "/isolated-components/MenuToggle",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "MenuToggle",
+  "scenarioType": "component"
+}

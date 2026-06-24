@@ -1,0 +1,11 @@
+{
+  "name": "CarotMenu - Default",
+  "id": "8dc538b9-71ed-4d40-9b31-40248a92884e",
+  "url": "/isolated-components/CarotMenu",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "CarotMenu",
+  "scenarioType": "component"
+}

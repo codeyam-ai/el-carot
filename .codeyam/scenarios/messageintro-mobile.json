@@ -1,0 +1,11 @@
+{
+  "name": "MessageIntro - Mobile",
+  "id": "7848cff5-22ba-4d93-9a0e-8ee21df2c691",
+  "url": "/isolated-components/MessageIntro",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "MessageIntro",
+  "scenarioType": "component"
+}

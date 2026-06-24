@@ -37,8 +37,10 @@ export default async function RootLayout({
       </head>
       <body className="antialiased">
         <CarotProvider initialLang={lang}>
-          {children}
-          <MenuOverlay />
+          <div className="carot-shell">
+            <div className="carot-scroll">{children}</div>
+            <MenuOverlay />
+          </div>
         </CarotProvider>
       </body>
     </html>

@@ -1,0 +1,11 @@
+{
+  "name": "StarDivider - Default",
+  "id": "14a69f4e-8d3d-4fd2-bf11-7db2f1af7b6d",
+  "url": "/isolated-components/StarDivider",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "StarDivider",
+  "scenarioType": "component"
+}

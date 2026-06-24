@@ -28,7 +28,7 @@ export function CarotMenu({
   return (
     <div
       style={{
-        position: 'fixed',
+        position: 'absolute',
         inset: 0,
         zIndex: 500,
         background: 'rgba(28,28,28,.97)',

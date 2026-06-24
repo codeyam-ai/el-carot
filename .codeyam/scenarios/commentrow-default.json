@@ -1,0 +1,11 @@
+{
+  "name": "CommentRow - Default",
+  "id": "ee81dc50-59a3-4f3a-bdde-fcefa813efc6",
+  "url": "/isolated-components/CommentRow",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "CommentRow",
+  "scenarioType": "component"
+}

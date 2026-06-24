@@ -1,0 +1,11 @@
+{
+  "name": "TarotCard - Default",
+  "id": "5377d595-4fbd-4507-8692-e8dd97a07554",
+  "url": "/isolated-components/TarotCard",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "TarotCard",
+  "scenarioType": "component"
+}

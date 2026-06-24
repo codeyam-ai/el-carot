@@ -1,0 +1,11 @@
+{
+  "name": "MenuOverlay - Default",
+  "id": "42486967-dde0-48df-b0be-526a5edd800f",
+  "url": "/isolated-components/MenuOverlay",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "MenuOverlay",
+  "scenarioType": "component"
+}

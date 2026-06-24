@@ -1,0 +1,12 @@
+{
+  "name": "Reading - Default",
+  "id": "918fa235-126f-4c08-9199-fdc25332e0d5",
+  "url": "/reading?n=0&instant=1&origin=gallery&lang=es",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "seed": {},
+  "scenarioType": "application",
+  "pageFilePath": "app/reading/page.tsx"
+}

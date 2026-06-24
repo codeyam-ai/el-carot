@@ -1,6 +1,51 @@
 {
   "tests": [
     {
+      "description": "the Spanish prompt uses voseo and the El Carot persona",
+      "file": "lib/interpret-prompts.test.ts",
+      "format": "vitest",
+      "key": "buildInterpretPrompt › builds a Spanish prompt with voseo and the persona",
+      "line": 9,
+      "registeredAt": "2026-06-24T18:39:50.882401+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "the English prompt switches voice and uses the English base meaning",
+      "file": "lib/interpret-prompts.test.ts",
+      "format": "vitest",
+      "key": "buildInterpretPrompt › builds an English prompt with the English meaning",
+      "line": 26,
+      "registeredAt": "2026-06-24T18:39:50.882401+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "the Spanish prompt embeds the question, card identity, and base meaning",
+      "file": "lib/interpret-prompts.test.ts",
+      "format": "vitest",
+      "key": "buildInterpretPrompt › embeds the question, card, and base meaning in ES",
+      "line": 17,
+      "registeredAt": "2026-06-24T18:39:50.882401+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "it instructs against repeating the question or revealing the AI",
+      "file": "lib/interpret-prompts.test.ts",
+      "format": "vitest",
+      "key": "buildInterpretPrompt › includes the no-AI / no-repeat constraints",
+      "line": 35,
+      "registeredAt": "2026-06-24T18:39:50.882401+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "a trimmed question avoids stray surrounding whitespace",
+      "file": "lib/interpret-prompts.test.ts",
+      "format": "vitest",
+      "key": "buildInterpretPrompt › trims the question",
+      "line": 42,
+      "registeredAt": "2026-06-24T18:39:50.882401+00:00",
+      "runner": "tests"
+    },
+    {
       "description": "different days generally differ (and never throw)",
       "file": "lib/daily.test.ts",
       "format": "vitest",

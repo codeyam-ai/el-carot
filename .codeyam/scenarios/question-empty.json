@@ -1,0 +1,12 @@
+{
+  "name": "Question - Empty",
+  "id": "0e56bf45-c957-4fdd-aed3-ca5c81b4d6c0",
+  "url": "/question?lang=es",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "seed": {},
+  "scenarioType": "application",
+  "pageFilePath": "app/question/page.tsx"
+}

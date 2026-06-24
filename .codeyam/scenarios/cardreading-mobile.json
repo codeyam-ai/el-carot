@@ -1,0 +1,11 @@
+{
+  "name": "CardReading - Mobile",
+  "id": "35ec5699-2abf-43bf-9220-ac8bb0cc5c5d",
+  "url": "/isolated-components/CardReading",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "CardReading",
+  "scenarioType": "component"
+}

@@ -1,0 +1,11 @@
+{
+  "name": "DeckCarousel - Default",
+  "id": "7a3febaa-040d-4827-a51a-997487998e11",
+  "url": "/isolated-components/DeckCarousel",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "DeckCarousel",
+  "scenarioType": "component"
+}

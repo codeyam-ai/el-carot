@@ -41,10 +41,10 @@ export default async function ReadingPage({
   }));
 
   return (
-    <>
+    <div data-fullbleed>
       <CardReading card={card} origin={origin} question={question} dailyDate={dailyDate} instant={sp.instant === '1'} />
       <Comments initial={comments} />
       <Footer />
-    </>
+    </div>
   );
 }

@@ -1,0 +1,11 @@
+{
+  "name": "DeckArc - Default",
+  "id": "d433cfe6-d325-4a2a-b25a-7e1b48e30391",
+  "url": "/isolated-components/DeckArc",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "componentName": "DeckArc",
+  "scenarioType": "component"
+}

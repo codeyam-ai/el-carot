@@ -1,0 +1,11 @@
+{
+  "name": "AboutScreen - Mobile",
+  "id": "ad8d043f-45e8-471a-b282-bfaba731b440",
+  "url": "/isolated-components/AboutScreen",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "AboutScreen",
+  "scenarioType": "component"
+}

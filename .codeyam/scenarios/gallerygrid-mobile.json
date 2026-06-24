@@ -1,0 +1,11 @@
+{
+  "name": "GalleryGrid - Mobile",
+  "id": "faab1a71-e93f-4c0d-8a07-4e4db32c4ed7",
+  "url": "/isolated-components/GalleryGrid",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "GalleryGrid",
+  "scenarioType": "component"
+}
