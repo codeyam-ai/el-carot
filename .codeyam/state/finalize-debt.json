@@ -7,6 +7,12 @@
       "shortSha": "c17a3c7",
       "subject": "feat: El Carot — Home, draw flows, reading, gallery, about & star menu",
       "deferredAt": "2026-06-24T14:30:08Z"
+    },
+    {
+      "sha": "10b58a9843f8a00a80360022179894a5741595e9",
+      "shortSha": "10b58a9",
+      "subject": "feat: AI question flow + full desktop adaptation",
+      "deferredAt": "2026-06-24T19:51:09Z"
     }
   ],
   "finalizeIntent": "fast",
