@@ -1,7 +1,14 @@
 {
   "lastFinalizedAt": null,
   "lastFinalizedSha": null,
-  "deferred": [],
+  "deferred": [
+    {
+      "sha": "c17a3c73f3de15fb3bd3107e08cd32367c855a52",
+      "shortSha": "c17a3c7",
+      "subject": "feat: El Carot — Home, draw flows, reading, gallery, about & star menu",
+      "deferredAt": "2026-06-24T14:30:08Z"
+    }
+  ],
   "finalizeIntent": "fast",
   "finalizeIntentBranch": "main"
 }
