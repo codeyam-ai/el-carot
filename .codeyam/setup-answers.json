@@ -1,0 +1,9 @@
+{
+  "appFormats": [
+    "web"
+  ],
+  "defaultDevice": "Mobile",
+  "designApproach": "files",
+  "techStackId": "nextjs-prisma-sqlite",
+  "startingSurface": "landing"
+}
