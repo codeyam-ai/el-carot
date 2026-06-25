@@ -1,9 +1,0 @@
-{
-  "feature": "AI Question Flow",
-  "verified": true,
-  "path": ".codeyam/run/demo-flow/ai-question-flow/02-pregunta-escrita-botón-habilitado.png",
-  "dimension": "Mobile",
-  "exception_reason": null,
-  "interacted": false,
-  "interaction_summary": null
-}
