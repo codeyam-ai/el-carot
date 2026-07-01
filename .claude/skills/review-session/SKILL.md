@@ -1,6 +1,5 @@
 ---
 name: review-session
-autoApprove: true
 description: |
   Review a previous Claude Code session to identify problems and inefficiencies.
   Analyzes the transcript, presents findings, asks the user what they noticed,
@@ -135,7 +134,7 @@ Combine your findings with the user's input. For each actionable problem or inef
 
 ### Step 7: Verify
 
-Run ` editor plans` to verify the plans are parseable, then show the user what was created. Ask if they want to edit any.
+Run `codeyam-editor-dev editor plans` to verify the plans are parseable, then show the user what was created. Ask if they want to edit any.
 
 ### Step 8: Commit each plan
 
@@ -152,10 +151,10 @@ If anything other than the plan file appears in the commit, run `git reset --sof
 
 ```bash
 # List all plans:
- editor plans
+codeyam-editor-dev editor plans
 
 # Delete a plan:
- editor plan-delete <slug>
+codeyam-editor-dev editor plan-delete <slug>
 ```
 
 ## Tips

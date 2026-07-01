@@ -37,6 +37,8 @@ export const STRINGS = {
     interpreting: 'Interpretando tu carta…',
     download: 'Descargar Imagen',
     share: 'Compartir',
+    copied: '¡Link copiado!',
+    imageSaved: '¡Imagen guardada!',
     drawAnother: 'Elegir otra carta',
     // Comments
     commentsTitle: 'Comentarios',
@@ -72,6 +74,7 @@ export const STRINGS = {
     aboutP3:
       'Acá podés tirar una carta, verla darse vuelta y leer su mensaje. Sin cuentas, sin vueltas.',
     aboutTagline: ['Tirá con confianza.', 'El Carot te ama ♥'],
+    aboutCreditPre: 'por ',
     followInstagram: 'Seguir en Instagram',
     // Gallery
     galleryTitle: 'Todas las cartas',
@@ -106,6 +109,8 @@ export const STRINGS = {
     interpreting: 'Reading your card…',
     download: 'Download Image',
     share: 'Share',
+    copied: 'Link copied!',
+    imageSaved: 'Image saved!',
     drawAnother: 'Draw another card',
     commentsTitle: 'Comments',
     commentCta: 'Comment',
@@ -137,6 +142,7 @@ export const STRINGS = {
     aboutP3:
       'Here you can draw a card, watch it flip over, and read its message. No accounts, no fuss.',
     aboutTagline: ['Pull with confidence.', 'El Carot loves you ♥'],
+    aboutCreditPre: 'by ',
     followInstagram: 'Follow on Instagram',
     galleryTitle: 'All cards',
     galleryHeading: 'The 22 arcana',

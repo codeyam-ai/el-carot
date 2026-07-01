@@ -57,7 +57,10 @@ export function Footer() {
           </a>
         </div>
         <div>
-          {t.developedIn} <span style={{ color: '#8fd99a' }}>CodeYam</span>
+          {t.developedIn}{' '}
+          <a href="https://codeyam.com" target="_blank" rel="noopener noreferrer" style={{ color: '#8fd99a', textDecoration: 'none' }}>
+            CodeYam
+          </a>
         </div>
       </div>
 

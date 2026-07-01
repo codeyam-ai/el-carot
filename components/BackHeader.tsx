@@ -4,8 +4,12 @@ import React from 'react';
 import { useRouter } from 'next/navigation';
 import { useCarot } from '@/lib/i18n';
 
-/** Shared screen header: a sage back arrow on the left and a centred title. */
-export function BackHeader({ title, fallback = '/' }: { title?: string; fallback?: string }) {
+/**
+ * Shared screen header: a sage back arrow on the left and the EL CAROT wordmark
+ * centred (taps back to home). `title` is accepted for back-context but no longer
+ * rendered — the centred wordmark replaces the per-page title on mobile.
+ */
+export function BackHeader({ fallback = '/' }: { title?: string; fallback?: string }) {
   const { t } = useCarot();
   const router = useRouter();
   const back = () => {
@@ -20,9 +24,13 @@ export function BackHeader({ title, fallback = '/' }: { title?: string; fallback
           <polyline points="11,5 4,12 11,19" />
         </svg>
       </button>
-      <span style={{ flex: 1, textAlign: 'center', fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 17, color: 'rgba(175,188,167,.6)', letterSpacing: '.01em', padding: '0 8px' }}>
-        {title}
-      </span>
+      <button
+        aria-label="El Carot — inicio"
+        onClick={() => router.push('/')}
+        style={{ flex: 1, textAlign: 'center', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 19, letterSpacing: '.08em', textTransform: 'uppercase', color: 'var(--carot-sage-light)', padding: '0 8px' }}
+      >
+        El Carot
+      </button>
       <span style={{ flex: '0 0 auto', width: 24, height: 24 }} />
     </div>
   );

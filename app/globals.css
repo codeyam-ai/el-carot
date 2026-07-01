@@ -160,6 +160,30 @@ body {
   }
 }
 
+/* Breakpoint-only visibility helpers (SSR-safe — no JS swap). */
+.carot-only-desktop {
+  display: none;
+}
+@media (min-width: 820px) {
+  .carot-only-mobile {
+    display: none !important;
+  }
+  .carot-only-desktop {
+    display: flex !important;
+  }
+}
+
+/* Desktop home: the row of cards drifts slowly leftward as one (the inner row is
+   doubled, so translating it by half its width loops seamlessly). */
+@keyframes carot-drift-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 /* hidden scrollbars — the ritual scrolls without chrome */
 * {
   scrollbar-width: none;

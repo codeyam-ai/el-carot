@@ -5,5 +5,5 @@ import { pickFan } from '@/lib/pickFan';
 export const dynamic = 'force-dynamic';
 
 export default function Page() {
-  return <Home fan={pickFan(3)} />;
+  return <Home fan={pickFan(3)} strip={pickFan(12)} />;
 }

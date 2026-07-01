@@ -16,5 +16,5 @@
     }
   ],
   "finalizeIntent": "fast",
-  "finalizeIntentBranch": "main"
+  "finalizeIntentBranch": "deploy-vercel-neon"
 }

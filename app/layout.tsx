@@ -3,7 +3,9 @@ import { headers } from 'next/headers';
 import './globals.css';
 import { CarotProvider } from '@/lib/i18n';
 import type { Lang } from '@/lib/i18n';
+import { MenuProvider } from '@/lib/menu';
 import { MenuOverlay } from '@/components/MenuOverlay';
+import { VisitTracker } from '@/components/VisitTracker';
 
 export const metadata: Metadata = {
   title: 'El Carot',
@@ -37,10 +39,13 @@ export default async function RootLayout({
       </head>
       <body className="antialiased">
         <CarotProvider initialLang={lang}>
-          <div className="carot-shell">
-            <div className="carot-scroll">{children}</div>
-            <MenuOverlay />
-          </div>
+          <MenuProvider>
+            <div className="carot-shell">
+              <div className="carot-scroll">{children}</div>
+              <MenuOverlay />
+              <VisitTracker />
+            </div>
+          </MenuProvider>
         </CarotProvider>
       </body>
     </html>

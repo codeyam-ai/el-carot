@@ -10,10 +10,11 @@ const STEP_ROT = 7; // tilt per step from centre
  * with a CSS-only entrance (so they're visible in server-rendered HTML) and an
  * infinite gentle sway. The cards are chosen by the caller and passed in.
  */
-export function CardFan({ cards }: { cards: Card[] }) {
+export function CardFan({ cards, className }: { cards: Card[]; className?: string }) {
   const mid = (cards.length - 1) / 2;
   return (
     <div
+      className={className}
       style={{
         flex: 1,
         display: 'flex',

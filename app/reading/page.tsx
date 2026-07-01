@@ -3,7 +3,8 @@ import { CardReading } from '@/components/CardReading';
 import { Comments, type CommentItem } from '@/components/Comments';
 import { Footer } from '@/components/Footer';
 import { CAROT_CARDS, type Card, type Lang } from '@/data/cards';
-import { dailyCardIndex, formatDailyDate } from '@/lib/daily';
+import { formatDailyDate } from '@/lib/daily';
+import { getDailyCardN } from '@/lib/dailyCard';
 import { prisma } from '@/app/lib/prisma';
 
 export const dynamic = 'force-dynamic';
@@ -22,7 +23,7 @@ export default async function ReadingPage({
 
   if (sp.daily === '1') {
     const now = new Date();
-    card = CAROT_CARDS[dailyCardIndex(now, CAROT_CARDS.length)];
+    card = CAROT_CARDS[await getDailyCardN(now)];
     dailyDate = formatDailyDate(now, lang);
   } else {
     const n = Number(sp.n);

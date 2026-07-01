@@ -5,21 +5,24 @@ import React from 'react';
 export type ExperienceButtonVariant = 'solid' | 'outline';
 
 /**
- * A full-width Home experience button. `solid` is the sage block (default),
- * `outline` is the transparent sage-keyline variant ("Carta del Día").
+ * A Home experience button. `solid` is the sage block (default), `outline` is the
+ * transparent sage-keyline variant ("Carta del Día"). `block` (default) fills the
+ * width (mobile stack); pass `block={false}` for an auto-width pill (desktop row).
  * Presses nudge down 1px, matching the design's tactile feel.
  */
 export function ExperienceButton({
   children,
   onClick,
   variant = 'solid',
+  block = true,
 }: {
   children: React.ReactNode;
   onClick?: () => void;
   variant?: ExperienceButtonVariant;
+  block?: boolean;
 }) {
   const base: React.CSSProperties = {
-    width: '100%',
+    width: block ? '100%' : 'auto',
     boxSizing: 'border-box',
     border: 'none',
     cursor: 'pointer',
@@ -29,10 +32,11 @@ export function ExperienceButton({
     fontWeight: 400,
     fontSize: 21,
     letterSpacing: '.01em',
-    padding: '20px 18px',
+    padding: block ? '15px 18px' : '16px 30px',
     borderRadius: 14,
     textAlign: 'center',
     lineHeight: 1.1,
+    whiteSpace: block ? 'normal' : 'nowrap',
     transition: 'background-color .18s ease, transform .06s ease',
   };
   const outline: React.CSSProperties =

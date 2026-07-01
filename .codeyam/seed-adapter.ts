@@ -220,9 +220,12 @@ export function topoSortTables(
 }
 
 /**
- * Lazy-load @prisma/client + the better-sqlite3 adapter and return a
- * connected PrismaClient. Deferred so importing this module from a test
- * file does not require those packages to be installed.
+ * Lazy-load @prisma/client + the Postgres (@prisma/adapter-pg) adapter and
+ * return a connected PrismaClient. Deferred so importing this module from a
+ * test file does not require those packages to be installed.
+ *
+ * Customised for El Carot's Neon Postgres datasource — mirrors
+ * `app/lib/prisma.ts` (PrismaPg + DATABASE_URL connection string).
  */
 async function openPrisma(): Promise<{
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -232,12 +235,11 @@ async function openPrisma(): Promise<{
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const prismaMod: any = await import('@prisma/client');
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const adapterMod: any = await import('@prisma/adapter-better-sqlite3');
+  const adapterMod: any = await import('@prisma/adapter-pg');
   const { PrismaClient, Prisma } = prismaMod;
-  const PrismaBetterSqlite3 =
-    adapterMod.PrismaBetterSqlite3 || adapterMod.default;
-  const adapter = new PrismaBetterSqlite3({
-    url: process.env.DATABASE_URL || 'file:./dev.db',
+  const PrismaPg = adapterMod.PrismaPg || adapterMod.default;
+  const adapter = new PrismaPg({
+    connectionString: process.env.DATABASE_URL,
   });
   const prisma = new PrismaClient({ adapter });
   return { prisma, models: Prisma.dmmf.datamodel.models };
@@ -288,16 +290,15 @@ export async function main() {
 
   try {
     // Run everything in a single transaction for atomicity and speed.
-    // SQLite auto-commits each statement by default — wrapping in a transaction
-    // avoids per-statement fsync and is significantly faster for bulk operations.
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     await prisma.$transaction(async (tx: any) => {
-      // Disable foreign key checks during wipe+insert — allows deleting in any
-      // order and avoids FK constraint errors during the brief window between
-      // clearing parent and child tables.
-      await tx.$executeRawUnsafe('PRAGMA foreign_keys = OFF');
-
-      // Wipe ALL tables in the schema (not just seeded ones)
+      // Wipe ALL tables in the schema (not just seeded ones), children
+      // before parents (reverse declaration order). Postgres enforces FK
+      // constraints inside the transaction, so reverse order avoids
+      // violations; for El Carot's single-table (Comment) schema this is
+      // trivially safe. No `PRAGMA foreign_keys` (SQLite-only) is needed —
+      // and `SET session_replication_role` is avoided because the Neon
+      // owner role isn't a superuser.
       for (const table of [...allModels].reverse()) {
         try {
           await tx[table].deleteMany();
@@ -306,26 +307,13 @@ export async function main() {
         }
       }
 
-      // Batch-reset auto-increment counters for ALL tables.
-      // Without this, SQLite IDs keep climbing across scenario switches,
-      // causing hardcoded URLs like /drinks/1 to 404.
-      const seqNames = allModels
-        .flatMap((t) => [`'${t}'`, `'${t.charAt(0).toUpperCase() + t.slice(1)}'`])
-        .join(', ');
-      try {
-        await tx.$executeRawUnsafe(
-          `DELETE FROM sqlite_sequence WHERE name IN (${seqNames})`,
-        );
-      } catch {
-        // sqlite_sequence may not exist — safe to ignore
-      }
+      // No sqlite_sequence reset: Postgres has no such table, and El Carot's
+      // ids are cuid strings (not auto-increment sequences), so there is
+      // nothing to reset between scenario switches.
 
-      // Insert seed data in topological FK order
-      // Stack assumption: this SQLite adapter inserts through Prisma's
-      // `createMany`, which serializes Json fields itself. The Postgres
-      // JSON-column 22P02 bug fixed in prisma-postgres.ts (raw `pg` encoding
-      // a JS array as a Postgres array literal) cannot occur here, so no
-      // explicit JSON.stringify pass is needed.
+      // Insert seed data in topological FK order. Prisma's `createMany`
+      // serializes any Json fields itself, so no explicit JSON.stringify
+      // pass is needed.
       for (const table of insertOrder) {
         const rows = seed[table];
         if (!Array.isArray(rows) || rows.length === 0) continue;
@@ -342,9 +330,6 @@ export async function main() {
           process.exit(1);
         }
       }
-
-      // Re-enable foreign key checks
-      await tx.$executeRawUnsafe('PRAGMA foreign_keys = ON');
     });
 
     if (expectedRows > 0 && actualRows === 0) {

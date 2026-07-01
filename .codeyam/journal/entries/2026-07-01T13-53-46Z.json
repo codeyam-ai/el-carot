@@ -1,0 +1,491 @@
+{
+  "timestamp": "2026-07-01T13:53:46Z",
+  "title": "Share & save cards, full desktop home, analytics DB & geo i18n",
+  "type": "feature",
+  "userRequest": "ay esta funcionando la api y todo, podemso iniciar una nueva sesion",
+  "description": "Shipped a broad round of El Carot work, all deployed to production (Vercel + Neon).\n\nReading actions: wired the Share button (Web Share API on mobile, copy-direct-link fallback on desktop with a toast) and the Save button (composes a phone wallpaper on a <canvas> — just the card art centred on a background sampled from the card's own frame colour, downloaded as PNG). Both guarded against hangs. Gallery cards already opened their reading.\n\nDesktop home redesign: a full-width row of face-up cards that drift slowly leftward as one (CSS marquee) while each sways at its own rhythm (negative-delay animations so they flow from the first frame); bigger cards; the three actions as a centred row of auto-width pills; a '♥ El Carot te ama ♥' sign-off pinned to the bottom; the welcome + wordmark title block nudged down; the whole card+buttons group vertically centred. Mobile keeps the fanned trio (buttons made shorter).\n\nNav & polish: EL CAROT wordmark centred and clickable-to-home on both mobile and desktop; a single aligned top-right cluster (language + Instagram + star) shared by the desktop nav and the home header, replacing the misaligned floating star on desktop; a menu context (lib/menu) so the star toggles the shared menu; favicon = the menu star on charcoal; About credit 'por @bastadanii' under the title; the reading card tilts + sways + casts a soft shadow; per-page desktop vertical centring (reading, message, about).\n\nAnalytics database: three new Prisma models on Neon Postgres. DailyCard stores one card per UTC day (chosen once, the SAME for everyone) — the reading page get-or-creates it, and a Vercel Cron (00:00 UTC, /api/cron/daily, CRON_SECRET-guarded) guarantees a row per day. Question logs every AI question (card, language, source, coarse geo). Visit logs one entry per session via a VisitTracker + /api/track. A password-protected /stats page (STATS_PASSWORD) shows the daily-card history (all days), questions, and visits-by-country. Geo is coarse Vercel IP data only (country / region / timezone) — never IP or precise location.\n\nInternationalisation: the middleware now defaults visitors from Spanish-speaking countries to Spanish (via Vercel's x-vercel-ip-country) before falling back to Accept-Language, so an Argentine visitor with an English browser gets Spanish.\n\nFooter: the 'CodeYam' credit now links to codeyam.com.\n\nAI model kept at claude-haiku-4-5 (cheapest) with the written-meaning fallback. Unit tests cover the pure share URL/text builders and the wallpaper card-rect math (26 green).",
+  "modifiedFiles": [
+    {
+      "path": ".claude/hooks/_step_metadata.py",
+      "status": "modified"
+    },
+    {
+      "path": ".claude/hooks/editor-pretool-hook.py",
+      "status": "modified"
+    },
+    {
+      "path": ".claude/hooks/editor-step-hook.py",
+      "status": "modified"
+    },
+    {
+      "path": ".claude/skills/codeyam-audit/SKILL.md",
+      "status": "modified"
+    },
+    {
+      "path": ".claude/skills/codeyam-design/SKILL.md",
+      "status": "modified"
+    },
+    {
+      "path": ".claude/skills/codeyam-edit-plan/SKILL.md",
+      "status": "modified"
+    },
+    {
+      "path": ".claude/skills/codeyam-editor/SKILL.md",
+      "status": "modified"
+    },
+    {
+      "path": ".claude/skills/codeyam-explore/SKILL.md",
+      "status": "modified"
+    },
+    {
+      "path": ".claude/skills/codeyam-new-app/SKILL.md",
+      "status": "modified"
+    },
+    {
+      "path": ".claude/skills/codeyam-onboard/SKILL.md",
+      "status": "modified"
+    },
+    {
+      "path": ".claude/skills/codeyam-plan/SKILL.md",
+      "status": "modified"
+    },
+    {
+      "path": ".claude/skills/codeyam-prototype/SKILL.md",
+      "status": "modified"
+    },
+    {
+      "path": ".claude/skills/codeyam-see-app/SKILL.md",
+      "status": "modified"
+    },
+    {
+      "path": ".claude/skills/codeyam-see-recent-change/SKILL.md",
+      "status": "modified"
+    },
+    {
+      "path": ".claude/skills/codeyam-slice/SKILL.md",
+      "status": "modified"
+    },
+    {
+      "path": ".claude/skills/review-session/SKILL.md",
+      "status": "modified"
+    },
+    {
+      "path": ".claude/skills/review-session/scripts/extract-session-helpers.mjs",
+      "status": "modified"
+    },
+    {
+      "path": ".claude/skills/review-session/scripts/extract-session.mjs",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/.last-reconcile.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/capture.js",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dependency-graph.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/dev-scaffolded",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenario-handlers.js",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenario-metrics.js",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenario-playwright.js",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/seed-adapter.ts",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/state/finalize-debt.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/state/provider-auth-verdict.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/state/session-results-snapshot.json",
+      "status": "modified"
+    },
+    {
+      "path": ".gitattributes",
+      "status": "modified"
+    },
+    {
+      "path": ".gitignore",
+      "status": "modified"
+    },
+    {
+      "path": "app/api/interpret/route.ts",
+      "status": "modified"
+    },
+    {
+      "path": "app/globals.css",
+      "status": "modified"
+    },
+    {
+      "path": "app/isolated-components/Home/page.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "app/layout.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "app/lib/prisma.ts",
+      "status": "modified"
+    },
+    {
+      "path": "app/page.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "app/reading/page.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/AboutScreen.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/BackHeader.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/CardFan.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/CardReading.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/DesktopNav.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/ExperienceButton.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/Footer.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/Home.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/HomeActions.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/HomeHeader.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/MenuOverlay.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/MenuToggle.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/MessageIntro.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "lib/i18n.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "lib/links.ts",
+      "status": "modified"
+    },
+    {
+      "path": "middleware.ts",
+      "status": "modified"
+    },
+    {
+      "path": "next.config.ts",
+      "status": "modified"
+    },
+    {
+      "path": "package-lock.json",
+      "status": "modified"
+    },
+    {
+      "path": "package.json",
+      "status": "modified"
+    },
+    {
+      "path": "prisma/schema.prisma",
+      "status": "modified"
+    },
+    {
+      "path": "prisma/seed.ts",
+      "status": "modified"
+    },
+    {
+      "path": ".claude/skills/codeyam-audit/finalize-procedure.md",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/mocks/catalog.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/setup-status.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/state/last-advance.txt",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/state/step-highwater.json",
+      "status": "added"
+    },
+    {
+      "path": "app/api/cron/daily/route.ts",
+      "status": "added"
+    },
+    {
+      "path": "app/api/track/route.ts",
+      "status": "added"
+    },
+    {
+      "path": "app/icon.svg",
+      "status": "added"
+    },
+    {
+      "path": "app/stats/page.tsx",
+      "status": "added"
+    },
+    {
+      "path": "components/HomeDeckStrip.tsx",
+      "status": "added"
+    },
+    {
+      "path": "components/HomeLove.tsx",
+      "status": "added"
+    },
+    {
+      "path": "components/HomeTitle.tsx",
+      "status": "added"
+    },
+    {
+      "path": "components/NavRightCluster.tsx",
+      "status": "added"
+    },
+    {
+      "path": "components/StatsLogin.tsx",
+      "status": "added"
+    },
+    {
+      "path": "components/VisitTracker.tsx",
+      "status": "added"
+    },
+    {
+      "path": "lib/dailyCard.ts",
+      "status": "added"
+    },
+    {
+      "path": "lib/geo.ts",
+      "status": "added"
+    },
+    {
+      "path": "lib/menu.tsx",
+      "status": "added"
+    },
+    {
+      "path": "lib/share.test.ts",
+      "status": "added"
+    },
+    {
+      "path": "lib/share.ts",
+      "status": "added"
+    },
+    {
+      "path": "lib/wallpaper.test.ts",
+      "status": "added"
+    },
+    {
+      "path": "lib/wallpaper.ts",
+      "status": "added"
+    },
+    {
+      "path": "vercel.json",
+      "status": "added"
+    }
+  ],
+  "scenarioScreenshots": [
+    {
+      "name": "About - Default",
+      "screenshotPath": "about-default--mobile.png"
+    },
+    {
+      "name": "AboutScreen - Mobile",
+      "screenshotPath": "aboutscreen-mobile--mobile.png"
+    },
+    {
+      "name": "BackHeader - Default",
+      "screenshotPath": "backheader-default--mobile.png"
+    },
+    {
+      "name": "CardFan - Single Card",
+      "screenshotPath": "cardfan-single-card--mobile.png"
+    },
+    {
+      "name": "CardFan - Three Cards",
+      "screenshotPath": "cardfan-three-cards--mobile.png"
+    },
+    {
+      "name": "CardReading - Mobile",
+      "screenshotPath": "cardreading-mobile--mobile.png"
+    },
+    {
+      "name": "CarotMenu - Default",
+      "screenshotPath": "carotmenu-default--mobile.png"
+    },
+    {
+      "name": "CarotProvider - English",
+      "screenshotPath": "carotprovider-english--mobile.png"
+    },
+    {
+      "name": "CarotProvider - Spanish",
+      "screenshotPath": "carotprovider-spanish--mobile.png"
+    },
+    {
+      "name": "CommentRow - Default",
+      "screenshotPath": "commentrow-default--mobile.png"
+    },
+    {
+      "name": "Comments - With Comments",
+      "screenshotPath": "comments-with-comments--mobile.png"
+    },
+    {
+      "name": "DeckCarousel - Default",
+      "screenshotPath": "deckcarousel-default--mobile.png"
+    },
+    {
+      "name": "DesktopNav - Default",
+      "screenshotPath": "desktopnav-default--desktop.png"
+    },
+    {
+      "name": "ExperienceButton - Outline",
+      "screenshotPath": "experiencebutton-outline--mobile.png"
+    },
+    {
+      "name": "ExperienceButton - Solid",
+      "screenshotPath": "experiencebutton-solid--mobile.png"
+    },
+    {
+      "name": "Footer - Default",
+      "screenshotPath": "footer-default--mobile.png"
+    },
+    {
+      "name": "Gallery - Default",
+      "screenshotPath": "gallery-default--mobile.png"
+    },
+    {
+      "name": "GalleryGrid - Mobile",
+      "screenshotPath": "gallerygrid-mobile--mobile.png"
+    },
+    {
+      "name": "Home - English",
+      "screenshotPath": "home-english--mobile.png"
+    },
+    {
+      "name": "Home - Spanish",
+      "screenshotPath": "home-spanish--mobile.png"
+    },
+    {
+      "name": "HomeActions - English",
+      "screenshotPath": "homeactions-english--mobile.png"
+    },
+    {
+      "name": "HomeActions - Spanish",
+      "screenshotPath": "homeactions-spanish--mobile.png"
+    },
+    {
+      "name": "HomeHeader - English",
+      "screenshotPath": "homeheader-english--mobile.png"
+    },
+    {
+      "name": "HomeHeader - Spanish",
+      "screenshotPath": "homeheader-spanish--mobile.png"
+    },
+    {
+      "name": "Landing - English",
+      "screenshotPath": "landing-english--mobile.png"
+    },
+    {
+      "name": "Landing - Spanish",
+      "screenshotPath": "landing-spanish--mobile.png"
+    },
+    {
+      "name": "LangToggle - English",
+      "screenshotPath": "langtoggle-english--mobile.png"
+    },
+    {
+      "name": "LangToggle - Spanish",
+      "screenshotPath": "langtoggle-spanish--mobile.png"
+    },
+    {
+      "name": "MenuOverlay - Default",
+      "screenshotPath": "menuoverlay-default--mobile.png"
+    },
+    {
+      "name": "MenuToggle - Default",
+      "screenshotPath": "menutoggle-default--mobile.png"
+    },
+    {
+      "name": "Message - Default",
+      "screenshotPath": "message-default--mobile.png"
+    },
+    {
+      "name": "MessageIntro - Mobile",
+      "screenshotPath": "messageintro-mobile--mobile.png"
+    },
+    {
+      "name": "Question - Empty",
+      "screenshotPath": "question-empty--mobile.png"
+    },
+    {
+      "name": "QuestionInput - Mobile",
+      "screenshotPath": "questioninput-mobile--mobile.png"
+    },
+    {
+      "name": "Reading - Default",
+      "screenshotPath": "reading-default--mobile.png"
+    }
+  ],
+  "testResults": {
+    "total": 18,
+    "passed": 18,
+    "failed": 0,
+    "runners": [
+      {
+        "name": "tests",
+        "total": 18,
+        "passed": 18
+      }
+    ]
+  }
+}

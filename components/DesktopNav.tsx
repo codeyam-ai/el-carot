@@ -3,8 +3,7 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import { useCarot } from '@/lib/i18n';
-import { LangToggle } from '@/components/LangToggle';
-import { CAROT_IG_URL } from '@/lib/links';
+import { NavRightCluster } from '@/components/NavRightCluster';
 
 /**
  * Desktop top nav bar: a back arrow + the page-context label on the left, the
@@ -36,12 +35,18 @@ export function DesktopNav({ title, onBack }: { title?: string; onBack?: () => v
         )}
       </div>
 
-      {/* centre — wordmark */}
-      <span
+      {/* centre — wordmark (taps back to home) */}
+      <button
+        aria-label="El Carot — inicio"
+        onClick={() => router.push('/')}
         style={{
           position: 'absolute',
           left: '50%',
           transform: 'translateX(-50%)',
+          background: 'none',
+          border: 'none',
+          padding: 0,
+          cursor: 'pointer',
           fontFamily: 'var(--font-display)',
           fontWeight: 400,
           fontSize: 23,
@@ -52,18 +57,11 @@ export function DesktopNav({ title, onBack }: { title?: string; onBack?: () => v
         }}
       >
         El Carot
-      </span>
+      </button>
 
-      {/* right — language + instagram (the global star sits further right) */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: 20, flex: 1, marginRight: 54 }}>
-        <LangToggle />
-        <a href={CAROT_IG_URL} target="_blank" rel="noopener noreferrer" aria-label="Instagram" style={{ color: 'rgba(175,188,167,.7)', display: 'inline-flex' }}>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-            <rect x="3" y="3" width="18" height="18" rx="5" />
-            <circle cx="12" cy="12" r="4" />
-            <circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none" />
-          </svg>
-        </a>
+      {/* right — language + instagram + star, all aligned in one cluster */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', flex: 1 }}>
+        <NavRightCluster />
       </div>
     </div>
   );

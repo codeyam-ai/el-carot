@@ -1,8 +1,8 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  // Required: better-sqlite3 is a native module that can't be bundled
-  serverExternalPackages: ['better-sqlite3'],
+  // pg is a server-side DB driver — keep it external so it isn't bundled.
+  serverExternalPackages: ['pg'],
 
   turbopack: {
     // Required: prevents Turbopack from inferring a parent directory as root

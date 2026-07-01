@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation';
 import { useCarot } from '@/lib/i18n';
 import { cardText, type Card } from '@/data/cards';
 import { useIsDesktop } from '@/lib/useIsDesktop';
+import { shareReading } from '@/lib/share';
+import { downloadWallpaper } from '@/lib/wallpaper';
 import { TarotCard } from '@/components/TarotCard';
 import { StarDivider } from '@/components/StarDivider';
 import { DesktopNav } from '@/components/DesktopNav';
@@ -97,6 +99,62 @@ export function CardReading({
   const navTitle =
     origin === 'message' ? t.messageTitle : origin === 'question' ? t.questionTitle : origin === 'gallery' ? t.galleryTitle : t.dailyLabel;
 
+  // Share / save-as-wallpaper, with a brief confirmation toast.
+  const [toast, setToast] = React.useState<string | null>(null);
+  const [savingImage, setSavingImage] = React.useState(false);
+  const toastTimer = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const flash = React.useCallback((msg: string) => {
+    setToast(msg);
+    if (toastTimer.current) clearTimeout(toastTimer.current);
+    toastTimer.current = setTimeout(() => setToast(null), 2200);
+  }, []);
+
+  React.useEffect(() => () => {
+    if (toastTimer.current) clearTimeout(toastTimer.current);
+  }, []);
+
+  const onShare = React.useCallback(async () => {
+    const res = await shareReading(card, lang);
+    if (res === 'copied') flash(t.copied);
+  }, [card, lang, t.copied, flash]);
+
+  const onDownload = React.useCallback(async () => {
+    if (savingImage) return;
+    setSavingImage(true);
+    try {
+      const ok = await downloadWallpaper(card);
+      if (ok) flash(t.imageSaved);
+    } finally {
+      setSavingImage(false);
+    }
+  }, [savingImage, card, t.imageSaved, flash]);
+
+  const toastEl = toast ? (
+    <div
+      role="status"
+      style={{
+        position: 'fixed',
+        left: '50%',
+        bottom: 90,
+        transform: 'translateX(-50%)',
+        zIndex: 500,
+        background: 'var(--carot-sage-light)',
+        color: '#2b2922',
+        fontFamily: 'var(--font-body)',
+        fontWeight: 500,
+        fontSize: 15,
+        letterSpacing: '.01em',
+        padding: '11px 20px',
+        borderRadius: 999,
+        boxShadow: '0 8px 24px rgba(0,0,0,.4)',
+        pointerEvents: 'none',
+      }}
+    >
+      {toast}
+    </div>
+  ) : null;
+
   // ── Desktop: two-column ──────────────────────────────────────────────
   if (isDesktop) {
     const actionLink: React.CSSProperties = {
@@ -115,7 +173,7 @@ export function CardReading({
     return (
       <div data-fullbleed style={{ background: 'var(--carot-screen)' }}>
         <DesktopNav title={navTitle} onBack={back} />
-        <div style={{ maxWidth: 1080, margin: '0 auto', width: '100%', padding: '34px 40px 10px', boxSizing: 'border-box', display: 'flex', gap: 56, alignItems: 'flex-start' }}>
+        <div style={{ maxWidth: 1080, margin: '0 auto', width: '100%', minHeight: 'calc(100dvh - 84px)', padding: '24px 40px 40px', boxSizing: 'border-box', display: 'flex', gap: 56, alignItems: 'center' }}>
           {/* card column */}
           <div style={{ flex: '0 0 340px' }}>
             {dailyDate && (
@@ -126,11 +184,13 @@ export function CardReading({
                 <div style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 20, color: 'var(--carot-cream-text)' }}>{dailyDate}</div>
               </div>
             )}
-            <TarotCard back="/assets/card-back.jpg" face={`/assets/cards/${card.img}`} flipped={flipped} width={340} alt={`${card.name} — ${card.arcana}`} />
+            <div style={{ animation: 'carot-sway 6s ease-in-out infinite', transformOrigin: '50% 92%', filter: 'drop-shadow(0 24px 42px rgba(0,0,0,.5))' }}>
+              <TarotCard back="/assets/card-back.jpg" face={`/assets/cards/${card.img}`} flipped={flipped} width={340} alt={`${card.name} — ${card.arcana}`} />
+            </div>
           </div>
 
-          {/* reading column */}
-          <div style={{ flex: 1, minWidth: 0, paddingTop: 8 }}>
+          {/* reading column — vertically centred against the card */}
+          <div style={{ flex: 1, minWidth: 0 }}>
             {question ? (
               <>
                 <span style={{ display: 'block', fontFamily: 'var(--font-body)', fontWeight: 600, fontSize: 12, letterSpacing: '.18em', textTransform: 'uppercase', color: 'var(--carot-sage-light)', marginBottom: 10 }}>
@@ -145,23 +205,22 @@ export function CardReading({
               </>
             ) : (
               <>
-                <p style={{ fontFamily: 'var(--font-body)', fontStyle: 'italic', fontWeight: 300, fontSize: 23, lineHeight: 1.45, color: 'var(--carot-sage-light)', margin: '0 0 22px' }}>
+                <p style={{ fontFamily: 'var(--font-body)', fontStyle: 'italic', fontWeight: 300, fontSize: 23, lineHeight: 1.45, color: 'var(--carot-sage-light)', margin: '0 0 18px' }}>
                   “{cardText(card, 'quote', lang)}”
                 </p>
+                <StarDivider count={3} size={12} color="#5B6256" style={{ margin: '0 0 22px', justifyContent: 'flex-start' }} />
                 <p style={{ fontFamily: 'var(--font-body)', fontWeight: 300, fontSize: 17, lineHeight: 1.75, color: 'var(--carot-cream-text)', margin: 0 }}>
                   {cardText(card, 'meaning', lang)}
                 </p>
               </>
             )}
 
-            <StarDivider count={3} size={12} color="#5B6256" style={{ margin: '34px 0', justifyContent: 'flex-start' }} />
-
-            <div style={{ display: 'flex', alignItems: 'center', gap: 34 }}>
-              <button style={actionLink}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 34, marginTop: 32 }}>
+              <button style={actionLink} onClick={onShare}>
                 {shareIcon}
                 {t.share}
               </button>
-              <button style={actionLink}>
+              <button style={{ ...actionLink, opacity: savingImage ? 0.55 : 1 }} onClick={onDownload} disabled={savingImage}>
                 {downIcon}
                 {t.download}
               </button>
@@ -175,6 +234,7 @@ export function CardReading({
             </button>
           </div>
         </div>
+        {toastEl}
       </div>
     );
   }
@@ -202,14 +262,20 @@ export function CardReading({
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '0 26px 0', background: 'var(--carot-screen)' }}>
       <div style={{ display: 'flex', alignItems: 'center', width: '100%', padding: '30px 0 0' }}>
-        <button aria-label={t.back} onClick={back} style={{ background: 'none', border: 'none', padding: 6, margin: -6, cursor: 'pointer' }}>
+        <button aria-label={t.back} onClick={back} style={{ background: 'none', border: 'none', padding: 6, margin: -6, cursor: 'pointer', flex: '0 0 auto' }}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--carot-sage-light)" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
             <line x1="20" y1="12" x2="5" y2="12" />
             <polyline points="11,5 4,12 11,19" />
           </svg>
         </button>
-        <span style={{ flex: 1 }} />
-        <span style={{ width: 24, height: 24 }} />
+        <button
+          aria-label="El Carot — inicio"
+          onClick={() => router.push('/')}
+          style={{ flex: 1, textAlign: 'center', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 19, letterSpacing: '.08em', textTransform: 'uppercase', color: 'var(--carot-sage-light)', padding: '0 8px' }}
+        >
+          El Carot
+        </button>
+        <span style={{ flex: '0 0 auto', width: 24, height: 24 }} />
       </div>
 
       {dailyDate && (
@@ -221,8 +287,10 @@ export function CardReading({
         </div>
       )}
 
-      <div style={{ marginTop: 8 }}>
-        <TarotCard back="/assets/card-back.jpg" face={`/assets/cards/${card.img}`} flipped={flipped} width={214} alt={`${card.name} — ${card.arcana}`} />
+      <div style={{ marginTop: 30 }}>
+        <div style={{ animation: 'carot-sway 6s ease-in-out infinite', transformOrigin: '50% 92%', filter: 'drop-shadow(0 18px 34px rgba(0,0,0,.5))' }}>
+          <TarotCard back="/assets/card-back.jpg" face={`/assets/cards/${card.img}`} flipped={flipped} width={214} alt={`${card.name} — ${card.arcana}`} />
+        </div>
       </div>
 
       {question ? (
@@ -264,13 +332,13 @@ export function CardReading({
       <StarDivider count={3} size={13} color="#5B6256" style={{ margin: '52px 0 50px' }} />
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 14, width: '100%' }}>
-        <button style={cardOutlineBtn}>
+        <button style={{ ...cardOutlineBtn, opacity: savingImage ? 0.55 : 1 }} onClick={onDownload} disabled={savingImage}>
           <span aria-hidden="true" style={{ display: 'inline-flex' }}>
             {downIcon}
           </span>
           {t.download}
         </button>
-        <button style={cardOutlineBtn}>
+        <button style={cardOutlineBtn} onClick={onShare}>
           <span aria-hidden="true" style={{ display: 'inline-flex' }}>
             {shareIcon}
           </span>
@@ -285,6 +353,7 @@ export function CardReading({
       </div>
 
       <StarDivider count={3} size={13} color="#5B6256" style={{ margin: '52px 0 50px' }} />
+      {toastEl}
     </div>
   );
 }

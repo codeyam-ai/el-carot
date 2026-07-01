@@ -2,15 +2,22 @@
 
 import React from 'react';
 import { useCarot } from '@/lib/i18n';
+import { useIsDesktop } from '@/lib/useIsDesktop';
 import { LangToggle } from '@/components/LangToggle';
+import { NavRightCluster } from '@/components/NavRightCluster';
 
-/** Home top row: language toggle on the left, welcome eyebrow centred. */
+/**
+ * Home top row: welcome eyebrow centred. On mobile the language toggle sits on
+ * the left (the floating star is top-right); on desktop the right side carries
+ * the aligned language + Instagram + star cluster, matching the page nav.
+ */
 export function HomeHeader() {
   const { t } = useCarot();
+  const isDesktop = useIsDesktop();
   return (
     <div style={{ display: 'flex', alignItems: 'center', paddingTop: 30 }}>
       <span style={{ flex: 1, display: 'flex', justifyContent: 'flex-start' }}>
-        <LangToggle />
+        {!isDesktop && <LangToggle />}
       </span>
       <span
         style={{
@@ -21,9 +28,12 @@ export function HomeHeader() {
           letterSpacing: '.02em',
         }}
       >
-        {t.welcome}
+        {/* on desktop the eyebrow moves down into the title block (HomeTitle) */}
+        {!isDesktop && t.welcome}
       </span>
-      <span style={{ flex: 1 }} />
+      <span style={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
+        {isDesktop && <NavRightCluster />}
+      </span>
     </div>
   );
 }

@@ -30,11 +30,12 @@ export function MessageIntro() {
     return (
       <div
         data-fullbleed
-        style={{ minHeight: '100%', display: 'flex', flexDirection: 'column', background: 'var(--carot-screen)', overflow: 'hidden' }}
+        style={{ minHeight: '100dvh', display: 'flex', flexDirection: 'column', background: 'var(--carot-screen)', overflow: 'hidden' }}
       >
         <DesktopNav title={t.messageTitle} />
 
-        <h1 style={{ margin: '38px 40px 0', textAlign: 'center', fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 44, lineHeight: 1.05, color: cream }}>
+        {/* pushed down below the nav so heading + lines + deck sit lower */}
+        <h1 style={{ margin: '92px 40px 0', textAlign: 'center', fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 44, lineHeight: 1.05, color: cream }}>
           {t.messageHeading}
         </h1>
         <div style={{ margin: '18px 0 0', textAlign: 'center', fontFamily: 'var(--font-body)', fontWeight: 300, fontSize: 19, lineHeight: 1.8, color: sage }}>

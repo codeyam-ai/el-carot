@@ -1,4 +1,4 @@
-// Prisma 7 with SQLite via better-sqlite3 driver adapter.
+// Prisma 7 on PostgreSQL (Neon) via the @prisma/adapter-pg driver adapter.
 //
 // IMPORTANT: Use "prisma-client-js" (NOT "prisma-client").
 // The "prisma-client" generator requires a custom output path which
@@ -11,7 +11,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
 }
 
 // ──────────────────────────────────────────────
@@ -23,4 +23,44 @@ model Comment {
   name      String
   text      String
   createdAt DateTime @default(now())
+}
+
+// ──────────────────────────────────────────────
+// Analytics / logging (see lib/geo.ts for the coarse Vercel geo fields).
+// ──────────────────────────────────────────────
+
+/// The card of the day — one row per UTC calendar day, chosen once and shared by
+/// everyone who draws that day.
+model DailyCard {
+  id        String   @id @default(cuid())
+  date      String   @unique // YYYY-MM-DD (UTC)
+  cardN     Int
+  createdAt DateTime @default(now())
+}
+
+/// Every question asked in the AI flow, with the drawn card and coarse geo.
+model Question {
+  id        String   @id @default(cuid())
+  text      String
+  cardN     Int
+  lang      String
+  source    String // 'ai' | 'fallback'
+  country   String?
+  region    String?
+  timezone  String?
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+}
+
+/// A visit to the site — logged once per session, with coarse geo + time.
+model Visit {
+  id        String   @id @default(cuid())
+  path      String
+  country   String?
+  region    String?
+  timezone  String?
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
 }

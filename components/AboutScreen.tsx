@@ -3,7 +3,7 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import { useCarot } from '@/lib/i18n';
-import { CAROT_IG_URL } from '@/lib/links';
+import { CAROT_IG_URL, BASTA_DANII_IG_URL } from '@/lib/links';
 import { useIsDesktop } from '@/lib/useIsDesktop';
 import { BackHeader } from '@/components/BackHeader';
 import { DesktopNav } from '@/components/DesktopNav';
@@ -28,12 +28,19 @@ export function AboutScreen() {
   return (
     <div data-fullbleed style={{ minHeight: '100%', display: 'flex', flexDirection: 'column', background: 'var(--carot-screen)' }}>
       {isDesktop && <DesktopNav title={t.aboutTitle} />}
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', width: '100%', maxWidth: isDesktop ? 640 : undefined, margin: '0 auto', padding: '0 30px 40px', boxSizing: 'border-box' }}>
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: isDesktop ? 'center' : undefined, width: '100%', maxWidth: isDesktop ? 640 : undefined, margin: '0 auto', padding: '0 30px 40px', boxSizing: 'border-box' }}>
         {!isDesktop && <BackHeader title={t.aboutTitle} />}
 
-        <h1 style={{ margin: isDesktop ? '52px 0 24px' : '30px 0 22px', textAlign: 'center', fontFamily: display, fontWeight: 400, fontSize: isDesktop ? 52 : 40, lineHeight: 1.05, color: cream }}>
+        <h1 style={{ margin: isDesktop ? '52px 0 8px' : '30px 0 8px', textAlign: 'center', fontFamily: display, fontWeight: 400, fontSize: isDesktop ? 52 : 40, lineHeight: 1.05, color: cream }}>
         El Carot
       </h1>
+
+      <p style={{ ...p, fontSize: 15, color: 'rgba(175,188,167,.6)', margin: '0 0 24px' }}>
+        {t.aboutCreditPre}
+        <a href={BASTA_DANII_IG_URL} target="_blank" rel="noopener noreferrer" style={{ color: sage, fontWeight: 600, textDecoration: 'none' }}>
+          @bastadanii
+        </a>
+      </p>
 
       <p style={p} dangerouslySetInnerHTML={{ __html: t.aboutP1html.replace(/<strong>/g, `<strong style="color:${sage}">`) }} />
       <p style={p}>{t.aboutP2}</p>
@@ -51,7 +58,7 @@ export function AboutScreen() {
         {t.aboutTagline[1]}
       </p>
 
-      <div style={{ flex: 1 }} />
+      <div style={{ flex: isDesktop ? '0 0 30px' : 1 }} />
 
       <button
         onClick={() => router.push('/message')}
