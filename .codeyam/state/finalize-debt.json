@@ -13,6 +13,12 @@
       "shortSha": "10b58a9",
       "subject": "feat: AI question flow + full desktop adaptation",
       "deferredAt": "2026-06-24T19:51:09Z"
+    },
+    {
+      "sha": "d0e7b1fe02b472ca1f276988d5cc0f72cd25c431",
+      "shortSha": "d0e7b1f",
+      "subject": "feat: share & save cards, desktop home, analytics DB & geo i18n",
+      "deferredAt": "2026-07-01T14:00:08Z"
     }
   ],
   "finalizeIntent": "fast",
