@@ -1,53 +1,53 @@
-# Project Name
+# El Carot
 
-Brief description of what this app does.
+AI-powered tarot readings, delivered through a special, one-of-a-kind deck. Pick a
+theme, choose your card, and get a thoughtful reading for reflection and a little fun.
 
-## Setup
+Live at **[elcarot.com](https://www.elcarot.com)**. Built with [CodeYam](https://codeyam.com).
 
-Run the setup script to install dependencies, initialize the database, and seed it with demo data:
+## Tech stack
+
+- [Next.js](https://nextjs.org/) (App Router)
+- [Prisma](https://www.prisma.io/) + [Neon](https://neon.tech/) Postgres
+- Optional [Anthropic](https://www.anthropic.com/) API for AI card interpretations
+- [Vitest](https://vitest.dev/) + [Playwright](https://playwright.dev/) for tests
+
+## Getting started
 
 ```bash
-npm run setup
-```
+# 1. Install dependencies
+npm install
 
-## Development
+# 2. Configure environment
+cp .env.example .env
+# then fill in DATABASE_URL (Neon Postgres) and, optionally, ANTHROPIC_API_KEY
 
-Start the dev server:
+# 3. Set up the database and seed it
+npm run setup        # install + db:push + db:seed
 
-```bash
+# 4. Run the dev server
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+The app runs at [http://127.0.0.1:3000](http://127.0.0.1:3000).
 
-## Using CodeYam Editor
+## Environment variables
 
-This project was built with [CodeYam](https://codeyam.com). To launch the editor:
-
-```bash
-codeyam editor
-```
-
-The editor provides a live preview alongside a Claude Code terminal for iterating on the app.
-
-## Database
-
-This project uses SQLite via Prisma. Common commands:
-
-```bash
-npm run db:push    # Apply schema changes and generate Prisma client
-npm run db:seed    # Seed the database with demo data
-npm run db:reset   # Reset database: drop, recreate, and re-seed
-```
+| Variable                | Required | Description                                                      |
+| ----------------------- | -------- | ---------------------------------------------------------------- |
+| `DATABASE_URL`          | Yes      | Neon Postgres connection string (pooled).                        |
+| `DATABASE_URL_UNPOOLED` | Optional | Direct/unpooled connection, preferred by Prisma CLI for DDL.     |
+| `ANTHROPIC_API_KEY`     | Optional | Enables AI card interpretations. Falls back to written meanings. |
+| `STATS_PASSWORD`        | Optional | Password gate for the `/stats` analytics page.                   |
+| `CRON_SECRET`           | Optional | Auth for the daily "card of the day" cron job.                   |
 
 ## Scripts
 
-| Script             | Description                                  |
-| ------------------ | -------------------------------------------- |
-| `npm run setup`    | One-line project setup (install + db + seed) |
-| `npm run dev`      | Start the development server                 |
-| `npm run build`    | Build for production                         |
-| `npm run test`     | Run tests                                    |
-| `npm run db:push`  | Apply Prisma schema changes                  |
-| `npm run db:seed`  | Seed the database                            |
-| `npm run db:reset` | Reset and re-seed the database               |
+- `npm run dev` — start the dev server
+- `npm run build` — production build
+- `npm run test` — run tests (Vitest)
+- `npm run db:push` / `npm run db:seed` — sync and seed the database
+
+## License
+
+[MIT](./LICENSE)
