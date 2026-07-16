@@ -20,7 +20,5 @@
       "subject": "feat: share & save cards, desktop home, analytics DB & geo i18n",
       "deferredAt": "2026-07-01T14:00:08Z"
     }
-  ],
-  "finalizeIntent": "fast",
-  "finalizeIntentBranch": "deploy-vercel-neon"
+  ]
 }

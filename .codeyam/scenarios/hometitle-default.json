@@ -1,0 +1,12 @@
+{
+  "name": "HomeTitle - Default",
+  "id": "0a7a1e59-b31d-4ed5-b1b0-8ec9dd8f65d0",
+  "url": "/isolated-components/HomeTitle?s=Default",
+  "dimensions": [
+    "Desktop",
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "HomeTitle",
+  "scenarioType": "component"
+}

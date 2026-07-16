@@ -42,7 +42,7 @@
   "data": {
     "importStatement": "import { prisma } from '@/app/lib/prisma'",
     "schemaFile": "prisma/schema.prisma",
-    "seedAdapterType": "prisma-sqlite",
+    "seedAdapterType": "prisma-postgres",
     "type": "prisma"
   },
   "defaultScreenSize": "Desktop",

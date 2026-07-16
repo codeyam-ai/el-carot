@@ -25,7 +25,7 @@ function place(country: string | null, region: string | null, tz: string | null)
 const th: React.CSSProperties = { textAlign: 'left', padding: '6px 12px', color: muted, fontWeight: 400, borderBottom: '1px solid rgba(175,188,167,.16)' };
 const td: React.CSSProperties = { padding: '6px 12px', color: cream, borderBottom: '1px solid rgba(175,188,167,.08)', verticalAlign: 'top' };
 
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
+export function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section style={{ marginTop: 34 }}>
       <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 20, color: sage, margin: '0 0 12px' }}>{title}</h2>

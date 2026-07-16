@@ -1,0 +1,11 @@
+{
+  "name": "NavRightCluster - English",
+  "id": "db2ba073-975a-42ca-90b2-cb0442a1f3d6",
+  "url": "/isolated-components/NavRightCluster?s=English",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "componentName": "NavRightCluster",
+  "scenarioType": "component"
+}

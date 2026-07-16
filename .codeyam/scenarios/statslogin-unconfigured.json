@@ -1,0 +1,12 @@
+{
+  "name": "StatsLogin - Unconfigured",
+  "id": "f256af74-72ed-40f8-ad31-b49bdcac16b7",
+  "url": "/isolated-components/StatsLogin?s=Unconfigured",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "componentName": "StatsLogin",
+  "scenarioType": "component",
+  "expectedConsoleErrors": true
+}

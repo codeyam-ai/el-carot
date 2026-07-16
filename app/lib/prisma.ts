@@ -1,12 +1,12 @@
-// Database connection singleton.
-// This is the ONLY file that changes when upgrading to a hosted database.
+// Database connection singleton — Prisma 7 on PostgreSQL via the pg driver adapter.
+// This is the ONLY file that knows which database backs the app.
 // All application code imports from here — API routes, server components, etc.
 //
 // Usage:
 //   import { prisma } from "@/app/lib/prisma";
 //   const items = await prisma.yourModel.findMany();
 //
-// To upgrade to a hosted database (e.g., Supabase PostgreSQL), see DATABASE.md.
+// See DATABASE.md for setup and the schema workflow.
 
 import { PrismaClient } from '@prisma/client';
 import { PrismaPg } from '@prisma/adapter-pg';

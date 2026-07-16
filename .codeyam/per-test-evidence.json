@@ -1,550 +1,1197 @@
 {
   "buildInterpretPrompt › builds a Spanish prompt with voseo and the persona": {
     "file": "lib/interpret-prompts.test.ts",
-    "lastRunAt": "2026-06-24T18:40:46.615396+00:00",
-    "lastStatus": "pass",
+    "lastRunAt": "2026-07-16T18:53:13.881040+00:00",
     "lastRunKind": "full",
+    "lastStatus": "pass",
     "recentStatuses": [
       {
-        "status": "pass",
+        "at": "2026-07-16T18:53:13.881040+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:23:18.914055+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:36.734072+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:22.916344+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
         "at": "2026-06-24T18:40:46.615396+00:00",
-        "kind": "full"
+        "kind": "full",
+        "status": "pass"
       }
     ]
   },
   "buildInterpretPrompt › builds an English prompt with the English meaning": {
     "file": "lib/interpret-prompts.test.ts",
-    "lastRunAt": "2026-06-24T18:40:46.615396+00:00",
-    "lastStatus": "pass",
+    "lastRunAt": "2026-07-16T18:53:13.881040+00:00",
     "lastRunKind": "full",
+    "lastStatus": "pass",
     "recentStatuses": [
       {
-        "status": "pass",
+        "at": "2026-07-16T18:53:13.881040+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:23:18.914055+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:36.734072+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:22.916344+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
         "at": "2026-06-24T18:40:46.615396+00:00",
-        "kind": "full"
+        "kind": "full",
+        "status": "pass"
       }
     ]
   },
   "buildInterpretPrompt › embeds the question, card, and base meaning in ES": {
     "file": "lib/interpret-prompts.test.ts",
-    "lastRunAt": "2026-06-24T18:40:46.615396+00:00",
-    "lastStatus": "pass",
+    "lastRunAt": "2026-07-16T18:53:13.881040+00:00",
     "lastRunKind": "full",
+    "lastStatus": "pass",
     "recentStatuses": [
       {
-        "status": "pass",
+        "at": "2026-07-16T18:53:13.881040+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:23:18.914055+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:36.734072+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:22.916344+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
         "at": "2026-06-24T18:40:46.615396+00:00",
-        "kind": "full"
+        "kind": "full",
+        "status": "pass"
       }
     ]
   },
   "buildInterpretPrompt › includes the no-AI / no-repeat constraints": {
     "file": "lib/interpret-prompts.test.ts",
-    "lastRunAt": "2026-06-24T18:40:46.615396+00:00",
-    "lastStatus": "pass",
+    "lastRunAt": "2026-07-16T18:53:13.881040+00:00",
     "lastRunKind": "full",
+    "lastStatus": "pass",
     "recentStatuses": [
       {
-        "status": "pass",
+        "at": "2026-07-16T18:53:13.881040+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:23:18.914055+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:36.734072+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:22.916344+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
         "at": "2026-06-24T18:40:46.615396+00:00",
-        "kind": "full"
+        "kind": "full",
+        "status": "pass"
       }
     ]
   },
   "buildInterpretPrompt › trims the question": {
     "file": "lib/interpret-prompts.test.ts",
-    "lastRunAt": "2026-06-24T18:40:46.615396+00:00",
-    "lastStatus": "pass",
+    "lastRunAt": "2026-07-16T18:53:13.881040+00:00",
     "lastRunKind": "full",
+    "lastStatus": "pass",
     "recentStatuses": [
       {
-        "status": "pass",
+        "at": "2026-07-16T18:53:13.881040+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:23:18.914055+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:36.734072+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:22.916344+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
         "at": "2026-06-24T18:40:46.615396+00:00",
-        "kind": "full"
+        "kind": "full",
+        "status": "pass"
+      }
+    ]
+  },
+  "buildReadingUrl › builds a direct reading link for the card number": {
+    "file": "lib/share.test.ts",
+    "lastRunAt": "2026-07-16T18:53:13.881040+00:00",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "recentStatuses": [
+      {
+        "at": "2026-07-16T18:53:13.881040+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:23:18.914055+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:47.245743+00:00",
+        "kind": "full",
+        "status": "pass"
+      }
+    ]
+  },
+  "buildReadingUrl › omits the origin query so recipients land clean": {
+    "file": "lib/share.test.ts",
+    "lastRunAt": "2026-07-16T18:53:13.881040+00:00",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "recentStatuses": [
+      {
+        "at": "2026-07-16T18:53:13.881040+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:23:18.914055+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:47.245743+00:00",
+        "kind": "full",
+        "status": "pass"
+      }
+    ]
+  },
+  "buildReadingUrl › respects the provided base origin": {
+    "file": "lib/share.test.ts",
+    "lastRunAt": "2026-07-16T18:53:13.881040+00:00",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "recentStatuses": [
+      {
+        "at": "2026-07-16T18:53:13.881040+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:23:18.914055+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:47.245743+00:00",
+        "kind": "full",
+        "status": "pass"
+      }
+    ]
+  },
+  "buildShareText › includes the character, arcana, and quote in ES": {
+    "file": "lib/share.test.ts",
+    "lastRunAt": "2026-07-16T18:53:13.881040+00:00",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "recentStatuses": [
+      {
+        "at": "2026-07-16T18:53:13.881040+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:23:18.914055+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:47.245743+00:00",
+        "kind": "full",
+        "status": "pass"
+      }
+    ]
+  },
+  "buildShareText › uses the English quote in EN": {
+    "file": "lib/share.test.ts",
+    "lastRunAt": "2026-07-16T18:53:13.881040+00:00",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "recentStatuses": [
+      {
+        "at": "2026-07-16T18:53:13.881040+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:23:18.914055+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:47.245743+00:00",
+        "kind": "full",
+        "status": "pass"
+      }
+    ]
+  },
+  "cardText › falls back to the Spanish text when the English variant is missing": {
+    "file": "data/cards.test.ts",
+    "lastRunAt": "2026-07-16T18:53:16.163071+00:00",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "recentStatuses": [
+      {
+        "at": "2026-07-16T18:53:16.163071+00:00",
+        "kind": "full",
+        "status": "pass"
+      }
+    ]
+  },
+  "cardText › resolves non-empty text for all 22 arcana in both languages": {
+    "file": "data/cards.test.ts",
+    "lastRunAt": "2026-07-16T18:53:16.163071+00:00",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "recentStatuses": [
+      {
+        "at": "2026-07-16T18:53:16.163071+00:00",
+        "kind": "full",
+        "status": "pass"
+      }
+    ]
+  },
+  "cardText › returns an empty string for a missing card": {
+    "file": "data/cards.test.ts",
+    "lastRunAt": "2026-07-16T18:53:16.163071+00:00",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "recentStatuses": [
+      {
+        "at": "2026-07-16T18:53:16.163071+00:00",
+        "kind": "full",
+        "status": "pass"
+      }
+    ]
+  },
+  "cardText › returns the English variant in EN": {
+    "file": "data/cards.test.ts",
+    "lastRunAt": "2026-07-16T18:53:16.163071+00:00",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "recentStatuses": [
+      {
+        "at": "2026-07-16T18:53:16.163071+00:00",
+        "kind": "full",
+        "status": "pass"
+      }
+    ]
+  },
+  "cardText › returns the Spanish meaning and quote in ES": {
+    "file": "data/cards.test.ts",
+    "lastRunAt": "2026-07-16T18:53:16.163071+00:00",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "recentStatuses": [
+      {
+        "at": "2026-07-16T18:53:16.163071+00:00",
+        "kind": "full",
+        "status": "pass"
+      }
+    ]
+  },
+  "computeCardRect › centres a portrait card and bounds it by width": {
+    "file": "lib/wallpaper.test.ts",
+    "lastRunAt": "2026-07-16T18:53:13.881040+00:00",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "recentStatuses": [
+      {
+        "at": "2026-07-16T18:53:13.881040+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:23:18.914055+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:47.245743+00:00",
+        "kind": "full",
+        "status": "pass"
+      }
+    ]
+  },
+  "computeCardRect › falls back to the height cap for very tall cards": {
+    "file": "lib/wallpaper.test.ts",
+    "lastRunAt": "2026-07-16T18:53:13.881040+00:00",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "recentStatuses": [
+      {
+        "at": "2026-07-16T18:53:13.881040+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:23:18.914055+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:47.245743+00:00",
+        "kind": "full",
+        "status": "pass"
+      }
+    ]
+  },
+  "computeCardRect › keeps equal margins on both axes": {
+    "file": "lib/wallpaper.test.ts",
+    "lastRunAt": "2026-07-16T18:53:13.881040+00:00",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "recentStatuses": [
+      {
+        "at": "2026-07-16T18:53:13.881040+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:23:18.914055+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:47.245743+00:00",
+        "kind": "full",
+        "status": "pass"
       }
     ]
   },
   "dailyCardIndex › changes from one day to the next": {
     "file": "lib/daily.test.ts",
-    "lastRunAt": "2026-06-24T18:40:46.615396+00:00",
-    "lastStatus": "pass",
+    "lastRunAt": "2026-07-16T18:53:13.881040+00:00",
     "lastRunKind": "full",
+    "lastStatus": "pass",
     "recentStatuses": [
       {
-        "status": "pass",
+        "at": "2026-07-16T18:53:13.881040+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:23:18.914055+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:36.734072+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:22.916344+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
         "at": "2026-06-24T18:40:46.615396+00:00",
-        "kind": "full"
+        "kind": "full",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T18:39:47.923563+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T18:39:05.248140+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T15:43:55.169223+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       }
     ]
   },
   "dailyCardIndex › is stable across two Date instances on the same day": {
     "file": "lib/daily.test.ts",
-    "lastRunAt": "2026-06-24T18:40:46.615396+00:00",
-    "lastStatus": "pass",
+    "lastRunAt": "2026-07-16T18:53:13.881040+00:00",
     "lastRunKind": "full",
+    "lastStatus": "pass",
     "recentStatuses": [
       {
-        "status": "pass",
+        "at": "2026-07-16T18:53:13.881040+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:23:18.914055+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:36.734072+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:22.916344+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
         "at": "2026-06-24T18:40:46.615396+00:00",
-        "kind": "full"
+        "kind": "full",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T18:39:47.923563+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T18:39:05.248140+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T15:43:55.169223+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       }
     ]
   },
   "dailyCardIndex › stays within the deck bounds": {
     "file": "lib/daily.test.ts",
-    "lastRunAt": "2026-06-24T18:40:46.615396+00:00",
-    "lastStatus": "pass",
+    "lastRunAt": "2026-07-16T18:53:13.881040+00:00",
     "lastRunKind": "full",
+    "lastStatus": "pass",
     "recentStatuses": [
       {
-        "status": "pass",
+        "at": "2026-07-16T18:53:13.881040+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:23:18.914055+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:36.734072+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:22.916344+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
         "at": "2026-06-24T18:40:46.615396+00:00",
-        "kind": "full"
+        "kind": "full",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T18:39:47.923563+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T18:39:05.248140+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T15:43:55.169223+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       }
     ]
   },
   "formatDailyDate › formats English dates with month names": {
     "file": "lib/daily.test.ts",
-    "lastRunAt": "2026-06-24T18:40:46.615396+00:00",
-    "lastStatus": "pass",
+    "lastRunAt": "2026-07-16T18:53:13.881040+00:00",
     "lastRunKind": "full",
+    "lastStatus": "pass",
     "recentStatuses": [
       {
-        "status": "pass",
+        "at": "2026-07-16T18:53:13.881040+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:23:18.914055+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:36.734072+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:22.916344+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
         "at": "2026-06-24T18:40:46.615396+00:00",
-        "kind": "full"
+        "kind": "full",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T18:39:47.923563+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T18:39:05.248140+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T15:43:55.169223+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       }
     ]
   },
   "formatDailyDate › formats Spanish dates with month names": {
     "file": "lib/daily.test.ts",
-    "lastRunAt": "2026-06-24T18:40:46.615396+00:00",
-    "lastStatus": "pass",
+    "lastRunAt": "2026-07-16T18:53:13.881040+00:00",
     "lastRunKind": "full",
+    "lastStatus": "pass",
     "recentStatuses": [
       {
-        "status": "pass",
+        "at": "2026-07-16T18:53:13.881040+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:23:18.914055+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:36.734072+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:22.916344+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
         "at": "2026-06-24T18:40:46.615396+00:00",
-        "kind": "full"
+        "kind": "full",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T18:39:47.923563+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T18:39:05.248140+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T15:43:55.169223+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
+      }
+    ]
+  },
+  "geoFromHeaders › normalises empty header values to null": {
+    "file": "lib/geo.test.ts",
+    "lastRunAt": "2026-07-16T18:53:16.163071+00:00",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "recentStatuses": [
+      {
+        "at": "2026-07-16T18:53:16.163071+00:00",
+        "kind": "full",
+        "status": "pass"
+      }
+    ]
+  },
+  "geoFromHeaders › reads country, region, and timezone from the Vercel headers": {
+    "file": "lib/geo.test.ts",
+    "lastRunAt": "2026-07-16T18:53:16.163071+00:00",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "recentStatuses": [
+      {
+        "at": "2026-07-16T18:53:16.163071+00:00",
+        "kind": "full",
+        "status": "pass"
+      }
+    ]
+  },
+  "geoFromHeaders › returns nulls when the headers are absent": {
+    "file": "lib/geo.test.ts",
+    "lastRunAt": "2026-07-16T18:53:16.163071+00:00",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "recentStatuses": [
+      {
+        "at": "2026-07-16T18:53:16.163071+00:00",
+        "kind": "full",
+        "status": "pass"
       }
     ]
   },
   "pickFan › clamps a count larger than the deck to the deck length": {
     "file": "lib/pickFan.test.ts",
-    "lastRunAt": "2026-06-24T18:40:46.615396+00:00",
-    "lastStatus": "pass",
+    "lastRunAt": "2026-07-16T18:53:13.881040+00:00",
     "lastRunKind": "full",
+    "lastStatus": "pass",
     "recentStatuses": [
       {
-        "status": "pass",
+        "at": "2026-07-16T18:53:13.881040+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:23:18.914055+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:36.734072+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:22.916344+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
         "at": "2026-06-24T18:40:46.615396+00:00",
-        "kind": "full"
+        "kind": "full",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T18:39:47.923563+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T18:39:05.248140+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T15:43:55.169223+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T14:25:49.902193+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T14:25:08.762641+00:00",
-        "kind": "changed"
-      },
-      {
-        "status": "pass",
-        "at": "2026-06-24T13:53:39.862115+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       }
     ]
   },
   "pickFan › defaults to the full CAROT_CARDS deck": {
     "file": "lib/pickFan.test.ts",
-    "lastRunAt": "2026-06-24T18:40:46.615396+00:00",
-    "lastStatus": "pass",
+    "lastRunAt": "2026-07-16T18:53:13.881040+00:00",
     "lastRunKind": "full",
+    "lastStatus": "pass",
     "recentStatuses": [
       {
-        "status": "pass",
+        "at": "2026-07-16T18:53:13.881040+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:23:18.914055+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:36.734072+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:22.916344+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
         "at": "2026-06-24T18:40:46.615396+00:00",
-        "kind": "full"
+        "kind": "full",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T18:39:47.923563+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T18:39:05.248140+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T15:43:55.169223+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T14:25:49.902193+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T14:25:08.762641+00:00",
-        "kind": "changed"
-      },
-      {
-        "status": "pass",
-        "at": "2026-06-24T13:53:39.862115+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       }
     ]
   },
   "pickFan › is deterministic given a fixed RNG": {
     "file": "lib/pickFan.test.ts",
-    "lastRunAt": "2026-06-24T18:40:46.615396+00:00",
-    "lastStatus": "pass",
+    "lastRunAt": "2026-07-16T18:53:13.881040+00:00",
     "lastRunKind": "full",
+    "lastStatus": "pass",
     "recentStatuses": [
       {
-        "status": "pass",
+        "at": "2026-07-16T18:53:13.881040+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:23:18.914055+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:36.734072+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:22.916344+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
         "at": "2026-06-24T18:40:46.615396+00:00",
-        "kind": "full"
+        "kind": "full",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T18:39:47.923563+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T18:39:05.248140+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T15:43:55.169223+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T14:25:49.902193+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T14:25:08.762641+00:00",
-        "kind": "changed"
-      },
-      {
-        "status": "pass",
-        "at": "2026-06-24T13:53:39.862115+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       }
     ]
   },
   "pickFan › only returns cards from the deck": {
     "file": "lib/pickFan.test.ts",
-    "lastRunAt": "2026-06-24T18:40:46.615396+00:00",
-    "lastStatus": "pass",
+    "lastRunAt": "2026-07-16T18:53:13.881040+00:00",
     "lastRunKind": "full",
+    "lastStatus": "pass",
     "recentStatuses": [
       {
-        "status": "pass",
+        "at": "2026-07-16T18:53:13.881040+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:23:18.914055+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:36.734072+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:22.916344+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
         "at": "2026-06-24T18:40:46.615396+00:00",
-        "kind": "full"
+        "kind": "full",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T18:39:47.923563+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T18:39:05.248140+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T15:43:55.169223+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T14:25:49.902193+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T14:25:08.762641+00:00",
-        "kind": "changed"
-      },
-      {
-        "status": "pass",
-        "at": "2026-06-24T13:53:39.862115+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       }
     ]
   },
   "pickFan › returns an empty array for a negative count": {
     "file": "lib/pickFan.test.ts",
-    "lastRunAt": "2026-06-24T18:40:46.615396+00:00",
-    "lastStatus": "pass",
+    "lastRunAt": "2026-07-16T18:53:13.881040+00:00",
     "lastRunKind": "full",
+    "lastStatus": "pass",
     "recentStatuses": [
       {
-        "status": "pass",
+        "at": "2026-07-16T18:53:13.881040+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:23:18.914055+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:36.734072+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:22.916344+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
         "at": "2026-06-24T18:40:46.615396+00:00",
-        "kind": "full"
+        "kind": "full",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T18:39:47.923563+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T18:39:05.248140+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T15:43:55.169223+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T14:25:49.902193+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T14:25:08.762641+00:00",
-        "kind": "changed"
-      },
-      {
-        "status": "pass",
-        "at": "2026-06-24T13:53:39.862115+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       }
     ]
   },
   "pickFan › returns an empty array for count 0": {
     "file": "lib/pickFan.test.ts",
-    "lastRunAt": "2026-06-24T18:40:46.615396+00:00",
-    "lastStatus": "pass",
+    "lastRunAt": "2026-07-16T18:53:13.881040+00:00",
     "lastRunKind": "full",
+    "lastStatus": "pass",
     "recentStatuses": [
       {
-        "status": "pass",
+        "at": "2026-07-16T18:53:13.881040+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:23:18.914055+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:36.734072+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:22.916344+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
         "at": "2026-06-24T18:40:46.615396+00:00",
-        "kind": "full"
+        "kind": "full",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T18:39:47.923563+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T18:39:05.248140+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T15:43:55.169223+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T14:25:49.902193+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T14:25:08.762641+00:00",
-        "kind": "changed"
-      },
-      {
-        "status": "pass",
-        "at": "2026-06-24T13:53:39.862115+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       }
     ]
   },
   "pickFan › returns distinct cards with no duplicates": {
     "file": "lib/pickFan.test.ts",
-    "lastRunAt": "2026-06-24T18:40:46.615396+00:00",
-    "lastStatus": "pass",
+    "lastRunAt": "2026-07-16T18:53:13.881040+00:00",
     "lastRunKind": "full",
+    "lastStatus": "pass",
     "recentStatuses": [
       {
-        "status": "pass",
+        "at": "2026-07-16T18:53:13.881040+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:23:18.914055+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:36.734072+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:22.916344+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
         "at": "2026-06-24T18:40:46.615396+00:00",
-        "kind": "full"
+        "kind": "full",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T18:39:47.923563+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T18:39:05.248140+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T15:43:55.169223+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T14:25:49.902193+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T14:25:08.762641+00:00",
-        "kind": "changed"
-      },
-      {
-        "status": "pass",
-        "at": "2026-06-24T13:53:39.862115+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       }
     ]
   },
   "pickFan › returns the requested number of cards": {
     "file": "lib/pickFan.test.ts",
-    "lastRunAt": "2026-06-24T18:40:46.615396+00:00",
-    "lastStatus": "pass",
+    "lastRunAt": "2026-07-16T18:53:13.881040+00:00",
     "lastRunKind": "full",
+    "lastStatus": "pass",
     "recentStatuses": [
       {
-        "status": "pass",
+        "at": "2026-07-16T18:53:13.881040+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:23:18.914055+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:36.734072+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
+        "at": "2026-07-16T18:17:22.916344+00:00",
+        "kind": "full",
+        "status": "pass"
+      },
+      {
         "at": "2026-06-24T18:40:46.615396+00:00",
-        "kind": "full"
+        "kind": "full",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T18:39:47.923563+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T18:39:05.248140+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T15:43:55.169223+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T14:25:49.902193+00:00",
-        "kind": "changed"
+        "kind": "changed",
+        "status": "pass"
       },
       {
-        "status": "pass",
         "at": "2026-06-24T14:25:08.762641+00:00",
-        "kind": "changed"
-      },
+        "kind": "changed",
+        "status": "pass"
+      }
+    ]
+  },
+  "utcDateKey › formats a date as a YYYY-MM-DD UTC key": {
+    "file": "lib/geo.test.ts",
+    "lastRunAt": "2026-07-16T18:53:16.163071+00:00",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "recentStatuses": [
       {
-        "status": "pass",
-        "at": "2026-06-24T13:53:39.862115+00:00",
-        "kind": "changed"
+        "at": "2026-07-16T18:53:16.163071+00:00",
+        "kind": "full",
+        "status": "pass"
+      }
+    ]
+  },
+  "utcDateKey › maps every instant in a UTC day to the same key": {
+    "file": "lib/geo.test.ts",
+    "lastRunAt": "2026-07-16T18:53:16.163071+00:00",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "recentStatuses": [
+      {
+        "at": "2026-07-16T18:53:16.163071+00:00",
+        "kind": "full",
+        "status": "pass"
+      }
+    ]
+  },
+  "utcDateKey › uses UTC rather than local time at day boundaries": {
+    "file": "lib/geo.test.ts",
+    "lastRunAt": "2026-07-16T18:53:16.163071+00:00",
+    "lastRunKind": "full",
+    "lastStatus": "pass",
+    "recentStatuses": [
+      {
+        "at": "2026-07-16T18:53:16.163071+00:00",
+        "kind": "full",
+        "status": "pass"
       }
     ]
   }

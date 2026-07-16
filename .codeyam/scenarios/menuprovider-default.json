@@ -1,0 +1,11 @@
+{
+  "name": "MenuProvider - Default",
+  "id": "84f55683-2f43-4007-bcfe-b9b1e56f0d52",
+  "url": "/isolated-components/MenuProvider?s=Default",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "componentName": "MenuProvider",
+  "scenarioType": "component"
+}

@@ -1,0 +1,11 @@
+{
+  "name": "HomeDeckStrip - Short Deck",
+  "id": "3e6d7fc2-5d99-4d96-a7a5-265bf4d0e4c6",
+  "url": "/isolated-components/HomeDeckStrip?s=ShortDeck",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "componentName": "HomeDeckStrip",
+  "scenarioType": "component"
+}

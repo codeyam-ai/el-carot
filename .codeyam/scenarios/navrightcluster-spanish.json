@@ -1,0 +1,11 @@
+{
+  "name": "NavRightCluster - Spanish",
+  "id": "ff36f298-8240-43e8-8428-444401ef8b83",
+  "url": "/isolated-components/NavRightCluster?s=Spanish",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "componentName": "NavRightCluster",
+  "scenarioType": "component"
+}

@@ -1,16 +1,56 @@
 {
   "schemaVersion": 4,
-  "version": 9,
+  "version": 13,
   "partition": "all",
-  "hash": "bf1e89626889a07c",
+  "hash": "3a3ce6e1061adfdb",
   "runners": [
     {
       "name": "tests",
       "format": "vitest-json",
-      "output": "{\"numTotalTestSuites\":7,\"numPassedTestSuites\":7,\"numFailedTestSuites\":0,\"numPendingTestSuites\":0,\"numTotalTests\":18,\"numPassedTests\":18,\"numFailedTests\":0,\"numPendingTests\":0,\"numTodoTests\":0,\"snapshot\":{\"added\":0,\"failure\":false,\"filesAdded\":0,\"filesRemoved\":0,\"filesRemovedList\":[],\"filesUnmatched\":0,\"filesUpdated\":0,\"matched\":0,\"total\":0,\"unchecked\":0,\"uncheckedKeysByFile\":[],\"unmatched\":0,\"updated\":0,\"didUpdate\":false},\"startTime\":1782326446238,\"success\":true,\"testResults\":[{\"assertionResults\":[{\"ancestorTitles\":[\"dailyCardIndex\"],\"fullName\":\"dailyCardIndex is stable across two Date instances on the same day\",\"status\":\"passed\",\"title\":\"is stable across two Date instances on the same day\",\"duration\":0.6117919999999799,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"dailyCardIndex\"],\"fullName\":\"dailyCardIndex changes from one day to the next\",\"status\":\"passed\",\"title\":\"changes from one day to the next\",\"duration\":0.3614589999999964,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"dailyCardIndex\"],\"fullName\":\"dailyCardIndex stays within the deck bounds\",\"status\":\"passed\",\"title\":\"stays within the deck bounds\",\"duration\":0.559584000000001,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"formatDailyDate\"],\"fullName\":\"formatDailyDate formats Spanish dates with month names\",\"status\":\"passed\",\"title\":\"formats Spanish dates with month names\",\"duration\":0.05329199999999901,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"formatDailyDate\"],\"fullName\":\"formatDailyDate formats English dates with month names\",\"status\":\"passed\",\"title\":\"formats English dates with month names\",\"duration\":0.03316600000002268,\"failureMessages\":[],\"meta\":{}}],\"startTime\":1782326446444,\"endTime\":1782326446445.5596,\"status\":\"passed\",\"message\":\"\",\"name\":\"lib/daily.test.ts\"},{\"assertionResults\":[{\"ancestorTitles\":[\"buildInterpretPrompt\"],\"fullName\":\"buildInterpretPrompt builds a Spanish prompt with voseo and the persona\",\"status\":\"passed\",\"title\":\"builds a Spanish prompt with voseo and the persona\",\"duration\":0.6116669999999829,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"buildInterpretPrompt\"],\"fullName\":\"buildInterpretPrompt embeds the question, card, and base meaning in ES\",\"status\":\"passed\",\"title\":\"embeds the question, card, and base meaning in ES\",\"duration\":0.19137499999999363,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"buildInterpretPrompt\"],\"fullName\":\"buildInterpretPrompt builds an English prompt with the English meaning\",\"status\":\"passed\",\"title\":\"builds an English prompt with the English meaning\",\"duration\":0.15100000000001046,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"buildInterpretPrompt\"],\"fullName\":\"buildInterpretPrompt includes the no-AI / no-repeat constraints\",\"status\":\"passed\",\"title\":\"includes the no-AI / no-repeat constraints\",\"duration\":0.046041999999999916,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"buildInterpretPrompt\"],\"fullName\":\"buildInterpretPrompt trims the question\",\"status\":\"passed\",\"title\":\"trims the question\",\"duration\":0.034915999999981295,\"failureMessages\":[],\"meta\":{}}],\"startTime\":1782326446455,\"endTime\":1782326446456.151,\"status\":\"passed\",\"message\":\"\",\"name\":\"lib/interpret-prompts.test.ts\"},{\"assertionResults\":[{\"ancestorTitles\":[\"pickFan\"],\"fullName\":\"pickFan returns the requested number of cards\",\"status\":\"passed\",\"title\":\"returns the requested number of cards\",\"duration\":1.0162079999999776,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"pickFan\"],\"fullName\":\"pickFan returns distinct cards with no duplicates\",\"status\":\"passed\",\"title\":\"returns distinct cards with no duplicates\",\"duration\":0.24591599999999403,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"pickFan\"],\"fullName\":\"pickFan only returns cards from the deck\",\"status\":\"passed\",\"title\":\"only returns cards from the deck\",\"duration\":0.5765409999999918,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"pickFan\"],\"fullName\":\"pickFan clamps a count larger than the deck to the deck length\",\"status\":\"passed\",\"title\":\"clamps a count larger than the deck to the deck length\",\"duration\":0.10116699999997536,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"pickFan\"],\"fullName\":\"pickFan returns an empty array for count 0\",\"status\":\"passed\",\"title\":\"returns an empty array for count 0\",\"duration\":0.21337500000001342,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"pickFan\"],\"fullName\":\"pickFan returns an empty array for a negative count\",\"status\":\"passed\",\"title\":\"returns an empty array for a negative count\",\"duration\":0.1134580000000085,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"pickFan\"],\"fullName\":\"pickFan is deterministic given a fixed RNG\",\"status\":\"passed\",\"title\":\"is deterministic given a fixed RNG\",\"duration\":0.14529200000001197,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"pickFan\"],\"fullName\":\"pickFan defaults to the full CAROT_CARDS deck\",\"status\":\"passed\",\"title\":\"defaults to the full CAROT_CARDS deck\",\"duration\":0.21270800000002055,\"failureMessages\":[],\"meta\":{}}],\"startTime\":1782326446455,\"endTime\":1782326446458.2126,\"status\":\"passed\",\"message\":\"\",\"name\":\"lib/pickFan.test.ts\"}]}\n",
+      "output": "{\"numTotalTestSuites\":17,\"numPassedTestSuites\":17,\"numFailedTestSuites\":0,\"numPendingTestSuites\":0,\"numTotalTests\":37,\"numPassedTests\":37,\"numFailedTests\":0,\"numPendingTests\":0,\"numTodoTests\":0,\"snapshot\":{\"added\":0,\"failure\":false,\"filesAdded\":0,\"filesRemoved\":0,\"filesRemovedList\":[],\"filesUnmatched\":0,\"filesUpdated\":0,\"matched\":0,\"total\":0,\"unchecked\":0,\"uncheckedKeysByFile\":[],\"unmatched\":0,\"updated\":0,\"didUpdate\":false},\"startTime\":1784227993270,\"success\":true,\"testResults\":[{\"assertionResults\":[{\"ancestorTitles\":[\"cardText\"],\"fullName\":\"cardText returns the Spanish meaning and quote in ES\",\"status\":\"passed\",\"title\":\"returns the Spanish meaning and quote in ES\",\"duration\":0.5288749999999993,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"cardText\"],\"fullName\":\"cardText returns the English variant in EN\",\"status\":\"passed\",\"title\":\"returns the English variant in EN\",\"duration\":0.16354200000000674,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"cardText\"],\"fullName\":\"cardText falls back to the Spanish text when the English variant is missing\",\"status\":\"passed\",\"title\":\"falls back to the Spanish text when the English variant is missing\",\"duration\":0.05662499999999682,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"cardText\"],\"fullName\":\"cardText returns an empty string for a missing card\",\"status\":\"passed\",\"title\":\"returns an empty string for a missing card\",\"duration\":0.0383329999999944,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"cardText\"],\"fullName\":\"cardText resolves non-empty text for all 22 arcana in both languages\",\"status\":\"passed\",\"title\":\"resolves non-empty text for all 22 arcana in both languages\",\"duration\":1.5803749999999752,\"failureMessages\":[],\"meta\":{}}],\"startTime\":1784227993539,\"endTime\":1784227993541.5803,\"status\":\"passed\",\"message\":\"\",\"name\":\"data/cards.test.ts\"},{\"assertionResults\":[{\"ancestorTitles\":[\"dailyCardIndex\"],\"fullName\":\"dailyCardIndex is stable across two Date instances on the same day\",\"status\":\"passed\",\"title\":\"is stable across two Date instances on the same day\",\"duration\":1.6242909999999995,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"dailyCardIndex\"],\"fullName\":\"dailyCardIndex changes from one day to the next\",\"status\":\"passed\",\"title\":\"changes from one day to the next\",\"duration\":0.838957999999991,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"dailyCardIndex\"],\"fullName\":\"dailyCardIndex stays within the deck bounds\",\"status\":\"passed\",\"title\":\"stays within the deck bounds\",\"duration\":1.502917000000025,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"formatDailyDate\"],\"fullName\":\"formatDailyDate formats Spanish dates with month names\",\"status\":\"passed\",\"title\":\"formats Spanish dates with month names\",\"duration\":0.160583000000031,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"formatDailyDate\"],\"fullName\":\"formatDailyDate formats English dates with month names\",\"status\":\"passed\",\"title\":\"formats English dates with month names\",\"duration\":0.09149999999999636,\"failureMessages\":[],\"meta\":{}}],\"startTime\":1784227993553,\"endTime\":1784227993557.1606,\"status\":\"passed\",\"message\":\"\",\"name\":\"lib/daily.test.ts\"},{\"assertionResults\":[{\"ancestorTitles\":[\"geoFromHeaders\"],\"fullName\":\"geoFromHeaders reads country, region, and timezone from the Vercel headers\",\"status\":\"passed\",\"title\":\"reads country, region, and timezone from the Vercel headers\",\"duration\":1.3379170000000045,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"geoFromHeaders\"],\"fullName\":\"geoFromHeaders returns nulls when the headers are absent\",\"status\":\"passed\",\"title\":\"returns nulls when the headers are absent\",\"duration\":0.18362500000000637,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"geoFromHeaders\"],\"fullName\":\"geoFromHeaders normalises empty header values to null\",\"status\":\"passed\",\"title\":\"normalises empty header values to null\",\"duration\":0.09583299999997053,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"utcDateKey\"],\"fullName\":\"utcDateKey formats a date as a YYYY-MM-DD UTC key\",\"status\":\"passed\",\"title\":\"formats a date as a YYYY-MM-DD UTC key\",\"duration\":0.9702089999999544,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"utcDateKey\"],\"fullName\":\"utcDateKey uses UTC rather than local time at day boundaries\",\"status\":\"passed\",\"title\":\"uses UTC rather than local time at day boundaries\",\"duration\":0.8477500000000191,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"utcDateKey\"],\"fullName\":\"utcDateKey maps every instant in a UTC day to the same key\",\"status\":\"passed\",\"title\":\"maps every instant in a UTC day to the same key\",\"duration\":0.10975000000001955,\"failureMessages\":[],\"meta\":{}}],\"startTime\":1784227993555,\"endTime\":1784227993559.1099,\"status\":\"passed\",\"message\":\"\",\"name\":\"lib/geo.test.ts\"},{\"assertionResults\":[{\"ancestorTitles\":[\"buildInterpretPrompt\"],\"fullName\":\"buildInterpretPrompt builds a Spanish prompt with voseo and the persona\",\"status\":\"passed\",\"title\":\"builds a Spanish prompt with voseo and the persona\",\"duration\":0.6158329999999808,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"buildInterpretPrompt\"],\"fullName\":\"buildInterpretPrompt embeds the question, card, and base meaning in ES\",\"status\":\"passed\",\"title\":\"embeds the question, card, and base meaning in ES\",\"duration\":0.1829580000000135,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"buildInterpretPrompt\"],\"fullName\":\"buildInterpretPrompt builds an English prompt with the English meaning\",\"status\":\"passed\",\"title\":\"builds an English prompt with the English meaning\",\"duration\":0.151457999999991,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"buildInterpretPrompt\"],\"fullName\":\"buildInterpretPrompt includes the no-AI / no-repeat constraints\",\"status\":\"passed\",\"title\":\"includes the no-AI / no-repeat constraints\",\"duration\":0.04858400000000529,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"buildInterpretPrompt\"],\"fullName\":\"buildInterpretPrompt trims the question\",\"status\":\"passed\",\"title\":\"trims the question\",\"duration\":0.03716700000001083,\"failureMessages\":[],\"meta\":{}}],\"startTime\":1784227993541,\"endTime\":1784227993542.1514,\"status\":\"passed\",\"message\":\"\",\"name\":\"lib/interpret-prompts.test.ts\"},{\"assertionResults\":[{\"ancestorTitles\":[\"pickFan\"],\"fullName\":\"pickFan returns the requested number of cards\",\"status\":\"passed\",\"title\":\"returns the requested number of cards\",\"duration\":0.9307089999999789,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"pickFan\"],\"fullName\":\"pickFan returns distinct cards with no duplicates\",\"status\":\"passed\",\"title\":\"returns distinct cards with no duplicates\",\"duration\":0.17883299999999736,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"pickFan\"],\"fullName\":\"pickFan only returns cards from the deck\",\"status\":\"passed\",\"title\":\"only returns cards from the deck\",\"duration\":0.5670000000000073,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"pickFan\"],\"fullName\":\"pickFan clamps a count larger than the deck to the deck length\",\"status\":\"passed\",\"title\":\"clamps a count larger than the deck to the deck length\",\"duration\":0.11158299999999599,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"pickFan\"],\"fullName\":\"pickFan returns an empty array for count 0\",\"status\":\"passed\",\"title\":\"returns an empty array for count 0\",\"duration\":0.22320799999999963,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"pickFan\"],\"fullName\":\"pickFan returns an empty array for a negative count\",\"status\":\"passed\",\"title\":\"returns an empty array for a negative count\",\"duration\":0.05379199999998718,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"pickFan\"],\"fullName\":\"pickFan is deterministic given a fixed RNG\",\"status\":\"passed\",\"title\":\"is deterministic given a fixed RNG\",\"duration\":0.07395799999997621,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"pickFan\"],\"fullName\":\"pickFan defaults to the full CAROT_CARDS deck\",\"status\":\"passed\",\"title\":\"defaults to the full CAROT_CARDS deck\",\"duration\":0.12266700000000696,\"failureMessages\":[],\"meta\":{}}],\"startTime\":1784227993537,\"endTime\":1784227993539.1226,\"status\":\"passed\",\"message\":\"\",\"name\":\"lib/pickFan.test.ts\"},{\"assertionResults\":[{\"ancestorTitles\":[\"buildReadingUrl\"],\"fullName\":\"buildReadingUrl builds a direct reading link for the card number\",\"status\":\"passed\",\"title\":\"builds a direct reading link for the card number\",\"duration\":0.6069999999999993,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"buildReadingUrl\"],\"fullName\":\"buildReadingUrl omits the origin query so recipients land clean\",\"status\":\"passed\",\"title\":\"omits the origin query so recipients land clean\",\"duration\":0.20354199999999878,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"buildReadingUrl\"],\"fullName\":\"buildReadingUrl respects the provided base origin\",\"status\":\"passed\",\"title\":\"respects the provided base origin\",\"duration\":0.06266700000000469,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"buildShareText\"],\"fullName\":\"buildShareText includes the character, arcana, and quote in ES\",\"status\":\"passed\",\"title\":\"includes the character, arcana, and quote in ES\",\"duration\":0.1296660000000145,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"buildShareText\"],\"fullName\":\"buildShareText uses the English quote in EN\",\"status\":\"passed\",\"title\":\"uses the English quote in EN\",\"duration\":0.03929100000001995,\"failureMessages\":[],\"meta\":{}}],\"startTime\":1784227993537,\"endTime\":1784227993538.1296,\"status\":\"passed\",\"message\":\"\",\"name\":\"lib/share.test.ts\"},{\"assertionResults\":[{\"ancestorTitles\":[\"computeCardRect\"],\"fullName\":\"computeCardRect centres a portrait card and bounds it by width\",\"status\":\"passed\",\"title\":\"centres a portrait card and bounds it by width\",\"duration\":0.6035840000000121,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"computeCardRect\"],\"fullName\":\"computeCardRect falls back to the height cap for very tall cards\",\"status\":\"passed\",\"title\":\"falls back to the height cap for very tall cards\",\"duration\":0.1639160000000004,\"failureMessages\":[],\"meta\":{}},{\"ancestorTitles\":[\"computeCardRect\"],\"fullName\":\"computeCardRect keeps equal margins on both axes\",\"status\":\"passed\",\"title\":\"keeps equal margins on both axes\",\"duration\":0.14929100000000517,\"failureMessages\":[],\"meta\":{}}],\"startTime\":1784227993535,\"endTime\":1784227993536.1492,\"status\":\"passed\",\"message\":\"\",\"name\":\"lib/wallpaper.test.ts\"}]}\n",
       "invoked_command": "npx vitest run --reporter=json",
       "exit_code": 0,
       "tests": [
+        {
+          "key": "cardText › returns the Spanish meaning and quote in ES",
+          "status": "passed",
+          "file": "data/cards.test.ts",
+          "line": null,
+          "runner": "tests",
+          "format": "vitest"
+        },
+        {
+          "key": "cardText › returns the English variant in EN",
+          "status": "passed",
+          "file": "data/cards.test.ts",
+          "line": null,
+          "runner": "tests",
+          "format": "vitest"
+        },
+        {
+          "key": "cardText › falls back to the Spanish text when the English variant is missing",
+          "status": "passed",
+          "file": "data/cards.test.ts",
+          "line": null,
+          "runner": "tests",
+          "format": "vitest"
+        },
+        {
+          "key": "cardText › returns an empty string for a missing card",
+          "status": "passed",
+          "file": "data/cards.test.ts",
+          "line": null,
+          "runner": "tests",
+          "format": "vitest"
+        },
+        {
+          "key": "cardText › resolves non-empty text for all 22 arcana in both languages",
+          "status": "passed",
+          "file": "data/cards.test.ts",
+          "line": null,
+          "runner": "tests",
+          "format": "vitest"
+        },
         {
           "key": "dailyCardIndex › is stable across two Date instances on the same day",
           "status": "passed",
@@ -47,6 +87,54 @@
           "key": "formatDailyDate › formats English dates with month names",
           "status": "passed",
           "file": "lib/daily.test.ts",
+          "line": null,
+          "runner": "tests",
+          "format": "vitest"
+        },
+        {
+          "key": "geoFromHeaders › reads country, region, and timezone from the Vercel headers",
+          "status": "passed",
+          "file": "lib/geo.test.ts",
+          "line": null,
+          "runner": "tests",
+          "format": "vitest"
+        },
+        {
+          "key": "geoFromHeaders › returns nulls when the headers are absent",
+          "status": "passed",
+          "file": "lib/geo.test.ts",
+          "line": null,
+          "runner": "tests",
+          "format": "vitest"
+        },
+        {
+          "key": "geoFromHeaders › normalises empty header values to null",
+          "status": "passed",
+          "file": "lib/geo.test.ts",
+          "line": null,
+          "runner": "tests",
+          "format": "vitest"
+        },
+        {
+          "key": "utcDateKey › formats a date as a YYYY-MM-DD UTC key",
+          "status": "passed",
+          "file": "lib/geo.test.ts",
+          "line": null,
+          "runner": "tests",
+          "format": "vitest"
+        },
+        {
+          "key": "utcDateKey › uses UTC rather than local time at day boundaries",
+          "status": "passed",
+          "file": "lib/geo.test.ts",
+          "line": null,
+          "runner": "tests",
+          "format": "vitest"
+        },
+        {
+          "key": "utcDateKey › maps every instant in a UTC day to the same key",
+          "status": "passed",
+          "file": "lib/geo.test.ts",
           "line": null,
           "runner": "tests",
           "format": "vitest"
@@ -151,6 +239,70 @@
           "key": "pickFan › defaults to the full CAROT_CARDS deck",
           "status": "passed",
           "file": "lib/pickFan.test.ts",
+          "line": null,
+          "runner": "tests",
+          "format": "vitest"
+        },
+        {
+          "key": "buildReadingUrl › builds a direct reading link for the card number",
+          "status": "passed",
+          "file": "lib/share.test.ts",
+          "line": null,
+          "runner": "tests",
+          "format": "vitest"
+        },
+        {
+          "key": "buildReadingUrl › omits the origin query so recipients land clean",
+          "status": "passed",
+          "file": "lib/share.test.ts",
+          "line": null,
+          "runner": "tests",
+          "format": "vitest"
+        },
+        {
+          "key": "buildReadingUrl › respects the provided base origin",
+          "status": "passed",
+          "file": "lib/share.test.ts",
+          "line": null,
+          "runner": "tests",
+          "format": "vitest"
+        },
+        {
+          "key": "buildShareText › includes the character, arcana, and quote in ES",
+          "status": "passed",
+          "file": "lib/share.test.ts",
+          "line": null,
+          "runner": "tests",
+          "format": "vitest"
+        },
+        {
+          "key": "buildShareText › uses the English quote in EN",
+          "status": "passed",
+          "file": "lib/share.test.ts",
+          "line": null,
+          "runner": "tests",
+          "format": "vitest"
+        },
+        {
+          "key": "computeCardRect › centres a portrait card and bounds it by width",
+          "status": "passed",
+          "file": "lib/wallpaper.test.ts",
+          "line": null,
+          "runner": "tests",
+          "format": "vitest"
+        },
+        {
+          "key": "computeCardRect › falls back to the height cap for very tall cards",
+          "status": "passed",
+          "file": "lib/wallpaper.test.ts",
+          "line": null,
+          "runner": "tests",
+          "format": "vitest"
+        },
+        {
+          "key": "computeCardRect › keeps equal margins on both axes",
+          "status": "passed",
+          "file": "lib/wallpaper.test.ts",
           "line": null,
           "runner": "tests",
           "format": "vitest"
