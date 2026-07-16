@@ -1,24 +1,7 @@
 {
-  "lastFinalizedAt": null,
-  "lastFinalizedSha": null,
-  "deferred": [
-    {
-      "sha": "c17a3c73f3de15fb3bd3107e08cd32367c855a52",
-      "shortSha": "c17a3c7",
-      "subject": "feat: El Carot — Home, draw flows, reading, gallery, about & star menu",
-      "deferredAt": "2026-06-24T14:30:08Z"
-    },
-    {
-      "sha": "10b58a9843f8a00a80360022179894a5741595e9",
-      "shortSha": "10b58a9",
-      "subject": "feat: AI question flow + full desktop adaptation",
-      "deferredAt": "2026-06-24T19:51:09Z"
-    },
-    {
-      "sha": "d0e7b1fe02b472ca1f276988d5cc0f72cd25c431",
-      "shortSha": "d0e7b1f",
-      "subject": "feat: share & save cards, desktop home, analytics DB & geo i18n",
-      "deferredAt": "2026-07-01T14:00:08Z"
-    }
-  ]
+  "lastFinalizedAt": "2026-07-16T19:35:35Z",
+  "lastFinalizedSha": "69bddcffd2b6f4ee6910d311cc83aea09d0c6633",
+  "lastFullFinalizeSha": "69bddcffd2b6f4ee6910d311cc83aea09d0c6633",
+  "lastFullFinalizeTree": "b037b843c28cd1725ecfac43b91c37f32e065e652e4c4f92bfedf7fd94de34f4",
+  "deferred": []
 }
