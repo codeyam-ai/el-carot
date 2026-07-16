@@ -153,3 +153,7 @@ blob-report/
 
 # Editor-generated workflow step labels — not part of this app, nothing imports it.
 ui/
+
+# Transient codeyam runtime locks — session-finalize's own state commit picks
+# these up while the lock is held, then they vanish when it releases.
+.codeyam/.locks/
