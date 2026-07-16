@@ -1,0 +1,60 @@
+name: Bug report
+description: Something in El Carot behaves incorrectly.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. Please don't use this form for security issues —
+        see [SECURITY.md](../blob/main/SECURITY.md) and email support@codeyam.com instead.
+
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you saw, and what you expected instead.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Go to /message
+        2. Swipe the deck to the third card
+        3. Tap it
+        4. The reading shows the wrong card
+    validations:
+      required: true
+
+  - type: dropdown
+    id: where
+    attributes:
+      label: Where did you hit it?
+      options:
+        - elcarot.com (the live site)
+        - Running it locally
+    validations:
+      required: true
+
+  - type: input
+    id: env
+    attributes:
+      label: Browser / device
+      placeholder: Safari 18 on iPhone 15, or Chrome 130 on macOS
+
+  - type: dropdown
+    id: language
+    attributes:
+      label: Language
+      options:
+        - Español
+        - English
+        - Not language-specific
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else?
+      description: Screenshots, a recording, or console errors all help.

@@ -1,9 +1,19 @@
 # El Carot
 
-AI-powered tarot readings, delivered through a special, one-of-a-kind deck. Pick a
-theme, choose your card, and get a thoughtful reading for reflection and a little fun.
+[![CI](https://github.com/codeyam-ai/el-carot/actions/workflows/ci.yml/badge.svg)](https://github.com/codeyam-ai/el-carot/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
+
+**Tarot readings from a deck where every arcanum is someone you already love.**
+
+Charly García is El Loco. Cleopatra is La Sacerdotisa. Celia Cruz is El Sol. Pick a
+theme or ask a question, choose your card, and get a thoughtful reading back — in
+Spanish or English. No account, no sign-up, no strings.
 
 Live at **[elcarot.com](https://www.elcarot.com)**. Built with [CodeYam](https://codeyam.com).
+
+<p align="center">
+  <img src=".codeyam/scenarios/screenshots/landing-spanish--mobile.png" alt="El Carot — the landing screen, with the EL CAROT wordmark, the Carlomagno / El Emperador card, and the three ways in" width="330">
+</p>
 
 ## Tech stack
 
@@ -33,13 +43,15 @@ The app runs at [http://127.0.0.1:3000](http://127.0.0.1:3000).
 
 ## Environment variables
 
-| Variable                | Required | Description                                                      |
-| ----------------------- | -------- | ---------------------------------------------------------------- |
-| `DATABASE_URL`          | Yes      | Neon Postgres connection string (pooled).                        |
-| `DATABASE_URL_UNPOOLED` | Optional | Direct/unpooled connection, preferred by Prisma CLI for DDL.     |
-| `ANTHROPIC_API_KEY`     | Optional | Enables AI card interpretations. Falls back to written meanings. |
-| `STATS_PASSWORD`        | Optional | Password gate for the `/stats` analytics page.                   |
-| `CRON_SECRET`           | Optional | Auth for the daily "card of the day" cron job.                   |
+| Variable            | Required | Description                                                      |
+| ------------------- | -------- | ---------------------------------------------------------------- |
+| `DATABASE_URL`      | Yes      | PostgreSQL connection string. Production uses Neon.              |
+| `ANTHROPIC_API_KEY` | Optional | Enables AI card interpretations. Falls back to written meanings. |
+| `STATS_PASSWORD`    | Optional | Password gate for the `/stats` analytics page.                   |
+| `CRON_SECRET`       | Optional | Auth for the daily "card of the day" cron job.                   |
+
+See [`.env.example`](./.env.example) for the annotated template, and
+[DATABASE.md](./DATABASE.md) for the schema workflow.
 
 ## Scripts
 
@@ -48,9 +60,16 @@ The app runs at [http://127.0.0.1:3000](http://127.0.0.1:3000).
 - `npm run test` — run tests (Vitest)
 - `npm run db:push` / `npm run db:seed` — sync and seed the database
 
+## Contributing
+
+Issues and pull requests are welcome — see **[CONTRIBUTING.md](./CONTRIBUTING.md)**
+for setup, the four checks CI runs, and how scenarios work. By participating you
+agree to the [Code of Conduct](./CODE_OF_CONDUCT.md). For security issues, please
+read [SECURITY.md](./SECURITY.md) rather than opening a public issue.
+
 ## License
 
-[MIT](./LICENSE)
+[MIT](./LICENSE) © 2026 CodeYam
 
 <!-- codeyam:run-and-edit:start -->
 ## Develop this project with codeyam-editor

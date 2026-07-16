@@ -54,26 +54,40 @@ export function CardReading({
   const isDesktop = useIsDesktop();
   const [flipped, setFlipped] = React.useState(instant);
 
+  // Re-arm the flip when the card changes. Done during render rather than in the
+  // effect below: a synchronous setState inside an effect triggers a cascading
+  // re-render (react-hooks/set-state-in-effect). The effect keeps only the timer.
+  const [prevCardN, setPrevCardN] = React.useState(card.n);
+  if (prevCardN !== card.n) {
+    setPrevCardN(card.n);
+    setFlipped(instant);
+  }
+
   React.useEffect(() => {
     if (instant) return;
-    setFlipped(false);
     const id = setTimeout(() => setFlipped(true), 250);
     return () => clearTimeout(id);
   }, [card.n, instant]);
 
   // AI interpretation when there's a question (falls back to the written meaning).
+  // `interpreting` starts true when mounting with a question so the loading state
+  // shows on the first paint, without an effect having to set it.
   const [interpretation, setInterpretation] = React.useState<string | null>(null);
-  const [interpreting, setInterpreting] = React.useState(false);
+  const [interpreting, setInterpreting] = React.useState(!!question);
+
+  // Reset the interpretation when the request identity changes — during render,
+  // for the same reason as the flip above.
+  const requestKey = `${card.n}|${question ?? ''}|${lang}`;
+  const [prevRequestKey, setPrevRequestKey] = React.useState(requestKey);
+  if (prevRequestKey !== requestKey) {
+    setPrevRequestKey(requestKey);
+    setInterpretation(null);
+    setInterpreting(!!question);
+  }
 
   React.useEffect(() => {
-    if (!question) {
-      setInterpretation(null);
-      setInterpreting(false);
-      return;
-    }
+    if (!question) return;
     let cancelled = false;
-    setInterpreting(true);
-    setInterpretation(null);
     fetch('/api/interpret', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

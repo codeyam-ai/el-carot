@@ -83,6 +83,10 @@ export function DeckCarousel({ back, onDraw }: { back: string; onDraw: () => voi
 
   const [active, setActive] = React.useState(Math.floor(N / 2));
   const [drag, setDrag] = React.useState(0);
+  // `dragging` mirrors "startX.current != null" as state, because render needs it
+  // to choose between animating and tracking the finger — and a ref read during
+  // render isn't guaranteed to re-render when it changes (react-hooks/refs).
+  const [dragging, setDragging] = React.useState(false);
   const startX = React.useRef<number | null>(null);
   const moved = React.useRef(false);
   const clamp = (i: number) => Math.max(0, Math.min(N - 1, i));
@@ -90,6 +94,7 @@ export function DeckCarousel({ back, onDraw }: { back: string; onDraw: () => voi
   const onDown = (e: React.MouseEvent | React.TouchEvent) => {
     startX.current = 'touches' in e ? e.touches[0].clientX : e.clientX;
     moved.current = false;
+    setDragging(true);
   };
   const onMove = (e: React.MouseEvent | React.TouchEvent) => {
     if (startX.current == null) return;
@@ -104,6 +109,7 @@ export function DeckCarousel({ back, onDraw }: { back: string; onDraw: () => voi
     if (steps !== 0) setActive((a) => clamp(a + steps));
     setDrag(0);
     startX.current = null;
+    setDragging(false);
   };
 
   const arrowStyle = (side: 'left' | 'right', atEnd: boolean): React.CSSProperties => ({
@@ -166,7 +172,7 @@ export function DeckCarousel({ back, onDraw }: { back: string; onDraw: () => voi
                 marginTop: -CARD_H / 2,
                 transformOrigin: '50% 88%',
                 transform: `translateX(${offset}px) rotate(${tilt}deg) scale(${scale})`,
-                transition: startX.current == null ? 'transform .34s cubic-bezier(.4,.1,.2,1), opacity .34s' : 'none',
+                transition: dragging ? 'none' : 'transform .34s cubic-bezier(.4,.1,.2,1), opacity .34s',
                 opacity,
                 zIndex: 100 - Math.round(dist * 10),
                 cursor: 'pointer',

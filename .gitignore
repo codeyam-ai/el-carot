@@ -150,6 +150,9 @@ blob-report/
 # codeyam-editor:end
 
 .env*
+# ...but the committed template must survive the rule above — the README tells
+# contributors to `cp .env.example .env` as their first step.
+!.env.example
 
 # Editor-generated workflow step labels — not part of this app, nothing imports it.
 ui/
