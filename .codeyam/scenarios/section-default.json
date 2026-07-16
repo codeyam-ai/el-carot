@@ -1,0 +1,11 @@
+{
+  "name": "Section - Default",
+  "id": "88b7098d-e54d-4e5e-8408-ecec34ccb839",
+  "url": "/isolated-components/Section?s=Default",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "componentName": "Section",
+  "scenarioType": "component"
+}

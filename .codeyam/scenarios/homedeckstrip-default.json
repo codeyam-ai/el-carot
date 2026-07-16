@@ -1,0 +1,11 @@
+{
+  "name": "HomeDeckStrip - Default",
+  "id": "e1a2d734-7860-4ec7-9c59-7e9249450d6f",
+  "url": "/isolated-components/HomeDeckStrip?s=Default",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "componentName": "HomeDeckStrip",
+  "scenarioType": "component"
+}

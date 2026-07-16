@@ -1,26 +1,7 @@
 {
-  "lastFinalizedAt": null,
-  "lastFinalizedSha": null,
-  "deferred": [
-    {
-      "sha": "c17a3c73f3de15fb3bd3107e08cd32367c855a52",
-      "shortSha": "c17a3c7",
-      "subject": "feat: El Carot — Home, draw flows, reading, gallery, about & star menu",
-      "deferredAt": "2026-06-24T14:30:08Z"
-    },
-    {
-      "sha": "10b58a9843f8a00a80360022179894a5741595e9",
-      "shortSha": "10b58a9",
-      "subject": "feat: AI question flow + full desktop adaptation",
-      "deferredAt": "2026-06-24T19:51:09Z"
-    },
-    {
-      "sha": "d0e7b1fe02b472ca1f276988d5cc0f72cd25c431",
-      "shortSha": "d0e7b1f",
-      "subject": "feat: share & save cards, desktop home, analytics DB & geo i18n",
-      "deferredAt": "2026-07-01T14:00:08Z"
-    }
-  ],
-  "finalizeIntent": "fast",
-  "finalizeIntentBranch": "deploy-vercel-neon"
+  "lastFinalizedAt": "2026-07-16T20:06:09Z",
+  "lastFinalizedSha": "4d0615ce94afac32163adf010d17b99d2fb82ca7",
+  "lastFullFinalizeSha": "4d0615ce94afac32163adf010d17b99d2fb82ca7",
+  "lastFullFinalizeTree": "355fa5d2757faf9bcde936248cea724508e969672a542f937b0d8be259427e95",
+  "deferred": []
 }

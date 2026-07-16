@@ -1,0 +1,13 @@
+{
+  "name": "StatsLogin - Default",
+  "id": "00ac9679-7dad-40f9-9a8d-d9b58c200c25",
+  "url": "/isolated-components/StatsLogin?s=Default",
+  "dimensions": [
+    "Desktop",
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "StatsLogin",
+  "scenarioType": "component",
+  "expectedConsoleErrors": true
+}

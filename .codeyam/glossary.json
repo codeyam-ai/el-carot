@@ -158,12 +158,38 @@
     ]
   },
   {
+    "description": "Desktop home illustration: a full-bleed row of face-up cards that drifts slowly leftward as one while each card sways gently. CSS-only, so it renders in the server HTML; the card list is doubled for a seamless marquee.",
+    "filePath": "components/HomeDeckStrip.tsx",
+    "name": "HomeDeckStrip",
+    "scenarios": [
+      "homedeckstrip-default",
+      "homedeckstrip-short-deck"
+    ]
+  },
+  {
     "description": "Home top row: language toggle on the left and the welcome eyebrow centred.",
     "filePath": "components/HomeHeader.tsx",
     "name": "HomeHeader",
     "scenarios": [
       "homeheader-spanish",
       "homeheader-english"
+    ]
+  },
+  {
+    "description": "The small \"♥ El Carot te ama ♥\" sign-off pinned to the bottom of the home screen.",
+    "filePath": "components/HomeLove.tsx",
+    "name": "HomeLove",
+    "untestabilityReason": {
+      "justification": "A single styled div rendering one translated string; no props, no branching.",
+      "kind": "trivial-wrapper"
+    }
+  },
+  {
+    "description": "The home title block: the EL CAROT wordmark, plus the welcome eyebrow above it on desktop, where the eyebrow leaves the nav row.",
+    "filePath": "components/HomeTitle.tsx",
+    "name": "HomeTitle",
+    "scenarios": [
+      "hometitle-default"
     ]
   },
   {
@@ -181,6 +207,14 @@
     "name": "MenuOverlay",
     "scenarios": [
       "menuoverlay-default"
+    ]
+  },
+  {
+    "description": "Holds the shared open/close state for the star menu and provides it to the tree, so the global toggle and the desktop in-nav star drive the same menu.",
+    "filePath": "lib/menu.tsx",
+    "name": "MenuProvider",
+    "scenarios": [
+      "menuprovider-default"
     ]
   },
   {
@@ -205,6 +239,15 @@
     "name": "MessagePage",
     "scenarios": [
       "message-default"
+    ]
+  },
+  {
+    "description": "The desktop top-right cluster — language toggle, Instagram link, and the star menu — in one flex row so they share a baseline. Used by both the page nav bar and the home header.",
+    "filePath": "components/NavRightCluster.tsx",
+    "name": "NavRightCluster",
+    "scenarios": [
+      "navrightcluster-spanish",
+      "navrightcluster-english"
     ]
   },
   {
@@ -259,11 +302,37 @@
     }
   },
   {
+    "description": "A titled table block on the stats page: a display-font heading over a horizontally scrollable table of the rows passed as children.",
+    "filePath": "app/stats/page.tsx",
+    "name": "Section",
+    "scenarios": [
+      "section-default",
+      "section-empty"
+    ]
+  },
+  {
     "description": "A row of the eight-point El Carot star glyph used as a section divider.",
     "filePath": "components/StarDivider.tsx",
     "name": "StarDivider",
     "scenarios": [
       "stardivider-default"
+    ]
+  },
+  {
+    "description": "Password gate for /stats. Stores the entered key in a cookie the server compares against STATS_PASSWORD, then reloads. Warns when STATS_PASSWORD is unset.",
+    "filePath": "components/StatsLogin.tsx",
+    "name": "StatsLogin",
+    "scenarios": [
+      "statslogin-default",
+      "statslogin-unconfigured"
+    ]
+  },
+  {
+    "description": "The password-gated /stats admin screen. Renders the login gate unless the carot_stats cookie matches STATS_PASSWORD, then shows daily cards, visits by country, asked questions, and recent visits.",
+    "filePath": "app/stats/page.tsx",
+    "name": "StatsPage",
+    "scenarios": [
+      "stats-password-gate"
     ]
   },
   {
@@ -273,6 +342,15 @@
     "scenarios": [
       "tarotcard-default"
     ]
+  },
+  {
+    "description": "Fires a single /api/track POST per browser session (guarded by sessionStorage) so an entry is logged once with its coarse geo and time rather than on every navigation. Skips the /stats admin page.",
+    "filePath": "components/VisitTracker.tsx",
+    "name": "VisitTracker",
+    "untestabilityReason": {
+      "justification": "Renders null — it has no visual surface to isolate; its whole body is an effect that POSTs to /api/track.",
+      "kind": "trivial-wrapper"
+    }
   },
   {
     "description": "The EL CAROT wordmark — a single static display-serif heading. No props, no branching.",
@@ -290,10 +368,73 @@
     "testFile": "lib/interpret-prompts.test.ts"
   },
   {
+    "description": "Build a direct, shareable URL to a card's reading, e.g. `https://elcarot.app/reading?n=0`. Pure — `baseUrl` is injected so this is unit-testable without a browser. No `origin` query is added: a recipient should land on a clean reading whose Back button goes home.",
+    "filePath": "lib/share.ts",
+    "name": "buildReadingUrl",
+    "testFile": "lib/share.test.ts"
+  },
+  {
+    "description": "The text shown in the native share sheet: character, arcana, and quote. Pure.",
+    "filePath": "lib/share.ts",
+    "name": "buildShareText",
+    "testFile": "lib/share.test.ts"
+  },
+  {
+    "description": "Formats a card number as \"arcana · name\" for the stats tables, degrading to \"#n\" for an out-of-range index.",
+    "filePath": "app/stats/page.tsx",
+    "name": "cardLabel",
+    "untestabilityReason": {
+      "justification": "A CAROT_CARDS index lookup with a fallback string; presentational formatting verifiable by inspection.",
+      "kind": "trivial-wrapper"
+    }
+  },
+  {
+    "description": "Resolves a card's meaning or quote in the active language, falling back to the Spanish source text when an English variant is missing.",
+    "filePath": "data/cards.ts",
+    "name": "cardText",
+    "testFile": "data/cards.test.ts"
+  },
+  {
+    "description": "Compose a portrait phone wallpaper for a card. Returns a PNG Blob, or null if compositing fails. Guarded by a timeout so a stuck `toBlob` can never hang the caller (e.g. the download button's busy state).",
+    "filePath": "lib/wallpaper.ts",
+    "name": "composeWallpaper",
+    "testFile": "lib/wallpaper.test.ts"
+  },
+  {
+    "description": "Centre a card of aspect `ratio` (width / height) inside a `canvasW × canvasH` frame, occupying `widthFraction` of the width but never taller than `maxHeightFraction` of the height. Pure → unit-testable without a canvas.",
+    "filePath": "lib/wallpaper.ts",
+    "name": "computeCardRect",
+    "testFile": "lib/wallpaper.test.ts"
+  },
+  {
     "description": "Deterministic card-of-the-day index: hashes the local Y/M/D into a deck position so the whole calendar day shows the same card.",
     "filePath": "lib/daily.ts",
     "name": "dailyCardIndex",
     "testFile": "lib/daily.test.ts"
+  },
+  {
+    "description": "Sniffs the Accept-Language header for a Spanish locale, defaulting to English when the header is absent. The last fallback in the middleware's language chain.",
+    "filePath": "middleware.ts",
+    "name": "detectFromAcceptLanguage",
+    "untestabilityReason": {
+      "justification": "A null guard plus one regex test against a module constant; verifiable by inspection.",
+      "kind": "trivial-wrapper"
+    }
+  },
+  {
+    "description": "Compose the wallpaper and trigger a download. Returns true on success.",
+    "filePath": "lib/wallpaper.ts",
+    "name": "downloadWallpaper",
+    "testFile": "lib/wallpaper.test.ts"
+  },
+  {
+    "description": "Formats a timestamp as \"YYYY-MM-DD HH:MM UTC\" for the stats tables.",
+    "filePath": "app/stats/page.tsx",
+    "name": "fmt",
+    "untestabilityReason": {
+      "justification": "A single toISOString slice; presentational formatting verifiable by inspection.",
+      "kind": "trivial-wrapper"
+    }
   },
   {
     "description": "Formats the drawn date for the daily badge in the active language (ES long form / EN month-day form).",
@@ -302,10 +443,94 @@
     "testFile": "lib/daily.test.ts"
   },
   {
+    "description": "Formats a comment's ISO timestamp as a zero-padded DD.MM.YYYY date.",
+    "filePath": "components/Comments.tsx",
+    "name": "formatDate",
+    "untestabilityReason": {
+      "justification": "Zero-pads three Date getters into a template string; presentational formatting verifiable by inspection.",
+      "kind": "trivial-wrapper"
+    }
+  },
+  {
+    "description": "Reads the coarse geo fields (country, region, timezone) Vercel injects on the incoming request. Never touches the IP or precise location; every field is null off-Vercel.",
+    "filePath": "lib/geo.ts",
+    "name": "geoFromHeaders",
+    "testFile": "lib/geo.test.ts"
+  },
+  {
+    "description": "The card of the day: one card per UTC calendar day, the same for everyone. The first draw picks it deterministically and persists it; later draws read the stored row. Falls back to the deterministic pick if the database is unavailable.",
+    "filePath": "lib/dailyCard.ts",
+    "name": "getDailyCardN",
+    "untestabilityReason": {
+      "justification": "A DailyCard findUnique/create round-trip; the deterministic pick it falls back to is lib/daily.ts::dailyCardIndex, covered by lib/daily.test.ts.",
+      "kind": "platform-glue"
+    }
+  },
+  {
+    "description": "Load a same-origin image via a plain `<img>` (the way the reading page loads card art). No `crossOrigin` is set: same-origin images never taint the canvas, so `getImageData`/`toBlob` stay allowed. A timeout rejects rather than hangs if the image never fires load/error.",
+    "filePath": "lib/wallpaper.ts",
+    "name": "loadImage",
+    "testFile": "lib/wallpaper.test.ts"
+  },
+  {
+    "description": "Best-effort logging of an asked question with its drawn card and coarse geo — swallows every error so logging can never block or break the interpretation reply.",
+    "filePath": "app/api/interpret/route.ts",
+    "name": "logQuestion",
+    "untestabilityReason": {
+      "justification": "A bare prisma.question.create in a try/catch; the work IS the database write.",
+      "kind": "platform-glue"
+    }
+  },
+  {
+    "description": "Entry point of the database seed script. Currently the untouched project-template stub — it seeds nothing and only prints a reminder to add models.",
+    "filePath": "prisma/seed.ts",
+    "name": "main",
+    "untestabilityReason": {
+      "justification": "Untouched seed-script stub from the project template; it has no seeding logic to test yet.",
+      "kind": "scaffold"
+    }
+  },
+  {
     "description": "Picks N distinct random cards (Fisher–Yates over deck indices, clamped to [0, deck.length]) for the Home fan illustration. RNG is injectable for deterministic tests.",
     "filePath": "lib/pickFan.ts",
     "name": "pickFan",
     "testFile": "lib/pickFan.test.ts"
+  },
+  {
+    "description": "Joins the coarse geo fields into one display string — \"country / region · timezone\" — for the stats tables, showing an em dash when nothing is known.",
+    "filePath": "app/stats/page.tsx",
+    "name": "place",
+    "untestabilityReason": {
+      "justification": "A filter/join of three optional strings; presentational formatting verifiable by inspection.",
+      "kind": "trivial-wrapper"
+    }
+  },
+  {
+    "description": "Render the wallpaper into a 1080×1920 canvas: the card art centred on a background of its own frame colour, with generous margin all around. Returns the canvas, or null if a 2D context isn't available.",
+    "filePath": "lib/wallpaper.ts",
+    "name": "renderWallpaperCanvas",
+    "testFile": "lib/wallpaper.test.ts"
+  },
+  {
+    "description": "Read the card's frame colour by sampling a pixel just inside its top edge (the aged-cream border). Returns an `rgb(...)` string, or the cream token if the image can't be sampled (e.g. a tainted canvas).",
+    "filePath": "lib/wallpaper.ts",
+    "name": "sampleFrameColor",
+    "testFile": "lib/wallpaper.test.ts"
+  },
+  {
+    "description": "Share a reading. On devices with the Web Share API (mobile) this opens the native sheet; otherwise (most desktops) it copies the direct link to the clipboard. Returns what actually happened so the caller can show feedback.",
+    "filePath": "lib/share.ts",
+    "name": "shareReading",
+    "testFile": "lib/share.test.ts"
+  },
+  {
+    "description": "Hook exposing the active language and its translated strings to any client component under CarotProvider.",
+    "filePath": "lib/i18n.tsx",
+    "name": "useCarot",
+    "untestabilityReason": {
+      "justification": "A one-line React.useContext re-export; the behaviour under test lives in CarotProvider.",
+      "kind": "trivial-wrapper"
+    }
   },
   {
     "description": "matchMedia hook — true when the viewport is at least minWidth px; mobile-first/SSR-safe.",
@@ -315,5 +540,20 @@
       "justification": "window.matchMedia viewport boundary",
       "kind": "platform-glue"
     }
+  },
+  {
+    "description": "Hook exposing the shared star-menu open/close state, so the mobile toggle and the desktop in-nav star drive the same menu.",
+    "filePath": "lib/menu.tsx",
+    "name": "useMenu",
+    "untestabilityReason": {
+      "justification": "A one-line React.useContext re-export; the behaviour under test lives in MenuProvider.",
+      "kind": "trivial-wrapper"
+    }
+  },
+  {
+    "description": "UTC calendar-day key, YYYY-MM-DD — the identity of \"the card of the day\", so every visitor worldwide shares one card per UTC day.",
+    "filePath": "lib/geo.ts",
+    "name": "utcDateKey",
+    "testFile": "lib/geo.test.ts"
   }
 ]

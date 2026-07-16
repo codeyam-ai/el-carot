@@ -46,6 +46,123 @@
       "runner": "tests"
     },
     {
+      "description": "the link points at /reading with the card's number, no origin query",
+      "file": "lib/share.test.ts",
+      "format": "vitest",
+      "key": "buildReadingUrl › builds a direct reading link for the card number",
+      "line": 9,
+      "registeredAt": "2026-07-16T18:17:47.245743+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "a shared link never carries the back-navigation origin",
+      "file": "lib/share.test.ts",
+      "format": "vitest",
+      "key": "buildReadingUrl › omits the origin query so recipients land clean",
+      "line": 14,
+      "registeredAt": "2026-07-16T18:17:47.245743+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "the base URL host/port is preserved (works on localhost too)",
+      "file": "lib/share.test.ts",
+      "format": "vitest",
+      "key": "buildReadingUrl › respects the provided base origin",
+      "line": 21,
+      "registeredAt": "2026-07-16T18:17:47.245743+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "ES share text carries the character, arcana, and Spanish quote",
+      "file": "lib/share.test.ts",
+      "format": "vitest",
+      "key": "buildShareText › includes the character, arcana, and quote in ES",
+      "line": 28,
+      "registeredAt": "2026-07-16T18:17:47.245743+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "EN switches to the English quote",
+      "file": "lib/share.test.ts",
+      "format": "vitest",
+      "key": "buildShareText › uses the English quote in EN",
+      "line": 36,
+      "registeredAt": "2026-07-16T18:17:47.245743+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "a card missing its English translation must fall back to Spanish rather than render an empty reading — the screen always shows text",
+      "file": "data/cards.test.ts",
+      "format": "vitest",
+      "key": "cardText › falls back to the Spanish text when the English variant is missing",
+      "line": 21,
+      "registeredAt": "2026-07-16T18:53:16.163071+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "every one of the 22 arcana must have text in both languages, or some card would render blank in one language",
+      "file": "data/cards.test.ts",
+      "format": "vitest",
+      "key": "cardText › resolves non-empty text for all 22 arcana in both languages",
+      "line": 33,
+      "registeredAt": "2026-07-16T18:53:16.163071+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "the reading page indexes cards by number, so a bad index must not throw",
+      "file": "data/cards.test.ts",
+      "format": "vitest",
+      "key": "cardText › returns an empty string for a missing card",
+      "line": 27,
+      "registeredAt": "2026-07-16T18:53:16.163071+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "EN reads the _en variant, which is what makes the language toggle work",
+      "file": "data/cards.test.ts",
+      "format": "vitest",
+      "key": "cardText › returns the English variant in EN",
+      "line": 14,
+      "registeredAt": "2026-07-16T18:53:16.163071+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "ES is the source language, so it reads the base field verbatim",
+      "file": "data/cards.test.ts",
+      "format": "vitest",
+      "key": "cardText › returns the Spanish meaning and quote in ES",
+      "line": 8,
+      "registeredAt": "2026-07-16T18:53:16.163071+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "a tall card (portrait ratio) is centred and bounded by width",
+      "file": "lib/wallpaper.test.ts",
+      "format": "vitest",
+      "key": "computeCardRect › centres a portrait card and bounds it by width",
+      "line": 6,
+      "registeredAt": "2026-07-16T18:17:47.245743+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "a very tall/narrow card is bounded by the height cap instead of width",
+      "file": "lib/wallpaper.test.ts",
+      "format": "vitest",
+      "key": "computeCardRect › falls back to the height cap for very tall cards",
+      "line": 16,
+      "registeredAt": "2026-07-16T18:17:47.245743+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "the result is always centred: equal margins on each axis",
+      "file": "lib/wallpaper.test.ts",
+      "format": "vitest",
+      "key": "computeCardRect › keeps equal margins on both axes",
+      "line": 26,
+      "registeredAt": "2026-07-16T18:17:47.245743+00:00",
+      "runner": "tests"
+    },
+    {
       "description": "different days generally differ (and never throw)",
       "file": "lib/daily.test.ts",
       "format": "vitest",
@@ -88,6 +205,33 @@
       "key": "formatDailyDate › formats Spanish dates with month names",
       "line": 31,
       "registeredAt": "2026-06-24T14:25:52.764495+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "an empty header value must not leak through as an empty string; the privacy contract is \"country, region, timezone or null\" with no third state",
+      "file": "lib/geo.test.ts",
+      "format": "vitest",
+      "key": "geoFromHeaders › normalises empty header values to null",
+      "line": 30,
+      "registeredAt": "2026-07-16T18:53:16.163071+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "the three coarse Vercel geo headers are read straight through",
+      "file": "lib/geo.test.ts",
+      "format": "vitest",
+      "key": "geoFromHeaders › reads country, region, and timezone from the Vercel headers",
+      "line": 6,
+      "registeredAt": "2026-07-16T18:53:16.163071+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "off-Vercel (local dev) no geo headers exist — every field must be null, never undefined",
+      "file": "lib/geo.test.ts",
+      "format": "vitest",
+      "key": "geoFromHeaders › returns nulls when the headers are absent",
+      "line": 20,
+      "registeredAt": "2026-07-16T18:53:16.163071+00:00",
       "runner": "tests"
     },
     {
@@ -160,6 +304,33 @@
       "key": "pickFan › returns the requested number of cards",
       "line": 20,
       "registeredAt": "2026-06-24T13:07:24.495440+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "the key is the UTC calendar day, which is the identity of \"the card of the day\"",
+      "file": "lib/geo.test.ts",
+      "format": "vitest",
+      "key": "utcDateKey › formats a date as a YYYY-MM-DD UTC key",
+      "line": 38,
+      "registeredAt": "2026-07-16T18:53:16.163071+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "every instant within one UTC day collapses to the same key, so the day's card is stable",
+      "file": "lib/geo.test.ts",
+      "format": "vitest",
+      "key": "utcDateKey › maps every instant in a UTC day to the same key",
+      "line": 50,
+      "registeredAt": "2026-07-16T18:53:16.163071+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "the key must come from UTC, not local time — a late-evening UTC instant still belongs to that UTC day, otherwise two visitors could see different daily cards",
+      "file": "lib/geo.test.ts",
+      "format": "vitest",
+      "key": "utcDateKey › uses UTC rather than local time at day boundaries",
+      "line": 44,
+      "registeredAt": "2026-07-16T18:53:16.163071+00:00",
       "runner": "tests"
     }
   ],

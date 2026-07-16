@@ -1,0 +1,28 @@
+name: Feature request
+description: Suggest an idea for El Carot.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What's the idea?
+      description: What would you like to be able to do that you can't today?
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: How might it work?
+      description: Sketch it however you like — words, a flow, a drawing.
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Anything you've considered and ruled out?
+
+  - type: markdown
+    attributes:
+      value: |
+        El Carot is deliberately small and login-free — a deck, a card, a message.
+        Ideas that keep it that way are the easiest to say yes to.
