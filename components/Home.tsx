@@ -11,7 +11,6 @@ import { HomeTitle } from '@/components/HomeTitle';
 import { CardFan } from '@/components/CardFan';
 import { HomeDeckStrip } from '@/components/HomeDeckStrip';
 import { HomeActions } from '@/components/HomeActions';
-import { HomeLove } from '@/components/HomeLove';
 
 export default function Home({ fan, strip }: { fan: Card[]; strip: Card[] }) {
   return (
@@ -40,8 +39,6 @@ export default function Home({ fan, strip }: { fan: Card[]; strip: Card[] }) {
         <HomeDeckStrip cards={strip} />
         <HomeActions layout="row" />
       </div>
-
-      <HomeLove />
     </div>
   );
 }

@@ -12,9 +12,9 @@ export function HomeActions({ layout = 'column' }: { layout?: 'row' | 'column' }
   const router = useRouter();
   const isRow = layout === 'row';
   return (
-    <div style={{ display: 'flex', flexDirection: isRow ? 'row' : 'column', justifyContent: 'center', gap: 14, marginTop: isRow ? 52 : 0 }}>
-      <ExperienceButton block={!isRow} onClick={() => router.push('/message')}>{t.homeMessage}</ExperienceButton>
+    <div style={{ display: 'flex', flexDirection: isRow ? 'row' : 'column', justifyContent: 'center', gap: isRow ? 14 : 10, marginTop: isRow ? 52 : 0 }}>
       <ExperienceButton block={!isRow} onClick={() => router.push('/question')}>{t.homeQuestion}</ExperienceButton>
+      <ExperienceButton block={!isRow} onClick={() => router.push('/message')}>{t.homeMessage}</ExperienceButton>
       <ExperienceButton block={!isRow} variant="outline" onClick={() => router.push('/reading?daily=1')}>
         {t.homeDaily}
       </ExperienceButton>

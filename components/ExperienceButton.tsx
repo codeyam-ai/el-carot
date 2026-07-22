@@ -30,9 +30,10 @@ export function ExperienceButton({
     color: '#2b2922',
     fontFamily: 'var(--font-display)',
     fontWeight: 400,
-    fontSize: 21,
+    // A touch smaller on the mobile stack so the fanned cards get more room.
+    fontSize: block ? 18 : 21,
     letterSpacing: '.01em',
-    padding: block ? '15px 18px' : '16px 30px',
+    padding: block ? '12px 18px' : '16px 30px',
     borderRadius: 14,
     textAlign: 'center',
     lineHeight: 1.1,

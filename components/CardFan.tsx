@@ -30,7 +30,7 @@ export function CardFan({ cards, className }: { cards: Card[]; className?: strin
         {cards.map((c, i) => {
           const rel = i - mid;
           const tx = rel * STEP_X;
-          const ty = Math.abs(rel) * 26 - 34;
+          const ty = Math.abs(rel) * 26 - 26;
           const rot = rel * STEP_ROT;
           const isCenter = Math.abs(rel) < 0.5;
           return (
