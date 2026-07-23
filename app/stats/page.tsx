@@ -56,14 +56,23 @@ export default async function StatsPage() {
     return <StatsLogin configured={!!configured} />;
   }
 
-  const [dailyCards, questions, visits, byCountry, totalVisits, totalQuestions] = await Promise.all([
+  const [dailyCards, questions, visits, byCountry, totalVisits, totalQuestions, allVisitDates] = await Promise.all([
     prisma.dailyCard.findMany({ orderBy: { date: 'desc' } }),
     prisma.question.findMany({ orderBy: { createdAt: 'desc' } }),
     prisma.visit.findMany({ orderBy: { createdAt: 'desc' }, take: 200 }),
     prisma.visit.groupBy({ by: ['country'], _count: { _all: true }, orderBy: { _count: { country: 'desc' } } }),
     prisma.visit.count(),
     prisma.question.count(),
+    prisma.visit.findMany({ select: { createdAt: true } }),
   ]);
+
+  // Per-day tallies keyed by UTC date (YYYY-MM-DD) to line up with the daily
+  // card rows, whose `date` is stored as the UTC calendar day.
+  const utcDay = (d: Date) => d.toISOString().slice(0, 10);
+  const visitsByDay = new Map<string, number>();
+  for (const v of allVisitDates) visitsByDay.set(utcDay(v.createdAt), (visitsByDay.get(utcDay(v.createdAt)) ?? 0) + 1);
+  const questionsByDay = new Map<string, number>();
+  for (const q of questions) questionsByDay.set(utcDay(q.createdAt), (questionsByDay.get(utcDay(q.createdAt)) ?? 0) + 1);
 
   return (
     <div data-fullbleed style={{ minHeight: '100dvh', background: '#202020', color: cream, padding: '40px 26px 80px', boxSizing: 'border-box' }}>
@@ -74,11 +83,16 @@ export default async function StatsPage() {
         </p>
 
         <Section title="Card of the day">
-          <thead><tr><th style={th}>Date</th><th style={th}>Card</th></tr></thead>
+          <thead><tr><th style={th}>Date</th><th style={th}>Card</th><th style={th}>Visits</th><th style={th}>Questions</th></tr></thead>
           <tbody>
-            {dailyCards.length === 0 && <tr><td style={td} colSpan={2}>No records yet.</td></tr>}
+            {dailyCards.length === 0 && <tr><td style={td} colSpan={4}>No records yet.</td></tr>}
             {dailyCards.map((d) => (
-              <tr key={d.id}><td style={td}>{d.date}</td><td style={td}>{cardLabel(d.cardN)}</td></tr>
+              <tr key={d.id}>
+                <td style={td}>{d.date}</td>
+                <td style={td}>{cardLabel(d.cardN)}</td>
+                <td style={td}>{visitsByDay.get(d.date) ?? 0}</td>
+                <td style={td}>{questionsByDay.get(d.date) ?? 0}</td>
+              </tr>
             ))}
           </tbody>
         </Section>
