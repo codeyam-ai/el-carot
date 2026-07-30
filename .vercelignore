@@ -1,0 +1,12 @@
+# The Vercel CLI uploads the working directory, so anything local-only has to be
+# named here or it counts against the 100 MB deploy limit. Both of the entries
+# below grew past that on their own.
+
+# Local build output — Vercel builds it again on its side.
+.next
+
+# codeyam editor state: scenario screenshots, caches, dependency graph.
+.codeyam
+
+# Agent tooling.
+.claude
