@@ -42,7 +42,7 @@ const COPY: Record<'es' | 'en', { context: string; title: string; updated: strin
       },
       {
         heading: 'Iniciar sesión',
-        body: 'En la app iniciar sesión es opcional y todo funciona sin hacerlo. Si usás Sign in with Apple, el nombre y el correo que Apple devuelva se guardan sólo en tu teléfono, para saludarte por tu nombre y mantener tus cartas en su propio cajón. No se transmiten a ningún servidor nuestro.',
+        body: 'En la app iniciar sesión es opcional y todo funciona sin hacerlo. Si usás Sign in with Apple o tu cuenta de Google, el nombre y el correo que el proveedor devuelva se guardan sólo en tu teléfono, para saludarte por tu nombre y mantener tus cartas en su propio cajón. No se transmiten a ningún servidor nuestro, y no le damos a Google ni a Apple ninguna información sobre lo que hacés en la app.',
       },
       {
         heading: 'Menores de edad',
@@ -74,7 +74,7 @@ const COPY: Record<'es' | 'en', { context: string; title: string; updated: strin
       },
       {
         heading: 'Signing in',
-        body: 'In the app, signing in is optional and everything works without it. If you use Sign in with Apple, the name and email Apple returns are stored only on your phone, so the app can greet you by name and keep your cards in their own drawer. They are never sent to any server of ours.',
+        body: 'In the app, signing in is optional and everything works without it. If you use Sign in with Apple or your Google account, the name and email the provider returns are stored only on your phone, so the app can greet you by name and keep your cards in their own drawer. They are never sent to any server of ours, and we tell neither Google nor Apple anything about what you do in the app.',
       },
       {
         heading: 'Children',
