@@ -26,7 +26,7 @@ Please give us a reasonable chance to ship a fix before disclosing publicly.
 Worth reporting:
 
 - Anything exposing the `/stats` analytics page without `STATS_PASSWORD`.
-- Anything leaking the server-side `ANTHROPIC_API_KEY` to the client.
+- Anything leaking the server-side `GEMINI_API_KEY` to the client.
 - Injection into the AI interpretation endpoint (`/api/interpret`) that reaches
   the database or the model in unintended ways.
 - Anything that lets one visitor read or alter another's data.

@@ -32,7 +32,7 @@ npm run dev                   # http://127.0.0.1:3000
 > This is the single most common first-run confusion.
 
 Only `DATABASE_URL` is required. Everything else in `.env.example` is optional:
-without `ANTHROPIC_API_KEY` the app falls back to each card's written meaning,
+without `GEMINI_API_KEY` the app falls back to each card's written meaning,
 which is a fully supported path — you do not need a key to develop.
 
 ## The checks

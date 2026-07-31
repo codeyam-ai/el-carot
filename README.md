@@ -19,7 +19,7 @@ Live at **[elcarot.com](https://www.elcarot.com)**. Built with [CodeYam](https:/
 
 - [Next.js](https://nextjs.org/) (App Router)
 - [Prisma](https://www.prisma.io/) + [Neon](https://neon.tech/) Postgres
-- Optional [Anthropic](https://www.anthropic.com/) API for AI card interpretations
+- Optional [Gemini](https://ai.google.dev/) API for AI card interpretations
 - [Vitest](https://vitest.dev/) + [Playwright](https://playwright.dev/) for tests
 
 ## Getting started
@@ -30,7 +30,7 @@ npm install
 
 # 2. Configure environment
 cp .env.example .env
-# then fill in DATABASE_URL (Neon Postgres) and, optionally, ANTHROPIC_API_KEY
+# then fill in DATABASE_URL (Neon Postgres) and, optionally, GEMINI_API_KEY
 
 # 3. Set up the database and seed it
 npm run setup        # install + db:push + db:seed
@@ -43,12 +43,12 @@ The app runs at [http://127.0.0.1:3000](http://127.0.0.1:3000).
 
 ## Environment variables
 
-| Variable            | Required | Description                                                      |
-| ------------------- | -------- | ---------------------------------------------------------------- |
-| `DATABASE_URL`      | Yes      | PostgreSQL connection string. Production uses Neon.              |
-| `ANTHROPIC_API_KEY` | Optional | Enables AI card interpretations. Falls back to written meanings. |
-| `STATS_PASSWORD`    | Optional | Password gate for the `/stats` analytics page.                   |
-| `CRON_SECRET`       | Optional | Auth for the daily "card of the day" cron job.                   |
+| Variable         | Required | Description                                                      |
+| ---------------- | -------- | ---------------------------------------------------------------- |
+| `DATABASE_URL`   | Yes      | PostgreSQL connection string. Production uses Neon.              |
+| `GEMINI_API_KEY` | Optional | Enables AI card interpretations. Falls back to written meanings. |
+| `STATS_PASSWORD` | Optional | Password gate for the `/stats` analytics page.                   |
+| `CRON_SECRET`    | Optional | Auth for the daily "card of the day" cron job.                   |
 
 See [`.env.example`](./.env.example) for the annotated template, and
 [DATABASE.md](./DATABASE.md) for the schema workflow.

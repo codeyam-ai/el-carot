@@ -19,7 +19,7 @@ async function logQuestion(text: string, cardN: number, lang: Lang, source: stri
  * Interpret a drawn card in light of the user's question.
  * POST { cardN, question, lang } → { interpretation, source }.
  *
- * Calls Claude (cheapest model, Haiku 4.5) server-side when ANTHROPIC_API_KEY
+ * Calls Gemini (cheapest model, 3.1 Flash Lite) server-side when GEMINI_API_KEY
  * is set; the key never reaches the client. Falls back to the card's written
  * meaning when no key is configured or the call fails. Each question is logged
  * (best-effort) with the drawn card and coarse geo.
@@ -46,19 +46,22 @@ export async function POST(request: Request) {
   let interpretation = fallback;
   let source = 'fallback';
 
-  if (process.env.ANTHROPIC_API_KEY) {
+  if (process.env.GEMINI_API_KEY) {
     try {
-      const Anthropic = (await import('@anthropic-ai/sdk')).default;
-      const client = new Anthropic();
-      const message = await client.messages.create({
-        model: 'claude-haiku-4-5',
-        max_tokens: 512,
-        messages: [{ role: 'user', content: buildInterpretPrompt(card, question, lang) }],
+      const { GoogleGenAI } = await import('@google/genai');
+      const client = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+      const response = await client.models.generateContent({
+        model: 'gemini-3.1-flash-lite',
+        contents: buildInterpretPrompt(card, question, lang),
+        config: {
+          maxOutputTokens: 800,
+          // A 3-to-5-sentence reading needs no reasoning pass, and thinking
+          // tokens count against maxOutputTokens — leaving it on truncates
+          // the paragraph mid-sentence.
+          thinkingConfig: { thinkingBudget: 0 },
+        },
       });
-      const text = message.content
-        .map((block) => (block.type === 'text' ? block.text : ''))
-        .join('')
-        .trim();
+      const text = response.text?.trim() ?? '';
       if (text) {
         interpretation = text;
         source = 'ai';
