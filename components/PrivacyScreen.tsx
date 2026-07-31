@@ -26,11 +26,11 @@ const COPY: Record<'es' | 'en', { context: string; title: string; updated: strin
     context: 'Privacidad',
     title: 'Política de privacidad',
     updated: 'Última actualización: 30 de julio de 2026',
-    lead: 'El Carot no recopila, no transmite y no comparte ningún dato personal. Todo lo que hacés se queda en tu dispositivo.',
+    lead: 'El Carot guarda lo mínimo. En la app, nada sale de tu teléfono. En el sitio guardamos las preguntas que se escriben, sin saber quién las escribió.',
     sections: [
       {
-        heading: 'Qué datos recopilamos',
-        body: 'Ninguno. El Carot no tiene servidores propios donde guardar información sobre vos. No hay cuentas alojadas, no hay analítica de terceros, no hay publicidad y no hay rastreadores.',
+        heading: 'Qué guardamos',
+        body: 'En la app, nada: no hay servidores donde guardar nada tuyo. En el sitio guardamos las preguntas y qué carta salió, para entender qué se le pregunta al mazo. No hay cuentas, ni publicidad, ni rastreadores, ni forma de vincular una pregunta con una persona.',
       },
       {
         heading: 'Qué se guarda en tu dispositivo',
@@ -38,7 +38,7 @@ const COPY: Record<'es' | 'en', { context: string; title: string; updated: strin
       },
       {
         heading: 'Las preguntas que escribís',
-        body: 'Cuando le hacés una pregunta específica a las cartas, ese texto se usa únicamente para generar tu lectura. No queda asociado a tu identidad, no se usa para perfilarte y no se comparte con nadie.',
+        body: 'En la app se resuelven en tu teléfono y no viajan a ningún lado. En el sitio quedan guardadas sin identificar: no sabemos de quién es cada una. Como se escriben libremente, te pedimos que no incluyas datos personales.',
       },
       {
         heading: 'Iniciar sesión',
@@ -46,7 +46,7 @@ const COPY: Record<'es' | 'en', { context: string; title: string; updated: strin
       },
       {
         heading: 'Menores de edad',
-        body: 'El Carot no está dirigido a menores de 13 años y, al no recopilar datos, no recoge información de ninguna persona sin importar su edad.',
+        body: 'El Carot no está dirigido a menores de 13 años. No pedimos edad, nombre ni ningún dato que permita identificar a quien usa la app o el sitio.',
       },
       {
         heading: 'Cambios en esta política',
@@ -58,11 +58,11 @@ const COPY: Record<'es' | 'en', { context: string; title: string; updated: strin
     context: 'Privacy',
     title: 'Privacy Policy',
     updated: 'Last updated: 30 July 2026',
-    lead: 'El Carot collects nothing, transmits nothing, and shares nothing. Everything you do stays on your device.',
+    lead: 'El Carot keeps as little as possible. In the app, nothing leaves your phone. On the website we keep the questions people type, without knowing who typed them.',
     sections: [
       {
-        heading: 'What we collect',
-        body: 'Nothing. El Carot has no servers of its own on which to keep information about you. There are no hosted accounts, no third-party analytics, no advertising and no trackers.',
+        heading: 'What we keep',
+        body: 'In the app, nothing: there are no servers on which to keep anything of yours. On the website we keep the questions and which card came up, to understand what people ask the deck. There are no accounts, no advertising, no trackers, and no way to tie a question to a person.',
       },
       {
         heading: 'What is stored on your device',
@@ -70,7 +70,7 @@ const COPY: Record<'es' | 'en', { context: string; title: string; updated: strin
       },
       {
         heading: 'The questions you type',
-        body: 'When you ask the cards a specific question, that text is used only to produce your reading. It is not tied to your identity, not used to profile you, and not shared with anyone.',
+        body: 'In the app they are handled on your phone and travel nowhere. On the website they are kept without identification: we do not know whose each one is. Since they are written freely, please do not include personal details.',
       },
       {
         heading: 'Signing in',
@@ -78,7 +78,7 @@ const COPY: Record<'es' | 'en', { context: string; title: string; updated: strin
       },
       {
         heading: 'Children',
-        body: 'El Carot is not directed at children under 13 and, collecting no data, gathers no information from anyone regardless of age.',
+        body: 'El Carot is not directed at children under 13. We do not ask for an age, a name, or anything else that would identify whoever is using the app or the site.',
       },
       {
         heading: 'Changes to this policy',
