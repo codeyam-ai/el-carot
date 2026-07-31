@@ -1,0 +1,12 @@
+{
+  "name": "Privacy - Default",
+  "id": "de1ca071-1777-4780-8b30-c1eea328de49",
+  "url": "/privacy?lang=es",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "seed": {},
+  "scenarioType": "application",
+  "pageFilePath": "app/privacy/page.tsx"
+}

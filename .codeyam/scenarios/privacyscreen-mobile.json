@@ -1,0 +1,11 @@
+{
+  "name": "PrivacyScreen - Mobile",
+  "id": "729a059f-cda7-4dcb-b87f-36459554b84a",
+  "url": "/isolated-components/PrivacyScreen",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "PrivacyScreen",
+  "scenarioType": "component"
+}

@@ -1,0 +1,12 @@
+{
+  "name": "Support - Default",
+  "id": "3d1d6179-c764-4d58-814c-5628a5eca7f2",
+  "url": "/support?lang=es",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "seed": {},
+  "scenarioType": "application",
+  "pageFilePath": "app/support/page.tsx"
+}

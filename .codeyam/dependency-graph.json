@@ -1,315 +1,14 @@
 {
   "files": {
-    "app/isolated-components/StatsLogin/page.tsx": {
+    "app/isolated-components/CarotMenu/page.tsx": {
       "imports": [
-        "components/StatsLogin.tsx"
-      ],
-      "importedBy": []
-    },
-    "app/isolated-components/QuestionInput/page.tsx": {
-      "imports": [
-        "components/QuestionInput.tsx"
-      ],
-      "importedBy": []
-    },
-    "prisma.config.ts": {
-      "imports": [],
-      "importedBy": []
-    },
-    "app/isolated-components/HomeDeckStrip/page.tsx": {
-      "imports": [
-        "components/HomeDeckStrip.tsx",
-        "data/cards.ts"
-      ],
-      "importedBy": []
-    },
-    "app/isolated-components/AboutScreen/page.tsx": {
-      "imports": [
-        "components/AboutScreen.tsx"
-      ],
-      "importedBy": []
-    },
-    ".claude/skills/review-session/scripts/extract-session.mjs": {
-      "imports": [
-        ".claude/skills/review-session/scripts/extract-session-helpers.mjs"
-      ],
-      "importedBy": []
-    },
-    ".claude/hooks/editor-step-hook.py": {
-      "imports": [],
-      "importedBy": []
-    },
-    "components/DeckArc.tsx": {
-      "imports": [
-        "data/cards.ts"
-      ],
-      "importedBy": [
-        "app/isolated-components/DeckArc/page.tsx",
-        "components/MessageIntro.tsx"
-      ]
-    },
-    "lib/wallpaper.ts": {
-      "imports": [
-        "data/cards.ts"
-      ],
-      "importedBy": [
-        "components/CardReading.tsx",
-        "lib/wallpaper.test.ts"
-      ]
-    },
-    "components/CarotMenu.tsx": {
-      "imports": [
-        "lib/i18n.tsx",
-        "lib/links.ts"
-      ],
-      "importedBy": [
-        "app/isolated-components/CarotMenu/page.tsx",
-        "components/MenuOverlay.tsx"
-      ]
-    },
-    "components/HomeLove.tsx": {
-      "imports": [
-        "lib/i18n.tsx"
-      ],
-      "importedBy": []
-    },
-    "ui/src/helpers/stepLabels.generated.ts": {
-      "imports": [],
-      "importedBy": []
-    },
-    "components/PrivacyScreen.tsx": {
-      "imports": [
-        "lib/i18n.tsx",
-        "lib/useIsDesktop.ts",
-        "components/BackHeader.tsx",
-        "components/DesktopNav.tsx"
-      ],
-      "importedBy": [
-        "app/privacy/page.tsx"
-      ]
-    },
-    "app/api/comments/route.ts": {
-      "imports": [
-        "app/lib/prisma.ts"
-      ],
-      "importedBy": []
-    },
-    "app/codeyam-isolate/layout.tsx": {
-      "imports": [],
-      "importedBy": []
-    },
-    "app/isolated-components/Section/page.tsx": {
-      "imports": [
-        "app/stats/page.tsx",
-        "data/cards.ts"
-      ],
-      "importedBy": []
-    },
-    "components/DesktopNav.tsx": {
-      "imports": [
-        "lib/i18n.tsx",
-        "components/NavRightCluster.tsx"
-      ],
-      "importedBy": [
-        "app/isolated-components/DesktopNav/page.tsx",
-        "components/SupportScreen.tsx",
-        "components/GalleryGrid.tsx",
-        "components/QuestionInput.tsx",
-        "components/PrivacyScreen.tsx",
-        "components/CardReading.tsx",
-        "components/AboutScreen.tsx",
-        "components/MessageIntro.tsx"
-      ]
-    },
-    "app/gallery/page.tsx": {
-      "imports": [
-        "components/GalleryGrid.tsx"
-      ],
-      "importedBy": []
-    },
-    "lib/dailyCard.ts": {
-      "imports": [
-        "app/lib/prisma.ts",
-        "data/cards.ts",
-        "lib/daily.ts",
-        "lib/geo.ts"
-      ],
-      "importedBy": [
-        "app/reading/page.tsx",
-        "app/api/cron/daily/route.ts"
-      ]
-    },
-    "components/BackHeader.tsx": {
-      "imports": [
-        "lib/i18n.tsx"
-      ],
-      "importedBy": [
-        "app/isolated-components/BackHeader/page.tsx",
-        "components/SupportScreen.tsx",
-        "components/GalleryGrid.tsx",
-        "components/QuestionInput.tsx",
-        "components/PrivacyScreen.tsx",
-        "components/AboutScreen.tsx",
-        "components/MessageIntro.tsx"
-      ]
-    },
-    "app/isolated-components/ExperienceButton/page.tsx": {
-      "imports": [
-        "components/ExperienceButton.tsx"
-      ],
-      "importedBy": []
-    },
-    "lib/interpret-prompts.test.ts": {
-      "imports": [
-        "lib/interpret-prompts.ts",
-        "data/cards.ts"
-      ],
-      "importedBy": []
-    },
-    "app/isolated-components/Home/page.tsx": {
-      "imports": [
-        "components/Home.tsx",
-        "lib/i18n.tsx",
-        "data/cards.ts"
-      ],
-      "importedBy": []
-    },
-    "components/LangToggle.tsx": {
-      "imports": [
-        "lib/i18n.tsx"
-      ],
-      "importedBy": [
-        "app/isolated-components/LangToggle/page.tsx",
-        "app/isolated-components/CarotProvider/page.tsx",
-        "components/NavRightCluster.tsx",
-        "components/HomeHeader.tsx"
-      ]
-    },
-    "app/isolated-components/TarotCard/page.tsx": {
-      "imports": [
-        "components/TarotCard.tsx"
-      ],
-      "importedBy": []
-    },
-    "app/isolated-components/HomeHeader/page.tsx": {
-      "imports": [
-        "components/HomeHeader.tsx",
-        "lib/i18n.tsx"
-      ],
-      "importedBy": []
-    },
-    "components/TarotCard.tsx": {
-      "imports": [],
-      "importedBy": [
-        "app/isolated-components/TarotCard/page.tsx",
-        "components/CardReading.tsx"
-      ]
-    },
-    "components/SupportScreen.tsx": {
-      "imports": [
-        "lib/i18n.tsx",
-        "lib/links.ts",
-        "lib/useIsDesktop.ts",
-        "components/BackHeader.tsx",
-        "components/DesktopNav.tsx"
-      ],
-      "importedBy": [
-        "app/support/page.tsx"
-      ]
-    },
-    "next.config.ts": {
-      "imports": [],
-      "importedBy": []
-    },
-    "app/isolated-components/MenuOverlay/page.tsx": {
-      "imports": [
-        "components/MenuOverlay.tsx"
-      ],
-      "importedBy": []
-    },
-    "app/isolated-components/MessageIntro/page.tsx": {
-      "imports": [
-        "components/MessageIntro.tsx"
-      ],
-      "importedBy": []
-    },
-    "lib/wallpaper.test.ts": {
-      "imports": [
-        "lib/wallpaper.ts"
-      ],
-      "importedBy": []
-    },
-    "lib/daily.test.ts": {
-      "imports": [
-        "lib/daily.ts"
+        "components/CarotMenu.tsx"
       ],
       "importedBy": []
     },
     "app/privacy/page.tsx": {
       "imports": [
         "components/PrivacyScreen.tsx"
-      ],
-      "importedBy": []
-    },
-    "eslint.config.mjs": {
-      "imports": [],
-      "importedBy": []
-    },
-    ".claude/skills/review-session/scripts/find-last-session.mjs": {
-      "imports": [
-        ".claude/skills/review-session/scripts/find-last-session-helpers.mjs"
-      ],
-      "importedBy": []
-    },
-    "components/MenuOverlay.tsx": {
-      "imports": [
-        "lib/i18n.tsx",
-        "lib/menu.tsx",
-        "lib/useIsDesktop.ts",
-        "components/MenuToggle.tsx",
-        "components/CarotMenu.tsx"
-      ],
-      "importedBy": [
-        "app/layout.tsx",
-        "app/isolated-components/MenuOverlay/page.tsx"
-      ]
-    },
-    "components/Wordmark.tsx": {
-      "imports": [],
-      "importedBy": [
-        "components/HomeTitle.tsx"
-      ]
-    },
-    ".claude/hooks/_step_metadata.py": {
-      "imports": [],
-      "importedBy": []
-    },
-    "components/Footer.tsx": {
-      "imports": [
-        "lib/i18n.tsx",
-        "lib/links.ts"
-      ],
-      "importedBy": [
-        "app/reading/page.tsx",
-        "app/isolated-components/Footer/page.tsx",
-        "components/GalleryGrid.tsx"
-      ]
-    },
-    "app/layout.tsx": {
-      "imports": [
-        "app/globals.css",
-        "lib/i18n.tsx",
-        "lib/i18n.tsx",
-        "lib/menu.tsx",
-        "components/MenuOverlay.tsx",
-        "components/VisitTracker.tsx"
-      ],
-      "importedBy": []
-    },
-    "app/isolated-components/HomeTitle/page.tsx": {
-      "imports": [
-        "components/HomeTitle.tsx",
-        "lib/i18n.tsx"
       ],
       "importedBy": []
     },
@@ -327,16 +26,45 @@
         "app/isolated-components/GalleryGrid/page.tsx"
       ]
     },
-    "components/StarDivider.tsx": {
+    "app/support/page.tsx": {
+      "imports": [
+        "components/SupportScreen.tsx"
+      ],
+      "importedBy": []
+    },
+    "components/TarotCard.tsx": {
       "imports": [],
       "importedBy": [
-        "app/isolated-components/StarDivider/page.tsx",
+        "app/isolated-components/TarotCard/page.tsx",
         "components/CardReading.tsx"
       ]
     },
-    "vitest.config.ts": {
+    "components/StatsLogin.tsx": {
       "imports": [],
+      "importedBy": [
+        "app/isolated-components/StatsLogin/page.tsx",
+        "app/stats/page.tsx"
+      ]
+    },
+    "app/isolated-components/HomeDeckStrip/page.tsx": {
+      "imports": [
+        "components/HomeDeckStrip.tsx",
+        "data/cards.ts"
+      ],
       "importedBy": []
+    },
+    "components/QuestionInput.tsx": {
+      "imports": [
+        "lib/i18n.tsx",
+        "data/cards.ts",
+        "lib/useIsDesktop.ts",
+        "components/BackHeader.tsx",
+        "components/DesktopNav.tsx"
+      ],
+      "importedBy": [
+        "app/question/page.tsx",
+        "app/isolated-components/QuestionInput/page.tsx"
+      ]
     },
     "app/isolated-components/CarotProvider/page.tsx": {
       "imports": [
@@ -345,69 +73,31 @@
       ],
       "importedBy": []
     },
-    "app/isolated-components/DesktopNav/page.tsx": {
-      "imports": [
-        "components/DesktopNav.tsx"
-      ],
-      "importedBy": []
-    },
-    "components/HomeTitle.tsx": {
+    "components/PrivacyScreen.tsx": {
       "imports": [
         "lib/i18n.tsx",
         "lib/useIsDesktop.ts",
-        "components/Wordmark.tsx"
+        "components/BackHeader.tsx",
+        "components/DesktopNav.tsx"
       ],
       "importedBy": [
-        "app/isolated-components/HomeTitle/page.tsx",
-        "components/Home.tsx"
+        "app/privacy/page.tsx",
+        "app/isolated-components/PrivacyScreen/page.tsx"
       ]
     },
-    ".claude/skills/review-session/scripts/extract-session-helpers.mjs": {
-      "imports": [],
-      "importedBy": [
-        ".claude/skills/review-session/scripts/extract-session.mjs"
-      ]
-    },
-    "components/Home.tsx": {
-      "imports": [
-        "data/cards.ts",
-        "components/HomeHeader.tsx",
-        "components/HomeTitle.tsx",
-        "components/CardFan.tsx",
-        "components/HomeDeckStrip.tsx",
-        "components/HomeActions.tsx"
-      ],
-      "importedBy": [
-        "app/isolated-components/Home/page.tsx",
-        "app/page.tsx"
-      ]
-    },
-    "app/message/page.tsx": {
-      "imports": [
-        "components/MessageIntro.tsx"
-      ],
-      "importedBy": []
-    },
-    "components/ExperienceButton.tsx": {
-      "imports": [],
-      "importedBy": [
-        "app/isolated-components/ExperienceButton/page.tsx",
-        "components/HomeActions.tsx"
-      ]
-    },
-    "app/about/page.tsx": {
-      "imports": [
-        "components/AboutScreen.tsx"
-      ],
-      "importedBy": []
-    },
-    "app/api/__codeyam_revalidate/route.ts": {
+    "app/isolated-components/layout.tsx": {
       "imports": [],
       "importedBy": []
     },
-    "app/isolated-components/CarotMenu/page.tsx": {
+    "app/isolated-components/CommentRow/page.tsx": {
       "imports": [
-        "components/CarotMenu.tsx"
+        "components/Comments.tsx"
+      ],
+      "importedBy": []
+    },
+    "app/isolated-components/BackHeader/page.tsx": {
+      "imports": [
+        "components/BackHeader.tsx"
       ],
       "importedBy": []
     },
@@ -421,159 +111,38 @@
         "lib/daily.test.ts"
       ]
     },
-    "app/isolated-components/DeckArc/page.tsx": {
+    "app/isolated-components/AboutScreen/page.tsx": {
       "imports": [
-        "components/DeckArc.tsx"
-      ],
-      "importedBy": []
-    },
-    "prisma/seed.ts": {
-      "imports": [],
-      "importedBy": []
-    },
-    "components/MenuToggle.tsx": {
-      "imports": [
-        "lib/useIsDesktop.ts"
-      ],
-      "importedBy": [
-        "app/isolated-components/MenuToggle/page.tsx",
-        "components/MenuOverlay.tsx"
-      ]
-    },
-    "lib/links.ts": {
-      "imports": [],
-      "importedBy": [
-        "components/SupportScreen.tsx",
-        "components/CarotMenu.tsx",
-        "components/NavRightCluster.tsx",
-        "components/Footer.tsx",
         "components/AboutScreen.tsx"
-      ]
+      ],
+      "importedBy": []
     },
-    "components/AboutScreen.tsx": {
+    "app/isolated-components/HomeHeader/page.tsx": {
+      "imports": [
+        "components/HomeHeader.tsx",
+        "lib/i18n.tsx"
+      ],
+      "importedBy": []
+    },
+    "app/api/__codeyam_revalidate/route.ts": {
+      "imports": [],
+      "importedBy": []
+    },
+    "app/isolated-components/GalleryGrid/page.tsx": {
+      "imports": [
+        "components/GalleryGrid.tsx"
+      ],
+      "importedBy": []
+    },
+    "components/HomeTitle.tsx": {
       "imports": [
         "lib/i18n.tsx",
-        "lib/links.ts",
         "lib/useIsDesktop.ts",
-        "components/BackHeader.tsx",
-        "components/DesktopNav.tsx"
+        "components/Wordmark.tsx"
       ],
       "importedBy": [
-        "app/about/page.tsx",
-        "app/isolated-components/AboutScreen/page.tsx"
-      ]
-    },
-    "components/CardFan.tsx": {
-      "imports": [
-        "data/cards.ts"
-      ],
-      "importedBy": [
-        "app/isolated-components/CardFan/page.tsx",
+        "app/isolated-components/HomeTitle/page.tsx",
         "components/Home.tsx"
-      ]
-    },
-    "next-env.d.ts": {
-      "imports": [
-        ".next/types/routes.d.ts"
-      ],
-      "importedBy": []
-    },
-    "app/isolated-components/CommentRow/page.tsx": {
-      "imports": [
-        "components/Comments.tsx"
-      ],
-      "importedBy": []
-    },
-    "components/CardReading.tsx": {
-      "imports": [
-        "lib/i18n.tsx",
-        "data/cards.ts",
-        "lib/useIsDesktop.ts",
-        "lib/share.ts",
-        "lib/wallpaper.ts",
-        "components/TarotCard.tsx",
-        "components/StarDivider.tsx",
-        "components/DesktopNav.tsx"
-      ],
-      "importedBy": [
-        "app/reading/page.tsx",
-        "app/isolated-components/CardReading/page.tsx"
-      ]
-    },
-    "app/isolated-components/NavRightCluster/page.tsx": {
-      "imports": [
-        "components/NavRightCluster.tsx",
-        "lib/i18n.tsx",
-        "lib/menu.tsx"
-      ],
-      "importedBy": []
-    },
-    "app/globals.css": {
-      "imports": [],
-      "importedBy": [
-        "app/layout.tsx"
-      ]
-    },
-    "lib/geo.ts": {
-      "imports": [],
-      "importedBy": [
-        "app/api/track/route.ts",
-        "app/api/interpret/route.ts",
-        "lib/dailyCard.ts",
-        "lib/geo.test.ts"
-      ]
-    },
-    ".claude/skills/review-session/scripts/find-last-session-helpers.mjs": {
-      "imports": [],
-      "importedBy": [
-        ".claude/skills/review-session/scripts/find-last-session.mjs"
-      ]
-    },
-    "app/lib/prisma.ts": {
-      "imports": [],
-      "importedBy": [
-        "app/reading/page.tsx",
-        "app/api/comments/route.ts",
-        "app/api/track/route.ts",
-        "app/api/interpret/route.ts",
-        "app/stats/page.tsx",
-        "lib/dailyCard.ts"
-      ]
-    },
-    "app/isolated-components/DeckCarousel/page.tsx": {
-      "imports": [
-        "components/MessageIntro.tsx"
-      ],
-      "importedBy": []
-    },
-    "app/isolated-components/Comments/page.tsx": {
-      "imports": [
-        "components/Comments.tsx"
-      ],
-      "importedBy": []
-    },
-    "middleware.ts": {
-      "imports": [],
-      "importedBy": []
-    },
-    "components/Comments.tsx": {
-      "imports": [
-        "lib/i18n.tsx",
-        "lib/useIsDesktop.ts"
-      ],
-      "importedBy": [
-        "app/reading/page.tsx",
-        "app/isolated-components/Comments/page.tsx",
-        "app/isolated-components/CommentRow/page.tsx"
-      ]
-    },
-    "lib/share.ts": {
-      "imports": [
-        "data/cards.ts"
-      ],
-      "importedBy": [
-        "components/CardReading.tsx",
-        "lib/share.test.ts"
       ]
     },
     "data/cards.ts": {
@@ -607,81 +176,93 @@
         "data/cards.test.ts"
       ]
     },
-    "app/isolated-components/StarDivider/page.tsx": {
-      "imports": [
-        "components/StarDivider.tsx"
-      ],
-      "importedBy": []
-    },
-    "data/cards.test.ts": {
+    "components/CardFan.tsx": {
       "imports": [
         "data/cards.ts"
       ],
-      "importedBy": []
-    },
-    "app/reading/page.tsx": {
-      "imports": [
-        "components/CardReading.tsx",
-        "components/Comments.tsx",
-        "components/Footer.tsx",
-        "data/cards.ts",
-        "lib/daily.ts",
-        "lib/dailyCard.ts",
-        "app/lib/prisma.ts"
-      ],
-      "importedBy": []
-    },
-    "components/NavRightCluster.tsx": {
-      "imports": [
-        "lib/i18n.tsx",
-        "lib/menu.tsx",
-        "components/LangToggle.tsx",
-        "lib/links.ts"
-      ],
       "importedBy": [
-        "app/isolated-components/MenuProvider/page.tsx",
-        "app/isolated-components/NavRightCluster/page.tsx",
-        "components/DesktopNav.tsx",
-        "components/HomeHeader.tsx"
-      ]
-    },
-    "components/StatsLogin.tsx": {
-      "imports": [],
-      "importedBy": [
-        "app/isolated-components/StatsLogin/page.tsx",
-        "app/stats/page.tsx"
-      ]
-    },
-    "app/support/page.tsx": {
-      "imports": [
-        "components/SupportScreen.tsx"
-      ],
-      "importedBy": []
-    },
-    "app/isolated-components/CardReading/page.tsx": {
-      "imports": [
-        "components/CardReading.tsx",
-        "data/cards.ts"
-      ],
-      "importedBy": []
-    },
-    "components/HomeHeader.tsx": {
-      "imports": [
-        "lib/i18n.tsx",
-        "lib/useIsDesktop.ts",
-        "components/LangToggle.tsx",
-        "components/NavRightCluster.tsx"
-      ],
-      "importedBy": [
-        "app/isolated-components/HomeHeader/page.tsx",
+        "app/isolated-components/CardFan/page.tsx",
         "components/Home.tsx"
       ]
     },
-    ".next/types/routes.d.ts": {
+    "lib/share.test.ts": {
+      "imports": [
+        "lib/share.ts",
+        "data/cards.ts"
+      ],
+      "importedBy": []
+    },
+    "components/Comments.tsx": {
+      "imports": [
+        "lib/i18n.tsx",
+        "lib/useIsDesktop.ts"
+      ],
+      "importedBy": [
+        "app/reading/page.tsx",
+        "app/isolated-components/Comments/page.tsx",
+        "app/isolated-components/CommentRow/page.tsx"
+      ]
+    },
+    "components/DesktopNav.tsx": {
+      "imports": [
+        "lib/i18n.tsx",
+        "components/NavRightCluster.tsx"
+      ],
+      "importedBy": [
+        "app/isolated-components/DesktopNav/page.tsx",
+        "components/SupportScreen.tsx",
+        "components/GalleryGrid.tsx",
+        "components/QuestionInput.tsx",
+        "components/PrivacyScreen.tsx",
+        "components/CardReading.tsx",
+        "components/AboutScreen.tsx",
+        "components/MessageIntro.tsx"
+      ]
+    },
+    "app/isolated-components/Footer/page.tsx": {
+      "imports": [
+        "components/Footer.tsx"
+      ],
+      "importedBy": []
+    },
+    "app/question/page.tsx": {
+      "imports": [
+        "components/QuestionInput.tsx"
+      ],
+      "importedBy": []
+    },
+    "app/isolated-components/DeckCarousel/page.tsx": {
+      "imports": [
+        "components/MessageIntro.tsx"
+      ],
+      "importedBy": []
+    },
+    "next.config.ts": {
+      "imports": [],
+      "importedBy": []
+    },
+    "app/scenario/[slug]/page.tsx": {
+      "imports": [],
+      "importedBy": []
+    },
+    "app/isolated-components/TarotCard/page.tsx": {
+      "imports": [
+        "components/TarotCard.tsx"
+      ],
+      "importedBy": []
+    },
+    "components/VisitTracker.tsx": {
       "imports": [],
       "importedBy": [
-        "next-env.d.ts"
+        "app/layout.tsx"
       ]
+    },
+    "app/page.tsx": {
+      "imports": [
+        "components/Home.tsx",
+        "lib/pickFan.ts"
+      ],
+      "importedBy": []
     },
     "app/api/interpret/route.ts": {
       "imports": [
@@ -691,6 +272,28 @@
         "lib/geo.ts"
       ],
       "importedBy": []
+    },
+    "components/ExperienceButton.tsx": {
+      "imports": [],
+      "importedBy": [
+        "app/isolated-components/ExperienceButton/page.tsx",
+        "components/HomeActions.tsx"
+      ]
+    },
+    "app/isolated-components/PrivacyScreen/page.tsx": {
+      "imports": [
+        "components/PrivacyScreen.tsx"
+      ],
+      "importedBy": []
+    },
+    "lib/pickFan.ts": {
+      "imports": [
+        "data/cards.ts"
+      ],
+      "importedBy": [
+        "app/page.tsx",
+        "lib/pickFan.test.ts"
+      ]
     },
     "components/HomeActions.tsx": {
       "imports": [
@@ -702,7 +305,74 @@
         "components/Home.tsx"
       ]
     },
-    "app/scenario/[slug]/page.tsx": {
+    "lib/dailyCard.ts": {
+      "imports": [
+        "app/lib/prisma.ts",
+        "data/cards.ts",
+        "lib/daily.ts",
+        "lib/geo.ts"
+      ],
+      "importedBy": [
+        "app/reading/page.tsx",
+        "app/api/cron/daily/route.ts"
+      ]
+    },
+    ".claude/skills/review-session/scripts/find-last-session-helpers.mjs": {
+      "imports": [],
+      "importedBy": [
+        ".claude/skills/review-session/scripts/find-last-session.mjs"
+      ]
+    },
+    "app/isolated-components/CardReading/page.tsx": {
+      "imports": [
+        "components/CardReading.tsx",
+        "data/cards.ts"
+      ],
+      "importedBy": []
+    },
+    "app/stats/page.tsx": {
+      "imports": [
+        "app/lib/prisma.ts",
+        "data/cards.ts",
+        "components/StatsLogin.tsx"
+      ],
+      "importedBy": [
+        "app/isolated-components/Section/page.tsx"
+      ]
+    },
+    "app/isolated-components/CardFan/page.tsx": {
+      "imports": [
+        "components/CardFan.tsx",
+        "data/cards.ts"
+      ],
+      "importedBy": []
+    },
+    "app/isolated-components/QuestionInput/page.tsx": {
+      "imports": [
+        "components/QuestionInput.tsx"
+      ],
+      "importedBy": []
+    },
+    "components/SupportScreen.tsx": {
+      "imports": [
+        "lib/i18n.tsx",
+        "lib/links.ts",
+        "lib/useIsDesktop.ts",
+        "components/BackHeader.tsx",
+        "components/DesktopNav.tsx"
+      ],
+      "importedBy": [
+        "app/support/page.tsx",
+        "app/isolated-components/SupportScreen/page.tsx"
+      ]
+    },
+    "app/isolated-components/MenuOverlay/page.tsx": {
+      "imports": [
+        "components/MenuOverlay.tsx"
+      ],
+      "importedBy": []
+    },
+    "vitest.config.ts": {
       "imports": [],
       "importedBy": []
     },
@@ -721,65 +391,35 @@
         "app/isolated-components/DeckCarousel/page.tsx"
       ]
     },
-    "lib/share.test.ts": {
-      "imports": [
-        "lib/share.ts",
-        "data/cards.ts"
-      ],
-      "importedBy": []
-    },
-    "components/VisitTracker.tsx": {
-      "imports": [],
-      "importedBy": [
-        "app/layout.tsx"
-      ]
-    },
-    "app/page.tsx": {
-      "imports": [
-        "components/Home.tsx",
-        "lib/pickFan.ts"
-      ],
-      "importedBy": []
-    },
-    "app/stats/page.tsx": {
-      "imports": [
-        "app/lib/prisma.ts",
-        "data/cards.ts",
-        "components/StatsLogin.tsx"
-      ],
-      "importedBy": [
-        "app/isolated-components/Section/page.tsx"
-      ]
-    },
-    "lib/interpret-prompts.ts": {
-      "imports": [
-        "data/cards.ts"
-      ],
-      "importedBy": [
-        "app/api/interpret/route.ts",
-        "lib/interpret-prompts.test.ts"
-      ]
-    },
-    "lib/pickFan.test.ts": {
-      "imports": [
-        "lib/pickFan.ts",
-        "data/cards.ts"
-      ],
-      "importedBy": []
-    },
-    "app/isolated-components/layout.tsx": {
+    ".claude/hooks/_step_metadata.py": {
       "imports": [],
       "importedBy": []
     },
-    "app/isolated-components/BackHeader/page.tsx": {
+    "app/isolated-components/MenuToggle/page.tsx": {
       "imports": [
-        "components/BackHeader.tsx"
+        "components/MenuToggle.tsx"
       ],
       "importedBy": []
     },
-    "app/isolated-components/Footer/page.tsx": {
+    "next-env.d.ts": {
       "imports": [
-        "components/Footer.tsx"
+        ".next/dev/types/routes.d.ts"
+      ],
+      "importedBy": []
+    },
+    "components/CarotMenu.tsx": {
+      "imports": [
+        "lib/i18n.tsx",
+        "lib/links.ts"
+      ],
+      "importedBy": [
+        "app/isolated-components/CarotMenu/page.tsx",
+        "components/MenuOverlay.tsx"
+      ]
+    },
+    "data/cards.test.ts": {
+      "imports": [
+        "data/cards.ts"
       ],
       "importedBy": []
     },
@@ -790,47 +430,74 @@
       ],
       "importedBy": []
     },
-    "lib/geo.test.ts": {
+    "app/isolated-components/HomeActions/page.tsx": {
       "imports": [
-        "lib/geo.ts"
+        "components/HomeActions.tsx",
+        "lib/i18n.tsx"
       ],
       "importedBy": []
     },
-    ".next/dev/types/routes.d.ts": {
-      "imports": [],
-      "importedBy": []
-    },
-    "lib/useIsDesktop.ts": {
-      "imports": [],
-      "importedBy": [
-        "components/MenuOverlay.tsx",
-        "components/SupportScreen.tsx",
-        "components/GalleryGrid.tsx",
-        "components/MenuToggle.tsx",
-        "components/HomeTitle.tsx",
-        "components/Comments.tsx",
-        "components/QuestionInput.tsx",
-        "components/PrivacyScreen.tsx",
-        "components/CardReading.tsx",
-        "components/AboutScreen.tsx",
-        "components/MessageIntro.tsx",
-        "components/HomeHeader.tsx"
-      ]
-    },
-    "app/isolated-components/GalleryGrid/page.tsx": {
+    "app/gallery/page.tsx": {
       "imports": [
         "components/GalleryGrid.tsx"
       ],
       "importedBy": []
     },
-    "lib/pickFan.ts": {
+    "components/StarDivider.tsx": {
+      "imports": [],
+      "importedBy": [
+        "app/isolated-components/StarDivider/page.tsx",
+        "components/CardReading.tsx"
+      ]
+    },
+    ".claude/hooks/editor-pretool-hook.py": {
+      "imports": [],
+      "importedBy": []
+    },
+    "app/isolated-components/Home/page.tsx": {
+      "imports": [
+        "components/Home.tsx",
+        "lib/i18n.tsx",
+        "data/cards.ts"
+      ],
+      "importedBy": []
+    },
+    "app/isolated-components/DesktopNav/page.tsx": {
+      "imports": [
+        "components/DesktopNav.tsx"
+      ],
+      "importedBy": []
+    },
+    "lib/share.ts": {
       "imports": [
         "data/cards.ts"
       ],
       "importedBy": [
-        "app/page.tsx",
-        "lib/pickFan.test.ts"
+        "components/CardReading.tsx",
+        "lib/share.test.ts"
       ]
+    },
+    "lib/wallpaper.test.ts": {
+      "imports": [
+        "lib/wallpaper.ts"
+      ],
+      "importedBy": []
+    },
+    "components/HomeLove.tsx": {
+      "imports": [
+        "lib/i18n.tsx"
+      ],
+      "importedBy": []
+    },
+    ".claude/hooks/editor-step-hook.py": {
+      "imports": [],
+      "importedBy": []
+    },
+    "app/isolated-components/Comments/page.tsx": {
+      "imports": [
+        "components/Comments.tsx"
+      ],
+      "importedBy": []
     },
     "lib/i18n.tsx": {
       "imports": [],
@@ -866,76 +533,24 @@
         "components/HomeActions.tsx"
       ]
     },
-    "lib/menu.tsx": {
-      "imports": [],
-      "importedBy": [
-        "app/layout.tsx",
-        "app/isolated-components/MenuProvider/page.tsx",
-        "app/isolated-components/NavRightCluster/page.tsx",
-        "components/MenuOverlay.tsx",
-        "components/NavRightCluster.tsx"
-      ]
-    },
-    "app/api/cron/daily/route.ts": {
+    "components/BackHeader.tsx": {
       "imports": [
-        "lib/dailyCard.ts"
-      ],
-      "importedBy": []
-    },
-    "app/api/track/route.ts": {
-      "imports": [
-        "app/lib/prisma.ts",
-        "lib/geo.ts"
-      ],
-      "importedBy": []
-    },
-    "components/HomeDeckStrip.tsx": {
-      "imports": [
-        "data/cards.ts"
-      ],
-      "importedBy": [
-        "app/isolated-components/HomeDeckStrip/page.tsx",
-        "components/Home.tsx"
-      ]
-    },
-    "components/QuestionInput.tsx": {
-      "imports": [
-        "lib/i18n.tsx",
-        "data/cards.ts",
-        "lib/useIsDesktop.ts",
-        "components/BackHeader.tsx",
-        "components/DesktopNav.tsx"
-      ],
-      "importedBy": [
-        "app/question/page.tsx",
-        "app/isolated-components/QuestionInput/page.tsx"
-      ]
-    },
-    "postcss.config.mjs": {
-      "imports": [],
-      "importedBy": []
-    },
-    ".claude/hooks/editor-pretool-hook.py": {
-      "imports": [],
-      "importedBy": []
-    },
-    "app/isolated-components/CardFan/page.tsx": {
-      "imports": [
-        "components/CardFan.tsx",
-        "data/cards.ts"
-      ],
-      "importedBy": []
-    },
-    "app/isolated-components/HomeActions/page.tsx": {
-      "imports": [
-        "components/HomeActions.tsx",
         "lib/i18n.tsx"
       ],
-      "importedBy": []
+      "importedBy": [
+        "app/isolated-components/BackHeader/page.tsx",
+        "components/SupportScreen.tsx",
+        "components/GalleryGrid.tsx",
+        "components/QuestionInput.tsx",
+        "components/PrivacyScreen.tsx",
+        "components/AboutScreen.tsx",
+        "components/MessageIntro.tsx"
+      ]
     },
-    "app/isolated-components/MenuToggle/page.tsx": {
+    "lib/pickFan.test.ts": {
       "imports": [
-        "components/MenuToggle.tsx"
+        "lib/pickFan.ts",
+        "data/cards.ts"
       ],
       "importedBy": []
     },
@@ -947,195 +562,419 @@
       ],
       "importedBy": []
     },
-    "app/question/page.tsx": {
+    "components/LangToggle.tsx": {
       "imports": [
-        "components/QuestionInput.tsx"
+        "lib/i18n.tsx"
+      ],
+      "importedBy": [
+        "app/isolated-components/LangToggle/page.tsx",
+        "app/isolated-components/CarotProvider/page.tsx",
+        "components/NavRightCluster.tsx",
+        "components/HomeHeader.tsx"
+      ]
+    },
+    "lib/interpret-prompts.ts": {
+      "imports": [
+        "data/cards.ts"
+      ],
+      "importedBy": [
+        "app/api/interpret/route.ts",
+        "lib/interpret-prompts.test.ts"
+      ]
+    },
+    "components/HomeDeckStrip.tsx": {
+      "imports": [
+        "data/cards.ts"
+      ],
+      "importedBy": [
+        "app/isolated-components/HomeDeckStrip/page.tsx",
+        "components/Home.tsx"
+      ]
+    },
+    "postcss.config.mjs": {
+      "imports": [],
+      "importedBy": []
+    },
+    "app/isolated-components/Section/page.tsx": {
+      "imports": [
+        "app/stats/page.tsx",
+        "data/cards.ts"
+      ],
+      "importedBy": []
+    },
+    "app/isolated-components/MessageIntro/page.tsx": {
+      "imports": [
+        "components/MessageIntro.tsx"
+      ],
+      "importedBy": []
+    },
+    "app/isolated-components/StarDivider/page.tsx": {
+      "imports": [
+        "components/StarDivider.tsx"
+      ],
+      "importedBy": []
+    },
+    "lib/menu.tsx": {
+      "imports": [],
+      "importedBy": [
+        "app/layout.tsx",
+        "app/isolated-components/MenuProvider/page.tsx",
+        "app/isolated-components/NavRightCluster/page.tsx",
+        "components/MenuOverlay.tsx",
+        "components/NavRightCluster.tsx"
+      ]
+    },
+    "prisma/seed.ts": {
+      "imports": [],
+      "importedBy": []
+    },
+    "lib/wallpaper.ts": {
+      "imports": [
+        "data/cards.ts"
+      ],
+      "importedBy": [
+        "components/CardReading.tsx",
+        "lib/wallpaper.test.ts"
+      ]
+    },
+    "app/globals.css": {
+      "imports": [],
+      "importedBy": [
+        "app/layout.tsx"
+      ]
+    },
+    "lib/geo.ts": {
+      "imports": [],
+      "importedBy": [
+        "app/api/track/route.ts",
+        "app/api/interpret/route.ts",
+        "lib/dailyCard.ts",
+        "lib/geo.test.ts"
+      ]
+    },
+    "components/MenuToggle.tsx": {
+      "imports": [
+        "lib/useIsDesktop.ts"
+      ],
+      "importedBy": [
+        "app/isolated-components/MenuToggle/page.tsx",
+        "components/MenuOverlay.tsx"
+      ]
+    },
+    "app/reading/page.tsx": {
+      "imports": [
+        "components/CardReading.tsx",
+        "components/Comments.tsx",
+        "components/Footer.tsx",
+        "data/cards.ts",
+        "lib/daily.ts",
+        "lib/dailyCard.ts",
+        "app/lib/prisma.ts"
+      ],
+      "importedBy": []
+    },
+    "app/api/cron/daily/route.ts": {
+      "imports": [
+        "lib/dailyCard.ts"
+      ],
+      "importedBy": []
+    },
+    "app/layout.tsx": {
+      "imports": [
+        "app/globals.css",
+        "lib/i18n.tsx",
+        "lib/i18n.tsx",
+        "lib/menu.tsx",
+        "components/MenuOverlay.tsx",
+        "components/VisitTracker.tsx"
+      ],
+      "importedBy": []
+    },
+    "components/MenuOverlay.tsx": {
+      "imports": [
+        "lib/i18n.tsx",
+        "lib/menu.tsx",
+        "lib/useIsDesktop.ts",
+        "components/MenuToggle.tsx",
+        "components/CarotMenu.tsx"
+      ],
+      "importedBy": [
+        "app/layout.tsx",
+        "app/isolated-components/MenuOverlay/page.tsx"
+      ]
+    },
+    "app/api/comments/route.ts": {
+      "imports": [
+        "app/lib/prisma.ts"
+      ],
+      "importedBy": []
+    },
+    ".claude/skills/review-session/scripts/extract-session.mjs": {
+      "imports": [
+        ".claude/skills/review-session/scripts/extract-session-helpers.mjs"
+      ],
+      "importedBy": []
+    },
+    "ui/src/helpers/stepLabels.generated.ts": {
+      "imports": [],
+      "importedBy": []
+    },
+    "app/codeyam-isolate/layout.tsx": {
+      "imports": [],
+      "importedBy": []
+    },
+    "app/about/page.tsx": {
+      "imports": [
+        "components/AboutScreen.tsx"
+      ],
+      "importedBy": []
+    },
+    "app/api/track/route.ts": {
+      "imports": [
+        "app/lib/prisma.ts",
+        "lib/geo.ts"
+      ],
+      "importedBy": []
+    },
+    "components/NavRightCluster.tsx": {
+      "imports": [
+        "lib/i18n.tsx",
+        "lib/menu.tsx",
+        "components/LangToggle.tsx",
+        "lib/links.ts"
+      ],
+      "importedBy": [
+        "app/isolated-components/MenuProvider/page.tsx",
+        "app/isolated-components/NavRightCluster/page.tsx",
+        "components/DesktopNav.tsx",
+        "components/HomeHeader.tsx"
+      ]
+    },
+    "components/DeckArc.tsx": {
+      "imports": [
+        "data/cards.ts"
+      ],
+      "importedBy": [
+        "app/isolated-components/DeckArc/page.tsx",
+        "components/MessageIntro.tsx"
+      ]
+    },
+    "components/Home.tsx": {
+      "imports": [
+        "data/cards.ts",
+        "components/HomeHeader.tsx",
+        "components/HomeTitle.tsx",
+        "components/CardFan.tsx",
+        "components/HomeDeckStrip.tsx",
+        "components/HomeActions.tsx"
+      ],
+      "importedBy": [
+        "app/isolated-components/Home/page.tsx",
+        "app/page.tsx"
+      ]
+    },
+    "app/isolated-components/DeckArc/page.tsx": {
+      "imports": [
+        "components/DeckArc.tsx"
+      ],
+      "importedBy": []
+    },
+    "components/HomeHeader.tsx": {
+      "imports": [
+        "lib/i18n.tsx",
+        "lib/useIsDesktop.ts",
+        "components/LangToggle.tsx",
+        "components/NavRightCluster.tsx"
+      ],
+      "importedBy": [
+        "app/isolated-components/HomeHeader/page.tsx",
+        "components/Home.tsx"
+      ]
+    },
+    ".next/dev/types/routes.d.ts": {
+      "imports": [],
+      "importedBy": [
+        "next-env.d.ts"
+      ]
+    },
+    "components/Wordmark.tsx": {
+      "imports": [],
+      "importedBy": [
+        "components/HomeTitle.tsx"
+      ]
+    },
+    "prisma.config.ts": {
+      "imports": [],
+      "importedBy": []
+    },
+    "app/isolated-components/ExperienceButton/page.tsx": {
+      "imports": [
+        "components/ExperienceButton.tsx"
+      ],
+      "importedBy": []
+    },
+    "middleware.ts": {
+      "imports": [],
+      "importedBy": []
+    },
+    "app/lib/prisma.ts": {
+      "imports": [],
+      "importedBy": [
+        "app/reading/page.tsx",
+        "app/api/comments/route.ts",
+        "app/api/track/route.ts",
+        "app/api/interpret/route.ts",
+        "app/stats/page.tsx",
+        "lib/dailyCard.ts"
+      ]
+    },
+    "lib/geo.test.ts": {
+      "imports": [
+        "lib/geo.ts"
+      ],
+      "importedBy": []
+    },
+    ".next/types/routes.d.ts": {
+      "imports": [],
+      "importedBy": []
+    },
+    "lib/daily.test.ts": {
+      "imports": [
+        "lib/daily.ts"
+      ],
+      "importedBy": []
+    },
+    "lib/useIsDesktop.ts": {
+      "imports": [],
+      "importedBy": [
+        "components/MenuOverlay.tsx",
+        "components/SupportScreen.tsx",
+        "components/GalleryGrid.tsx",
+        "components/MenuToggle.tsx",
+        "components/HomeTitle.tsx",
+        "components/Comments.tsx",
+        "components/QuestionInput.tsx",
+        "components/PrivacyScreen.tsx",
+        "components/CardReading.tsx",
+        "components/AboutScreen.tsx",
+        "components/MessageIntro.tsx",
+        "components/HomeHeader.tsx"
+      ]
+    },
+    "components/Footer.tsx": {
+      "imports": [
+        "lib/i18n.tsx",
+        "lib/links.ts"
+      ],
+      "importedBy": [
+        "app/reading/page.tsx",
+        "app/isolated-components/Footer/page.tsx",
+        "components/GalleryGrid.tsx"
+      ]
+    },
+    ".claude/skills/review-session/scripts/extract-session-helpers.mjs": {
+      "imports": [],
+      "importedBy": [
+        ".claude/skills/review-session/scripts/extract-session.mjs"
+      ]
+    },
+    "app/isolated-components/StatsLogin/page.tsx": {
+      "imports": [
+        "components/StatsLogin.tsx"
+      ],
+      "importedBy": []
+    },
+    "app/message/page.tsx": {
+      "imports": [
+        "components/MessageIntro.tsx"
+      ],
+      "importedBy": []
+    },
+    "eslint.config.mjs": {
+      "imports": [],
+      "importedBy": []
+    },
+    ".claude/skills/review-session/scripts/find-last-session.mjs": {
+      "imports": [
+        ".claude/skills/review-session/scripts/find-last-session-helpers.mjs"
+      ],
+      "importedBy": []
+    },
+    "app/isolated-components/HomeTitle/page.tsx": {
+      "imports": [
+        "components/HomeTitle.tsx",
+        "lib/i18n.tsx"
+      ],
+      "importedBy": []
+    },
+    "lib/links.ts": {
+      "imports": [],
+      "importedBy": [
+        "components/SupportScreen.tsx",
+        "components/CarotMenu.tsx",
+        "components/NavRightCluster.tsx",
+        "components/Footer.tsx",
+        "components/AboutScreen.tsx"
+      ]
+    },
+    "app/isolated-components/NavRightCluster/page.tsx": {
+      "imports": [
+        "components/NavRightCluster.tsx",
+        "lib/i18n.tsx",
+        "lib/menu.tsx"
+      ],
+      "importedBy": []
+    },
+    "components/AboutScreen.tsx": {
+      "imports": [
+        "lib/i18n.tsx",
+        "lib/links.ts",
+        "lib/useIsDesktop.ts",
+        "components/BackHeader.tsx",
+        "components/DesktopNav.tsx"
+      ],
+      "importedBy": [
+        "app/about/page.tsx",
+        "app/isolated-components/AboutScreen/page.tsx"
+      ]
+    },
+    "components/CardReading.tsx": {
+      "imports": [
+        "lib/i18n.tsx",
+        "data/cards.ts",
+        "lib/useIsDesktop.ts",
+        "lib/share.ts",
+        "lib/wallpaper.ts",
+        "components/TarotCard.tsx",
+        "components/StarDivider.tsx",
+        "components/DesktopNav.tsx"
+      ],
+      "importedBy": [
+        "app/reading/page.tsx",
+        "app/isolated-components/CardReading/page.tsx"
+      ]
+    },
+    "lib/interpret-prompts.test.ts": {
+      "imports": [
+        "lib/interpret-prompts.ts",
+        "data/cards.ts"
+      ],
+      "importedBy": []
+    },
+    "app/isolated-components/SupportScreen/page.tsx": {
+      "imports": [
+        "components/SupportScreen.tsx"
       ],
       "importedBy": []
     }
   },
   "entities": {
-    "components/LangToggle.tsx::__file_root__": {
-      "filePath": "components/LangToggle.tsx",
+    "app/page.tsx::__file_root__": {
+      "filePath": "app/page.tsx",
       "name": "__file_root__",
       "imports": [
-        "lib/i18n.tsx::useCarot"
-      ],
-      "importedBy": []
-    },
-    "app/isolated-components/NavRightCluster/page.tsx::__file_root__": {
-      "filePath": "app/isolated-components/NavRightCluster/page.tsx",
-      "name": "__file_root__",
-      "imports": [
-        "components/NavRightCluster.tsx::NavRightCluster",
-        "lib/i18n.tsx::CarotProvider",
-        "lib/i18n.tsx::Lang",
-        "lib/menu.tsx::MenuProvider"
-      ],
-      "importedBy": []
-    },
-    ".claude/skills/review-session/scripts/find-last-session.mjs::__file_root__": {
-      "filePath": ".claude/skills/review-session/scripts/find-last-session.mjs",
-      "name": "__file_root__",
-      "imports": [
-        ".claude/skills/review-session/scripts/find-last-session-helpers.mjs::claudeProjectHashFromPath"
-      ],
-      "importedBy": []
-    },
-    "app/isolated-components/CardFan/page.tsx::__file_root__": {
-      "filePath": "app/isolated-components/CardFan/page.tsx",
-      "name": "__file_root__",
-      "imports": [
-        "components/CardFan.tsx::CardFan",
-        "data/cards.ts::Card",
-        "data/cards.ts::__file_root__"
-      ],
-      "importedBy": []
-    },
-    "components/NavRightCluster.tsx::__file_root__": {
-      "filePath": "components/NavRightCluster.tsx",
-      "name": "__file_root__",
-      "imports": [
-        "lib/i18n.tsx::useCarot",
-        "lib/menu.tsx::useMenu",
-        "components/LangToggle.tsx::LangToggle",
-        "lib/links.ts::__file_root__"
-      ],
-      "importedBy": []
-    },
-    "app/isolated-components/Comments/page.tsx::__file_root__": {
-      "filePath": "app/isolated-components/Comments/page.tsx",
-      "name": "__file_root__",
-      "imports": [
-        "components/Comments.tsx::Comments"
-      ],
-      "importedBy": []
-    },
-    "app/lib/prisma.ts::__file_root__": {
-      "filePath": "app/lib/prisma.ts",
-      "name": "__file_root__",
-      "imports": [],
-      "importedBy": [
-        "app/api/comments/route.ts::__file_root__",
-        "app/api/track/route.ts::__file_root__",
-        "app/api/interpret/route.ts::__file_root__",
-        "app/stats/page.tsx::__file_root__",
-        "lib/dailyCard.ts::__file_root__"
-      ]
-    },
-    "app/isolated-components/AboutScreen/page.tsx::__file_root__": {
-      "filePath": "app/isolated-components/AboutScreen/page.tsx",
-      "name": "__file_root__",
-      "imports": [
-        "components/AboutScreen.tsx::AboutScreen"
-      ],
-      "importedBy": []
-    },
-    "data/cards.ts::__file_root__": {
-      "filePath": "data/cards.ts",
-      "name": "__file_root__",
-      "imports": [],
-      "importedBy": [
-        "data/cards.test.ts::__file_root__"
-      ]
-    },
-    "lib/daily.ts::__file_root__": {
-      "filePath": "lib/daily.ts",
-      "name": "__file_root__",
-      "imports": [
-        "data/cards.ts::Lang"
-      ],
-      "importedBy": []
-    },
-    "app/api/track/route.ts::__file_root__": {
-      "filePath": "app/api/track/route.ts",
-      "name": "__file_root__",
-      "imports": [
-        "app/lib/prisma.ts::__file_root__",
-        "lib/geo.ts::geoFromHeaders"
-      ],
-      "importedBy": []
-    },
-    "app/api/interpret/route.ts::__file_root__": {
-      "filePath": "app/api/interpret/route.ts",
-      "name": "__file_root__",
-      "imports": [
-        "data/cards.ts::Lang",
-        "data/cards.ts::__file_root__",
-        "data/cards.ts::cardText",
-        "lib/interpret-prompts.ts::buildInterpretPrompt",
-        "app/lib/prisma.ts::__file_root__",
-        "lib/geo.ts::geoFromHeaders"
-      ],
-      "importedBy": []
-    },
-    "app/isolated-components/HomeDeckStrip/page.tsx::__file_root__": {
-      "filePath": "app/isolated-components/HomeDeckStrip/page.tsx",
-      "name": "__file_root__",
-      "imports": [
-        "components/HomeDeckStrip.tsx::HomeDeckStrip",
-        "data/cards.ts::Card",
-        "data/cards.ts::__file_root__"
-      ],
-      "importedBy": []
-    },
-    "app/isolated-components/CarotMenu/page.tsx::__file_root__": {
-      "filePath": "app/isolated-components/CarotMenu/page.tsx",
-      "name": "__file_root__",
-      "imports": [
-        "components/CarotMenu.tsx::CarotMenu"
-      ],
-      "importedBy": []
-    },
-    "app/isolated-components/BackHeader/page.tsx::__file_root__": {
-      "filePath": "app/isolated-components/BackHeader/page.tsx",
-      "name": "__file_root__",
-      "imports": [
-        "components/BackHeader.tsx::BackHeader"
-      ],
-      "importedBy": []
-    },
-    "app/isolated-components/MenuOverlay/page.tsx::__file_root__": {
-      "filePath": "app/isolated-components/MenuOverlay/page.tsx",
-      "name": "__file_root__",
-      "imports": [
-        "components/MenuOverlay.tsx::MenuOverlay"
-      ],
-      "importedBy": []
-    },
-    "lib/daily.test.ts::__file_root__": {
-      "filePath": "lib/daily.test.ts",
-      "name": "__file_root__",
-      "imports": [
-        "lib/daily.ts::dailyCardIndex",
-        "lib/daily.ts::formatDailyDate"
-      ],
-      "importedBy": []
-    },
-    "lib/dailyCard.ts::__file_root__": {
-      "filePath": "lib/dailyCard.ts",
-      "name": "__file_root__",
-      "imports": [
-        "app/lib/prisma.ts::__file_root__",
-        "data/cards.ts::__file_root__",
-        "lib/daily.ts::dailyCardIndex",
-        "lib/geo.ts::utcDateKey"
-      ],
-      "importedBy": []
-    },
-    "lib/interpret-prompts.ts::buildInterpretPrompt": {
-      "filePath": "lib/interpret-prompts.ts",
-      "name": "buildInterpretPrompt",
-      "imports": [],
-      "importedBy": [
-        "lib/interpret-prompts.test.ts::__file_root__"
-      ]
-    },
-    "app/about/page.tsx::__file_root__": {
-      "filePath": "app/about/page.tsx",
-      "name": "__file_root__",
-      "imports": [
-        "components/AboutScreen.tsx::AboutScreen"
+        "components/Home.tsx::Home",
+        "lib/pickFan.ts::pickFan"
       ],
       "importedBy": []
     },
@@ -1144,33 +983,6 @@
       "name": "__file_root__",
       "imports": [
         "components/MessageIntro.tsx::MessageIntro"
-      ],
-      "importedBy": []
-    },
-    "app/globals.css::__file_root__": {
-      "filePath": "app/globals.css",
-      "name": "__file_root__",
-      "imports": [],
-      "importedBy": [
-        "app/layout.tsx::__file_root__"
-      ]
-    },
-    "app/isolated-components/HomeTitle/page.tsx::__file_root__": {
-      "filePath": "app/isolated-components/HomeTitle/page.tsx",
-      "name": "__file_root__",
-      "imports": [
-        "components/HomeTitle.tsx::HomeTitle",
-        "lib/i18n.tsx::CarotProvider",
-        "lib/i18n.tsx::Lang"
-      ],
-      "importedBy": []
-    },
-    "app/isolated-components/ExperienceButton/page.tsx::__file_root__": {
-      "filePath": "app/isolated-components/ExperienceButton/page.tsx",
-      "name": "__file_root__",
-      "imports": [
-        "components/ExperienceButton.tsx::ExperienceButton",
-        "components/ExperienceButton.tsx::ExperienceButtonVariant"
       ],
       "importedBy": []
     },
@@ -1203,27 +1015,19 @@
       ],
       "importedBy": []
     },
-    "components/TarotCard.tsx::TarotCard": {
-      "filePath": "components/TarotCard.tsx",
-      "name": "TarotCard",
+    "lib/share.ts::buildReadingUrl": {
+      "filePath": "lib/share.ts",
+      "name": "buildReadingUrl",
       "imports": [],
       "importedBy": [
-        "components/CardReading.tsx::__file_root__"
+        "lib/share.test.ts::__file_root__"
       ]
     },
-    "app/isolated-components/StatsLogin/page.tsx::__file_root__": {
-      "filePath": "app/isolated-components/StatsLogin/page.tsx",
+    "components/HomeDeckStrip.tsx::__file_root__": {
+      "filePath": "components/HomeDeckStrip.tsx",
       "name": "__file_root__",
       "imports": [
-        "components/StatsLogin.tsx::StatsLogin"
-      ],
-      "importedBy": []
-    },
-    "app/question/page.tsx::__file_root__": {
-      "filePath": "app/question/page.tsx",
-      "name": "__file_root__",
-      "imports": [
-        "components/QuestionInput.tsx::QuestionInput"
+        "data/cards.ts::Card"
       ],
       "importedBy": []
     },
@@ -1236,21 +1040,50 @@
       ],
       "importedBy": []
     },
-    "lib/share.ts::buildShareText": {
-      "filePath": "lib/share.ts",
-      "name": "buildShareText",
-      "imports": [],
-      "importedBy": [
-        "lib/share.test.ts::__file_root__"
-      ]
-    },
-    "app/isolated-components/HomeActions/page.tsx::__file_root__": {
-      "filePath": "app/isolated-components/HomeActions/page.tsx",
+    "app/isolated-components/MenuProvider/page.tsx::__file_root__": {
+      "filePath": "app/isolated-components/MenuProvider/page.tsx",
       "name": "__file_root__",
       "imports": [
-        "components/HomeActions.tsx::HomeActions",
+        "lib/menu.tsx::MenuProvider",
+        "components/NavRightCluster.tsx::NavRightCluster",
         "lib/i18n.tsx::CarotProvider",
         "lib/i18n.tsx::Lang"
+      ],
+      "importedBy": []
+    },
+    "app/isolated-components/StatsLogin/page.tsx::__file_root__": {
+      "filePath": "app/isolated-components/StatsLogin/page.tsx",
+      "name": "__file_root__",
+      "imports": [
+        "components/StatsLogin.tsx::StatsLogin"
+      ],
+      "importedBy": []
+    },
+    "app/lib/prisma.ts::__file_root__": {
+      "filePath": "app/lib/prisma.ts",
+      "name": "__file_root__",
+      "imports": [],
+      "importedBy": [
+        "app/api/comments/route.ts::__file_root__",
+        "app/api/track/route.ts::__file_root__",
+        "app/api/interpret/route.ts::__file_root__",
+        "app/stats/page.tsx::__file_root__",
+        "lib/dailyCard.ts::__file_root__"
+      ]
+    },
+    "app/isolated-components/MenuToggle/page.tsx::__file_root__": {
+      "filePath": "app/isolated-components/MenuToggle/page.tsx",
+      "name": "__file_root__",
+      "imports": [
+        "components/MenuToggle.tsx::MenuToggle"
+      ],
+      "importedBy": []
+    },
+    "app/gallery/page.tsx::__file_root__": {
+      "filePath": "app/gallery/page.tsx",
+      "name": "__file_root__",
+      "imports": [
+        "components/GalleryGrid.tsx::GalleryGrid"
       ],
       "importedBy": []
     },
@@ -1262,45 +1095,89 @@
         "data/cards.test.ts::__file_root__"
       ]
     },
-    "components/StarDivider.tsx::StarDivider": {
-      "filePath": "components/StarDivider.tsx",
-      "name": "StarDivider",
+    "components/Home.tsx::__file_root__": {
+      "filePath": "components/Home.tsx",
+      "name": "__file_root__",
+      "imports": [
+        "data/cards.ts::Card",
+        "components/HomeHeader.tsx::HomeHeader",
+        "components/HomeTitle.tsx::HomeTitle",
+        "components/CardFan.tsx::CardFan",
+        "components/HomeDeckStrip.tsx::HomeDeckStrip",
+        "components/HomeActions.tsx::HomeActions"
+      ],
+      "importedBy": []
+    },
+    "app/api/interpret/route.ts::__file_root__": {
+      "filePath": "app/api/interpret/route.ts",
+      "name": "__file_root__",
+      "imports": [
+        "data/cards.ts::Lang",
+        "data/cards.ts::__file_root__",
+        "data/cards.ts::cardText",
+        "lib/interpret-prompts.ts::buildInterpretPrompt",
+        "app/lib/prisma.ts::__file_root__",
+        "lib/geo.ts::geoFromHeaders"
+      ],
+      "importedBy": []
+    },
+    "components/DeckArc.tsx::DeckArc": {
+      "filePath": "components/DeckArc.tsx",
+      "name": "DeckArc",
       "imports": [],
       "importedBy": [
-        "components/CardReading.tsx::__file_root__"
+        "components/MessageIntro.tsx::__file_root__"
       ]
     },
-    "app/isolated-components/QuestionInput/page.tsx::__file_root__": {
-      "filePath": "app/isolated-components/QuestionInput/page.tsx",
+    "app/isolated-components/Footer/page.tsx::__file_root__": {
+      "filePath": "app/isolated-components/Footer/page.tsx",
       "name": "__file_root__",
       "imports": [
-        "components/QuestionInput.tsx::QuestionInput"
+        "components/Footer.tsx::Footer"
       ],
       "importedBy": []
     },
-    "app/isolated-components/TarotCard/page.tsx::__file_root__": {
-      "filePath": "app/isolated-components/TarotCard/page.tsx",
+    "app/globals.css::__file_root__": {
+      "filePath": "app/globals.css",
       "name": "__file_root__",
-      "imports": [
-        "components/TarotCard.tsx::TarotCard"
-      ],
-      "importedBy": []
-    },
-    "lib/wallpaper.test.ts::__file_root__": {
-      "filePath": "lib/wallpaper.test.ts",
-      "name": "__file_root__",
-      "imports": [
-        "lib/wallpaper.ts::computeCardRect"
-      ],
-      "importedBy": []
-    },
-    "data/cards.ts::cardText": {
-      "filePath": "data/cards.ts",
-      "name": "cardText",
       "imports": [],
       "importedBy": [
-        "data/cards.test.ts::__file_root__"
+        "app/layout.tsx::__file_root__"
       ]
+    },
+    "app/isolated-components/CardReading/page.tsx::__file_root__": {
+      "filePath": "app/isolated-components/CardReading/page.tsx",
+      "name": "__file_root__",
+      "imports": [
+        "components/CardReading.tsx::CardReading",
+        "data/cards.ts::__file_root__"
+      ],
+      "importedBy": []
+    },
+    "components/DeckArc.tsx::__file_root__": {
+      "filePath": "components/DeckArc.tsx",
+      "name": "__file_root__",
+      "imports": [
+        "data/cards.ts::__file_root__"
+      ],
+      "importedBy": []
+    },
+    "components/NavRightCluster.tsx::NavRightCluster": {
+      "filePath": "components/NavRightCluster.tsx",
+      "name": "NavRightCluster",
+      "imports": [],
+      "importedBy": [
+        "components/DesktopNav.tsx::__file_root__",
+        "components/HomeHeader.tsx::__file_root__"
+      ]
+    },
+    "app/message/page.tsx::__file_root__": {
+      "filePath": "app/message/page.tsx",
+      "name": "__file_root__",
+      "imports": [
+        "components/MessageIntro.tsx::MessageIntro"
+      ],
+      "importedBy": []
     },
     "lib/geo.test.ts::__file_root__": {
       "filePath": "lib/geo.test.ts",
@@ -1311,14 +1188,138 @@
       ],
       "importedBy": []
     },
-    "components/HomeHeader.tsx::__file_root__": {
-      "filePath": "components/HomeHeader.tsx",
+    "components/CardFan.tsx::__file_root__": {
+      "filePath": "components/CardFan.tsx",
+      "name": "__file_root__",
+      "imports": [
+        "data/cards.ts::Card"
+      ],
+      "importedBy": []
+    },
+    "lib/daily.ts::formatDailyDate": {
+      "filePath": "lib/daily.ts",
+      "name": "formatDailyDate",
+      "imports": [],
+      "importedBy": [
+        "lib/daily.test.ts::__file_root__"
+      ]
+    },
+    "components/Comments.tsx::__file_root__": {
+      "filePath": "components/Comments.tsx",
+      "name": "__file_root__",
+      "imports": [
+        "lib/i18n.tsx::useCarot",
+        "lib/useIsDesktop.ts::useIsDesktop"
+      ],
+      "importedBy": []
+    },
+    "app/isolated-components/ExperienceButton/page.tsx::__file_root__": {
+      "filePath": "app/isolated-components/ExperienceButton/page.tsx",
+      "name": "__file_root__",
+      "imports": [
+        "components/ExperienceButton.tsx::ExperienceButton",
+        "components/ExperienceButton.tsx::ExperienceButtonVariant"
+      ],
+      "importedBy": []
+    },
+    "components/TarotCard.tsx::TarotCard": {
+      "filePath": "components/TarotCard.tsx",
+      "name": "TarotCard",
+      "imports": [],
+      "importedBy": [
+        "components/CardReading.tsx::__file_root__"
+      ]
+    },
+    "app/api/comments/route.ts::__file_root__": {
+      "filePath": "app/api/comments/route.ts",
+      "name": "__file_root__",
+      "imports": [
+        "app/lib/prisma.ts::__file_root__"
+      ],
+      "importedBy": []
+    },
+    "components/PrivacyScreen.tsx::__file_root__": {
+      "filePath": "components/PrivacyScreen.tsx",
       "name": "__file_root__",
       "imports": [
         "lib/i18n.tsx::useCarot",
         "lib/useIsDesktop.ts::useIsDesktop",
-        "components/LangToggle.tsx::LangToggle",
-        "components/NavRightCluster.tsx::NavRightCluster"
+        "components/BackHeader.tsx::BackHeader",
+        "components/DesktopNav.tsx::DesktopNav"
+      ],
+      "importedBy": []
+    },
+    "app/isolated-components/HomeDeckStrip/page.tsx::__file_root__": {
+      "filePath": "app/isolated-components/HomeDeckStrip/page.tsx",
+      "name": "__file_root__",
+      "imports": [
+        "components/HomeDeckStrip.tsx::HomeDeckStrip",
+        "data/cards.ts::Card",
+        "data/cards.ts::__file_root__"
+      ],
+      "importedBy": []
+    },
+    "lib/dailyCard.ts::__file_root__": {
+      "filePath": "lib/dailyCard.ts",
+      "name": "__file_root__",
+      "imports": [
+        "app/lib/prisma.ts::__file_root__",
+        "data/cards.ts::__file_root__",
+        "lib/daily.ts::dailyCardIndex",
+        "lib/geo.ts::utcDateKey"
+      ],
+      "importedBy": []
+    },
+    "app/isolated-components/CommentRow/page.tsx::__file_root__": {
+      "filePath": "app/isolated-components/CommentRow/page.tsx",
+      "name": "__file_root__",
+      "imports": [
+        "components/Comments.tsx::CommentRow"
+      ],
+      "importedBy": []
+    },
+    ".next/dev/types/routes.d.ts::__file_root__": {
+      "filePath": ".next/dev/types/routes.d.ts",
+      "name": "__file_root__",
+      "imports": [],
+      "importedBy": [
+        "next-env.d.ts::__file_root__"
+      ]
+    },
+    "app/isolated-components/TarotCard/page.tsx::__file_root__": {
+      "filePath": "app/isolated-components/TarotCard/page.tsx",
+      "name": "__file_root__",
+      "imports": [
+        "components/TarotCard.tsx::TarotCard"
+      ],
+      "importedBy": []
+    },
+    "components/MenuOverlay.tsx::__file_root__": {
+      "filePath": "components/MenuOverlay.tsx",
+      "name": "__file_root__",
+      "imports": [
+        "lib/i18n.tsx::useCarot",
+        "lib/menu.tsx::useMenu",
+        "lib/useIsDesktop.ts::useIsDesktop",
+        "components/MenuToggle.tsx::MenuToggle",
+        "components/CarotMenu.tsx::CarotMenu"
+      ],
+      "importedBy": []
+    },
+    "app/isolated-components/DeckCarousel/page.tsx::__file_root__": {
+      "filePath": "app/isolated-components/DeckCarousel/page.tsx",
+      "name": "__file_root__",
+      "imports": [
+        "components/MessageIntro.tsx::DeckCarousel"
+      ],
+      "importedBy": []
+    },
+    ".claude/skills/review-session/scripts/extract-session.mjs::__file_root__": {
+      "filePath": ".claude/skills/review-session/scripts/extract-session.mjs",
+      "name": "__file_root__",
+      "imports": [
+        ".claude/skills/review-session/scripts/extract-session-helpers.mjs::detectFormat",
+        ".claude/skills/review-session/scripts/extract-session-helpers.mjs::detectFormatFromPath"
       ],
       "importedBy": []
     },
@@ -1335,71 +1336,74 @@
       ],
       "importedBy": []
     },
-    "app/isolated-components/Section/page.tsx::__file_root__": {
-      "filePath": "app/isolated-components/Section/page.tsx",
-      "name": "__file_root__",
-      "imports": [
-        "app/stats/page.tsx::Section",
-        "data/cards.ts::__file_root__"
-      ],
-      "importedBy": []
+    "components/HomeTitle.tsx::HomeTitle": {
+      "filePath": "components/HomeTitle.tsx",
+      "name": "HomeTitle",
+      "imports": [],
+      "importedBy": [
+        "components/Home.tsx::__file_root__"
+      ]
     },
-    "components/CardReading.tsx::__file_root__": {
-      "filePath": "components/CardReading.tsx",
+    "components/NavRightCluster.tsx::__file_root__": {
+      "filePath": "components/NavRightCluster.tsx",
       "name": "__file_root__",
       "imports": [
         "lib/i18n.tsx::useCarot",
-        "data/cards.ts::Card",
-        "data/cards.ts::cardText",
-        "lib/useIsDesktop.ts::useIsDesktop",
-        "lib/share.ts::shareReading",
-        "lib/wallpaper.ts::downloadWallpaper",
-        "components/TarotCard.tsx::TarotCard",
-        "components/StarDivider.tsx::StarDivider",
-        "components/DesktopNav.tsx::DesktopNav"
-      ],
-      "importedBy": []
-    },
-    "components/CarotMenu.tsx::__file_root__": {
-      "filePath": "components/CarotMenu.tsx",
-      "name": "__file_root__",
-      "imports": [
-        "lib/i18n.tsx::useCarot",
+        "lib/menu.tsx::useMenu",
+        "components/LangToggle.tsx::LangToggle",
         "lib/links.ts::__file_root__"
       ],
       "importedBy": []
     },
-    "lib/share.ts::buildReadingUrl": {
-      "filePath": "lib/share.ts",
-      "name": "buildReadingUrl",
-      "imports": [],
-      "importedBy": [
-        "lib/share.test.ts::__file_root__"
-      ]
-    },
-    "app/isolated-components/LangToggle/page.tsx::__file_root__": {
-      "filePath": "app/isolated-components/LangToggle/page.tsx",
+    "components/HomeTitle.tsx::__file_root__": {
+      "filePath": "components/HomeTitle.tsx",
       "name": "__file_root__",
       "imports": [
-        "components/LangToggle.tsx::LangToggle",
-        "lib/i18n.tsx::CarotProvider",
-        "lib/i18n.tsx::Lang"
+        "lib/i18n.tsx::useCarot",
+        "lib/useIsDesktop.ts::useIsDesktop",
+        "components/Wordmark.tsx::Wordmark"
       ],
       "importedBy": []
     },
-    "app/isolated-components/CommentRow/page.tsx::__file_root__": {
-      "filePath": "app/isolated-components/CommentRow/page.tsx",
+    "app/isolated-components/AboutScreen/page.tsx::__file_root__": {
+      "filePath": "app/isolated-components/AboutScreen/page.tsx",
       "name": "__file_root__",
       "imports": [
-        "components/Comments.tsx::CommentRow"
+        "components/AboutScreen.tsx::AboutScreen"
       ],
       "importedBy": []
     },
-    "app/gallery/page.tsx::__file_root__": {
-      "filePath": "app/gallery/page.tsx",
+    "app/question/page.tsx::__file_root__": {
+      "filePath": "app/question/page.tsx",
       "name": "__file_root__",
       "imports": [
-        "components/GalleryGrid.tsx::GalleryGrid"
+        "components/QuestionInput.tsx::QuestionInput"
+      ],
+      "importedBy": []
+    },
+    "data/cards.test.ts::__file_root__": {
+      "filePath": "data/cards.test.ts",
+      "name": "__file_root__",
+      "imports": [
+        "data/cards.ts::Card",
+        "data/cards.ts::__file_root__",
+        "data/cards.ts::cardText"
+      ],
+      "importedBy": []
+    },
+    "app/isolated-components/DesktopNav/page.tsx::__file_root__": {
+      "filePath": "app/isolated-components/DesktopNav/page.tsx",
+      "name": "__file_root__",
+      "imports": [
+        "components/DesktopNav.tsx::DesktopNav"
+      ],
+      "importedBy": []
+    },
+    "app/isolated-components/BackHeader/page.tsx::__file_root__": {
+      "filePath": "app/isolated-components/BackHeader/page.tsx",
+      "name": "__file_root__",
+      "imports": [
+        "components/BackHeader.tsx::BackHeader"
       ],
       "importedBy": []
     },
@@ -1408,68 +1412,6 @@
       "name": "__file_root__",
       "imports": [
         "lib/i18n.tsx::useCarot"
-      ],
-      "importedBy": []
-    },
-    "components/MenuOverlay.tsx::__file_root__": {
-      "filePath": "components/MenuOverlay.tsx",
-      "name": "__file_root__",
-      "imports": [
-        "lib/i18n.tsx::useCarot",
-        "lib/menu.tsx::useMenu",
-        "lib/useIsDesktop.ts::useIsDesktop",
-        "components/MenuToggle.tsx::MenuToggle",
-        "components/CarotMenu.tsx::CarotMenu"
-      ],
-      "importedBy": []
-    },
-    "app/isolated-components/MenuToggle/page.tsx::__file_root__": {
-      "filePath": "app/isolated-components/MenuToggle/page.tsx",
-      "name": "__file_root__",
-      "imports": [
-        "components/MenuToggle.tsx::MenuToggle"
-      ],
-      "importedBy": []
-    },
-    "app/privacy/page.tsx::__file_root__": {
-      "filePath": "app/privacy/page.tsx",
-      "name": "__file_root__",
-      "imports": [
-        "components/PrivacyScreen.tsx::PrivacyScreen"
-      ],
-      "importedBy": []
-    },
-    ".next/types/routes.d.ts::__file_root__": {
-      "filePath": ".next/types/routes.d.ts",
-      "name": "__file_root__",
-      "imports": [],
-      "importedBy": [
-        "next-env.d.ts::__file_root__"
-      ]
-    },
-    "components/HomeActions.tsx::__file_root__": {
-      "filePath": "components/HomeActions.tsx",
-      "name": "__file_root__",
-      "imports": [
-        "lib/i18n.tsx::useCarot",
-        "components/ExperienceButton.tsx::ExperienceButton"
-      ],
-      "importedBy": []
-    },
-    "components/Footer.tsx::__file_root__": {
-      "filePath": "components/Footer.tsx",
-      "name": "__file_root__",
-      "imports": [
-        "lib/i18n.tsx::useCarot",
-        "lib/links.ts::__file_root__"
-      ],
-      "importedBy": []
-    },
-    "components/HomeDeckStrip.tsx::__file_root__": {
-      "filePath": "components/HomeDeckStrip.tsx",
-      "name": "__file_root__",
-      "imports": [
-        "data/cards.ts::Card"
       ],
       "importedBy": []
     },
@@ -1486,21 +1428,110 @@
       ],
       "importedBy": []
     },
-    "app/isolated-components/GalleryGrid/page.tsx::__file_root__": {
-      "filePath": "app/isolated-components/GalleryGrid/page.tsx",
+    "app/layout.tsx::__file_root__": {
+      "filePath": "app/layout.tsx",
       "name": "__file_root__",
       "imports": [
-        "components/GalleryGrid.tsx::GalleryGrid"
+        "app/globals.css::__file_root__",
+        "lib/i18n.tsx::CarotProvider",
+        "lib/i18n.tsx::Lang",
+        "lib/menu.tsx::MenuProvider",
+        "components/MenuOverlay.tsx::MenuOverlay",
+        "components/VisitTracker.tsx::VisitTracker"
       ],
       "importedBy": []
     },
-    "lib/share.test.ts::__file_root__": {
-      "filePath": "lib/share.test.ts",
+    "app/isolated-components/SupportScreen/page.tsx::__file_root__": {
+      "filePath": "app/isolated-components/SupportScreen/page.tsx",
       "name": "__file_root__",
       "imports": [
-        "lib/share.ts::buildReadingUrl",
-        "lib/share.ts::buildShareText",
-        "data/cards.ts::__file_root__"
+        "components/SupportScreen.tsx::SupportScreen"
+      ],
+      "importedBy": []
+    },
+    "components/DesktopNav.tsx::DesktopNav": {
+      "filePath": "components/DesktopNav.tsx",
+      "name": "DesktopNav",
+      "imports": [],
+      "importedBy": [
+        "components/QuestionInput.tsx::__file_root__",
+        "components/PrivacyScreen.tsx::__file_root__",
+        "components/CardReading.tsx::__file_root__",
+        "components/AboutScreen.tsx::__file_root__",
+        "components/MessageIntro.tsx::__file_root__"
+      ]
+    },
+    "components/CarotMenu.tsx::__file_root__": {
+      "filePath": "components/CarotMenu.tsx",
+      "name": "__file_root__",
+      "imports": [
+        "lib/i18n.tsx::useCarot",
+        "lib/links.ts::__file_root__"
+      ],
+      "importedBy": []
+    },
+    "app/api/track/route.ts::__file_root__": {
+      "filePath": "app/api/track/route.ts",
+      "name": "__file_root__",
+      "imports": [
+        "app/lib/prisma.ts::__file_root__",
+        "lib/geo.ts::geoFromHeaders"
+      ],
+      "importedBy": []
+    },
+    "components/BackHeader.tsx::BackHeader": {
+      "filePath": "components/BackHeader.tsx",
+      "name": "BackHeader",
+      "imports": [],
+      "importedBy": [
+        "components/QuestionInput.tsx::__file_root__",
+        "components/PrivacyScreen.tsx::__file_root__",
+        "components/AboutScreen.tsx::__file_root__",
+        "components/MessageIntro.tsx::__file_root__"
+      ]
+    },
+    "lib/daily.ts::__file_root__": {
+      "filePath": "lib/daily.ts",
+      "name": "__file_root__",
+      "imports": [
+        "data/cards.ts::Lang"
+      ],
+      "importedBy": []
+    },
+    "components/HomeHeader.tsx::__file_root__": {
+      "filePath": "components/HomeHeader.tsx",
+      "name": "__file_root__",
+      "imports": [
+        "lib/i18n.tsx::useCarot",
+        "lib/useIsDesktop.ts::useIsDesktop",
+        "components/LangToggle.tsx::LangToggle",
+        "components/NavRightCluster.tsx::NavRightCluster"
+      ],
+      "importedBy": []
+    },
+    "components/StarDivider.tsx::StarDivider": {
+      "filePath": "components/StarDivider.tsx",
+      "name": "StarDivider",
+      "imports": [],
+      "importedBy": [
+        "components/CardReading.tsx::__file_root__"
+      ]
+    },
+    "data/cards.ts::__file_root__": {
+      "filePath": "data/cards.ts",
+      "name": "__file_root__",
+      "imports": [],
+      "importedBy": [
+        "data/cards.test.ts::__file_root__"
+      ]
+    },
+    "app/isolated-components/HomeHeader/page.tsx::__file_root__": {
+      "filePath": "app/isolated-components/HomeHeader/page.tsx",
+      "name": "__file_root__",
+      "imports": [
+        "components/HomeHeader.tsx::HomeHeader",
+        "lib/i18n.tsx::CarotProvider",
+        "lib/i18n.tsx::Lang"
       ],
       "importedBy": []
     },
@@ -1512,28 +1543,58 @@
       ],
       "importedBy": []
     },
-    "components/SupportScreen.tsx::__file_root__": {
-      "filePath": "components/SupportScreen.tsx",
+    "app/isolated-components/CardFan/page.tsx::__file_root__": {
+      "filePath": "app/isolated-components/CardFan/page.tsx",
       "name": "__file_root__",
       "imports": [
-        "lib/i18n.tsx::useCarot",
-        "lib/links.ts::__file_root__",
-        "lib/useIsDesktop.ts::useIsDesktop",
-        "components/BackHeader.tsx::BackHeader",
-        "components/DesktopNav.tsx::DesktopNav"
+        "components/CardFan.tsx::CardFan",
+        "data/cards.ts::Card",
+        "data/cards.ts::__file_root__"
       ],
       "importedBy": []
     },
-    "app/layout.tsx::__file_root__": {
-      "filePath": "app/layout.tsx",
+    "app/isolated-components/GalleryGrid/page.tsx::__file_root__": {
+      "filePath": "app/isolated-components/GalleryGrid/page.tsx",
       "name": "__file_root__",
       "imports": [
-        "app/globals.css::__file_root__",
+        "components/GalleryGrid.tsx::GalleryGrid"
+      ],
+      "importedBy": []
+    },
+    "components/HomeLove.tsx::__file_root__": {
+      "filePath": "components/HomeLove.tsx",
+      "name": "__file_root__",
+      "imports": [
+        "lib/i18n.tsx::useCarot"
+      ],
+      "importedBy": []
+    },
+    "data/cards.ts::cardText": {
+      "filePath": "data/cards.ts",
+      "name": "cardText",
+      "imports": [],
+      "importedBy": [
+        "data/cards.test.ts::__file_root__"
+      ]
+    },
+    "lib/pickFan.test.ts::__file_root__": {
+      "filePath": "lib/pickFan.test.ts",
+      "name": "__file_root__",
+      "imports": [
+        "lib/pickFan.ts::pickFan",
+        "data/cards.ts::Card",
+        "data/cards.ts::__file_root__"
+      ],
+      "importedBy": []
+    },
+    "app/isolated-components/Home/page.tsx::__file_root__": {
+      "filePath": "app/isolated-components/Home/page.tsx",
+      "name": "__file_root__",
+      "imports": [
+        "components/Home.tsx::Home",
         "lib/i18n.tsx::CarotProvider",
         "lib/i18n.tsx::Lang",
-        "lib/menu.tsx::MenuProvider",
-        "components/MenuOverlay.tsx::MenuOverlay",
-        "components/VisitTracker.tsx::VisitTracker"
+        "data/cards.ts::__file_root__"
       ],
       "importedBy": []
     },
@@ -1554,86 +1615,13 @@
       ],
       "importedBy": []
     },
-    "app/page.tsx::__file_root__": {
-      "filePath": "app/page.tsx",
+    "app/privacy/page.tsx::__file_root__": {
+      "filePath": "app/privacy/page.tsx",
       "name": "__file_root__",
       "imports": [
-        "components/Home.tsx::Home",
-        "lib/pickFan.ts::pickFan"
+        "components/PrivacyScreen.tsx::PrivacyScreen"
       ],
       "importedBy": []
-    },
-    "app/isolated-components/CardReading/page.tsx::__file_root__": {
-      "filePath": "app/isolated-components/CardReading/page.tsx",
-      "name": "__file_root__",
-      "imports": [
-        "components/CardReading.tsx::CardReading",
-        "data/cards.ts::__file_root__"
-      ],
-      "importedBy": []
-    },
-    "app/isolated-components/HomeHeader/page.tsx::__file_root__": {
-      "filePath": "app/isolated-components/HomeHeader/page.tsx",
-      "name": "__file_root__",
-      "imports": [
-        "components/HomeHeader.tsx::HomeHeader",
-        "lib/i18n.tsx::CarotProvider",
-        "lib/i18n.tsx::Lang"
-      ],
-      "importedBy": []
-    },
-    "components/DeckArc.tsx::DeckArc": {
-      "filePath": "components/DeckArc.tsx",
-      "name": "DeckArc",
-      "imports": [],
-      "importedBy": [
-        "components/MessageIntro.tsx::__file_root__"
-      ]
-    },
-    "components/HomeTitle.tsx::__file_root__": {
-      "filePath": "components/HomeTitle.tsx",
-      "name": "__file_root__",
-      "imports": [
-        "lib/i18n.tsx::useCarot",
-        "lib/useIsDesktop.ts::useIsDesktop",
-        "components/Wordmark.tsx::Wordmark"
-      ],
-      "importedBy": []
-    },
-    "app/support/page.tsx::__file_root__": {
-      "filePath": "app/support/page.tsx",
-      "name": "__file_root__",
-      "imports": [
-        "components/SupportScreen.tsx::SupportScreen"
-      ],
-      "importedBy": []
-    },
-    "lib/daily.ts::dailyCardIndex": {
-      "filePath": "lib/daily.ts",
-      "name": "dailyCardIndex",
-      "imports": [],
-      "importedBy": [
-        "lib/daily.test.ts::__file_root__"
-      ]
-    },
-    "app/isolated-components/DesktopNav/page.tsx::__file_root__": {
-      "filePath": "app/isolated-components/DesktopNav/page.tsx",
-      "name": "__file_root__",
-      "imports": [
-        "components/DesktopNav.tsx::DesktopNav"
-      ],
-      "importedBy": []
-    },
-    "components/BackHeader.tsx::BackHeader": {
-      "filePath": "components/BackHeader.tsx",
-      "name": "BackHeader",
-      "imports": [],
-      "importedBy": [
-        "components/QuestionInput.tsx::__file_root__",
-        "components/PrivacyScreen.tsx::__file_root__",
-        "components/AboutScreen.tsx::__file_root__",
-        "components/MessageIntro.tsx::__file_root__"
-      ]
     },
     "lib/interpret-prompts.test.ts::__file_root__": {
       "filePath": "lib/interpret-prompts.test.ts",
@@ -1644,49 +1632,23 @@
       ],
       "importedBy": []
     },
-    "app/isolated-components/MenuProvider/page.tsx::__file_root__": {
-      "filePath": "app/isolated-components/MenuProvider/page.tsx",
+    "next-env.d.ts::__file_root__": {
+      "filePath": "next-env.d.ts",
       "name": "__file_root__",
       "imports": [
-        "lib/menu.tsx::MenuProvider",
-        "components/NavRightCluster.tsx::NavRightCluster",
+        ".next/dev/types/routes.d.ts::__file_root__"
+      ],
+      "importedBy": []
+    },
+    "app/isolated-components/HomeActions/page.tsx::__file_root__": {
+      "filePath": "app/isolated-components/HomeActions/page.tsx",
+      "name": "__file_root__",
+      "imports": [
+        "components/HomeActions.tsx::HomeActions",
         "lib/i18n.tsx::CarotProvider",
         "lib/i18n.tsx::Lang"
       ],
       "importedBy": []
-    },
-    "components/Comments.tsx::__file_root__": {
-      "filePath": "components/Comments.tsx",
-      "name": "__file_root__",
-      "imports": [
-        "lib/i18n.tsx::useCarot",
-        "lib/useIsDesktop.ts::useIsDesktop"
-      ],
-      "importedBy": []
-    },
-    "app/isolated-components/StarDivider/page.tsx::__file_root__": {
-      "filePath": "app/isolated-components/StarDivider/page.tsx",
-      "name": "__file_root__",
-      "imports": [
-        "components/StarDivider.tsx::StarDivider"
-      ],
-      "importedBy": []
-    },
-    "components/DeckArc.tsx::__file_root__": {
-      "filePath": "components/DeckArc.tsx",
-      "name": "__file_root__",
-      "imports": [
-        "data/cards.ts::__file_root__"
-      ],
-      "importedBy": []
-    },
-    "lib/daily.ts::formatDailyDate": {
-      "filePath": "lib/daily.ts",
-      "name": "formatDailyDate",
-      "imports": [],
-      "importedBy": [
-        "lib/daily.test.ts::__file_root__"
-      ]
     },
     "app/isolated-components/CarotProvider/page.tsx::__file_root__": {
       "filePath": "app/isolated-components/CarotProvider/page.tsx",
@@ -1698,53 +1660,228 @@
       ],
       "importedBy": []
     },
-    "app/isolated-components/DeckCarousel/page.tsx::__file_root__": {
-      "filePath": "app/isolated-components/DeckCarousel/page.tsx",
+    "app/support/page.tsx::__file_root__": {
+      "filePath": "app/support/page.tsx",
       "name": "__file_root__",
       "imports": [
-        "components/MessageIntro.tsx::DeckCarousel"
+        "components/SupportScreen.tsx::SupportScreen"
       ],
       "importedBy": []
     },
-    ".next/dev/types/routes.d.ts::__file_root__": {
-      "filePath": ".next/dev/types/routes.d.ts",
+    "lib/daily.test.ts::__file_root__": {
+      "filePath": "lib/daily.test.ts",
+      "name": "__file_root__",
+      "imports": [
+        "lib/daily.ts::dailyCardIndex",
+        "lib/daily.ts::formatDailyDate"
+      ],
+      "importedBy": []
+    },
+    "components/SupportScreen.tsx::__file_root__": {
+      "filePath": "components/SupportScreen.tsx",
+      "name": "__file_root__",
+      "imports": [
+        "lib/i18n.tsx::useCarot",
+        "lib/links.ts::__file_root__",
+        "lib/useIsDesktop.ts::useIsDesktop",
+        "components/BackHeader.tsx::BackHeader",
+        "components/DesktopNav.tsx::DesktopNav"
+      ],
+      "importedBy": []
+    },
+    "app/isolated-components/PrivacyScreen/page.tsx::__file_root__": {
+      "filePath": "app/isolated-components/PrivacyScreen/page.tsx",
+      "name": "__file_root__",
+      "imports": [
+        "components/PrivacyScreen.tsx::PrivacyScreen"
+      ],
+      "importedBy": []
+    },
+    "lib/interpret-prompts.ts::__file_root__": {
+      "filePath": "lib/interpret-prompts.ts",
+      "name": "__file_root__",
+      "imports": [
+        "data/cards.ts::Card",
+        "data/cards.ts::Lang",
+        "data/cards.ts::cardText"
+      ],
+      "importedBy": []
+    },
+    "app/isolated-components/DeckArc/page.tsx::__file_root__": {
+      "filePath": "app/isolated-components/DeckArc/page.tsx",
+      "name": "__file_root__",
+      "imports": [
+        "components/DeckArc.tsx::DeckArc"
+      ],
+      "importedBy": []
+    },
+    "lib/share.ts::buildShareText": {
+      "filePath": "lib/share.ts",
+      "name": "buildShareText",
+      "imports": [],
+      "importedBy": [
+        "lib/share.test.ts::__file_root__"
+      ]
+    },
+    ".next/types/routes.d.ts::__file_root__": {
+      "filePath": ".next/types/routes.d.ts",
       "name": "__file_root__",
       "imports": [],
       "importedBy": []
     },
-    "components/MenuToggle.tsx::__file_root__": {
-      "filePath": "components/MenuToggle.tsx",
+    "lib/daily.ts::dailyCardIndex": {
+      "filePath": "lib/daily.ts",
+      "name": "dailyCardIndex",
+      "imports": [],
+      "importedBy": [
+        "lib/daily.test.ts::__file_root__"
+      ]
+    },
+    "app/isolated-components/QuestionInput/page.tsx::__file_root__": {
+      "filePath": "app/isolated-components/QuestionInput/page.tsx",
       "name": "__file_root__",
       "imports": [
-        "lib/useIsDesktop.ts::useIsDesktop"
+        "components/QuestionInput.tsx::QuestionInput"
       ],
       "importedBy": []
     },
-    "components/HomeLove.tsx::__file_root__": {
-      "filePath": "components/HomeLove.tsx",
+    "components/Footer.tsx::__file_root__": {
+      "filePath": "components/Footer.tsx",
+      "name": "__file_root__",
+      "imports": [
+        "lib/i18n.tsx::useCarot",
+        "lib/links.ts::__file_root__"
+      ],
+      "importedBy": []
+    },
+    "components/LangToggle.tsx::__file_root__": {
+      "filePath": "components/LangToggle.tsx",
       "name": "__file_root__",
       "imports": [
         "lib/i18n.tsx::useCarot"
       ],
       "importedBy": []
     },
-    "lib/pickFan.test.ts::__file_root__": {
-      "filePath": "lib/pickFan.test.ts",
+    "components/HomeActions.tsx::__file_root__": {
+      "filePath": "components/HomeActions.tsx",
       "name": "__file_root__",
       "imports": [
-        "lib/pickFan.ts::pickFan",
-        "data/cards.ts::Card",
+        "lib/i18n.tsx::useCarot",
+        "components/ExperienceButton.tsx::ExperienceButton"
+      ],
+      "importedBy": []
+    },
+    "app/isolated-components/HomeTitle/page.tsx::__file_root__": {
+      "filePath": "app/isolated-components/HomeTitle/page.tsx",
+      "name": "__file_root__",
+      "imports": [
+        "components/HomeTitle.tsx::HomeTitle",
+        "lib/i18n.tsx::CarotProvider",
+        "lib/i18n.tsx::Lang"
+      ],
+      "importedBy": []
+    },
+    ".claude/skills/review-session/scripts/find-last-session.mjs::__file_root__": {
+      "filePath": ".claude/skills/review-session/scripts/find-last-session.mjs",
+      "name": "__file_root__",
+      "imports": [
+        ".claude/skills/review-session/scripts/find-last-session-helpers.mjs::claudeProjectHashFromPath"
+      ],
+      "importedBy": []
+    },
+    "app/isolated-components/MenuOverlay/page.tsx::__file_root__": {
+      "filePath": "app/isolated-components/MenuOverlay/page.tsx",
+      "name": "__file_root__",
+      "imports": [
+        "components/MenuOverlay.tsx::MenuOverlay"
+      ],
+      "importedBy": []
+    },
+    "app/isolated-components/Section/page.tsx::__file_root__": {
+      "filePath": "app/isolated-components/Section/page.tsx",
+      "name": "__file_root__",
+      "imports": [
+        "app/stats/page.tsx::Section",
         "data/cards.ts::__file_root__"
       ],
       "importedBy": []
     },
-    "app/stats/page.tsx::__file_root__": {
-      "filePath": "app/stats/page.tsx",
+    "lib/wallpaper.test.ts::__file_root__": {
+      "filePath": "lib/wallpaper.test.ts",
       "name": "__file_root__",
       "imports": [
-        "app/lib/prisma.ts::__file_root__",
-        "data/cards.ts::__file_root__",
-        "components/StatsLogin.tsx::StatsLogin"
+        "lib/wallpaper.ts::computeCardRect"
+      ],
+      "importedBy": []
+    },
+    "app/isolated-components/NavRightCluster/page.tsx::__file_root__": {
+      "filePath": "app/isolated-components/NavRightCluster/page.tsx",
+      "name": "__file_root__",
+      "imports": [
+        "components/NavRightCluster.tsx::NavRightCluster",
+        "lib/i18n.tsx::CarotProvider",
+        "lib/i18n.tsx::Lang",
+        "lib/menu.tsx::MenuProvider"
+      ],
+      "importedBy": []
+    },
+    "app/isolated-components/Comments/page.tsx::__file_root__": {
+      "filePath": "app/isolated-components/Comments/page.tsx",
+      "name": "__file_root__",
+      "imports": [
+        "components/Comments.tsx::Comments"
+      ],
+      "importedBy": []
+    },
+    "components/CardReading.tsx::__file_root__": {
+      "filePath": "components/CardReading.tsx",
+      "name": "__file_root__",
+      "imports": [
+        "lib/i18n.tsx::useCarot",
+        "data/cards.ts::Card",
+        "data/cards.ts::cardText",
+        "lib/useIsDesktop.ts::useIsDesktop",
+        "lib/share.ts::shareReading",
+        "lib/wallpaper.ts::downloadWallpaper",
+        "components/TarotCard.tsx::TarotCard",
+        "components/StarDivider.tsx::StarDivider",
+        "components/DesktopNav.tsx::DesktopNav"
+      ],
+      "importedBy": []
+    },
+    "lib/share.ts::__file_root__": {
+      "filePath": "lib/share.ts",
+      "name": "__file_root__",
+      "imports": [
+        "data/cards.ts::Card",
+        "data/cards.ts::Lang",
+        "data/cards.ts::cardText"
+      ],
+      "importedBy": []
+    },
+    "app/isolated-components/StarDivider/page.tsx::__file_root__": {
+      "filePath": "app/isolated-components/StarDivider/page.tsx",
+      "name": "__file_root__",
+      "imports": [
+        "components/StarDivider.tsx::StarDivider"
+      ],
+      "importedBy": []
+    },
+    "app/isolated-components/CarotMenu/page.tsx::__file_root__": {
+      "filePath": "app/isolated-components/CarotMenu/page.tsx",
+      "name": "__file_root__",
+      "imports": [
+        "components/CarotMenu.tsx::CarotMenu"
+      ],
+      "importedBy": []
+    },
+    "app/isolated-components/LangToggle/page.tsx::__file_root__": {
+      "filePath": "app/isolated-components/LangToggle/page.tsx",
+      "name": "__file_root__",
+      "imports": [
+        "components/LangToggle.tsx::LangToggle",
+        "lib/i18n.tsx::CarotProvider",
+        "lib/i18n.tsx::Lang"
       ],
       "importedBy": []
     },
@@ -1760,157 +1897,50 @@
       ],
       "importedBy": []
     },
-    "app/isolated-components/DeckArc/page.tsx::__file_root__": {
-      "filePath": "app/isolated-components/DeckArc/page.tsx",
+    "app/about/page.tsx::__file_root__": {
+      "filePath": "app/about/page.tsx",
       "name": "__file_root__",
       "imports": [
-        "components/DeckArc.tsx::DeckArc"
+        "components/AboutScreen.tsx::AboutScreen"
       ],
       "importedBy": []
     },
-    "components/NavRightCluster.tsx::NavRightCluster": {
-      "filePath": "components/NavRightCluster.tsx",
-      "name": "NavRightCluster",
-      "imports": [],
-      "importedBy": [
-        "components/DesktopNav.tsx::__file_root__",
-        "components/HomeHeader.tsx::__file_root__"
-      ]
-    },
-    "components/Home.tsx::__file_root__": {
-      "filePath": "components/Home.tsx",
+    "app/stats/page.tsx::__file_root__": {
+      "filePath": "app/stats/page.tsx",
       "name": "__file_root__",
       "imports": [
-        "data/cards.ts::Card",
-        "components/HomeHeader.tsx::HomeHeader",
-        "components/HomeTitle.tsx::HomeTitle",
-        "components/CardFan.tsx::CardFan",
-        "components/HomeDeckStrip.tsx::HomeDeckStrip",
-        "components/HomeActions.tsx::HomeActions"
-      ],
-      "importedBy": []
-    },
-    "data/cards.test.ts::__file_root__": {
-      "filePath": "data/cards.test.ts",
-      "name": "__file_root__",
-      "imports": [
-        "data/cards.ts::Card",
+        "app/lib/prisma.ts::__file_root__",
         "data/cards.ts::__file_root__",
-        "data/cards.ts::cardText"
+        "components/StatsLogin.tsx::StatsLogin"
       ],
       "importedBy": []
     },
-    "app/message/page.tsx::__file_root__": {
-      "filePath": "app/message/page.tsx",
+    "lib/share.test.ts::__file_root__": {
+      "filePath": "lib/share.test.ts",
       "name": "__file_root__",
       "imports": [
-        "components/MessageIntro.tsx::MessageIntro"
-      ],
-      "importedBy": []
-    },
-    "lib/share.ts::__file_root__": {
-      "filePath": "lib/share.ts",
-      "name": "__file_root__",
-      "imports": [
-        "data/cards.ts::Card",
-        "data/cards.ts::Lang",
-        "data/cards.ts::cardText"
-      ],
-      "importedBy": []
-    },
-    "app/isolated-components/Footer/page.tsx::__file_root__": {
-      "filePath": "app/isolated-components/Footer/page.tsx",
-      "name": "__file_root__",
-      "imports": [
-        "components/Footer.tsx::Footer"
-      ],
-      "importedBy": []
-    },
-    ".claude/skills/review-session/scripts/extract-session.mjs::__file_root__": {
-      "filePath": ".claude/skills/review-session/scripts/extract-session.mjs",
-      "name": "__file_root__",
-      "imports": [
-        ".claude/skills/review-session/scripts/extract-session-helpers.mjs::detectFormat",
-        ".claude/skills/review-session/scripts/extract-session-helpers.mjs::detectFormatFromPath"
-      ],
-      "importedBy": []
-    },
-    "app/isolated-components/Home/page.tsx::__file_root__": {
-      "filePath": "app/isolated-components/Home/page.tsx",
-      "name": "__file_root__",
-      "imports": [
-        "components/Home.tsx::Home",
-        "lib/i18n.tsx::CarotProvider",
-        "lib/i18n.tsx::Lang",
+        "lib/share.ts::buildReadingUrl",
+        "lib/share.ts::buildShareText",
         "data/cards.ts::__file_root__"
       ],
       "importedBy": []
     },
-    "components/HomeTitle.tsx::HomeTitle": {
-      "filePath": "components/HomeTitle.tsx",
-      "name": "HomeTitle",
-      "imports": [],
-      "importedBy": [
-        "components/Home.tsx::__file_root__"
-      ]
+    "components/MenuToggle.tsx::__file_root__": {
+      "filePath": "components/MenuToggle.tsx",
+      "name": "__file_root__",
+      "imports": [
+        "lib/useIsDesktop.ts::useIsDesktop"
+      ],
+      "importedBy": []
     },
-    "lib/interpret-prompts.ts::__file_root__": {
+    "lib/interpret-prompts.ts::buildInterpretPrompt": {
       "filePath": "lib/interpret-prompts.ts",
-      "name": "__file_root__",
-      "imports": [
-        "data/cards.ts::Card",
-        "data/cards.ts::Lang",
-        "data/cards.ts::cardText"
-      ],
-      "importedBy": []
-    },
-    "components/CardFan.tsx::__file_root__": {
-      "filePath": "components/CardFan.tsx",
-      "name": "__file_root__",
-      "imports": [
-        "data/cards.ts::Card"
-      ],
-      "importedBy": []
-    },
-    "components/PrivacyScreen.tsx::__file_root__": {
-      "filePath": "components/PrivacyScreen.tsx",
-      "name": "__file_root__",
-      "imports": [
-        "lib/i18n.tsx::useCarot",
-        "lib/useIsDesktop.ts::useIsDesktop",
-        "components/BackHeader.tsx::BackHeader",
-        "components/DesktopNav.tsx::DesktopNav"
-      ],
-      "importedBy": []
-    },
-    "app/api/comments/route.ts::__file_root__": {
-      "filePath": "app/api/comments/route.ts",
-      "name": "__file_root__",
-      "imports": [
-        "app/lib/prisma.ts::__file_root__"
-      ],
-      "importedBy": []
-    },
-    "components/DesktopNav.tsx::DesktopNav": {
-      "filePath": "components/DesktopNav.tsx",
-      "name": "DesktopNav",
+      "name": "buildInterpretPrompt",
       "imports": [],
       "importedBy": [
-        "components/QuestionInput.tsx::__file_root__",
-        "components/PrivacyScreen.tsx::__file_root__",
-        "components/CardReading.tsx::__file_root__",
-        "components/AboutScreen.tsx::__file_root__",
-        "components/MessageIntro.tsx::__file_root__"
+        "lib/interpret-prompts.test.ts::__file_root__"
       ]
-    },
-    "next-env.d.ts::__file_root__": {
-      "filePath": "next-env.d.ts",
-      "name": "__file_root__",
-      "imports": [
-        ".next/types/routes.d.ts::__file_root__"
-      ],
-      "importedBy": []
     }
   },
-  "lastUpdated": "2026-07-31T02:08:25Z"
+  "lastUpdated": "2026-07-31T13:57:09Z"
 }

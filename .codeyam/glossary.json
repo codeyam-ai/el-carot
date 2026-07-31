@@ -260,6 +260,22 @@
     ]
   },
   {
+    "description": "Route for the privacy policy screen, linked from the App Store listing.",
+    "filePath": "app/privacy/page.tsx",
+    "name": "PrivacyPage",
+    "scenarios": [
+      "privacy-default"
+    ]
+  },
+  {
+    "description": "The privacy policy: what the app keeps on the device versus what the site stores, section by section, in both languages.",
+    "filePath": "components/PrivacyScreen.tsx",
+    "name": "PrivacyScreen",
+    "scenarios": [
+      "privacyscreen-mobile"
+    ]
+  },
+  {
     "description": "The specific-question screen: a textarea and draw button; mobile and desktop layouts.",
     "filePath": "components/QuestionInput.tsx",
     "name": "QuestionInput",
@@ -333,6 +349,22 @@
     "name": "StatsPage",
     "scenarios": [
       "stats-password-gate"
+    ]
+  },
+  {
+    "description": "Route for the support screen, the App Store listing's Support URL.",
+    "filePath": "app/support/page.tsx",
+    "name": "SupportPage",
+    "scenarios": [
+      "support-default"
+    ]
+  },
+  {
+    "description": "The support screen: the FAQ the app actually provokes, plus contact and Instagram links, in both languages.",
+    "filePath": "components/SupportScreen.tsx",
+    "name": "SupportScreen",
+    "scenarios": [
+      "supportscreen-mobile"
     ]
   },
   {

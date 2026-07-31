@@ -1,0 +1,11 @@
+{
+  "name": "SupportScreen - Mobile",
+  "id": "8c8a6f11-eb8d-4e29-9a8d-8e13032dbbe4",
+  "url": "/isolated-components/SupportScreen",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "SupportScreen",
+  "scenarioType": "component"
+}
