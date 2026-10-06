@@ -1,11 +1,14 @@
 {
   "name": "CarotProvider - English",
   "id": "57faede4-2c2e-4e25-b45e-9263d1b19e26",
-  "url": "/isolated-components/CarotProvider?s=English",
+  "url": "/isolated-components/CarotProvider?s=Spanish",
   "dimensions": [
     "Mobile"
   ],
   "mocks": {},
   "componentName": "CarotProvider",
-  "scenarioType": "component"
+  "scenarioType": "component",
+  "interactions": [
+    { "action": "click", "selector": "button[aria-pressed=\"false\"]" }
+  ]
 }

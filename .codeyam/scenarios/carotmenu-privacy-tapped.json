@@ -1,0 +1,18 @@
+{
+  "name": "CarotMenu - Privacy Tapped",
+  "id": "eb4c73b4-f3e1-42c9-879d-9e0a88c04723",
+  "url": "/isolated-components/CarotMenu",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "CarotMenu",
+  "scenarioType": "component",
+  "description": "The CarotMenu component.",
+  "interactions": [
+    {
+      "action": "click",
+      "selector": "nav button:last-of-type"
+    }
+  ]
+}

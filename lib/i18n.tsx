@@ -56,6 +56,7 @@ export const STRINGS = {
     menuBuy: 'Comprar Mazo',
     menuOpenSource: 'Open Source',
     menuInstagram: 'Instagram',
+    menuPrivacy: 'Privacidad',
     menuLove: 'El Carot te ama',
     footLove: 'te ama',
     // Footer
@@ -126,6 +127,7 @@ export const STRINGS = {
     menuBuy: 'Buy the Deck',
     menuOpenSource: 'Open Source',
     menuInstagram: 'Instagram',
+    menuPrivacy: 'Privacy',
     menuLove: 'El Carot loves you',
     footLove: 'loves you',
     footAbout: 'About El Carot',

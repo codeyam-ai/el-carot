@@ -8,9 +8,11 @@ import { CAROT_IG_URL, CAROT_OPEN_SOURCE_URL } from '@/lib/links';
 export function CarotMenu({
   onAbout,
   onGallery,
+  onPrivacy,
 }: {
   onAbout: () => void;
   onGallery: () => void;
+  onPrivacy: () => void;
 }) {
   const { t } = useCarot();
   const item: React.CSSProperties = {
@@ -64,6 +66,9 @@ export function CarotMenu({
         <a style={{ ...item, textDecoration: 'none' }} href={CAROT_IG_URL} target="_blank" rel="noopener noreferrer">
           {t.menuInstagram}
         </a>
+        <button style={item} onClick={onPrivacy}>
+          {t.menuPrivacy}
+        </button>
       </nav>
       <div
         style={{

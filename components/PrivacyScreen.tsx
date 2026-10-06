@@ -7,9 +7,9 @@ import { BackHeader } from '@/components/BackHeader';
 import { DesktopNav } from '@/components/DesktopNav';
 
 /**
- * The privacy policy — required by the App Store, and short because there is
- * genuinely nothing to disclose: El Carot has no backend, so nothing a reader
- * does here or in the app leaves their device.
+ * The website's privacy policy. It covers only the website — there is no app
+ * release — and states exactly what the site keeps: asked questions, visits and
+ * comments (see prisma/schema.prisma), with coarse geo only (lib/geo.ts).
  *
  * Copy lives in this file rather than in lib/i18n's shared dictionary. A legal
  * document is versioned and reviewed as one artefact — splitting it across a
@@ -25,64 +25,64 @@ const COPY: Record<'es' | 'en', { context: string; title: string; updated: strin
   es: {
     context: 'Privacidad',
     title: 'Política de privacidad',
-    updated: 'Última actualización: 30 de julio de 2026',
-    lead: 'El Carot guarda lo mínimo. En la app, nada sale de tu teléfono. En el sitio guardamos las preguntas que se escriben, sin saber quién las escribió.',
+    updated: 'Última actualización: 5 de octubre de 2026',
+    lead: 'El Carot guarda lo mínimo. No hay cuentas ni publicidad: guardamos las preguntas y los comentarios que se dejan en el sitio, sin saber quién los escribió.',
     sections: [
       {
         heading: 'Qué guardamos',
-        body: 'En la app, nada: no hay servidores donde guardar nada tuyo. En el sitio guardamos las preguntas y qué carta salió, para entender qué se le pregunta al mazo. No hay cuentas, ni publicidad, ni rastreadores, ni forma de vincular una pregunta con una persona.',
-      },
-      {
-        heading: 'Qué se guarda en tu dispositivo',
-        body: 'Las cartas que sacaste y su historial, la carta del día y su fecha, y tu preferencia de idioma. Todo eso vive en el almacenamiento local de tu navegador o de la app, y desaparece si borrás los datos del sitio o desinstalás la app.',
+        body: 'Las preguntas que le hacés al mazo y qué carta salió, para entender qué se le pregunta. Un registro de visitas, una vez por sesión: qué página se abrió y cuándo. Y los comentarios que decidas dejar. Junto a las preguntas y las visitas guardamos sólo el país, la región y la zona horaria aproximados; nunca tu dirección IP ni tu ubicación exacta. No hay cuentas, ni publicidad, ni rastreadores de terceros.',
       },
       {
         heading: 'Las preguntas que escribís',
-        body: 'En la app se resuelven en tu teléfono y no viajan a ningún lado. En el sitio quedan guardadas sin identificar: no sabemos de quién es cada una. Como se escriben libremente, te pedimos que no incluyas datos personales.',
+        body: 'Para escribir la interpretación de tu carta, la pregunta se envía a Google (Gemini) junto con la carta que salió. Quedan guardadas sin identificar: no sabemos de quién es cada una. Como se escriben libremente, te pedimos que no incluyas datos personales.',
       },
       {
-        heading: 'Iniciar sesión',
-        body: 'En la app iniciar sesión es opcional y todo funciona sin hacerlo. Si usás Sign in with Apple o tu cuenta de Google, el nombre y el correo que el proveedor devuelva se guardan sólo en tu teléfono, para saludarte por tu nombre y mantener tus cartas en su propio cajón. No se transmiten a ningún servidor nuestro, y no le damos a Google ni a Apple ninguna información sobre lo que hacés en la app.',
+        heading: 'Los comentarios',
+        body: 'Los comentarios son públicos: cualquiera que visite el sitio puede ver el nombre que pongas y lo que escribas. Usá el nombre que quieras y no incluyas datos personales. Si querés que borremos un comentario tuyo, escribinos.',
+      },
+      {
+        heading: 'Qué se guarda en tu navegador',
+        body: 'Sólo tu preferencia de idioma, en el almacenamiento local de tu navegador y en una cookie, y una marca que dura lo que dura la sesión para contar tu visita una sola vez. Desaparecen si borrás los datos del sitio.',
       },
       {
         heading: 'Menores de edad',
-        body: 'El Carot no está dirigido a menores de 13 años. No pedimos edad, nombre ni ningún dato que permita identificar a quien usa la app o el sitio.',
+        body: 'El Carot no está dirigido a menores de 13 años. No pedimos edad ni ningún dato que permita identificar a quien usa el sitio.',
       },
       {
         heading: 'Cambios en esta política',
-        body: 'Si en el futuro El Carot llegara a recopilar algún dato, actualizaremos esta página antes de que ese cambio llegue a la App Store.',
+        body: 'Si en el futuro El Carot cambia lo que guarda, actualizaremos esta página antes de que ese cambio entre en vigor.',
       },
     ],
   },
   en: {
     context: 'Privacy',
     title: 'Privacy Policy',
-    updated: 'Last updated: 30 July 2026',
-    lead: 'El Carot keeps as little as possible. In the app, nothing leaves your phone. On the website we keep the questions people type, without knowing who typed them.',
+    updated: 'Last updated: 5 October 2026',
+    lead: 'El Carot keeps as little as possible. There are no accounts and no advertising: we keep the questions and comments people leave on the site, without knowing who wrote them.',
     sections: [
       {
         heading: 'What we keep',
-        body: 'In the app, nothing: there are no servers on which to keep anything of yours. On the website we keep the questions and which card came up, to understand what people ask the deck. There are no accounts, no advertising, no trackers, and no way to tie a question to a person.',
-      },
-      {
-        heading: 'What is stored on your device',
-        body: 'The cards you have drawn and their history, the card of the day and its date, and your language preference. All of it lives in your browser or app local storage, and disappears if you clear the site data or uninstall the app.',
+        body: 'The questions you ask the deck and which card came up, to understand what people ask it. A log of visits, once per session: which page was opened and when. And any comments you choose to leave. Alongside questions and visits we keep only your approximate country, region and time zone — never your IP address or exact location. There are no accounts, no advertising, and no third-party trackers.',
       },
       {
         heading: 'The questions you type',
-        body: 'In the app they are handled on your phone and travel nowhere. On the website they are kept without identification: we do not know whose each one is. Since they are written freely, please do not include personal details.',
+        body: 'To write the interpretation of your card, your question is sent to Google (Gemini) along with the card that came up. Questions are kept without identification: we do not know whose each one is. Since they are written freely, please do not include personal details.',
       },
       {
-        heading: 'Signing in',
-        body: 'In the app, signing in is optional and everything works without it. If you use Sign in with Apple or your Google account, the name and email the provider returns are stored only on your phone, so the app can greet you by name and keep your cards in their own drawer. They are never sent to any server of ours, and we tell neither Google nor Apple anything about what you do in the app.',
+        heading: 'Comments',
+        body: 'Comments are public: anyone visiting the site can see the name you give and what you write. Use any name you like and leave out personal details. If you want a comment of yours removed, write to us.',
+      },
+      {
+        heading: 'What is stored in your browser',
+        body: 'Only your language preference, in your browser’s local storage and in a cookie, plus a marker that lasts for the session so your visit is counted once. Both disappear if you clear the site data.',
       },
       {
         heading: 'Children',
-        body: 'El Carot is not directed at children under 13. We do not ask for an age, a name, or anything else that would identify whoever is using the app or the site.',
+        body: 'El Carot is not directed at children under 13. We do not ask for an age or anything else that would identify whoever is using the site.',
       },
       {
         heading: 'Changes to this policy',
-        body: 'If El Carot ever begins collecting data, we will update this page before that change reaches the App Store.',
+        body: 'If El Carot ever changes what it keeps, we will update this page before that change takes effect.',
       },
     ],
   },

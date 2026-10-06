@@ -34,7 +34,7 @@ export function MenuOverlay() {
 
   return (
     <>
-      {open && <CarotMenu onAbout={() => goto('/about')} onGallery={() => goto('/gallery')} />}
+      {open && <CarotMenu onAbout={() => goto('/about')} onGallery={() => goto('/gallery')} onPrivacy={() => goto('/privacy')} />}
       {(!isDesktop || open) && <MenuToggle open={open} onToggle={toggle} label={open ? t.close : t.menu} />}
     </>
   );
