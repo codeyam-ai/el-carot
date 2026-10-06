@@ -1,0 +1,18 @@
+{
+  "name": "DeckArc - Card Hovered",
+  "id": "5dd43e8a-7745-43ef-b065-791527463949",
+  "url": "/isolated-components/DeckArc",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "componentName": "DeckArc",
+  "scenarioType": "component",
+  "description": "Hovering a card in the arc lifts it above its neighbours, inviting the draw.",
+  "interactions": [
+    {
+      "action": "hover",
+      "selector": "#codeyam-capture div:has(> img[draggable=\"false\"]):nth-child(11)"
+    }
+  ]
+}

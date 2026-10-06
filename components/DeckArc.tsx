@@ -23,10 +23,12 @@ export function DeckArc({ back, onDraw }: { back: string; onDraw: () => void }) 
       <div style={{ position: 'absolute', left: '50%', top: 70, width: 0, height: 0 }}>
         {CAROT_CARDS.map((_, i) => {
           const rel = i - mid;
-          const deg = rel * STEP_DEG;
-          const rad = (deg * Math.PI) / 180;
-          const x = R * Math.sin(rad);
-          const y = R * (1 - Math.cos(rad));
+          // Rounded so the server-rendered transform string matches the one the
+          // browser normalizes to — full-precision floats cause a hydration mismatch.
+          const deg = Math.round(rel * STEP_DEG * 100) / 100;
+          const rad = (rel * STEP_DEG * Math.PI) / 180;
+          const x = Math.round(R * Math.sin(rad) * 100) / 100;
+          const y = Math.round(R * (1 - Math.cos(rad)) * 100) / 100;
           const lifted = hover === i;
           return (
             <div
