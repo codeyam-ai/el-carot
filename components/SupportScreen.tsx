@@ -9,12 +9,9 @@ import { BackHeader } from '@/components/BackHeader';
 import { DesktopNav } from '@/components/DesktopNav';
 
 /**
- * Support — the page the App Store's "Support URL" points at.
- *
- * Written to actually answer things, not merely to exist: App Review opens this
- * link, and a page that only says "email us" reads as a placeholder. The
- * questions below are the ones the app genuinely provokes — why the daily card
- * can't be redrawn, whether an account is needed, where the data lives.
+ * Support — help for the website. Written to actually answer things, not
+ * merely to exist: why the daily card can't be redrawn, whether an account is
+ * needed, where questions go. Data answers must stay in step with PrivacyScreen.
  *
  * Copy is local to this file for the same reason as PrivacyScreen's.
  */
@@ -34,23 +31,19 @@ const COPY: Record<
     faqs: [
       {
         q: '¿Por qué no puedo volver a tirar la carta del día?',
-        a: 'Porque está atada a la fecha, a propósito. La idea es que sea una carta y no un sorteo hasta que salga la que te guste. Mañana hay otra.',
+        a: 'Porque está atada a la fecha, a propósito: es la misma carta para todos durante el día. La idea es que sea una carta y no un sorteo hasta que salga la que te guste. Mañana hay otra.',
       },
       {
         q: '¿Necesito una cuenta?',
-        a: 'No. El Carot funciona completo sin cuenta. En la app podés iniciar sesión con Apple si querés, y lo único que agrega es tu nombre en el saludo y un cajón propio para tus cartas.',
+        a: 'No. En El Carot no hay cuentas: todo funciona sin registrarte.',
       },
       {
-        q: '¿Dónde quedan mis cartas y mis preguntas?',
-        a: 'En tu dispositivo. El Carot no tiene servidores donde guardar tu historial, así que tus tiradas viven en el almacenamiento local del navegador o de la app.',
+        q: '¿Qué pasa con las preguntas que escribo?',
+        a: 'Se envían a Google (Gemini) para escribir la interpretación de tu carta, y las guardamos sin saber quién las escribió. Por eso te pedimos que no incluyas datos personales. El detalle está en la política de privacidad.',
       },
       {
         q: '¿Cómo borro mis datos?',
-        a: 'En la web, borrando los datos del sitio desde tu navegador. En la app, desinstalándola. En los dos casos se va todo, porque no hay copia en ningún otro lado.',
-      },
-      {
-        q: 'Perdí mi historial al cambiar de teléfono o de navegador',
-        a: 'Es esperable: como nada se guarda en un servidor, el historial no viaja entre dispositivos. Es el costo de que tus preguntas no salgan de tu teléfono.',
+        a: 'No guardamos nada que te identifique, así que no hay una cuenta que borrar. Tu preferencia de idioma se borra borrando los datos del sitio en tu navegador. Si querés que borremos un comentario tuyo, escribinos.',
       },
       {
         q: 'Encontré algo que no funciona',
@@ -58,7 +51,7 @@ const COPY: Record<
       },
     ],
     contactHeading: 'Escribinos',
-    contactBody: 'Contestamos a todo. Si es un problema con la app, contanos qué dispositivo usás.',
+    contactBody: 'Contestamos a todo. Si es un problema con el sitio, contanos qué navegador y qué dispositivo usás.',
     igLabel: 'Seguinos en Instagram',
     privacyLabel: 'Política de privacidad',
   },
@@ -69,23 +62,19 @@ const COPY: Record<
     faqs: [
       {
         q: 'Why can I not redraw the card of the day?',
-        a: 'Because it is pinned to the date, on purpose. The point is that it is one card, not a raffle you spin until you like the result. Tomorrow brings another.',
+        a: 'Because it is pinned to the date, on purpose: it is the same card for everyone that day. The point is that it is one card, not a raffle you spin until you like the result. Tomorrow brings another.',
       },
       {
         q: 'Do I need an account?',
-        a: 'No. El Carot works fully without one. In the app you can sign in with Apple if you like, and all it adds is your name in the greeting and a drawer of your own for your cards.',
+        a: 'No. El Carot has no accounts: everything works without signing up.',
       },
       {
-        q: 'Where do my cards and questions live?',
-        a: 'On your device. El Carot has no servers on which to keep your history, so your draws live in your browser or app local storage.',
+        q: 'What happens to the questions I type?',
+        a: 'They are sent to Google (Gemini) to write the interpretation of your card, and we keep them without knowing who wrote them. That is why we ask you to leave out personal details. The privacy policy has the full picture.',
       },
       {
         q: 'How do I delete my data?',
-        a: 'On the web, clear the site data from your browser. In the app, uninstall it. Either way everything goes, because there is no copy anywhere else.',
-      },
-      {
-        q: 'I lost my history when I changed phone or browser',
-        a: 'That is expected: since nothing is kept on a server, history does not travel between devices. It is the cost of your questions never leaving your phone.',
+        a: 'We keep nothing that identifies you, so there is no account to delete. Your language preference goes when you clear the site data in your browser. If you want a comment of yours removed, write to us.',
       },
       {
         q: 'I found something broken',
@@ -93,7 +82,7 @@ const COPY: Record<
       },
     ],
     contactHeading: 'Write to us',
-    contactBody: 'We answer everything. If it is a problem with the app, tell us which device you are on.',
+    contactBody: 'We answer everything. If it is a problem with the site, tell us which browser and device you are on.',
     igLabel: 'Follow on Instagram',
     privacyLabel: 'Privacy policy',
   },

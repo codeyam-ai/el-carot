@@ -225,6 +225,21 @@
       "name": "tsc"
     }
   ],
+  "testCacheIgnorePatterns": [
+    ".claude/**",
+    ".codex/**",
+    ".github/**",
+    "public/**",
+    "*.md",
+    "LICENSE",
+    ".env.example",
+    ".gitattributes",
+    ".gitignore",
+    ".vercelignore",
+    "vercel.json",
+    "app/globals.css",
+    "app/icon.svg"
+  ],
   "testParallelism": {
     "loadGuard": true
   },
@@ -241,7 +256,12 @@
       "name": "tests",
       "outputFormat": "vitest-json",
       "sourceFilePatterns": [
-        "**/*.{ts,tsx,js,jsx}"
+        "**/*.{ts,tsx,js,jsx}",
+        "**/*.mjs",
+        "package.json",
+        "package-lock.json",
+        "tsconfig.json",
+        "prisma/schema.prisma"
       ],
       "targetedCommand": "npx vitest run -t \"{test_names}\" --reporter=json",
       "testFilePatterns": [
