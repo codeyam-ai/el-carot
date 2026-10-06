@@ -1,0 +1,1 @@
+{"commitKind":"unfinalized","pushedRef":"refs/heads/main","reason":"User asked to push. Full session-finalize can't pass: 9 page screenshots need a seedable test DB and the only DB is live Neon (deferred by user). Build, tsc and all 37 tests pass.","timestamp":"2026-10-06T20:19:56Z","user":"daniraskovsky@gmail.com"}
