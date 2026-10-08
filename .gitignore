@@ -169,6 +169,7 @@ blob-report/
 .codeyam/state/dependency-provision.json
 .codeyam/state/setup-provision.json
 .codeyam/state/provisioning-lockfile-rewrites.jsonl
+.codeyam/state/npm-pin-shim/
 .codeyam/state/session-results-snapshot.json
 .codeyam/state/pre-commit-sync-rebase-gate.json
 .codeyam/state/pre-commit-sync-orphan-bail.json
@@ -183,14 +184,17 @@ blob-report/
 .codeyam/state/harness-tasks-dir
 .codeyam/state/tool-loading-injected.json
 .codeyam/state/refusal-fingerprints.json
+.codeyam/state/pretool-hook-inflight/
 .codeyam/state/rebase-heal.json
 .codeyam/state/rebuild-self-restart.json
 .codeyam/state/push-auto-amend.json
 .codeyam/state/change-origin.json
 .codeyam/state/audit-split.json
+.codeyam/state/claude-launch-provenance.json
 .codeyam/state/build-requests/
 .codeyam/state/credential-store-durability.json
 .codeyam/state/inline-agent-sessions.json
+.codeyam/state/finalize-snapshot.json
 .codeyam/test-run-marker.json
 .claude/settings.local.json
 .claude/hooks/__pycache__/

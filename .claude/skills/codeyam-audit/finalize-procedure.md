@@ -305,6 +305,29 @@ codeyam-editor editor refresh-tests --partition <name> --write-cache
 output blob into every cargo partition, which manufactures a fake
 multi-failure wall out of one runner's trouble.
 
+**When contention reddened the warm, turn the concurrency down for one run —
+do not hand-split it.** `refresh-tests` runs runners in parallel up to
+`testParallelism.maxConcurrentRunners` (adaptive when unset), and
+`--max-concurrent-runners <N>` overrides that for a single invocation without
+touching `editor.json`. `1` is fully serial: no two runners overlap, so
+neither can steal the other's port or starve it of cores.
+
+```bash
+codeyam-editor editor refresh-tests --max-concurrent-runners 1
+```
+
+It is the same lever `recapture-stale --concurrency` is for captures, applied
+to test runners. Reach for it when a run's failures look contention-shaped —
+a runner that contradicts its own output and was NOT already serially
+retried, or a failure that passes when run alone (a port collision, a timeout
+under load). Both diagnostics now name the flag. Measured on
+`editor-improvements-96` (2026-10-06): a flag-free warm ran 1,709s and cached
+**nothing** — `ui` contradicted its own output and two cargo tests lost port
+races, all of which passed alone. Recovery took two hand-orchestrated
+invocations (the eleven cargo partitions, then `ui` by itself) to approximate
+what this flag does in one. Serial costs wall-clock. On a healthy machine,
+leave the flag off and let the adaptive cap run.
+
 **`--findings-only` is a smaller ANSWER, not a faster run — do not reach for
 it to save time.** It skips the per-file `git log` attribution walk and the
 per-entity evidence projection, and that is genuinely all it skips. Measured
@@ -315,14 +338,16 @@ which costs more than the minutes. Pick it when you want the compact
 projection: the verdict, the missing-\* arrays, and a name+count summary.
 
 **To read ONE finding's detail, use `--only <INVARIANT_ID>`.** It narrows both
-the work and the document. A scope that names no coverage-derived finding gets
-a `coverage` block holding only the totals and per-classification counts
-(`rostersOmitted: true`), not the per-entry rosters. On this repo those rosters
-alone took an `--only` document to 11.2 MB for a 13-item finding, which is big
-enough that the harness saves it to a file instead of showing it inline. An
-`--only` naming a coverage finding (`UNCOVERED_GLOSSARY_ENTRY`,
-`UNRESOLVABLE_GLOSSARY_ENTRY`, `STALE_LCOV_COVERAGE`, …) still carries the full
-rosters, and so does the unfiltered document.
+the work and the document. A scope that names no roster-derived finding gets
+a `coverage` block holding only the totals, per-classification counts, and the
+per-runner `staleIngests` rows (`rostersOmitted: true`), not the per-entry
+rosters. On this repo those rosters alone took an `--only` document to 11.2 MB
+for a 13-item finding, which is big enough that the harness saves it to a file
+instead of showing it inline. Only an `--only` naming a finding whose items are
+roster rows (`UNCOVERED_GLOSSARY_ENTRY`, `UNRESOLVABLE_GLOSSARY_ENTRY`) carries
+the full rosters, and so does the unfiltered document. The timestamp findings —
+`STALE_COVERAGE_INGEST`, `STALE_LCOV_COVERAGE` — get the summary, so the
+recovery command a blocked finalize names stays small enough to read inline.
 
 The lever that actually moves wall-clock is `--concurrency`, because the bulk
 of an audit is the per-scenario screenshot scan — one PNG decoded and
@@ -1248,6 +1273,30 @@ top of that range.
 And an hour is long enough that the batching decision is worth making
 deliberately *before* the first fix, not discovered at the second. When CI hands
 you three failures, the choice is between roughly one hour and roughly four.
+
+**The case batching cannot cover: a diagnose-then-fix loop.** The advice above
+assumes CI handed you the complete failure list. Sometimes it cannot: the first
+commit exists only to make a failure *visible* (upload a log artifact, add a CI
+diagnostic step), and the fix is written from what that run reveals. The two
+commits cannot share one finalize, because the second does not exist yet. On
+`editor-improvements-94` that loop cost two whole re-stamp finalizes, ~45
+minutes each, neither of which changed a single verdict. Two things now keep it
+cheap — lean on them rather than fighting the ordering:
+
+- **A commit touching only CI provider config re-proves only the static
+  checks.** `.github/workflows/**` (and the other CI config locations) is linted
+  by the static checks and read by nothing else a finalize runs, so the audit,
+  the dependency-graph rebuild, and the screenshot guard keep their recorded
+  passes across it, and the re-finalize re-stamps the marker after re-running
+  the static checks and the cheap whole-tree guards — minutes, not the audit's
+  ~45. Keep the visibility commit to CI config alone and it lands
+  in that cheap band; mix a source edit into it and every phase that reads that
+  source re-runs, as it must. The audit's skip still requires the static checks
+  to have passed on the current tree, so a broken workflow edit cannot slip
+  through on the audit's old pass.
+- **The fix commit pays for what it touched, not for the whole branch.** Phase
+  fingerprinting re-runs only the phases whose inputs moved; that is the
+  mechanism the price above already reflects.
 
 > GOTCHA — **the queue tenure does not survive the push.** Every re-finalize
 > needs a fresh `codeyam-editor editor pre-commit-sync` first. The tenure claimed

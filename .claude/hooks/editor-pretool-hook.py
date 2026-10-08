@@ -338,7 +338,7 @@ def _repeat_notice(count, rule_count=1):
             f"ALREADY REFUSED ({count}x in the last "
             f"{_REPEAT_WINDOW_SEC // 60} minutes): this exact call was refused "
             f"before and nothing has changed since. Re-issuing it will be "
-            f"refused again — take the next valid action below instead.\n"
+            f"refused again — take the next valid action above instead.\n"
         )
     if rule_count >= _RULE_RECURRENCE_MIN:
         return (
@@ -346,7 +346,7 @@ def _repeat_notice(count, rule_count=1):
             f"project): this rule has blocked a call {rule_count} times here, "
             f"typically once each in a different session — so it is a known "
             f"recurring trap rather than a first encounter. The next valid "
-            f"action below is the canonical path; it is worth reading once "
+            f"action above is the canonical path; it is worth reading once "
             f"rather than rediscovering.\n"
         )
     return ""
@@ -393,6 +393,7 @@ def allow(reason):
     reason string is never printed, so it costs a normal call nothing."""
     if _EXPLAIN_MODE:
         _emit_verdict("ALLOWED", "", "", reason)
+    _deliver_unfinished_warning_on_allow()
     sys.exit(0)
 
 
@@ -411,6 +412,7 @@ def notice(rule, message):
     silently bypass a prompt the user might otherwise see."""
     if _EXPLAIN_MODE:
         _emit_verdict("NOTICE", rule, "", message)
+    _deliver_unfinished_warning_on_allow()
     print(message, file=sys.stderr)
     sys.exit(0)
 
@@ -449,19 +451,61 @@ def block(project_dir, rule, reason, next_action, reference="", detail="", evide
     working exactly as designed. The clause is deliberately INSIDE the reason
     rather than on a line above it, so the `BLOCKED: ` first-token contract
     that agents and `is_recovery_contract` grep for is left untouched.
+
+    The text is laid out by `refusal_text` — action first, evidence last,
+    and a repeat collapsed to two lines; see there for why.
     """
-    message = f"BLOCKED: guardrail, not a breakage — {reason}\nNext valid action: {next_action}"
-    if evidence:
-        message = f"{message}\nEvidence: {evidence}"
-    if reference:
-        message = f"{message}\n{reference}"
     if _EXPLAIN_MODE:
-        _emit_verdict("BLOCKED", rule, detail, message)
+        _emit_verdict(
+            "BLOCKED", rule, detail, refusal_text(reason, next_action, reference, evidence)
+        )
     count, rule_count = _record_refusal(
         project_dir, "\x00".join((rule, detail, call, evidence)), rule
     )
-    print(f"{_repeat_notice(count, rule_count)}{message}", file=sys.stderr)
+    # The leading newline is for the harness, which prints
+    # `PreToolUse:<Tool> hook error: [<the hook's whole shell command>]: `
+    # immediately before this text. Without it the action is glued to the
+    # end of ~130 characters of plumbing; with it, the action starts a line.
+    text = refusal_text(reason, next_action, reference, evidence, count, rule_count)
+    if _UNFINISHED_WARNING:
+        text = f"{text}\n\n{_UNFINISHED_WARNING}"
+    print("\n" + text, file=sys.stderr)
     sys.exit(2)
+
+
+def refusal_text(reason, next_action, reference="", evidence="", count=1, rule_count=1):
+    """The refusal as the agent reads it: recovery first, evidence last.
+
+    The harness prefix is the one part of the line the hook cannot control,
+    so the hook's own FIRST words are the instruction. The order used to be
+    reassurance, cause, action, evidence — and with the action sandwiched,
+    agents re-issued the identical refused `Edit` four times in a row at
+    `present-live` before reading far enough to run `editor change`, which
+    the very first refusal had named.
+
+    A repeat (`count >= 2`) is REPLACED, not prepended to: the action plus a
+    one-line `BLOCKED: ALREADY REFUSED …`, with no cause, evidence, or
+    reference. The full form was already printed once and nothing has
+    changed since (the fingerprint includes the evidence), so re-printing it
+    only re-buries the one line that matters under the same wall.
+
+    Both lines of the `BLOCKED:` / `Next valid action:` contract are present
+    in both shapes; only their order differs from the CLI's, because a CLI
+    error is read from the top of a terminal and this one is read after a
+    prefix that eats the first line's attention.
+    """
+    action = f"Next valid action: {next_action}"
+    notice = _repeat_notice(count, rule_count)
+    if count >= 2:
+        return f"{action}\nBLOCKED: {notice.rstrip()}"
+    lines = [action, f"BLOCKED: guardrail, not a breakage — {reason}"]
+    if notice:
+        lines.append(notice.rstrip())
+    if reference:
+        lines.append(reference)
+    if evidence:
+        lines.append(f"Evidence: {evidence}")
+    return "\n".join(lines)
 
 
 def resolved_context(project_dir, consulted=""):
@@ -854,6 +898,9 @@ _GATING_SUBCOMMANDS = frozenset(
         "advance",
         "analyze-imports",
         "audit",
+        # An `--scope impacted` sweep runs ~10 minutes and is routinely
+        # backgrounded and piped; unwrapped, it left no status document.
+        "client-errors",
         # The two terminal steps. Neither is slow in the ordinary case, and that
         # is exactly why they belong here: each POSTs to a handler that shells
         # out to git, so each CAN block, and each is the LAST command of its
@@ -2473,7 +2520,9 @@ def write_targets(command):
     opaque = False
     appending = False
     truncating = False
-    constructs = ("open", "write_", "writeFile")
+    # `>` is a construct too: without it a `cat >> f <<'EOF'` body was scanned
+    # raw, so an arrow function's `=>` read as a truncating redirect.
+    constructs = ("open", "write_", "writeFile", ">")
     data = write_construct_data_spans(command) if any(c in command for c in constructs) else []
 
     def add(resolved):
@@ -2513,6 +2562,8 @@ def write_targets(command):
                 add(resolve_identifier(command, receiver.group(1)) if receiver else None)
 
     for match in _SHELL_REDIRECT.finditer(command):
+        if _in_spans(match.start(), data):
+            continue
         if match.group(0).startswith(">>"):
             appending = True
         else:
@@ -2567,25 +2618,84 @@ def eligible_pathspecs(paths, project_dir):
 
 def tracked_source_paths(paths, project_dir):
     """The subset of `paths` that git tracks and that carries a source suffix.
+    The paths half of `tracked_source_lookup`."""
+    return tracked_source_lookup(paths, project_dir)[0]
+
+
+def tracked_source_lookup(paths, project_dir):
+    """`(tracked, consulted)`: the subset of `paths` that git tracks and that
+    carries a source suffix, plus a phrase naming how that was decided.
 
     Untracked files, temp/scratchpad paths, and generated artifacts all fall
-    out here — they are not tracked, so they are never blocked."""
+    out here — they are not tracked, so they are never blocked.
+
+    When git cannot answer (a timeout, a missing binary, a non-zero exit) this
+    used to return `[]` — "nothing here is tracked" — so the guard waved the
+    rewrite through, silently, exactly when the machine was busiest. A lookup
+    that FAILED is not a lookup that found nothing; it now falls back to
+    `on_disk_source_paths`, which over-approximates the tracked set, and says
+    so in the evidence the refusal prints."""
     candidates = eligible_pathspecs(paths, project_dir)
     if not candidates:
-        return []
+        return [], "git ls-files"
+    listed = _git_ls_files(candidates, project_dir)
+    if listed is None:
+        return (
+            on_disk_source_paths(candidates, project_dir),
+            f"files on disk (git ls-files did not answer within "
+            f"{_GIT_LOOKUP_TIMEOUT_SECS}s, so existence stood in for tracked-ness)",
+        )
+    return listed, "git ls-files"
+
+
+# Kept well under the hook's own registration timeout (5s in the installed
+# settings). The harness kills a hook that overruns its budget and the call
+# then proceeds unjudged; a git query allowed to consume the whole budget made
+# that the common failure under load instead of the rare one.
+_GIT_LOOKUP_TIMEOUT_SECS = 2
+
+
+def _git_ls_files(candidates, project_dir):
+    """The sorted subset of `candidates` git tracks, or None when git could not
+    answer. None and `[]` mean different things and must stay distinct.
+
+    A project that is not a git repository is an ANSWER, not a failure:
+    nothing in it is tracked, so it is `[]`."""
     try:
         result = subprocess.run(
             ["git", "ls-files", "-z", "--"] + candidates,
             cwd=project_dir,
             capture_output=True,
             text=True,
-            timeout=5,
+            timeout=_GIT_LOOKUP_TIMEOUT_SECS,
+            # Git localizes its messages; the not-a-repo match below is English.
+            env={**os.environ, "LC_ALL": "C"},
         )
     except Exception:
-        return []
+        return None
     if result.returncode != 0:
-        return []
+        return [] if "not a git repository" in (result.stderr or "") else None
     return sorted(p for p in result.stdout.split("\0") if p)
+
+
+def on_disk_source_paths(candidates, project_dir):
+    """The `candidates` that exist as files in `project_dir` outside the
+    internal cache directories — the fail-closed stand-in for `git ls-files`.
+
+    It over-approximates (an untracked scratch `.rs` in the tree counts), which
+    is the right direction for a guard: a spurious refusal is visible and
+    names its cause, a missed one is neither."""
+    return sorted(
+        rel
+        for rel in candidates
+        if not set(rel.split("/")[:-1]) & _INTERNAL_DIRS
+        and os.path.isfile(os.path.join(project_dir, rel))
+    )
+
+
+# Mirrors `ALWAYS_EXCLUDED_DIRS` in `crates/control-api/src/internal_paths.rs`
+# — directory names that hold cache state at any depth, never authored source.
+_INTERNAL_DIRS = frozenset(("node_modules", ".codeyam", ".git", "target"))
 
 
 def _path_tokens(command):
@@ -2642,17 +2752,26 @@ def scripted_rewrite_stage(command, project_dir):
     -0pi …`; the whole call was refused, so the backup never happened and the
     agent lost its safety net without being told — the splitter knew both
     stages and the refusal named only a file."""
+    return scripted_rewrite_verdict(command, project_dir)[0]
+
+
+def scripted_rewrite_verdict(command, project_dir):
+    """`(found, consulted)`: `scripted_rewrite_stage`'s tuple (or None) plus
+    the phrase naming how tracked-ness was decided, which the refusal's
+    evidence must state truthfully — "consulted git ls-files" on a verdict
+    that git never answered would hide the very degradation it is reporting."""
     explicit, opaque, append_only = write_targets(command)
     if not explicit and not opaque:
-        return None
+        return None, ""
     candidates = _path_tokens(command) if opaque else explicit
-    tracked = tracked_source_paths(candidates, project_dir)
+    tracked, consulted = tracked_source_lookup(candidates, project_dir)
     if not tracked:
-        return None
+        return None, consulted
     resolved = eligible_pathspecs(explicit, project_dir)
     target = next((path for path in tracked if path in resolved), tracked[0])
     stages = _split_commands(command)
-    return (target, _offending_stage(stages), len(stages), append_only, target not in resolved)
+    found = (target, _offending_stage(stages), len(stages), append_only, target not in resolved)
+    return found, consulted
 
 
 def scripted_source_rewrite_target(command, project_dir):
@@ -3591,8 +3710,20 @@ _HANDOFF_AWK = re.compile(_HANDOFF_VERB_ANCHOR + r"(awk)\b", re.VERBOSE)
 # happens to contain a digit does not reach `[pqd]`.
 _SED_LINE_WINDOW = re.compile(r"\d+\s*(?:,\s*(?:\d+|\+\d+|\$))?\s*[pqd]\b")
 
+# A `sed` address that truncates by PATTERN RANGE: `/BEGIN STEP/,$p`,
+# `/^# Backend Flow/,/━━━ TASK ━━━/p`. Anchoring on a banner is the most
+# natural way to carve one section out of a hand-off, and it is the shape the
+# refusal describes — a range that ENDS on a banner hands back a heading with
+# no body. A single `/PATTERN/p` with no range is a filter, not a window.
+# Applied to LIVE output only (`_live_handoff_idiom`).
+_SED_PATTERN_WINDOW = re.compile(r"/[^/]+/\s*,\s*(?:/[^/]+/|\d+|\+\d+|\$)\s*[pqd]")
+
 # `awk` truncates when it guards on the record number.
 _AWK_NR = re.compile(r"\bNR\b")
+
+# The `sed` pattern range above, spelled in awk:
+# `awk '/━━━ ASK WHETHER TO KEEP ASKING ━━━/,/━━━/'`. Live output only.
+_AWK_PATTERN_RANGE = re.compile(r"/[^/]+/\s*,\s*/[^/]+/")
 
 # A stage that REDUCES the store to a match list rather than emitting a
 # contiguous body. Truncating a match list is not reading a window of one
@@ -3614,6 +3745,22 @@ def _handoff_idiom(stage):
     if _HANDOFF_SED.search(stage) and _SED_LINE_WINDOW.search(stage):
         return "sed"
     if _HANDOFF_AWK.search(stage) and _AWK_NR.search(stage):
+        return "awk"
+    return None
+
+
+def _live_handoff_idiom(stage):
+    """The truncating idiom `stage` runs over LIVE hand-off output, or None.
+
+    `_handoff_idiom` plus the pattern ranges. Over live output a banner-anchored
+    range is the commonest window there is — the line numbers are not known
+    until the command has run, so a pattern is what agents reach for."""
+    idiom = _handoff_idiom(stage)
+    if idiom:
+        return idiom
+    if _HANDOFF_SED.search(stage) and _SED_PATTERN_WINDOW.search(stage):
+        return "sed"
+    if _HANDOFF_AWK.search(stage) and _AWK_PATTERN_RANGE.search(stage):
         return "awk"
     return None
 
@@ -3670,6 +3817,110 @@ def windowed_handoff_read(command):
     return None
 
 
+# Door six — and it names no path at all. Every door above is a FILE the
+# hand-off was written to; this one is the LIVE stdout of the command that
+# produces it, windowed before it lands anywhere:
+# `advance 2>&1 | sed -n '/^# Backend Flow/,/━━━ TASK ━━━/p'`,
+# `step-handoff --section a,b,c | head -5`. A path sweep cannot see it because
+# there is no path to sweep, and it carries the traffic: measured across 59
+# fleet sessions, 239 windowed live reads in 42 of them, none refused, against
+# 29 refusals on the five file doors combined. A seventh producer is one entry
+# here.
+_HANDOFF_PRODUCING_SUBCOMMANDS = frozenset(("advance", "step", "step-handoff"))
+
+# The position-blind fallback for a stage `shlex` cannot tokenize, so a
+# malformed quote is never an evasion path. `step-handoff` is listed before
+# `step` because `step\b` also matches at the hyphen.
+_HANDOFF_PRODUCER_INVOCATION = re.compile(
+    r"\bcodeyam-editor(?:-dev)?\s+editor\s+(step-handoff|advance|step)\b"
+)
+
+# An inverted match passes nearly everything through, so `grep -v heartbeat`
+# is a filter, not a reducer — and it is exactly what the measured
+# banner-ended window was hidden behind.
+_INVERTED_MATCH = re.compile(r"(?:^|\s)(?:-[A-Za-z]*v[A-Za-z]*|--invert-match)\b")
+
+
+def _handoff_subcommand(stage):
+    """The hand-off-producing `codeyam-editor editor <subcommand>` that
+    `stage` RUNS, or None — `"step-handoff --section"` for a section answer,
+    the one read the command exists to make complete.
+
+    Position-aware for the reason `_gating_subcommand` is: the name is only an
+    invocation when it is the program the stage runs, so
+    `grep "editor advance" notes.md | head` is not a hit."""
+    try:
+        tokens = shlex.split(stage, posix=True)
+    except ValueError:
+        match = _HANDOFF_PRODUCER_INVOCATION.search(stage)
+        return match.group(1) if match else None
+    for index, tok in enumerate(tokens):
+        if _program_name(tok) not in _CODEYAM_CLIS:
+            continue
+        if not _in_command_position(tokens, index):
+            continue
+        rest = tokens[index + 1:]
+        if len(rest) >= 2 and rest[0] == "editor" and rest[1] in _HANDOFF_PRODUCING_SUBCOMMANDS:
+            if rest[1] == "step-handoff" and any(
+                arg == "--section" or arg.startswith("--section=") for arg in rest[2:]
+            ):
+                return "step-handoff --section"
+            return rest[1]
+    return None
+
+
+def _reduces_output(stage):
+    """True when `stage` reduces its input to a match list or a count, so a
+    window downstream of it truncates THAT, not the hand-off — the same
+    carve-out the path guard makes for `grep FILE | head`."""
+    return bool(_HANDOFF_REDUCER.search(stage)) and not _INVERTED_MATCH.search(stage)
+
+
+def windowed_live_handoff(command):
+    """`(subcommand, idiom)` when `command` pipes the LIVE output of a
+    hand-off-producing subcommand into a truncating stage, or None.
+
+    Evaluated per pipeline, so a window buried in the second of three
+    `;`/`&&`-joined commands is still seen, and a `head` belonging to a
+    different command is not. A pipe into `grep` stays allowed for the reason
+    it does on the path guard: a search is not a window and does not present
+    itself as a complete read. A bare run is never a match.
+
+    Pure, so the idiom set is assertable directly."""
+    if not command:
+        return None
+    command = elide_heredoc_bodies(command)
+    for pipeline in _pipelines(command):
+        for index, stage in enumerate(pipeline):
+            subcommand = _handoff_subcommand(stage)
+            if not subcommand:
+                continue
+            for downstream in pipeline[index + 1:]:
+                if _reduces_output(downstream):
+                    break
+                idiom = _live_handoff_idiom(downstream)
+                if idiom:
+                    return subcommand, idiom
+    return None
+
+
+def handoff_refusal_collateral(command):
+    """The pipelines of `command` that read no hand-off window — what a
+    pre-execution refusal discards along with the read.
+
+    The hook refuses the WHOLE call, so in `sed -n 392,420p <hand-off>; cargo
+    fmt` the `cargo fmt` never runs. 11 of 29 measured refusals were compound
+    like that, one of them discarding a `track-step completed` workflow
+    mutation, and nothing said so. Naming them is the fix."""
+    collateral = []
+    for pipeline in _pipelines(elide_heredoc_bodies(command or "")):
+        text = " | ".join(stage.strip() for stage in pipeline)
+        if windowed_handoff_read(text) or windowed_live_handoff(text):
+            continue
+        collateral.append(text)
+    return collateral
+
+
 def windowed_handoff_read_tool(tool_input):
     """The truncating idiom a `Read` TOOL call uses on the saved step hand-off,
     or None.
@@ -3695,24 +3946,81 @@ def windowed_handoff_read_tool(tool_input):
     return "Read offset/limit"
 
 
-def windowed_handoff_read_refusal(idiom):
+def windowed_handoff_read_refusal(idiom, subcommand=None, collateral=()):
     """The `(reason, next_action)` pair for a windowed hand-off read.
+
+    `subcommand` is set for door six — the live output of `advance`, `step`,
+    or `step-handoff` — and swaps the opening for one that names the command,
+    since there is no file in the call to point at. A `--section` answer gets
+    one more sentence: there the window is self-defeating, because the answer
+    ENDS with the line naming any required section the request did not show,
+    and a window short of the whole answer deletes exactly that line.
+
+    `collateral` lists the parts of a compound command that did not run —
+    the refusal fires before execution, so they were discarded with the read.
 
     The reason states the failure CONCRETELY — a window can end on a banner
     and yield a heading with no body. The abstract version ("you might miss
     something") is exactly what an agent holding accurate-looking text
     discounts, which is how this failed the first time.
 
+    The reason LEADS with the invariant — no window of a hand-off, through any
+    tool, at any of the places it lives — and only then names the matched
+    `idiom` as evidence. Headlining the shape taught the wrong lesson: three
+    retry pairs landed 3–5 seconds after a refusal, each re-applying the window
+    with a different tool, because the refusal read as "`sed` is the problem".
+
     The next action names `step-handoff --section` FIRST, and says why it
-    beats the line range the agent may already be holding. `HandoffSection`
-    publishes `start_line`/`end_line` and documents them as meaning what
-    `sed -n 'A,Bp'` means, so an agent that ran `step-handoff` is actively
-    INVITED to sed the range it was handed. Refusing that read is still right
-    — the arithmetic is the hazard, and a copied range is complete only if it
-    was copied exactly — so the recovery has to say the named form reaches the
-    same answer without any of it."""
+    beats a line range the agent may still be holding from older output.
+    `step-handoff` itself no longer prints ranges for exactly that reason: a
+    printed range was read as "look here" and `sed`-ed back seconds later.
+    Refusing that read is still right — the arithmetic is the hazard, and a
+    copied range is complete only if it was copied exactly — so the recovery
+    has to say the named form reaches the same answer without any of it."""
+    invariant = (
+        "NO window of a step hand-off is allowed — not through any tool "
+        "(`head`, `tail`, `sed`, `awk`, a `Read` with offset/limit), and not "
+        "at any of the places the hand-off lives. Switching to another "
+        "windowing tool, or moving the pipe onto another command that prints "
+        "the same text, is refused the same way. "
+    )
+    if subcommand:
+        opening = (
+            f"{invariant}This call pipes the LIVE output of "
+            f"`{cli_command()} editor {subcommand}` into `{idiom}`, which reads "
+            f"a window of the same text it saves to `{_HANDOFF_STORE}`. A hand-off is "
+        )
+    else:
+        opening = (
+            f"{invariant}This call reads a window of a saved step hand-off with "
+            f"`{idiom}`. A hand-off is "
+        )
+    section_clause = ""
+    if subcommand == "step-handoff --section":
+        section_clause = (
+            " For a `--section` answer the window is self-defeating: you asked "
+            "for COMPLETE sections, and the answer ends with the line "
+            "`step-handoff: N REQUIRED section(s) of this step are NOT shown "
+            "above: …` — the one signal that your narrowing dropped an "
+            "instruction. Any window short of the whole answer deletes that "
+            "trailer first."
+        )
+    live_clause = ""
+    if subcommand:
+        live_clause = (
+            "run it WITHOUT the window — the command already saves and prints "
+            "its complete answer, and a `--section` request is already as "
+            "narrow as you asked for. To narrow further, "
+        )
+    collateral_clause = ""
+    if collateral:
+        listed = "; ".join(f"`{part}`" for part in collateral)
+        collateral_clause = (
+            f" The whole call was refused before it ran, so these parts of it "
+            f"did NOT run either — re-issue them on their own: {listed}."
+        )
     return (
-        f"this reads a WINDOW of a saved step hand-off with `{idiom}`. That is "
+        f"{opening}"
         f"an instruction file, and a window of one is the single read shape "
         f"with no trustworthy interpretation: the lines that come back are "
         f"accurate, and nothing in them tells you a section body was cut. A "
@@ -3721,7 +4029,8 @@ def windowed_handoff_read_refusal(idiom):
         f"section's instructions went unexecuted and were caught only turns "
         f"later. The same text lives in `{_HANDOFF_STORE}`, in the run-keyed "
         f"transcript, and in the harness's persisted tool result, so this "
-        f"applies wherever you reached it.",
+        f"applies wherever you reached it.{section_clause}",
+        f"{live_clause}"
         f"read it by NAMED SECTION: `{cli_command()} editor step-handoff "
         f"--section <NAME>` returns one COMPLETE section, marks which sections "
         f"are REQUIRED, and now reports any required section your request did "
@@ -3731,10 +4040,11 @@ def windowed_handoff_read_refusal(idiom):
         f"to show, re-run that request: an answer that large is now written "
         f"one section per file under `.codeyam/state/handoff-sections/`, and "
         f"it prints one `cat` line per section, each a COMPLETE read. `cat "
-        f"{_HANDOFF_STORE}` still returns all of it. Line numbers printed by "
-        f"`step-handoff` are NOT a licence to `sed` the range back — the named "
-        f"form gives the same answer with none of the arithmetic. `grep`, "
-        f"`wc -l`, and a bare `cat` of this file are unaffected.",
+        f"{_HANDOFF_STORE}` still returns all of it. A line range you are "
+        f"holding from earlier output is NOT a licence to `sed` it back — the "
+        f"named form gives the same answer with none of the arithmetic. `grep`, "
+        f"`wc -l`, and a bare `cat` of this file are unaffected, and so is a "
+        f"pipe of the live output into `grep`.{collateral_clause}",
     )
 
 
@@ -4195,6 +4505,154 @@ def preview_required_next_action(observed, step, hint):
     )
 
 
+# ── unfinished-run detection ───────────────────────────────────────────
+#
+# Claude Code kills a hook that overruns its registered timeout and lets the
+# call proceed — the guard fails OPEN, and nothing says so. On
+# `editor-improvements-95` a heredoc machine-rewrote a tracked `.rs` file under
+# heavy load; replaying it afterwards blocked it twice. A killed process cannot
+# report its own death, so each run leaves a marker that only a deliberate
+# verdict removes, and the NEXT run reports any marker whose run is gone.
+#
+# Coverage starts once `main` is running: a kill during interpreter start-up
+# (before this module's first line executes) leaves no marker.
+
+_INFLIGHT_DIR = os.path.join(".codeyam", "state", "pretool-hook-inflight")
+
+# No live run outlasts its registered timeout (seconds, not minutes), so an
+# older marker is unfinished whatever its pid says — which also covers a pid
+# the OS has since handed to an unrelated process.
+_INFLIGHT_STALE_SECS = 60
+
+# The current run's marker, removed by `finish_run` on a deliberate exit.
+_INFLIGHT_MARKER = None
+
+
+def begin_run(project_dir, call, pid=None, now=None):
+    """Write this run's in-flight marker; its path, or None when the state
+    directory is unwritable (detection is best-effort and must never cost the
+    call itself)."""
+    pid = os.getpid() if pid is None else pid
+    marker_dir = os.path.join(project_dir, _INFLIGHT_DIR)
+    path = os.path.join(marker_dir, f"{pid}.json")
+    record = {"pid": pid, "startedAt": time.time() if now is None else now, "call": call[:200]}
+    try:
+        os.makedirs(marker_dir, exist_ok=True)
+        with open(path, "w") as f:
+            json.dump(record, f)
+    except OSError:
+        return None
+    return path
+
+
+def finish_run(marker):
+    """Remove `marker` — this run reached a verdict."""
+    if marker:
+        try:
+            os.remove(marker)
+        except OSError:
+            pass
+
+
+def _pid_alive(pid):
+    try:
+        os.kill(pid, 0)
+    except ProcessLookupError:
+        return False
+    except OSError:
+        return True
+    return True
+
+
+def collect_unfinished_runs(project_dir, own_pid, now=None, pid_alive=_pid_alive):
+    """The records of earlier runs that never reached a verdict, oldest first,
+    each removed as it is collected so it is reported exactly once.
+
+    A marker whose pid is still alive and which is younger than
+    `_INFLIGHT_STALE_SECS` belongs to a concurrent run (another pane, or a
+    parallel tool call) and is left alone."""
+    now = time.time() if now is None else now
+    marker_dir = os.path.join(project_dir, _INFLIGHT_DIR)
+    try:
+        names = os.listdir(marker_dir)
+    except OSError:
+        return []
+    found = []
+    for name in names:
+        path = os.path.join(marker_dir, name)
+        try:
+            with open(path) as f:
+                record = json.load(f)
+            pid = int(record["pid"])
+            started = float(record["startedAt"])
+        except (OSError, ValueError, KeyError, TypeError):
+            continue
+        if pid == own_pid:
+            continue
+        if now - started < _INFLIGHT_STALE_SECS and pid_alive(pid):
+            continue
+        finish_run(path)
+        found.append(record)
+    return sorted(found, key=lambda r: r["startedAt"])
+
+
+def unfinished_run_message(records, now):
+    """The warning for `records`, or "" when there are none. Pure."""
+    if not records:
+        return ""
+    lines = [
+        f"WARNING: the PreToolUse guard did not finish for {len(records)} earlier "
+        f"tool call(s) — it was killed (most likely by the hook's timeout under "
+        f"load) or it crashed, so each call below ran WITHOUT being checked by "
+        f"any guardrail:"
+    ]
+    for record in records:
+        ago = max(0, int(now - float(record.get("startedAt", now))))
+        lines.append(f"  - {ago}s ago: {record.get('call', '?')}")
+    lines.append(
+        "If one of them wrote tracked source with a script, inspect it with "
+        "`git diff` and redo the change with the Edit tool."
+    )
+    return "\n".join(lines)
+
+
+def report_unfinished_runs(project_dir, call):
+    """Report earlier unfinished runs, then mark this one in flight. Skipped
+    under `--explain`, which must leave no trace."""
+    global _INFLIGHT_MARKER
+    if _EXPLAIN_MODE or os.name == "nt":
+        # Windows: `os.kill(pid, 0)` sends CTRL_C_EVENT rather than probing.
+        return
+    global _UNFINISHED_WARNING
+    now = time.time()
+    _UNFINISHED_WARNING = unfinished_run_message(
+        collect_unfinished_runs(project_dir, os.getpid(), now), now
+    )
+    _INFLIGHT_MARKER = begin_run(project_dir, call, now=now)
+
+
+# Set by `report_unfinished_runs`; delivered by whichever verdict this run
+# reaches — on stderr beside a refusal (exit 2, which Claude reads), or as
+# `additionalContext` on an allow, because stderr on an exit-0 PreToolUse hook
+# reaches only the debug log and the warning would vanish exactly when the
+# current call is harmless.
+_UNFINISHED_WARNING = ""
+
+
+def allow_context_json(message):
+    """The stdout document that hands `message` to the model on an allowed
+    call. Carries no `permissionDecision`, so it grants nothing — the call
+    still goes through the normal permission flow. Pure."""
+    return json.dumps(
+        {"hookSpecificOutput": {"hookEventName": "PreToolUse", "additionalContext": message}}
+    )
+
+
+def _deliver_unfinished_warning_on_allow():
+    if _UNFINISHED_WARNING:
+        print(allow_context_json(_UNFINISHED_WARNING))
+
+
 def describe_call(tool_name, tool_input):
     """A short, stable identifier for the call being judged.
 
@@ -4227,19 +4685,20 @@ def main():
     tool_name = event.get("tool_name", "")
     tool_input = event.get("tool_input", {})
     call = describe_call(tool_name, tool_input)
+    report_unfinished_runs(project_dir, call)
 
     # Scripted-source-rewrite guard. Unlike every other rule here this one is
     # neither step-scoped nor editor-mode-scoped — the ban on machine-rewriting
     # tracked source holds in every session — so it fires before the
     # `CODEYAM_EDITOR_ACTIVE` short-circuit below.
     if tool_name == "Bash":
-        found = scripted_rewrite_stage(tool_input.get("command", ""), project_dir)
+        found, consulted = scripted_rewrite_verdict(tool_input.get("command", ""), project_dir)
         if found:
             rewrite_target, stage, stage_count, append_only, target_inferred = found
             reason, next_action = scripted_rewrite_refusal(
                 rewrite_target, append_only, target_inferred
             )
-            evidence = resolved_context(project_dir, "git ls-files")
+            evidence = resolved_context(project_dir, consulted)
             compound = compound_stage_evidence(stage, stage_count)
             if compound:
                 evidence = f"{evidence}; {compound}"
@@ -4310,10 +4769,15 @@ def main():
     # and the shell exit code — both recoverable from the two sidecars the
     # notice names — instead of costing the command. Where the bracket's capture
     # does not exist, the original harms are all still live and so is the block.
+    #
+    # A pipe that WINDOWS a live hand-off (`advance | head`) is not advised
+    # here: the notice exits 0, which would wave through the refusal the
+    # windowed-handoff guard below exists to issue. That pipe costs
+    # instructions, not just an exit code.
     if tool_name == "Bash":
         command = tool_input.get("command", "")
         piped = piped_gating_command(command)
-        if piped:
+        if piped and not windowed_live_handoff(command):
             if not _capture_available():
                 block(
                     project_dir,
@@ -4377,9 +4841,12 @@ def main():
     # `Read`/`Glob`/`Grep` allow-branch sits after the `CODEYAM_EDITOR_ACTIVE`
     # short-circuit, so a guard that must pre-empt it cannot live below it.
     if tool_name == "Bash":
-        idiom = windowed_handoff_read(tool_input.get("command", ""))
+        command = tool_input.get("command", "")
+        idiom = windowed_handoff_read(command)
         if idiom:
-            reason, next_action = windowed_handoff_read_refusal(idiom)
+            reason, next_action = windowed_handoff_read_refusal(
+                idiom, collateral=handoff_refusal_collateral(command)
+            )
             block(
                 project_dir,
                 "windowed-handoff-read",
@@ -4390,6 +4857,27 @@ def main():
                     f"the command names a hand-off file in a read position and "
                     f"truncates it with `{idiom}`; a whole-file `cat`, a `grep`, "
                     f"and a `wc -l` of the same path are not matched"
+                ),
+                call=call,
+            )
+        live = windowed_live_handoff(command)
+        if live:
+            subcommand, idiom = live
+            reason, next_action = windowed_handoff_read_refusal(
+                idiom,
+                subcommand=subcommand,
+                collateral=handoff_refusal_collateral(command),
+            )
+            block(
+                project_dir,
+                "windowed-handoff-read",
+                reason,
+                next_action,
+                detail=idiom,
+                evidence=(
+                    f"the command pipes the live output of `editor {subcommand}` "
+                    f"into `{idiom}`; a bare run and a pipe into `grep` are not "
+                    f"matched"
                 ),
                 call=call,
             )
@@ -4634,16 +5122,19 @@ def main():
             # both contract lines. Led with, it reads as a set to reason
             # about — which is how this block came to be the most-retried
             # one in the transcripts (four in a row at `backend-journal`).
-            # One named command reads as an instruction to follow.
+            # One named command reads as an instruction to follow, so the
+            # action is just that command; what it does is reference too.
             block(
                 project_dir,
                 "code-change",
                 f"This step ({_slug_label(state, slug)}) does not allow code changes.",
-                f"run `{cli_command()} editor change` to reopen the build loop — "
-                f"it MOVES the workflow cursor back to the nearest earlier slug "
-                f"that permits edits and prints the command to return here — "
-                f"then make this edit.",
-                reference=f"Code changes are allowed at slugs: {allowed}.",
+                f"run `{cli_command()} editor change`, then make this edit.",
+                reference=(
+                    f"`editor change` reopens the build loop: it MOVES the workflow "
+                    f"cursor back to the nearest earlier slug that permits edits and "
+                    f"prints the command to return here. Code changes are allowed at "
+                    f"slugs: {allowed}."
+                ),
                 detail=f"{slug}\x00{file_path}",
                 evidence=(
                     f"{resolved_context(project_dir, state_path)}; target "
@@ -4779,4 +5270,11 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    # Every verdict exits through `allow` / `notice` / `block`, i.e. SystemExit;
+    # only that path clears the in-flight marker. A kill or an uncaught
+    # exception leaves it for the next run to report.
+    try:
+        main()
+    except SystemExit:
+        finish_run(_INFLIGHT_MARKER)
+        raise
