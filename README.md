@@ -71,7 +71,7 @@ read [SECURITY.md](./SECURITY.md) rather than opening a public issue.
 
 [MIT](./LICENSE) © 2026 CodeYam
 
-<!-- codeyam:run-and-edit:start -->
+<!-- codeyam:run-and-edit:start d=0c8ff8921f3e -->
 ## Develop this project with codeyam-editor
 
 This project is built with [codeyam-editor](https://codeyam.com) — code and runnable data scenarios are authored side by side against a live preview.
@@ -84,11 +84,11 @@ git clone https://github.com/codeyam-ai/el-carot && cd el-carot
 npm install -g @codeyam-editor/codeyam-editor@latest
 
 # Launch the editor (split-screen terminal + live preview)
-codeyam-editor editor
+codeyam-editor start
 ```
 <!-- codeyam:run-and-edit:end -->
 
-<!-- codeyam:scenario-gallery:start -->
+<!-- codeyam:scenario-gallery:start d=0f7e47bbdee1 -->
 ## Scenario gallery
 
 States captured as runnable scenarios with codeyam-editor:
@@ -96,6 +96,10 @@ States captured as runnable scenarios with codeyam-editor:
 ### About - Default
 
 <img src=".codeyam/scenarios/screenshots/about-default--mobile.png" alt="About - Default" width="280">
+
+### Stats - Password Gate
+
+<img src=".codeyam/scenarios/screenshots/stats-password-gate--desktop.png" alt="Stats - Password Gate" width="280">
 
 ### Gallery - Default
 
@@ -105,13 +109,13 @@ States captured as runnable scenarios with codeyam-editor:
 
 <img src=".codeyam/scenarios/screenshots/landing-english--mobile.png" alt="Landing - English" width="280">
 
-### Landing - Spanish
-
-<img src=".codeyam/scenarios/screenshots/landing-spanish--mobile.png" alt="Landing - Spanish" width="280">
-
 ### Message - Default
 
 <img src=".codeyam/scenarios/screenshots/message-default--mobile.png" alt="Message - Default" width="280">
+
+### Privacy - Default
+
+<img src=".codeyam/scenarios/screenshots/privacy-default--mobile.png" alt="Privacy - Default" width="280">
 
 ### Question - Empty
 
@@ -120,8 +124,4 @@ States captured as runnable scenarios with codeyam-editor:
 ### Reading - Default
 
 <img src=".codeyam/scenarios/screenshots/reading-default--mobile.png" alt="Reading - Default" width="280">
-
-### Stats - Password Gate
-
-<img src=".codeyam/scenarios/screenshots/stats-password-gate--desktop.png" alt="Stats - Password Gate" width="280">
 <!-- codeyam:scenario-gallery:end -->
