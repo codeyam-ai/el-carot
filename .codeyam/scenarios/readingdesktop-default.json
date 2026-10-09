@@ -1,0 +1,12 @@
+{
+  "name": "ReadingDesktop - Default",
+  "id": "74f672c8-6452-4a71-85f6-e3c73c014558",
+  "url": "/isolated-components/ReadingDesktop?s=Default&lang=es",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "componentName": "ReadingDesktop",
+  "scenarioType": "component",
+  "description": "La lectura completa en desktop: carta a la izquierda, columna a la derecha."
+}

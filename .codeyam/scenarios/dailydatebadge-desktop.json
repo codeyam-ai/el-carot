@@ -1,0 +1,12 @@
+{
+  "name": "DailyDateBadge - Desktop",
+  "id": "0d40115a-cc46-430f-8ad3-1e9ab4884712",
+  "url": "/isolated-components/DailyDateBadge?s=Desktop&lang=es",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "componentName": "DailyDateBadge",
+  "scenarioType": "component",
+  "description": "Carta del día + fecha, alineado a la izquierda sobre la carta en desktop."
+}

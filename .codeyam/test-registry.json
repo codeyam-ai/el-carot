@@ -1,6 +1,123 @@
 {
   "tests": [
     {
+      "description": "the download button is disabled while the image is being saved",
+      "file": "components/ReadingMobile.test.tsx",
+      "format": "vitest",
+      "key": "ReadingMobile › disables download while saving the image",
+      "line": 66,
+      "registeredAt": "2026-10-09T00:02:55Z",
+      "runner": "tests"
+    },
+    {
+      "description": "the old \"Tu pregunta\" label is gone",
+      "file": "components/ReadingMobile.test.tsx",
+      "format": "vitest",
+      "key": "ReadingMobile › does not label the question",
+      "line": 46,
+      "registeredAt": "2026-10-09T00:02:55Z",
+      "runner": "tests"
+    },
+    {
+      "description": "with a question the order is question, name, arcanum, then the interpretation",
+      "file": "components/ReadingMobile.test.tsx",
+      "format": "vitest",
+      "key": "ReadingMobile › orders question, name, arcanum and interpretation",
+      "line": 38,
+      "registeredAt": "2026-10-09T00:02:55Z",
+      "runner": "tests"
+    },
+    {
+      "description": "the actions put draw-another first, then share and the short download label",
+      "file": "components/ReadingMobile.test.tsx",
+      "format": "vitest",
+      "key": "ReadingMobile › renders draw-another above share and download",
+      "line": 58,
+      "registeredAt": "2026-10-09T00:02:55Z",
+      "runner": "tests"
+    },
+    {
+      "description": "the quote shows only without a question",
+      "file": "components/ReadingMobile.test.tsx",
+      "format": "vitest",
+      "key": "ReadingMobile › shows the quote only without a question",
+      "line": 51,
+      "registeredAt": "2026-10-09T00:02:55Z",
+      "runner": "tests"
+    },
+    {
+      "description": "the old \"Tu pregunta\" label is gone",
+      "file": "components/ReadingTextColumn.test.tsx",
+      "format": "vitest",
+      "key": "ReadingTextColumn › does not label the question",
+      "line": 44,
+      "registeredAt": "2026-10-09T00:02:55Z",
+      "runner": "tests"
+    },
+    {
+      "description": "without a question the name still leads, then the arcanum and the quote",
+      "file": "components/ReadingTextColumn.test.tsx",
+      "format": "vitest",
+      "key": "ReadingTextColumn › opens with the name without a question",
+      "line": 56,
+      "registeredAt": "2026-10-09T00:02:55Z",
+      "runner": "tests"
+    },
+    {
+      "description": "with a question the order is question, name, arcanum, then the interpretation",
+      "file": "components/ReadingTextColumn.test.tsx",
+      "format": "vitest",
+      "key": "ReadingTextColumn › orders question, name, arcanum and interpretation",
+      "line": 32,
+      "registeredAt": "2026-10-09T00:02:55Z",
+      "runner": "tests"
+    },
+    {
+      "description": "the actions row leads with the draw-another button, then share and download image",
+      "file": "components/ReadingTextColumn.test.tsx",
+      "format": "vitest",
+      "key": "ReadingTextColumn › renders the actions row in order",
+      "line": 63,
+      "registeredAt": "2026-10-09T00:02:55Z",
+      "runner": "tests"
+    },
+    {
+      "description": "the card quote only shows when no question was asked",
+      "file": "components/ReadingTextColumn.test.tsx",
+      "format": "vitest",
+      "key": "ReadingTextColumn › shows the quote only without a question",
+      "line": 49,
+      "registeredAt": "2026-10-09T00:02:55Z",
+      "runner": "tests"
+    },
+    {
+      "description": "English uses the word Arcanum",
+      "file": "lib/reading.test.ts",
+      "format": "vitest",
+      "key": "arcanumLine › builds the English eyebrow",
+      "line": 54,
+      "registeredAt": "2026-10-09T00:02:55Z",
+      "runner": "tests"
+    },
+    {
+      "description": "Spanish uses the word Arcano before the roman numeral and the arcana name",
+      "file": "lib/reading.test.ts",
+      "format": "vitest",
+      "key": "arcanumLine › builds the Spanish eyebrow",
+      "line": 49,
+      "registeredAt": "2026-10-09T00:02:55Z",
+      "runner": "tests"
+    },
+    {
+      "description": "the fool carries its own numeral from the deck data",
+      "file": "lib/reading.test.ts",
+      "format": "vitest",
+      "key": "arcanumLine › uses the numeral stored on the card",
+      "line": 59,
+      "registeredAt": "2026-10-09T00:02:55Z",
+      "runner": "tests"
+    },
+    {
       "description": "the Spanish prompt uses voseo and the El Carot persona",
       "file": "lib/interpret-prompts.test.ts",
       "format": "vitest",
@@ -190,6 +307,51 @@
       "runner": "tests"
     },
     {
+      "description": "a reply without a string interpretation falls back to the meaning",
+      "file": "lib/fetchInterpretation.test.ts",
+      "format": "vitest",
+      "key": "fetchInterpretation › falls back to the meaning on a malformed reply",
+      "line": 26,
+      "registeredAt": "2026-10-09T00:02:55Z",
+      "runner": "tests"
+    },
+    {
+      "description": "an empty reply body also falls back to the meaning",
+      "file": "lib/fetchInterpretation.test.ts",
+      "format": "vitest",
+      "key": "fetchInterpretation › falls back to the meaning on a null reply",
+      "line": 31,
+      "registeredAt": "2026-10-09T00:02:55Z",
+      "runner": "tests"
+    },
+    {
+      "description": "a network failure never rejects and falls back to the meaning",
+      "file": "lib/fetchInterpretation.test.ts",
+      "format": "vitest",
+      "key": "fetchInterpretation › falls back to the meaning when the request fails",
+      "line": 36,
+      "registeredAt": "2026-10-09T00:02:55Z",
+      "runner": "tests"
+    },
+    {
+      "description": "the request carries the card number, the question and the language",
+      "file": "lib/fetchInterpretation.test.ts",
+      "format": "vitest",
+      "key": "fetchInterpretation › posts the card number, question and language",
+      "line": 16,
+      "registeredAt": "2026-10-09T00:02:55Z",
+      "runner": "tests"
+    },
+    {
+      "description": "the AI interpretation is returned as-is",
+      "file": "lib/fetchInterpretation.test.ts",
+      "format": "vitest",
+      "key": "fetchInterpretation › returns the interpretation from the API",
+      "line": 10,
+      "registeredAt": "2026-10-09T00:02:55Z",
+      "runner": "tests"
+    },
+    {
       "description": "English uses the \"Month D, YYYY\" form",
       "file": "lib/daily.test.ts",
       "format": "vitest",
@@ -232,6 +394,60 @@
       "key": "geoFromHeaders › returns nulls when the headers are absent",
       "line": 20,
       "registeredAt": "2026-07-16T18:53:16.163071+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "the message flow shows its own title",
+      "file": "lib/reading.test.ts",
+      "format": "vitest",
+      "key": "navTitleFor › titles the message flow",
+      "line": 30,
+      "registeredAt": "2026-10-09T00:02:55Z",
+      "runner": "tests"
+    },
+    {
+      "description": "the question flow and the gallery each show their own title",
+      "file": "lib/reading.test.ts",
+      "format": "vitest",
+      "key": "navTitleFor › titles the question flow and the gallery",
+      "line": 35,
+      "registeredAt": "2026-10-09T00:02:55Z",
+      "runner": "tests"
+    },
+    {
+      "description": "home and unknown origins read as the card of the day",
+      "file": "lib/reading.test.ts",
+      "format": "vitest",
+      "key": "navTitleFor › uses the daily label for home and unknown origins",
+      "line": 41,
+      "registeredAt": "2026-10-09T00:02:55Z",
+      "runner": "tests"
+    },
+    {
+      "description": "an empty origin also falls back to home",
+      "file": "lib/reading.test.ts",
+      "format": "vitest",
+      "key": "originRoute › falls back to home for an empty origin",
+      "line": 23,
+      "registeredAt": "2026-10-09T00:02:55Z",
+      "runner": "tests"
+    },
+    {
+      "description": "an unknown origin from a hand-edited URL falls back to home",
+      "file": "lib/reading.test.ts",
+      "format": "vitest",
+      "key": "originRoute › falls back to home for an unknown origin",
+      "line": 18,
+      "registeredAt": "2026-10-09T00:02:55Z",
+      "runner": "tests"
+    },
+    {
+      "description": "each known origin goes back to the screen the reading was opened from",
+      "file": "lib/reading.test.ts",
+      "format": "vitest",
+      "key": "originRoute › maps every known origin to its screen",
+      "line": 10,
+      "registeredAt": "2026-10-09T00:02:55Z",
       "runner": "tests"
     },
     {
@@ -304,6 +520,51 @@
       "key": "pickFan › returns the requested number of cards",
       "line": 20,
       "registeredAt": "2026-06-24T13:07:24.495440+00:00",
+      "runner": "tests"
+    },
+    {
+      "description": "a finished request without an interpretation falls back to the meaning",
+      "file": "lib/reading.test.ts",
+      "format": "vitest",
+      "key": "readingBody › falls back to the meaning when no interpretation came back",
+      "line": 93,
+      "registeredAt": "2026-10-09T00:02:55Z",
+      "runner": "tests"
+    },
+    {
+      "description": "once it arrives the AI interpretation replaces the meaning",
+      "file": "lib/reading.test.ts",
+      "format": "vitest",
+      "key": "readingBody › shows the interpretation once it arrives",
+      "line": 85,
+      "registeredAt": "2026-10-09T00:02:55Z",
+      "runner": "tests"
+    },
+    {
+      "description": "while the AI reading is in flight the body is the pending message",
+      "file": "lib/reading.test.ts",
+      "format": "vitest",
+      "key": "readingBody › shows the pending message while interpreting",
+      "line": 77,
+      "registeredAt": "2026-10-09T00:02:55Z",
+      "runner": "tests"
+    },
+    {
+      "description": "with no question the body is the written meaning, never pending",
+      "file": "lib/reading.test.ts",
+      "format": "vitest",
+      "key": "readingBody › shows the written meaning without a question",
+      "line": 69,
+      "registeredAt": "2026-10-09T00:02:55Z",
+      "runner": "tests"
+    },
+    {
+      "description": "the fallback meaning follows the reading language",
+      "file": "lib/reading.test.ts",
+      "format": "vitest",
+      "key": "readingBody › uses the English meaning in English",
+      "line": 100,
+      "registeredAt": "2026-10-09T00:02:55Z",
       "runner": "tests"
     },
     {

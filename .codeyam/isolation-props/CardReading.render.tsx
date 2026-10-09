@@ -20,18 +20,26 @@
 // its own setup.
 import { CardReading } from '@/components/CardReading';
 import { CAROT_CARDS } from '@/data/cards';
+import { StubInterpret } from '@/.codeyam/isolation-props/harness';
 
 export default async function Page({ scenario: isolationScenario, searchParams = Promise.resolve({} as never) }: Partial<{
   searchParams: Promise<{ s?: string }>;
-}> & { scenario: true }) {
+}> & { scenario: { cardN?: number; desktop?: boolean; question?: string; interpretation?: string } }) {
   const { s = 'Default' } = await searchParams;
   const scenario = isolationScenario;
   if (!scenario) {
     return <div>Unknown scenario: {s}</div>;
   }
   return (
-    <div id="codeyam-capture" style={{ background: 'var(--carot-screen)', width: 390, boxSizing: 'border-box' }}>
-      <CardReading card={CAROT_CARDS[0]} origin="gallery" instant />
+    <div id="codeyam-capture" style={{ background: 'var(--carot-screen)', width: scenario.desktop ? '100vw' : 390, boxSizing: 'border-box' }}>
+      <StubInterpret interpretation={scenario.interpretation ?? ''}>
+        <CardReading
+          card={CAROT_CARDS[scenario.cardN ?? 0]}
+          origin={scenario.question ? 'question' : scenario.desktop ? 'message' : 'gallery'}
+          question={scenario.question ?? null}
+          instant
+        />
+      </StubInterpret>
     </div>
   );
 }

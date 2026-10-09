@@ -1,5 +1,36 @@
 {
   "views": {
+    "CardReading": {
+      "empty": {
+        "status": "n-a",
+        "reason": "A reading always shows exactly one card; there is no zero-item state."
+      },
+      "single": {
+        "status": "n-a",
+        "reason": "The screen is inherently single-item: one drawn card, shown by the typical scenarios."
+      },
+      "typical": {
+        "status": "covered"
+      },
+      "many": {
+        "status": "n-a",
+        "reason": "Only one card is ever read at a time; the three-card spread is a separate planned feature."
+      },
+      "loading": {
+        "status": "covered"
+      },
+      "edge": {
+        "status": "covered"
+      },
+      "error": {
+        "status": "n-a",
+        "reason": "A failed interpretation falls back to the written meaning, so the error state renders identically to the typical reading."
+      },
+      "key-interaction": {
+        "status": "n-a",
+        "reason": "Every action leaves the screen: Elegir otra carta navigates back, Compartir opens the OS share sheet, Descargar saves a file."
+      }
+    },
     "Home": {
       "empty": {
         "status": "n-a",

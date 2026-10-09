@@ -1,0 +1,12 @@
+{
+  "name": "DownloadIcon - Default",
+  "id": "c8d25d13-2e33-48ed-8001-332bf252c226",
+  "url": "/isolated-components/DownloadIcon?s=Default&lang=es",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "DownloadIcon",
+  "scenarioType": "component",
+  "description": "El ícono de descargar, en salvia, ampliado."
+}

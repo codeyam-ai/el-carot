@@ -1,0 +1,12 @@
+{
+  "name": "ReadingQuestion - Desktop",
+  "id": "d462d6a7-dc26-4bd9-80af-e83a89164d42",
+  "url": "/isolated-components/ReadingQuestion?s=Desktop&lang=es",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "componentName": "ReadingQuestion",
+  "scenarioType": "component",
+  "description": "La pregunta en display verde salvia con comillas grandes, 26px."
+}

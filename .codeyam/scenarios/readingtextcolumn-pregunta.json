@@ -1,0 +1,12 @@
+{
+  "name": "ReadingTextColumn - Pregunta",
+  "id": "14f79209-14e0-4feb-8bb4-bce37b09bfa5",
+  "url": "/isolated-components/ReadingTextColumn?s=Pregunta&lang=es",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "componentName": "ReadingTextColumn",
+  "scenarioType": "component",
+  "description": "Con pregunta: la pregunta arriba sin etiqueta, nombre, arcano, interpretación y acciones."
+}

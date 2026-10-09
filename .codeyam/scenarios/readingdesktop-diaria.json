@@ -1,0 +1,12 @@
+{
+  "name": "ReadingDesktop - Diaria",
+  "id": "98e0790e-984e-4d21-b08f-1f6c875ceece",
+  "url": "/isolated-components/ReadingDesktop?s=Diaria&lang=es",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "componentName": "ReadingDesktop",
+  "scenarioType": "component",
+  "description": "Desktop como carta del día, con la fecha sobre la carta."
+}

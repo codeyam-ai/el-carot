@@ -1,0 +1,12 @@
+{
+  "name": "SwayingCard - Mobile",
+  "id": "c1eb4ab2-473e-403f-b9e9-3fbfddd4b528",
+  "url": "/isolated-components/SwayingCard?s=Mobile&lang=es",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "SwayingCard",
+  "scenarioType": "component",
+  "description": "El Ermitaño boca arriba a 214px en mobile."
+}

@@ -1,0 +1,12 @@
+{
+  "name": "SwayingCard - Desktop",
+  "id": "4a8068aa-a7b4-46f0-88ce-4c8bee892710",
+  "url": "/isolated-components/SwayingCard?s=Desktop&lang=es",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "componentName": "SwayingCard",
+  "scenarioType": "component",
+  "description": "El Ermitaño boca arriba a 340px, con balanceo y sombra."
+}

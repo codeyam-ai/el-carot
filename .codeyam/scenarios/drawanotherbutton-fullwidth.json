@@ -1,0 +1,12 @@
+{
+  "name": "DrawAnotherButton - FullWidth",
+  "id": "a2dd8c1b-36f3-47ff-bd0a-86a2d56d449b",
+  "url": "/isolated-components/DrawAnotherButton?s=FullWidth&lang=es",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "DrawAnotherButton",
+  "scenarioType": "component",
+  "description": "Elegir otra carta a todo el ancho en mobile."
+}

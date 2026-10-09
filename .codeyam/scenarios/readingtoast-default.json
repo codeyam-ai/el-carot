@@ -1,0 +1,12 @@
+{
+  "name": "ReadingToast - Default",
+  "id": "90a5d0bc-fb02-45f7-b383-29b408d46c02",
+  "url": "/isolated-components/ReadingToast?s=Default&lang=es",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "ReadingToast",
+  "scenarioType": "component",
+  "description": "El aviso '¡Link copiado!' que aparece abajo al compartir."
+}

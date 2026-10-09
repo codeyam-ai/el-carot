@@ -1,0 +1,12 @@
+{
+  "name": "CardQuote - Mobile",
+  "id": "22b79cc8-e8d8-4436-9a00-04cfd7c4818e",
+  "url": "/isolated-components/CardQuote?s=Mobile&lang=es",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "CardQuote",
+  "scenarioType": "component",
+  "description": "La cita centrada en mobile."
+}

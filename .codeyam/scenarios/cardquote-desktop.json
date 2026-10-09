@@ -1,0 +1,12 @@
+{
+  "name": "CardQuote - Desktop",
+  "id": "f5e2079b-35b4-4cb8-8a42-209d3694931e",
+  "url": "/isolated-components/CardQuote?s=Desktop&lang=es",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "componentName": "CardQuote",
+  "scenarioType": "component",
+  "description": "La cita de la carta en itálica salvia, alineada a la izquierda."
+}

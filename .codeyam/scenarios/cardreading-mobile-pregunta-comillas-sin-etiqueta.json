@@ -1,0 +1,12 @@
+{
+  "name": "CardReading - Mobile Pregunta Comillas Sin Etiqueta",
+  "id": "98e7d6f4-97f7-4879-b175-50734d67f509",
+  "url": "/isolated-components/CardReading?s=MobilePreguntaComillasSinEtiqueta&lang=es",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "CardReading",
+  "scenarioType": "component",
+  "description": "Mobile: pregunta con comillas, sin la etiqueta 'Tu pregunta', y el arcano debajo del nombre."
+}

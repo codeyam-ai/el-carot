@@ -7,15 +7,35 @@ type Props = ComponentProps<typeof Component>;
 // `.codeyam/`, rather than in the app's source tree — anything under the app's
 // source tree compiles into the app and ships with it.
 //
-// TODO: fill in one entry per scenario, then register each with:
+// Register each scenario with:
 //   codeyam-editor editor register '{"name":"<Name> - <Scenario>","componentName":"<Name>","url":"/isolated-components/<Name>?s=<Scenario>","dimensions":["Desktop"]}'
-// SEED data that exercises the component — populate lists with realistic rows,
-// fill optional fields, trigger pluralization. All-empty props ([] / null)
-// render an empty shell and is a bug; put empty / loading / error in their own
-// separate scenarios.
+const QUESTION = '¿Debería dejar mi trabajo para dedicarme a la música?';
+
 export const scenarios: Record<string, Props> = {
   // El Loco's reading, opened from the gallery.
-  Default: { scenario: true },
+  Default: { scenario: {} },
+  // El Ermitaño, opened from "Quiero recibir un mensaje": name, arcanum, quote, meaning, actions.
+  DesktopIdentidad: { scenario: { desktop: true, cardN: 9 } },
+  MobileIdentidad: { scenario: { cardN: 9 } },
+  // The same reading after asking a question: the question on top, then name,
+  // arcanum and the (stubbed) AI interpretation.
+  DesktopPreguntaComillasSinEtiqueta: {
+    scenario: {
+      desktop: true,
+      cardN: 9,
+      question: QUESTION,
+      interpretation:
+        'El Ermitaño no te empuja a saltar: te invita a apagar el ruido antes de decidir. Confucio camina con su lámpara, despacio, iluminando solo el próximo paso. Antes de renunciar, date un tiempo a solas con la música — componé, tocá, escuchate — y mirá si ese llamado se sostiene en el silencio.',
+    },
+  },
+  MobilePreguntaComillasSinEtiqueta: {
+    scenario: {
+      cardN: 9,
+      question: QUESTION,
+      interpretation:
+        'El Ermitaño no te empuja a saltar: te invita a apagar el ruido antes de decidir. Confucio camina con su lámpara, despacio, iluminando solo el próximo paso.',
+    },
+  },
 };
 
 // Capture width, in pixels, or `undefined` for a full-width surface.

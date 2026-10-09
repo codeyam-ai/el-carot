@@ -1,0 +1,12 @@
+{
+  "name": "ReadingActionsMobile - Default",
+  "id": "5452f053-ddf9-43c0-9708-a7c8fa0573b8",
+  "url": "/isolated-components/ReadingActionsMobile?s=Default&lang=es",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "ReadingActionsMobile",
+  "scenarioType": "component",
+  "description": "Elegir otra carta a todo el ancho; Compartir y Descargar lado a lado."
+}

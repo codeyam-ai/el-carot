@@ -1,0 +1,12 @@
+{
+  "name": "ReadingTextColumn - Default",
+  "id": "e83be065-12af-4a8a-a4cf-41e084ae3cf6",
+  "url": "/isolated-components/ReadingTextColumn?s=Default&lang=es",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "componentName": "ReadingTextColumn",
+  "scenarioType": "component",
+  "description": "Columna de desktop sin pregunta: nombre, arcano, cita, estrellas, significado y acciones."
+}

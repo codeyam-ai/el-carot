@@ -1,0 +1,12 @@
+{
+  "name": "ReadingActionLink - Saving",
+  "id": "60740847-b6b5-4f58-b98e-2ff0731da4cc",
+  "url": "/isolated-components/ReadingActionLink?s=Saving&lang=es",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "componentName": "ReadingActionLink",
+  "scenarioType": "component",
+  "description": "Descargar Imagen atenuado y deshabilitado mientras se guarda."
+}

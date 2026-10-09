@@ -1,0 +1,12 @@
+{
+  "name": "ShareIcon - Default",
+  "id": "52f49b1d-ec96-45d4-bd03-0b478756d25e",
+  "url": "/isolated-components/ShareIcon?s=Default&lang=es",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "ShareIcon",
+  "scenarioType": "component",
+  "description": "El ícono de compartir, en salvia, ampliado."
+}

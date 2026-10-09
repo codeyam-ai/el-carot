@@ -21,7 +21,11 @@
     "name": "BackHeader",
     "scenarios": [
       "backheader-default"
-    ]
+    ],
+    "untestabilityReason": {
+      "justification": "Both clicks navigate away: back runs onBack or history-back, and the wordmark routes home, so a replayed click captures a different screen rather than a state of the header",
+      "kind": "interaction-not-capturable"
+    }
   },
   {
     "description": "The central Home illustration: card fronts fanned and overlapping, with a CSS-only entrance and an infinite gentle sway. Cards are passed in by the caller.",
@@ -30,6 +34,31 @@
     "scenarios": [
       "cardfan-three-cards",
       "cardfan-single-card"
+    ]
+  },
+  {
+    "description": "Character name as the headline with the arcanum eyebrow below it.",
+    "filePath": "components/CardIdentity.tsx",
+    "name": "CardIdentity",
+    "scenarios": [
+      "cardidentity-desktop",
+      "cardidentity-mobile",
+      "cardidentity-english"
+    ],
+    "tags": [
+      "reading"
+    ]
+  },
+  {
+    "description": "The card quote, italic in sage; left on desktop, centred on mobile.",
+    "filePath": "components/CardQuote.tsx",
+    "name": "CardQuote",
+    "scenarios": [
+      "cardquote-desktop",
+      "cardquote-mobile"
+    ],
+    "tags": [
+      "reading"
     ]
   },
   {
@@ -83,6 +112,18 @@
     ]
   },
   {
+    "description": "Card-of-the-day eyebrow over the date, left on desktop and centred on mobile.",
+    "filePath": "components/DailyDateBadge.tsx",
+    "name": "DailyDateBadge",
+    "scenarios": [
+      "dailydatebadge-desktop",
+      "dailydatebadge-mobile"
+    ],
+    "tags": [
+      "reading"
+    ]
+  },
+  {
     "description": "Desktop deck: the full face-down deck spread in a wide gentle arc; hover lifts, click draws.",
     "filePath": "components/DeckArc.tsx",
     "name": "DeckArc",
@@ -104,6 +145,29 @@
     "name": "DesktopNav",
     "scenarios": [
       "desktopnav-default"
+    ]
+  },
+  {
+    "description": "Line download glyph drawn in currentColor.",
+    "filePath": "components/DownloadIcon.tsx",
+    "name": "DownloadIcon",
+    "scenarios": [
+      "downloadicon-default"
+    ],
+    "tags": [
+      "reading"
+    ]
+  },
+  {
+    "description": "Filled sage draw-another-card button, inline on desktop or full width on mobile.",
+    "filePath": "components/DrawAnotherButton.tsx",
+    "name": "DrawAnotherButton",
+    "scenarios": [
+      "drawanotherbutton-inline",
+      "drawanotherbutton-fullwidth"
+    ],
+    "tags": [
+      "reading"
     ]
   },
   {
@@ -292,11 +356,133 @@
     ]
   },
   {
+    "description": "Desktop reading action as a quiet icon-plus-label link; dims when disabled.",
+    "filePath": "components/ReadingActionLink.tsx",
+    "name": "ReadingActionLink",
+    "scenarios": [
+      "readingactionlink-share",
+      "readingactionlink-saving"
+    ],
+    "tags": [
+      "reading"
+    ]
+  },
+  {
+    "description": "Desktop actions in one row: draw another, share, download image.",
+    "filePath": "components/ReadingActionsDesktop.tsx",
+    "name": "ReadingActionsDesktop",
+    "scenarios": [
+      "readingactionsdesktop-default",
+      "readingactionsdesktop-english"
+    ],
+    "tags": [
+      "reading"
+    ]
+  },
+  {
+    "description": "Mobile actions: full-width draw another, then share and download side by side.",
+    "filePath": "components/ReadingActionsMobile.tsx",
+    "name": "ReadingActionsMobile",
+    "scenarios": [
+      "readingactionsmobile-default",
+      "readingactionsmobile-saving"
+    ],
+    "tags": [
+      "reading"
+    ]
+  },
+  {
+    "description": "The meaning or AI interpretation paragraph; sage while pending.",
+    "filePath": "components/ReadingBody.tsx",
+    "name": "ReadingBody",
+    "scenarios": [
+      "readingbody-desktop",
+      "readingbody-pending",
+      "readingbody-mobile"
+    ],
+    "tags": [
+      "reading"
+    ]
+  },
+  {
+    "description": "Desktop reading layout: nav bar, the card on the left, the reading column on the right.",
+    "filePath": "components/ReadingDesktop.tsx",
+    "name": "ReadingDesktop",
+    "scenarios": [
+      "readingdesktop-default",
+      "readingdesktop-pregunta",
+      "readingdesktop-diaria"
+    ],
+    "tags": [
+      "reading"
+    ]
+  },
+  {
+    "description": "Mobile reading as one centred column: header, card, question, identity, quote, body, actions.",
+    "filePath": "components/ReadingMobile.tsx",
+    "name": "ReadingMobile",
+    "scenarios": [
+      "readingmobile-default",
+      "readingmobile-pregunta",
+      "readingmobile-diaria"
+    ],
+    "tags": [
+      "reading"
+    ]
+  },
+  {
+    "description": "Mobile reading action as a hairline-bordered icon-plus-label button; dims when disabled.",
+    "filePath": "components/ReadingOutlineButton.tsx",
+    "name": "ReadingOutlineButton",
+    "scenarios": [
+      "readingoutlinebutton-share",
+      "readingoutlinebutton-saving"
+    ],
+    "tags": [
+      "reading"
+    ]
+  },
+  {
     "description": "Reading route: resolves the card (drawn / daily) + comments and renders the reading.",
     "filePath": "app/reading/page.tsx",
     "name": "ReadingPage",
     "scenarios": [
       "reading-default"
+    ]
+  },
+  {
+    "description": "The asked question in sage display type between large decorative quote marks.",
+    "filePath": "components/ReadingQuestion.tsx",
+    "name": "ReadingQuestion",
+    "scenarios": [
+      "readingquestion-desktop",
+      "readingquestion-mobile"
+    ],
+    "tags": [
+      "reading"
+    ]
+  },
+  {
+    "description": "Desktop reading column: question on top, name and arcanum, quote only without a question, body, actions.",
+    "filePath": "components/ReadingTextColumn.tsx",
+    "name": "ReadingTextColumn",
+    "scenarios": [
+      "readingtextcolumn-default",
+      "readingtextcolumn-pregunta"
+    ],
+    "tags": [
+      "reading"
+    ]
+  },
+  {
+    "description": "Brief confirmation pill after sharing or saving the image; nothing without a message.",
+    "filePath": "components/ReadingToast.tsx",
+    "name": "ReadingToast",
+    "scenarios": [
+      "readingtoast-default"
+    ],
+    "tags": [
+      "reading"
     ]
   },
   {
@@ -324,6 +510,17 @@
     "scenarios": [
       "section-default",
       "section-empty"
+    ]
+  },
+  {
+    "description": "Line share glyph drawn in currentColor.",
+    "filePath": "components/ShareIcon.tsx",
+    "name": "ShareIcon",
+    "scenarios": [
+      "shareicon-default"
+    ],
+    "tags": [
+      "reading"
     ]
   },
   {
@@ -368,6 +565,18 @@
     ]
   },
   {
+    "description": "The reading card swaying with a drop shadow, face-up when flipped; 340px desktop, 214px mobile.",
+    "filePath": "components/SwayingCard.tsx",
+    "name": "SwayingCard",
+    "scenarios": [
+      "swayingcard-desktop",
+      "swayingcard-mobile"
+    ],
+    "tags": [
+      "reading"
+    ]
+  },
+  {
     "description": "A single tarot card with a 3D flip between its patterned back and the character face.",
     "filePath": "components/TarotCard.tsx",
     "name": "TarotCard",
@@ -392,6 +601,15 @@
       "justification": "single static h1 wordmark, no props or branching",
       "kind": "trivial-wrapper"
     }
+  },
+  {
+    "description": "The arcanum eyebrow under the character name, e.g. Arcano IX · El Ermitaño.",
+    "filePath": "lib/reading.ts",
+    "name": "arcanumLine",
+    "tags": [
+      "reading"
+    ],
+    "testFile": "lib/reading.test.ts"
   },
   {
     "description": "Builds the El Carot tarot-interpretation prompt (voseo ES / warm EN) for a drawn card + the user's question, embedding the base meaning and the tone/length constraints.",
@@ -460,6 +678,15 @@
     "testFile": "lib/wallpaper.test.ts"
   },
   {
+    "description": "POSTs the card and question to /api/interpret; never rejects, falling back to the written meaning on failure or a malformed reply.",
+    "filePath": "lib/fetchInterpretation.ts",
+    "name": "fetchInterpretation",
+    "tags": [
+      "reading"
+    ],
+    "testFile": "lib/fetchInterpretation.test.ts"
+  },
+  {
     "description": "Formats a timestamp as \"YYYY-MM-DD HH:MM UTC\" for the stats tables.",
     "filePath": "app/stats/page.tsx",
     "name": "fmt",
@@ -523,6 +750,24 @@
     }
   },
   {
+    "description": "The desktop nav title for a reading opened from a given origin.",
+    "filePath": "lib/reading.ts",
+    "name": "navTitleFor",
+    "tags": [
+      "reading"
+    ],
+    "testFile": "lib/reading.test.ts"
+  },
+  {
+    "description": "Where back goes from a reading opened from a given origin; unknown origins go home.",
+    "filePath": "lib/reading.ts",
+    "name": "originRoute",
+    "tags": [
+      "reading"
+    ],
+    "testFile": "lib/reading.test.ts"
+  },
+  {
     "description": "Picks N distinct random cards (Fisher–Yates over deck indices, clamped to [0, deck.length]) for the Home fan illustration. RNG is injectable for deterministic tests.",
     "filePath": "lib/pickFan.ts",
     "name": "pickFan",
@@ -536,6 +781,15 @@
       "justification": "A filter/join of three optional strings; presentational formatting verifiable by inspection.",
       "kind": "trivial-wrapper"
     }
+  },
+  {
+    "description": "The reading body text and pending flag: written meaning, the interpreting message, or the AI interpretation with fallback to the meaning.",
+    "filePath": "lib/reading.ts",
+    "name": "readingBody",
+    "tags": [
+      "reading"
+    ],
+    "testFile": "lib/reading.test.ts"
   },
   {
     "description": "Render the wallpaper into a 1080×1920 canvas: the card art centred on a background of its own frame colour, with generous margin all around. Returns the canvas, or null if a 2D context isn't available.",
@@ -556,6 +810,18 @@
     "testFile": "lib/share.test.ts"
   },
   {
+    "description": "Whether the reading card is face-up: flips shortly after mount, or at once when instant, re-arming when the card changes.",
+    "filePath": "lib/useCardFlip.ts",
+    "name": "useCardFlip",
+    "scenarios": [
+      "cardreading-desktop-identidad",
+      "cardreading-mobile-identidad"
+    ],
+    "tags": [
+      "reading"
+    ]
+  },
+  {
     "description": "Hook exposing the active language and its translated strings to any client component under CarotProvider.",
     "filePath": "lib/i18n.tsx",
     "name": "useCarot",
@@ -563,6 +829,18 @@
       "justification": "A one-line React.useContext re-export; the behaviour under test lives in CarotProvider.",
       "kind": "trivial-wrapper"
     }
+  },
+  {
+    "description": "React state around fetchInterpretation: interpretation text and an interpreting flag, reset when card, question or language change.",
+    "filePath": "lib/useInterpretation.ts",
+    "name": "useInterpretation",
+    "scenarios": [
+      "cardreading-desktop-pregunta-comillas-sin-etiqueta",
+      "cardreading-mobile-pregunta-comillas-sin-etiqueta"
+    ],
+    "tags": [
+      "reading"
+    ]
   },
   {
     "description": "matchMedia hook — true when the viewport is at least minWidth px; mobile-first/SSR-safe.",
@@ -581,6 +859,18 @@
       "justification": "A one-line React.useContext re-export; the behaviour under test lives in MenuProvider.",
       "kind": "trivial-wrapper"
     }
+  },
+  {
+    "description": "Share and save-as-wallpaper handlers for a reading with a brief confirmation toast and a saving flag.",
+    "filePath": "lib/useReadingActions.ts",
+    "name": "useReadingActions",
+    "scenarios": [
+      "cardreading-desktop-identidad",
+      "cardreading-mobile-identidad"
+    ],
+    "tags": [
+      "reading"
+    ]
   },
   {
     "description": "UTC calendar-day key, YYYY-MM-DD — the identity of \"the card of the day\", so every visitor worldwide shares one card per UTC day.",

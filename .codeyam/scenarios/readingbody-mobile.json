@@ -1,0 +1,12 @@
+{
+  "name": "ReadingBody - Mobile",
+  "id": "1883271d-f3fa-4c89-b54c-53cca1b8f7bc",
+  "url": "/isolated-components/ReadingBody?s=Mobile&lang=es",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "ReadingBody",
+  "scenarioType": "component",
+  "description": "La interpretación centrada en mobile."
+}

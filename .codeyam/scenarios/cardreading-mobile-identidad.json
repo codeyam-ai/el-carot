@@ -1,0 +1,12 @@
+{
+  "name": "CardReading - Mobile Identidad",
+  "id": "6fca2ed2-1940-49fe-ab08-1bc207752389",
+  "url": "/isolated-components/CardReading?s=MobileIdentidad&lang=es",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "CardReading",
+  "scenarioType": "component",
+  "description": "Diseño elegido en mobile sin pregunta: nombre con el arcano debajo, cita, significado; Elegir otra carta arriba y Compartir / Descargar lado a lado."
+}

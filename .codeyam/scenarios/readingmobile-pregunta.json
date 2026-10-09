@@ -1,0 +1,12 @@
+{
+  "name": "ReadingMobile - Pregunta",
+  "id": "bf78331b-cd8e-4e0f-aa6d-425dc40916de",
+  "url": "/isolated-components/ReadingMobile?s=Pregunta&lang=es",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "ReadingMobile",
+  "scenarioType": "component",
+  "description": "Mobile después de una pregunta: la pregunta arriba del nombre."
+}

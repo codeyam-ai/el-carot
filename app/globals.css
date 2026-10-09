@@ -8,6 +8,7 @@
    .codeyam/run/pty-broker.sock — see codeyam-editor crates/pty-broker. */
 @source "../app/**/*.{ts,tsx,js,jsx,mdx}";
 @source "../components/**/*.{ts,tsx,js,jsx,mdx}";
+@source "../.codeyam/isolation-props/**/*.{ts,tsx,js,jsx}";
 
 /* ── El Carot — Maragsa Display (local OTF) ───────────────────────── */
 @font-face {

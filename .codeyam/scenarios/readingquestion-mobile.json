@@ -1,0 +1,12 @@
+{
+  "name": "ReadingQuestion - Mobile",
+  "id": "7c9691f5-7369-4424-864f-de451de1126d",
+  "url": "/isolated-components/ReadingQuestion?s=Mobile&lang=es",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "ReadingQuestion",
+  "scenarioType": "component",
+  "description": "La pregunta con comillas grandes, centrada, 23px."
+}

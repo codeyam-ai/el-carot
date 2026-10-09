@@ -1,0 +1,12 @@
+{
+  "name": "CardIdentity - Desktop",
+  "id": "d494eeb0-a175-4547-8dab-278964c6d126",
+  "url": "/isolated-components/CardIdentity?s=Desktop&lang=es",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "componentName": "CardIdentity",
+  "scenarioType": "component",
+  "description": "Confucio como titular (54px) y debajo ARCANO IX · EL ERMITAÑO."
+}

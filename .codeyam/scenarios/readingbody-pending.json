@@ -1,0 +1,12 @@
+{
+  "name": "ReadingBody - Pending",
+  "id": "69b8941b-5e43-46a1-b5be-2666529a2bf7",
+  "url": "/isolated-components/ReadingBody?s=Pending&lang=es",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "componentName": "ReadingBody",
+  "scenarioType": "component",
+  "description": "'Interpretando tu carta…' en salvia mientras responde la IA."
+}

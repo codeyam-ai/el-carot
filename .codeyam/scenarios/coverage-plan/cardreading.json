@@ -1,0 +1,18 @@
+{
+  "surface": "CardReading",
+  "surface_kind": "component",
+  "states": [
+    {
+      "dimension": "isDesktop",
+      "value": "true",
+      "rationale": "source-derived state isDesktop=true",
+      "status": "planned"
+    },
+    {
+      "dimension": "isDesktop",
+      "value": "false",
+      "rationale": "source-derived state isDesktop=false",
+      "status": "planned"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "CardReading - Desktop Pregunta Comillas Sin Etiqueta",
+  "id": "69c465be-6ecc-496c-ac4e-e655dfff7056",
+  "url": "/isolated-components/CardReading?s=DesktopPreguntaComillasSinEtiqueta&lang=es",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "componentName": "CardReading",
+  "scenarioType": "component",
+  "description": "Pregunta con comillas, sin la etiqueta 'Tu pregunta', y el arcano debajo del nombre."
+}

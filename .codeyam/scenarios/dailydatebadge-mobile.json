@@ -1,0 +1,12 @@
+{
+  "name": "DailyDateBadge - Mobile",
+  "id": "11313ed5-5048-4853-822d-1edb6665cdc5",
+  "url": "/isolated-components/DailyDateBadge?s=Mobile&lang=es",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "DailyDateBadge",
+  "scenarioType": "component",
+  "description": "Carta del día + fecha, centrado en mobile."
+}

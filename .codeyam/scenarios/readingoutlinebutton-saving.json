@@ -1,0 +1,12 @@
+{
+  "name": "ReadingOutlineButton - Saving",
+  "id": "9385eb38-bcfb-4943-b57c-5c2910414245",
+  "url": "/isolated-components/ReadingOutlineButton?s=Saving&lang=es",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "ReadingOutlineButton",
+  "scenarioType": "component",
+  "description": "Descargar atenuado y deshabilitado mientras se guarda."
+}

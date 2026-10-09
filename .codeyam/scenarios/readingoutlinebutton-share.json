@@ -1,0 +1,12 @@
+{
+  "name": "ReadingOutlineButton - Share",
+  "id": "382aa07b-b87b-4063-9b6a-822cd110543e",
+  "url": "/isolated-components/ReadingOutlineButton?s=Share&lang=es",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "ReadingOutlineButton",
+  "scenarioType": "component",
+  "description": "Botón con borde Compartir."
+}

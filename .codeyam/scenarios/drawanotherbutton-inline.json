@@ -1,0 +1,12 @@
+{
+  "name": "DrawAnotherButton - Inline",
+  "id": "7caf68ef-f383-43e7-a177-b00bd4c36ceb",
+  "url": "/isolated-components/DrawAnotherButton?s=Inline&lang=es",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "componentName": "DrawAnotherButton",
+  "scenarioType": "component",
+  "description": "Elegir otra carta, botón relleno de desktop."
+}

@@ -10,6 +10,22 @@ import { DeckArc } from '@/components/DeckArc';
 import { DeckCarousel } from '@/components/MessageIntro';
 import { MenuToggle } from '@/components/MenuToggle';
 
+/** Answers `/api/interpret` with a canned reading so a question scenario never
+ * calls Gemini or logs the question to the real database. Patched during render
+ * (not in an effect) because the child's fetch effect runs before ours would. */
+export function StubInterpret({ interpretation, children }: { interpretation: string; children: React.ReactNode }) {
+  if (typeof window !== 'undefined') {
+    const w = window as typeof window & { __carotFetch?: typeof fetch };
+    w.__carotFetch ??= window.fetch.bind(window);
+    const real = w.__carotFetch;
+    window.fetch = (input, init) =>
+      String(input).includes('/api/interpret')
+        ? Promise.resolve(new Response(JSON.stringify({ interpretation, source: 'stub' }), { headers: { 'Content-Type': 'application/json' } }))
+        : real(input, init);
+  }
+  return <>{children}</>;
+}
+
 export function NoopDeckArc({ back }: { back: string }) {
   return <DeckArc back={back} onDraw={() => {}} />;
 }
