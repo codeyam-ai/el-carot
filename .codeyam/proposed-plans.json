@@ -8,7 +8,7 @@
       "reason": "La base local de capturas solo está configurada en esta compu; en otra máquina las 9 capturas de páginas vuelven a trabarse.",
       "severity": 3,
       "source": "session-review",
-      "status": "pending",
+      "status": "ignored",
       "proposedAt": "2026-10-09T13:39:50.487538+00:00"
     },
     {
