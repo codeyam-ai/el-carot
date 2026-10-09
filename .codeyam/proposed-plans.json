@@ -21,6 +21,17 @@
       "source": "session-review",
       "status": "pending",
       "proposedAt": "2026-10-09T13:39:50.487538+00:00"
+    },
+    {
+      "id": "flechas-del-mazo-sin-animaci-n-infinita",
+      "title": "Flechas del mazo sin animación infinita",
+      "mode": "ui",
+      "body": "## Summary\n\nLas flechas salvia del carrusel de 'Quiero recibir un mensaje' (`DeckCarousel` en `components/MessageIntro.tsx`) tienen una animación `carot-nudge-left/right` infinita. Nunca quedan quietas, así que (1) no respetan la preferencia del sistema de reducir movimiento y (2) las capturas automáticas no pueden hacer clic en ellas (\"element is not stable\"); en la sesión de modo claro hubo que usar hover sobre la carta central en vez de tocar la flecha.\n\n## Key Decisions\n\n- Mantener el empujoncito como invitación, pero detenerlo bajo `@media (prefers-reduced-motion: reduce)` y después de la primera interacción del usuario (o tras unos ciclos con `animation-iteration-count`).\n- No cambiar el aspecto de las flechas ni su posición.\n\n## Implementation\n\n**File**: `app/globals.css` — envolver `carot-nudge-left`/`carot-nudge-right` con una regla `prefers-reduced-motion` que desactive la animación.\n\n**File**: `components/MessageIntro.tsx` — en `arrowStyle`, limitar la animación (p. ej. 3 iteraciones) o quitarla una vez que `active` cambió.\n\n**Scenarios**: actualizar `deckcarousel-light-next-card` y `messageintro-light-next-card` para que hagan clic en la flecha siguiente (`button[aria-label=\"Siguiente\"]`) en lugar del hover sobre la carta central.",
+      "reason": "Las flechas del mazo de mensaje se mueven sin parar: no respetan 'reducir movimiento' y las pruebas automáticas no pueden tocarlas.",
+      "severity": 2,
+      "source": "session-review",
+      "status": "pending",
+      "proposedAt": "2026-10-09T15:50:38.431591+00:00"
     }
   ]
 }
