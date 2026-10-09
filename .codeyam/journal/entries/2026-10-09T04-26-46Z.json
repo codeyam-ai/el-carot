@@ -1,0 +1,6 @@
+{
+  "timestamp": "2026-10-09T04:26:46Z",
+  "title": "Capturas de páginas con base de datos local",
+  "type": "chore",
+  "description": "Cierra lo que quedó pendiente del rediseño de la pantalla de la carta. Las capturas de páginas completas ahora usan un Postgres local (Homebrew, puerto 5432) en vez de la base de producción en Neon: el pin vive en .codeyam/editor.local.json, que no se commitea, y codeyam crea la base de capturas en ese servidor local. Con eso se actualizaron las 9 capturas que estaban viejas (inicio, galería, lectura, mensaje, pregunta, about, privacidad, soporte), que ya muestran el diseño nuevo de la carta, y el chequeo final completo pasó."
+}
