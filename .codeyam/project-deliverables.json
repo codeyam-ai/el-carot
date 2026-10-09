@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "derivedFromHash": "7fc8168110b724bede9eae882f458857f490964b8d76634e5c05e2693d44cba4",
+  "derivedAt": "2026-10-09T13:40:23.936664+00:00",
+  "deliverables": [
+    {
+      "id": "deck-22-arcana",
+      "text": "Mazo de los 22 arcanos mayores, cada uno encarnado por un personaje cuyo nombre empieza con C",
+      "status": "delivered",
+      "resolvedAt": "2026-10-09T13:40:27.370472+00:00",
+      "resolvedInFeature": "Rediseño de la pantalla de la carta",
+      "planSlug": null,
+      "note": "Ya existe en la app; este ciclo rediseñó la pantalla de lectura.",
+      "decidedBy": "agent"
+    },
+    {
+      "id": "fan-and-draw",
+      "text": "El visitante abre el mazo en abanico y saca una carta",
+      "status": "delivered",
+      "resolvedAt": "2026-10-09T13:40:31.168229+00:00",
+      "resolvedInFeature": "Rediseño de la pantalla de la carta",
+      "planSlug": null,
+      "note": "Ya existe en la app; este ciclo rediseñó la pantalla de lectura.",
+      "decidedBy": "agent"
+    },
+    {
+      "id": "card-flip",
+      "text": "La carta elegida se da vuelta con animación",
+      "status": "delivered",
+      "resolvedAt": "2026-10-09T13:40:34.704130+00:00",
+      "resolvedInFeature": "Rediseño de la pantalla de la carta",
+      "planSlug": null,
+      "note": "Ya existe en la app; este ciclo rediseñó la pantalla de lectura.",
+      "decidedBy": "agent"
+    },
+    {
+      "id": "meaning-and-quote",
+      "text": "Lectura de la carta con su significado y su cita",
+      "status": "delivered",
+      "resolvedAt": "2026-10-09T13:40:38.250615+00:00",
+      "resolvedInFeature": "Rediseño de la pantalla de la carta",
+      "planSlug": null,
+      "note": "Ya existe en la app; este ciclo rediseñó la pantalla de lectura.",
+      "decidedBy": "agent"
+    },
+    {
+      "id": "share",
+      "text": "Compartir la lectura",
+      "status": "delivered",
+      "resolvedAt": "2026-10-09T13:40:41.775142+00:00",
+      "resolvedInFeature": "Rediseño de la pantalla de la carta",
+      "planSlug": null,
+      "note": "Ya existe en la app; este ciclo rediseñó la pantalla de lectura.",
+      "decidedBy": "agent"
+    },
+    {
+      "id": "wallpaper",
+      "text": "Guardar la carta como fondo de pantalla",
+      "status": "delivered",
+      "resolvedAt": "2026-10-09T13:40:46.022606+00:00",
+      "resolvedInFeature": "Rediseño de la pantalla de la carta",
+      "planSlug": null,
+      "note": "Ya existe en la app; este ciclo rediseñó la pantalla de lectura.",
+      "decidedBy": "agent"
+    },
+    {
+      "id": "comments",
+      "text": "Dejar un comentario sin iniciar sesión",
+      "status": "delivered",
+      "resolvedAt": "2026-10-09T13:40:49.311750+00:00",
+      "resolvedInFeature": "Rediseño de la pantalla de la carta",
+      "planSlug": null,
+      "note": "Ya existe en la app; este ciclo rediseñó la pantalla de lectura.",
+      "decidedBy": "agent"
+    },
+    {
+      "id": "mobile-first-desktop",
+      "text": "Experiencia mobile-first con adaptación a desktop",
+      "status": "delivered",
+      "resolvedAt": "2026-10-09T13:40:53.522023+00:00",
+      "resolvedInFeature": "Rediseño de la pantalla de la carta",
+      "planSlug": null,
+      "note": "Ya existe en la app; este ciclo rediseñó la pantalla de lectura.",
+      "decidedBy": "agent"
+    }
+  ]
+}

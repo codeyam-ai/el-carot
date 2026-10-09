@@ -1,0 +1,26 @@
+{
+  "proposals": [
+    {
+      "id": "base-de-capturas-compartida-para-todo-el-equipo",
+      "title": "Base de capturas compartida para todo el equipo",
+      "mode": "backend",
+      "body": "## Summary\nLas capturas de páginas completas necesitan una base de datos de prueba para no escribir sobre la de producción (Neon). Hoy eso funciona solo en esta compu: el pin está en `.codeyam/editor.local.json` (gitignored) apuntando a un Postgres de Homebrew en `localhost:5432/carot_capture`. En otra máquina, en un clon nuevo o en una sesión en la nube, codeyam vuelve a negarse a sembrar y el chequeo final falla en la fase de capturas.\n\n## Key Decisions\n- Declarar la base en `.codeyam/stack.json` → `data.database` usando una variable (`${CAPTURE_DATABASE_URL}`), así el archivo commiteado no lleva credenciales y cada máquina pone su valor en `.codeyam/stack.local.json` o en el entorno.\n- Nunca apuntar esa variable a Neon: codeyam crea la base de capturas en el mismo servidor que la declarada.\n- Documentar en el README el paso de instalar Postgres local (`brew install postgresql@16`, `brew services start postgresql@16`, `createdb carot_capture`).\n\n## Implementation\n1. `.codeyam/stack.json`: agregar `data.database = {\"type\":\"postgresql\",\"url\":\"${CAPTURE_DATABASE_URL}\"}`.\n2. Mover el pin de `.codeyam/editor.local.json` a `CAPTURE_DATABASE_URL` en el entorno local.\n3. `README.md`: sección \"Capturas\" con los pasos de Postgres local.\n4. `package.json` script `setup`: si falta `CAPTURE_DATABASE_URL`, avisar en vez de fallar.\n5. Verificar con `recapture-stale` en un clon limpio que las 9 capturas de páginas se actualizan.",
+      "reason": "La base local de capturas solo está configurada en esta compu; en otra máquina las 9 capturas de páginas vuelven a trabarse.",
+      "severity": 3,
+      "source": "session-review",
+      "status": "pending",
+      "proposedAt": "2026-10-09T13:39:50.487538+00:00"
+    },
+    {
+      "id": "pruebas-autom-ticas-para-los-hooks-de-la-lectura",
+      "title": "Pruebas automáticas para los hooks de la lectura",
+      "mode": "ui",
+      "body": "## Summary\n`lib/useCardFlip.ts`, `lib/useInterpretation.ts` y `lib/useReadingActions.ts` no tienen pruebas unitarias porque el proyecto no tiene entorno DOM para tests (vitest corre en node y no hay testing-library). Hoy los cubren los escenarios de `CardReading`. La lógica pura (`lib/reading.ts`, `lib/fetchInterpretation.ts`) sí tiene tests.\n\n## Key Decisions\n- Requiere instalar paquetes de desarrollo nuevos (`jsdom` y `@testing-library/react`); confirmarlo con el usuario antes, según su regla sobre paquetes npm nuevos.\n- Usar `// @vitest-environment jsdom` solo en los archivos de test de hooks, para no cambiar el entorno del resto.\n\n## Implementation\n1. Agregar `jsdom` y `@testing-library/react` como devDependencies.\n2. `lib/useCardFlip.test.ts`: con timers falsos, verificar que gira a los 250ms, que `instant` gira de entrada y que se rearma al cambiar de carta.\n3. `lib/useInterpretation.test.ts`: mockear `fetch`, verificar `interpreting` → texto, el reset al cambiar pregunta/idioma y que una respuesta tardía cancelada no pisa el estado.\n4. `lib/useReadingActions.test.ts`: mockear `shareReading`/`downloadWallpaper`, verificar el toast y que `savingImage` evita doble descarga.\n5. Cambiar en el glosario los satisfactores de esos 3 hooks a `testFile`.",
+      "reason": "Girar la carta, pedir la interpretación y compartir/descargar solo se verifican con capturas, no con pruebas.",
+      "severity": 2,
+      "source": "session-review",
+      "status": "pending",
+      "proposedAt": "2026-10-09T13:39:50.487538+00:00"
+    }
+  ]
+}
