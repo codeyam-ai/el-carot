@@ -93,8 +93,8 @@ export function SupportScreen() {
   const isDesktop = useIsDesktop();
   const copy = COPY[lang];
 
-  const sage = 'var(--carot-sage-light)';
-  const cream = 'var(--carot-cream-text)';
+  const sage = 'var(--text-heading)';
+  const cream = 'var(--text-body)';
   const display = 'var(--font-display)';
 
   const body: React.CSSProperties = {
@@ -108,7 +108,7 @@ export function SupportScreen() {
   return (
     <div
       data-fullbleed
-      style={{ minHeight: '100%', display: 'flex', flexDirection: 'column', background: 'var(--carot-screen)' }}
+      style={{ minHeight: '100%', display: 'flex', flexDirection: 'column', background: 'var(--surface-page)' }}
     >
       {isDesktop && <DesktopNav title={copy.context} />}
       <div
@@ -136,7 +136,7 @@ export function SupportScreen() {
           {copy.title}
         </h1>
 
-        <p style={{ ...body, margin: '0 0 36px', color: 'rgba(233,217,199,.85)' }}>{copy.lead}</p>
+        <p style={{ ...body, margin: '0 0 36px', color: 'color-mix(in srgb, var(--text-body) 85%, transparent)' }}>{copy.lead}</p>
 
         {copy.faqs.map((faq) => (
           <section key={faq.q} style={{ margin: '0 0 28px' }}>
@@ -147,7 +147,7 @@ export function SupportScreen() {
           </section>
         ))}
 
-        <div style={{ height: 1, background: 'rgba(175,188,167,.2)', margin: '34px 0 30px' }} />
+        <div style={{ height: 1, background: 'var(--border-soft)', margin: '34px 0 30px' }} />
 
         <h2 style={{ fontFamily: display, fontWeight: 400, fontSize: 22, color: sage, margin: '0 0 10px' }}>
           {copy.contactHeading}

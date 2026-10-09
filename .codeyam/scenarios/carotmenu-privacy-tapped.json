@@ -1,7 +1,7 @@
 {
   "name": "CarotMenu - Privacy Tapped",
   "id": "eb4c73b4-f3e1-42c9-879d-9e0a88c04723",
-  "url": "/isolated-components/CarotMenu",
+  "url": "/isolated-components/CarotMenu?theme=dark",
   "dimensions": [
     "Mobile"
   ],
@@ -12,7 +12,7 @@
   "interactions": [
     {
       "action": "click",
-      "selector": "nav button:last-of-type"
+      "selector": "nav > button:nth-last-of-type(2)"
     }
   ]
 }

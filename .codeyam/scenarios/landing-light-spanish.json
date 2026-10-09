@@ -1,0 +1,13 @@
+{
+  "name": "Landing - Light Spanish",
+  "id": "f639999a-3631-4c62-8ee9-18098c4e6895",
+  "url": "/?lang=es&theme=light",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "seed": {},
+  "scenarioType": "application",
+  "pageFilePath": "app/page.tsx",
+  "description": "La página de inicio completa en modo claro: fondo taupe, título y estrella en tinta, la luna junto a ES / EN y las cartas con sombras suaves."
+}

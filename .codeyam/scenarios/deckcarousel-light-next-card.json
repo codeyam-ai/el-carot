@@ -1,0 +1,18 @@
+{
+  "name": "DeckCarousel - Light Next Card",
+  "id": "3325eba4-6655-4738-a4c4-94873c0688f0",
+  "url": "/isolated-components/DeckCarousel?theme=light",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "DeckCarousel",
+  "scenarioType": "component",
+  "description": "El mazo boca abajo en modo claro (dorsos salvia sobre taupe), con el cursor sobre la carta central.",
+  "interactions": [
+    {
+      "action": "hover",
+      "selector": "#codeyam-capture div[style*=\"z-index:100\"]"
+    }
+  ]
+}

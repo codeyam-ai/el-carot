@@ -13,7 +13,7 @@ export function CardIdentity({ card, t, mobile = false }: { card: Card; t: Strin
           fontWeight: 400,
           fontSize: mobile ? 40 : 54,
           lineHeight: mobile ? 1.1 : 1.05,
-          color: 'var(--carot-cream-text)',
+          color: 'var(--text-body)',
           margin: mobile ? 0 : '0 0 12px',
         }}
       >
@@ -26,7 +26,7 @@ export function CardIdentity({ card, t, mobile = false }: { card: Card; t: Strin
           fontSize: mobile ? 11 : 12,
           letterSpacing: '.22em',
           textTransform: 'uppercase',
-          color: 'var(--carot-sage-light)',
+          color: 'var(--text-heading)',
           ...(mobile ? { marginTop: 12 } : { marginBottom: 24 }),
         }}
       >

@@ -1,0 +1,19 @@
+{
+  "name": "QuestionInput - Light Typed",
+  "id": "d5e0b724-002b-4863-b0ee-53a29a84d2b4",
+  "url": "/isolated-components/QuestionInput?theme=light",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "QuestionInput",
+  "scenarioType": "component",
+  "description": "Tengo una pregunta en modo claro con una pregunta escrita: borde en tinta, botón salvia habilitado.",
+  "interactions": [
+    {
+      "action": "fill",
+      "selector": "#codeyam-capture textarea",
+      "value": "¿Qué me trae este mes en el trabajo?"
+    }
+  ]
+}

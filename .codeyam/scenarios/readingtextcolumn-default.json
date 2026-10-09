@@ -1,7 +1,7 @@
 {
   "name": "ReadingTextColumn - Default",
   "id": "e83be065-12af-4a8a-a4cf-41e084ae3cf6",
-  "url": "/isolated-components/ReadingTextColumn?s=Default&lang=es",
+  "url": "/isolated-components/ReadingTextColumn?s=Default&lang=es&theme=dark",
   "dimensions": [
     "Desktop"
   ],

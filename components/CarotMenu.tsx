@@ -3,6 +3,7 @@
 import React from 'react';
 import { useCarot } from '@/lib/i18n';
 import { CAROT_IG_URL, CAROT_OPEN_SOURCE_URL } from '@/lib/links';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 /** Star (hamburger) menu overlay with the full nav. */
 export function CarotMenu({
@@ -25,7 +26,7 @@ export function CarotMenu({
     fontWeight: 300,
     fontSize: 17,
     letterSpacing: '.01em',
-    color: 'var(--carot-cream-text)',
+    color: 'var(--text-body)',
   };
   return (
     <div
@@ -33,7 +34,7 @@ export function CarotMenu({
         position: 'absolute',
         inset: 0,
         zIndex: 500,
-        background: 'rgba(28,28,28,.97)',
+        background: 'var(--overlay)',
         display: 'flex',
         flexDirection: 'column',
         padding: '64px 30px 36px',
@@ -69,6 +70,7 @@ export function CarotMenu({
         <button style={item} onClick={onPrivacy}>
           {t.menuPrivacy}
         </button>
+        <ThemeToggle withLabel style={item} />
       </nav>
       <div
         style={{
@@ -78,7 +80,7 @@ export function CarotMenu({
           fontFamily: 'var(--font-mono)',
           fontSize: 15,
           letterSpacing: '.04em',
-          color: 'rgba(255,255,255,.42)',
+          color: 'var(--text-faint)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',

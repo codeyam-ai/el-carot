@@ -1,11 +1,12 @@
 {
   "name": "MessageIntro - Mobile",
   "id": "7848cff5-22ba-4d93-9a0e-8ee21df2c691",
-  "url": "/isolated-components/MessageIntro",
+  "url": "/isolated-components/MessageIntro?theme=dark",
   "dimensions": [
     "Mobile"
   ],
   "mocks": {},
   "componentName": "MessageIntro",
-  "scenarioType": "component"
+  "scenarioType": "component",
+  "description": "The MessageIntro component."
 }

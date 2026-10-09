@@ -1,0 +1,12 @@
+{
+  "name": "CardReading - Desktop Light Identidad",
+  "id": "10d2bd27-3877-4a08-8f55-16ac2de8f504",
+  "url": "/isolated-components/CardReading?s=DesktopIdentidad&lang=es&theme=light",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "componentName": "CardReading",
+  "scenarioType": "component",
+  "description": "La lectura de desktop en modo claro, con la barra de navegación y la luna arriba a la derecha."
+}

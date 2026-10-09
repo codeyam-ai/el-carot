@@ -1,0 +1,18 @@
+{
+  "name": "ExperienceButton - Light Outline Hover",
+  "id": "b4d80481-660b-48ce-9f04-b12232db50a6",
+  "url": "/isolated-components/ExperienceButton?s=Outline&theme=light",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "ExperienceButton",
+  "scenarioType": "component",
+  "description": "Botón Carta del Día en modo claro: contorno y texto en tinta.",
+  "interactions": [
+    {
+      "action": "hover",
+      "selector": "#codeyam-capture button"
+    }
+  ]
+}

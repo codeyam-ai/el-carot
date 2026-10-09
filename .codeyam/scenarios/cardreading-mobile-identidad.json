@@ -1,7 +1,7 @@
 {
   "name": "CardReading - Mobile Identidad",
   "id": "6fca2ed2-1940-49fe-ab08-1bc207752389",
-  "url": "/isolated-components/CardReading?s=MobileIdentidad&lang=es",
+  "url": "/isolated-components/CardReading?s=MobileIdentidad&lang=es&theme=dark",
   "dimensions": [
     "Mobile"
   ],

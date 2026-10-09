@@ -30,7 +30,7 @@ export function BackHeader({
   return (
     <div style={{ display: 'flex', alignItems: 'center', padding: '30px 0 0', ...style }}>
       <button aria-label={t.back} onClick={back} style={{ background: 'none', border: 'none', padding: 6, margin: -6, cursor: 'pointer', flex: '0 0 auto' }}>
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--carot-sage-light)" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-heading)" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
           <line x1="20" y1="12" x2="5" y2="12" />
           <polyline points="11,5 4,12 11,19" />
         </svg>
@@ -38,7 +38,7 @@ export function BackHeader({
       <button
         aria-label="El Carot — inicio"
         onClick={() => router.push('/')}
-        style={{ flex: 1, textAlign: 'center', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 19, letterSpacing: '.08em', textTransform: 'uppercase', color: 'var(--carot-sage-light)', padding: '0 8px' }}
+        style={{ flex: 1, textAlign: 'center', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 19, letterSpacing: '.08em', textTransform: 'uppercase', color: 'var(--text-wordmark)', padding: '0 8px' }}
       >
         El Carot
       </button>

@@ -64,10 +64,10 @@ export function CardFan({ cards, className }: { cards: Card[]; className?: strin
                     aspectRatio: '0.535',
                     objectFit: 'cover',
                     borderRadius: 9,
-                    border: '2px solid rgba(233,217,199,.5)',
+                    border: '2px solid var(--card-edge-strong)',
                     boxShadow: isCenter
-                      ? '0 18px 44px rgba(0,0,0,.6)'
-                      : '0 12px 30px rgba(0,0,0,.5)',
+                      ? '0 18px 44px var(--card-shadow-strong)'
+                      : '0 12px 30px var(--card-shadow)',
                     animation: 'carot-sway 6.5s ease-in-out infinite',
                     animationDelay: `${i * 1.3}s`,
                     transformOrigin: '50% 50%',

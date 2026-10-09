@@ -9,7 +9,7 @@ export function SwayingCard({ card, flipped, mobile = false }: { card: Card; fli
       style={{
         animation: 'carot-sway 6s ease-in-out infinite',
         transformOrigin: '50% 92%',
-        filter: mobile ? 'drop-shadow(0 18px 34px rgba(0,0,0,.5))' : 'drop-shadow(0 24px 42px rgba(0,0,0,.5))',
+        filter: mobile ? 'drop-shadow(0 18px 34px var(--card-shadow))' : 'drop-shadow(0 24px 42px var(--card-shadow))',
       }}
     >
       <TarotCard back="/assets/card-back.jpg" face={`/assets/cards/${card.img}`} flipped={flipped} width={mobile ? 214 : 340} alt={`${card.name} — ${card.arcana}`} />

@@ -4,6 +4,7 @@ import React from 'react';
 import { useCarot } from '@/lib/i18n';
 import { useIsDesktop } from '@/lib/useIsDesktop';
 import { LangToggle } from '@/components/LangToggle';
+import { ThemeToggle } from '@/components/ThemeToggle';
 import { NavRightCluster } from '@/components/NavRightCluster';
 
 /**
@@ -16,15 +17,20 @@ export function HomeHeader() {
   const isDesktop = useIsDesktop();
   return (
     <div style={{ display: 'flex', alignItems: 'center', paddingTop: 30 }}>
-      <span style={{ flex: 1, display: 'flex', justifyContent: 'flex-start' }}>
-        {!isDesktop && <LangToggle />}
+      <span style={{ flex: 1, display: 'flex', justifyContent: 'flex-start', alignItems: 'center', gap: 14 }}>
+        {!isDesktop && (
+          <>
+            <LangToggle />
+            <ThemeToggle />
+          </>
+        )}
       </span>
       <span
         style={{
           fontFamily: 'var(--font-display)',
           fontWeight: 400,
           fontSize: 17,
-          color: 'rgba(175,188,167,.65)',
+          color: 'var(--text-eyebrow)',
           letterSpacing: '.02em',
         }}
       >

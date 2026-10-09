@@ -1,0 +1,18 @@
+{
+  "name": "Footer - Light Hover Link",
+  "id": "586d1e31-2f2b-4271-810a-f06043bb260d",
+  "url": "/isolated-components/Footer?theme=light",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "Footer",
+  "scenarioType": "component",
+  "description": "Footer en modo claro: banda taupe más oscura, enlaces en tinta tenue, créditos en colores oscurecidos.",
+  "interactions": [
+    {
+      "action": "hover",
+      "selector": "#codeyam-capture footer a"
+    }
+  ]
+}

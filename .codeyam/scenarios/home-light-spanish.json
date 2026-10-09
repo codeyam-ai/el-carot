@@ -1,0 +1,12 @@
+{
+  "name": "Home - Light Spanish",
+  "id": "dc9d5c40-008c-49cf-b8dc-d09d9241eae7",
+  "url": "/isolated-components/Home?s=Spanish&theme=light",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "Home",
+  "scenarioType": "component",
+  "description": "La home en modo claro: fondo taupe, EL CAROT y estrella en tinta, luna junto a ES / EN, botones salvia."
+}

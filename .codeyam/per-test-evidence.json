@@ -1,130 +1,169 @@
 {
   "ReadingMobile › disables download while saving the image": {
     "file": "components/ReadingMobile.test.tsx",
-    "lastRunAt": "2026-10-09T02:48:08.863Z",
+    "lastRunAt": "2026-10-09T14:55:34.105Z",
     "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|changed|2026-10-09T14:55:34.105Z",
+      "pass|changed|2026-10-09T14:54:02.107Z",
+      "pass|changed|2026-10-09T14:53:15.341Z",
       "pass|changed|2026-10-09T02:48:08.863Z",
       "pass|changed|2026-10-09T00:05:31.962Z"
     ]
   },
   "ReadingMobile › does not label the question": {
     "file": "components/ReadingMobile.test.tsx",
-    "lastRunAt": "2026-10-09T02:48:08.863Z",
+    "lastRunAt": "2026-10-09T14:55:34.105Z",
     "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|changed|2026-10-09T14:55:34.105Z",
+      "pass|changed|2026-10-09T14:54:02.107Z",
+      "pass|changed|2026-10-09T14:53:15.341Z",
       "pass|changed|2026-10-09T02:48:08.863Z",
       "pass|changed|2026-10-09T00:05:31.962Z"
     ]
   },
   "ReadingMobile › orders question, name, arcanum and interpretation": {
     "file": "components/ReadingMobile.test.tsx",
-    "lastRunAt": "2026-10-09T02:48:08.863Z",
+    "lastRunAt": "2026-10-09T14:55:34.105Z",
     "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|changed|2026-10-09T14:55:34.105Z",
+      "pass|changed|2026-10-09T14:54:02.107Z",
+      "pass|changed|2026-10-09T14:53:15.341Z",
       "pass|changed|2026-10-09T02:48:08.863Z",
       "pass|changed|2026-10-09T00:05:31.962Z"
     ]
   },
   "ReadingMobile › renders draw-another above share and download": {
     "file": "components/ReadingMobile.test.tsx",
-    "lastRunAt": "2026-10-09T02:48:08.863Z",
+    "lastRunAt": "2026-10-09T14:55:34.105Z",
     "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|changed|2026-10-09T14:55:34.105Z",
+      "pass|changed|2026-10-09T14:54:02.107Z",
+      "pass|changed|2026-10-09T14:53:15.341Z",
       "pass|changed|2026-10-09T02:48:08.863Z",
       "pass|changed|2026-10-09T00:05:31.962Z"
     ]
   },
   "ReadingMobile › shows the quote only without a question": {
     "file": "components/ReadingMobile.test.tsx",
-    "lastRunAt": "2026-10-09T02:48:08.863Z",
+    "lastRunAt": "2026-10-09T14:55:34.105Z",
     "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|changed|2026-10-09T14:55:34.105Z",
+      "pass|changed|2026-10-09T14:54:02.107Z",
+      "pass|changed|2026-10-09T14:53:15.341Z",
       "pass|changed|2026-10-09T02:48:08.863Z",
       "pass|changed|2026-10-09T00:05:31.962Z"
     ]
   },
   "ReadingTextColumn › does not label the question": {
     "file": "components/ReadingTextColumn.test.tsx",
-    "lastRunAt": "2026-10-09T02:48:08.863Z",
+    "lastRunAt": "2026-10-09T14:55:34.105Z",
     "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|changed|2026-10-09T14:55:34.105Z",
+      "pass|changed|2026-10-09T14:54:02.107Z",
+      "pass|changed|2026-10-09T14:53:15.341Z",
       "pass|changed|2026-10-09T02:48:08.863Z",
       "pass|changed|2026-10-09T00:05:31.962Z"
     ]
   },
   "ReadingTextColumn › opens with the name without a question": {
     "file": "components/ReadingTextColumn.test.tsx",
-    "lastRunAt": "2026-10-09T02:48:08.863Z",
+    "lastRunAt": "2026-10-09T14:55:34.105Z",
     "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|changed|2026-10-09T14:55:34.105Z",
+      "pass|changed|2026-10-09T14:54:02.107Z",
+      "pass|changed|2026-10-09T14:53:15.341Z",
       "pass|changed|2026-10-09T02:48:08.863Z",
       "pass|changed|2026-10-09T00:05:31.962Z"
     ]
   },
   "ReadingTextColumn › orders question, name, arcanum and interpretation": {
     "file": "components/ReadingTextColumn.test.tsx",
-    "lastRunAt": "2026-10-09T02:48:08.863Z",
+    "lastRunAt": "2026-10-09T14:55:34.105Z",
     "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|changed|2026-10-09T14:55:34.105Z",
+      "pass|changed|2026-10-09T14:54:02.107Z",
+      "pass|changed|2026-10-09T14:53:15.341Z",
       "pass|changed|2026-10-09T02:48:08.863Z",
       "pass|changed|2026-10-09T00:05:31.962Z"
     ]
   },
   "ReadingTextColumn › renders the actions row in order": {
     "file": "components/ReadingTextColumn.test.tsx",
-    "lastRunAt": "2026-10-09T02:48:08.863Z",
+    "lastRunAt": "2026-10-09T14:55:34.105Z",
     "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|changed|2026-10-09T14:55:34.105Z",
+      "pass|changed|2026-10-09T14:54:02.107Z",
+      "pass|changed|2026-10-09T14:53:15.341Z",
       "pass|changed|2026-10-09T02:48:08.863Z",
       "pass|changed|2026-10-09T00:05:31.962Z"
     ]
   },
   "ReadingTextColumn › shows the quote only without a question": {
     "file": "components/ReadingTextColumn.test.tsx",
-    "lastRunAt": "2026-10-09T02:48:08.863Z",
+    "lastRunAt": "2026-10-09T14:55:34.105Z",
     "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|changed|2026-10-09T14:55:34.105Z",
+      "pass|changed|2026-10-09T14:54:02.107Z",
+      "pass|changed|2026-10-09T14:53:15.341Z",
       "pass|changed|2026-10-09T02:48:08.863Z",
       "pass|changed|2026-10-09T00:05:31.962Z"
     ]
   },
   "arcanumLine › builds the English eyebrow": {
     "file": "lib/reading.test.ts",
-    "lastRunAt": "2026-10-09T02:48:08.863Z",
+    "lastRunAt": "2026-10-09T14:55:34.105Z",
     "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|changed|2026-10-09T14:55:34.105Z",
+      "pass|changed|2026-10-09T14:54:02.107Z",
+      "pass|changed|2026-10-09T14:53:15.341Z",
       "pass|changed|2026-10-09T02:48:08.863Z",
       "pass|changed|2026-10-09T00:05:31.962Z"
     ]
   },
   "arcanumLine › builds the Spanish eyebrow": {
     "file": "lib/reading.test.ts",
-    "lastRunAt": "2026-10-09T02:48:08.863Z",
+    "lastRunAt": "2026-10-09T14:55:34.105Z",
     "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|changed|2026-10-09T14:55:34.105Z",
+      "pass|changed|2026-10-09T14:54:02.107Z",
+      "pass|changed|2026-10-09T14:53:15.341Z",
       "pass|changed|2026-10-09T02:48:08.863Z",
       "pass|changed|2026-10-09T00:05:31.962Z"
     ]
   },
   "arcanumLine › uses the numeral stored on the card": {
     "file": "lib/reading.test.ts",
-    "lastRunAt": "2026-10-09T02:48:08.863Z",
+    "lastRunAt": "2026-10-09T14:55:34.105Z",
     "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|changed|2026-10-09T14:55:34.105Z",
+      "pass|changed|2026-10-09T14:54:02.107Z",
+      "pass|changed|2026-10-09T14:53:15.341Z",
       "pass|changed|2026-10-09T02:48:08.863Z",
       "pass|changed|2026-10-09T00:05:31.962Z"
     ]
@@ -399,6 +438,24 @@
       "pass|full|2026-07-16T18:17:47.245Z"
     ]
   },
+  "currentTheme › reports dark otherwise": {
+    "file": "lib/theme.test.ts",
+    "lastRunAt": "2026-10-09T14:55:34.105Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-10-09T14:55:34.105Z"
+    ]
+  },
+  "currentTheme › reports light when the page is light": {
+    "file": "lib/theme.test.ts",
+    "lastRunAt": "2026-10-09T14:55:34.105Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-10-09T14:55:34.105Z"
+    ]
+  },
   "dailyCardIndex › changes from one day to the next": {
     "file": "lib/daily.test.ts",
     "lastRunAt": "2026-10-09T02:48:08.863Z",
@@ -580,60 +637,78 @@
   },
   "navTitleFor › titles the message flow": {
     "file": "lib/reading.test.ts",
-    "lastRunAt": "2026-10-09T02:48:08.863Z",
+    "lastRunAt": "2026-10-09T14:55:34.105Z",
     "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|changed|2026-10-09T14:55:34.105Z",
+      "pass|changed|2026-10-09T14:54:02.107Z",
+      "pass|changed|2026-10-09T14:53:15.341Z",
       "pass|changed|2026-10-09T02:48:08.863Z",
       "pass|changed|2026-10-09T00:05:31.962Z"
     ]
   },
   "navTitleFor › titles the question flow and the gallery": {
     "file": "lib/reading.test.ts",
-    "lastRunAt": "2026-10-09T02:48:08.863Z",
+    "lastRunAt": "2026-10-09T14:55:34.105Z",
     "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|changed|2026-10-09T14:55:34.105Z",
+      "pass|changed|2026-10-09T14:54:02.107Z",
+      "pass|changed|2026-10-09T14:53:15.341Z",
       "pass|changed|2026-10-09T02:48:08.863Z",
       "pass|changed|2026-10-09T00:05:31.962Z"
     ]
   },
   "navTitleFor › uses the daily label for home and unknown origins": {
     "file": "lib/reading.test.ts",
-    "lastRunAt": "2026-10-09T02:48:08.863Z",
+    "lastRunAt": "2026-10-09T14:55:34.105Z",
     "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|changed|2026-10-09T14:55:34.105Z",
+      "pass|changed|2026-10-09T14:54:02.107Z",
+      "pass|changed|2026-10-09T14:53:15.341Z",
       "pass|changed|2026-10-09T02:48:08.863Z",
       "pass|changed|2026-10-09T00:05:31.962Z"
     ]
   },
   "originRoute › falls back to home for an empty origin": {
     "file": "lib/reading.test.ts",
-    "lastRunAt": "2026-10-09T02:48:08.863Z",
+    "lastRunAt": "2026-10-09T14:55:34.105Z",
     "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|changed|2026-10-09T14:55:34.105Z",
+      "pass|changed|2026-10-09T14:54:02.107Z",
+      "pass|changed|2026-10-09T14:53:15.341Z",
       "pass|changed|2026-10-09T02:48:08.863Z",
       "pass|changed|2026-10-09T00:05:31.962Z"
     ]
   },
   "originRoute › falls back to home for an unknown origin": {
     "file": "lib/reading.test.ts",
-    "lastRunAt": "2026-10-09T02:48:08.863Z",
+    "lastRunAt": "2026-10-09T14:55:34.105Z",
     "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|changed|2026-10-09T14:55:34.105Z",
+      "pass|changed|2026-10-09T14:54:02.107Z",
+      "pass|changed|2026-10-09T14:53:15.341Z",
       "pass|changed|2026-10-09T02:48:08.863Z",
       "pass|changed|2026-10-09T00:05:31.962Z"
     ]
   },
   "originRoute › maps every known origin to its screen": {
     "file": "lib/reading.test.ts",
-    "lastRunAt": "2026-10-09T02:48:08.863Z",
+    "lastRunAt": "2026-10-09T14:55:34.105Z",
     "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|changed|2026-10-09T14:55:34.105Z",
+      "pass|changed|2026-10-09T14:54:02.107Z",
+      "pass|changed|2026-10-09T14:53:15.341Z",
       "pass|changed|2026-10-09T02:48:08.863Z",
       "pass|changed|2026-10-09T00:05:31.962Z"
     ]
@@ -784,52 +859,130 @@
   },
   "readingBody › falls back to the meaning when no interpretation came back": {
     "file": "lib/reading.test.ts",
-    "lastRunAt": "2026-10-09T02:48:08.863Z",
+    "lastRunAt": "2026-10-09T14:55:34.105Z",
     "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|changed|2026-10-09T14:55:34.105Z",
+      "pass|changed|2026-10-09T14:54:02.107Z",
+      "pass|changed|2026-10-09T14:53:15.341Z",
       "pass|changed|2026-10-09T02:48:08.863Z",
       "pass|changed|2026-10-09T00:05:31.962Z"
     ]
   },
   "readingBody › shows the interpretation once it arrives": {
     "file": "lib/reading.test.ts",
-    "lastRunAt": "2026-10-09T02:48:08.863Z",
+    "lastRunAt": "2026-10-09T14:55:34.105Z",
     "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|changed|2026-10-09T14:55:34.105Z",
+      "pass|changed|2026-10-09T14:54:02.107Z",
+      "pass|changed|2026-10-09T14:53:15.341Z",
       "pass|changed|2026-10-09T02:48:08.863Z",
       "pass|changed|2026-10-09T00:05:31.962Z"
     ]
   },
   "readingBody › shows the pending message while interpreting": {
     "file": "lib/reading.test.ts",
-    "lastRunAt": "2026-10-09T02:48:08.863Z",
+    "lastRunAt": "2026-10-09T14:55:34.105Z",
     "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|changed|2026-10-09T14:55:34.105Z",
+      "pass|changed|2026-10-09T14:54:02.107Z",
+      "pass|changed|2026-10-09T14:53:15.341Z",
       "pass|changed|2026-10-09T02:48:08.863Z",
       "pass|changed|2026-10-09T00:05:31.962Z"
     ]
   },
   "readingBody › shows the written meaning without a question": {
     "file": "lib/reading.test.ts",
-    "lastRunAt": "2026-10-09T02:48:08.863Z",
+    "lastRunAt": "2026-10-09T14:55:34.105Z",
     "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|changed|2026-10-09T14:55:34.105Z",
+      "pass|changed|2026-10-09T14:54:02.107Z",
+      "pass|changed|2026-10-09T14:53:15.341Z",
       "pass|changed|2026-10-09T02:48:08.863Z",
       "pass|changed|2026-10-09T00:05:31.962Z"
     ]
   },
   "readingBody › uses the English meaning in English": {
     "file": "lib/reading.test.ts",
-    "lastRunAt": "2026-10-09T02:48:08.863Z",
+    "lastRunAt": "2026-10-09T14:55:34.105Z",
     "lastRunKind": "changed",
     "lastStatus": "pass",
     "statusRing": [
+      "pass|changed|2026-10-09T14:55:34.105Z",
+      "pass|changed|2026-10-09T14:54:02.107Z",
+      "pass|changed|2026-10-09T14:53:15.341Z",
       "pass|changed|2026-10-09T02:48:08.863Z",
       "pass|changed|2026-10-09T00:05:31.962Z"
+    ]
+  },
+  "savedTheme › falls back to the cookie when the URL has no theme": {
+    "file": "lib/theme.test.ts",
+    "lastRunAt": "2026-10-09T14:55:34.105Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-10-09T14:55:34.105Z"
+    ]
+  },
+  "savedTheme › ignores an unknown URL value": {
+    "file": "lib/theme.test.ts",
+    "lastRunAt": "2026-10-09T14:55:34.105Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-10-09T14:55:34.105Z"
+    ]
+  },
+  "savedTheme › prefers the URL value over the cookie": {
+    "file": "lib/theme.test.ts",
+    "lastRunAt": "2026-10-09T14:55:34.105Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-10-09T14:55:34.105Z"
+    ]
+  },
+  "savedTheme › returns null when neither source holds a valid theme": {
+    "file": "lib/theme.test.ts",
+    "lastRunAt": "2026-10-09T14:55:34.105Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-10-09T14:55:34.105Z"
+    ]
+  },
+  "setTheme › persists the choice for a year": {
+    "file": "lib/theme.test.ts",
+    "lastRunAt": "2026-10-09T14:55:34.105Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-10-09T14:55:34.105Z"
+    ]
+  },
+  "setTheme › sets the html attribute and every theme-color meta": {
+    "file": "lib/theme.test.ts",
+    "lastRunAt": "2026-10-09T14:55:34.105Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-10-09T14:55:34.105Z"
+    ]
+  },
+  "setTheme › still switches when localStorage throws": {
+    "file": "lib/theme.test.ts",
+    "lastRunAt": "2026-10-09T14:55:34.105Z",
+    "lastRunKind": "changed",
+    "lastStatus": "pass",
+    "statusRing": [
+      "pass|changed|2026-10-09T14:55:34.105Z"
     ]
   },
   "utcDateKey › formats a date as a YYYY-MM-DD UTC key": {

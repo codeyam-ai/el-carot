@@ -1,12 +1,13 @@
 {
   "name": "Message - Default",
   "id": "53ddd0eb-f61d-474b-8622-bb0e07a63f21",
-  "url": "/message?lang=es",
+  "url": "/message?lang=es&theme=dark",
   "dimensions": [
     "Mobile"
   ],
   "mocks": {},
   "seed": {},
   "scenarioType": "application",
-  "pageFilePath": "app/message/page.tsx"
+  "pageFilePath": "app/message/page.tsx",
+  "description": "Message - Default in its empty state, with no items present."
 }

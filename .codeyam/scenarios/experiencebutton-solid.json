@@ -1,11 +1,12 @@
 {
   "name": "ExperienceButton - Solid",
   "id": "b95189b1-9e1f-4ca3-974e-e021704bf216",
-  "url": "/isolated-components/ExperienceButton?s=Solid",
+  "url": "/isolated-components/ExperienceButton?s=Solid&theme=dark",
   "dimensions": [
     "Mobile"
   ],
   "mocks": {},
   "componentName": "ExperienceButton",
-  "scenarioType": "component"
+  "scenarioType": "component",
+  "description": "The ExperienceButton component."
 }

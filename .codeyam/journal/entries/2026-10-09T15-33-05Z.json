@@ -1,0 +1,1995 @@
+{
+  "timestamp": "2026-10-09T15:33:05Z",
+  "title": "Modo claro (taupe, sistema + toggle)",
+  "type": "feature",
+  "userRequest": "## Summary\n\nAdd a **light mode** to El Carot, based on the reference the user uploaded: a warm taupe/beige page background (≈ `--carot-taupe` #d5c3b2, the exact value to be eyedropped from the reference), dark ink text and star dividers, the \"CAROT\" wordmark in ink, and sage card backs that pop against the light page. Dark stays as it is today. The first visit follows the device's light/dark setting; a sun/moon button next to the ES/EN toggle lets the visitor switch, and the choice is remembered across visits with no flash of the wrong theme on load.\n\n![Light mode reference — taupe background, ink text, sage card backs](assets/light-mode/reference.png)\n\n## Key Decisions\n\n- **System default + manual toggle, remembered** (user's choice). Resolution order mirrors language: saved `carot_theme` cookie → `prefers-color-scheme` → dark. The cookie is read server-side so the `<html data-theme>` attribute is right on first paint; when there is no cookie, a tiny inline script in `<head>` applies the system preference before hydration (no flash).\n- **Theme by CSS variables, not by per-component branching.** Components already lean on `var(--carot-…)` tokens, but ~60 hardcoded colors (`#2b2922`, `#5B6256`, `rgba(175,188,167,…)`, `rgba(233,217,199,…)`, `rgba(255,255,255,.3x)`, `#202020`, `#14110e`) live in ~25 components (`MessageIntro`, `Comments`, `Footer`, `ReadingMobile`, `QuestionInput`, `CardFan`, `AboutScreen`, `LangToggle`, `CarotMenu`, `DeckArc`, `GalleryGrid`, `app/stats/page.tsx`, …). Each one moves to a semantic token (`--surface-page`, `--text-body`, `--text-heading`, `--text-muted`, `--divider`, `--border-soft`, `--text-on-sage`, `--overlay`, `--shadow-strong`) that gets a light value under `[data-theme=\"light\"]`. That keeps the change mechanical and makes any future theme free.\n- **Card art is not themed.** Card fronts and the sage card back (`/assets/card-back.jpg`) stay as-is; only their border/shadow tokens soften in light mode (dark drop-shadows look muddy on taupe).\n- **Light palette** (starting values, tune at build against the reference): page `#d5c3b2`; text/headings/wordmark/stars ink `#353029`; secondary text `#5b5247`; dividers/hairlines `rgba(53,48,41,.18)`; primary button stays sage `--carot-sage` with `#2b2922` text; outline buttons ink at ~35%. Meet WCAG AA for body text.\n- **`themeColor`** in `app/layout.tsx` becomes per-scheme (`#202020` dark / taupe light) so the mobile browser chrome matches.\n\n## Implementation\n\n### 1. Tokens: dark + light palettes\n\n**File**: `app/globals.css`\n\nKeep the existing `:root` palette as the dark theme. Add the missing semantic tokens (see Key Decisions) to `:root` with their current dark values, then a `[data-theme=\"light\"]` block that overrides the semantic aliases and `--carot-screen` / `--carot-cream-text` / `--carot-sage-light` usages that act as \"page / body text / heading\". `html, body`, `.carot-shell` keep reading `var(--carot-screen)` so they switch automatically.\n\n### 2. Theme state, persistence, no-flash\n\n**File**: `middleware.ts` — read `carot_theme` cookie (`light` | `dark`) and forward it as `x-carot-theme`, the same way `carot_lang` → `x-carot-lang` works today.\n\n**File**: `app/layout.tsx` — set `<html data-theme={…}>` from the header when the cookie exists; otherwise inject a small inline `<head>` script that sets `data-theme` from `matchMedia('(prefers-color-scheme: light)')`. Make `themeColor` an array with `media` per scheme.\n\n**New file**: `lib/theme.tsx` — `ThemeProvider` / `useTheme()` exposing `theme` and `setTheme`; `setTheme` updates `document.documentElement.dataset.theme`, writes the cookie (1 year) and localStorage, wrapped in try/catch like `setLang` in `lib/i18n.tsx`. A pure `resolveTheme(cookie, prefersLight)` helper with tests in **new file** `lib/theme.test.ts`.\n\n### 3. Sun/moon toggle\n\n**New file**: `components/ThemeToggle.tsx` — minimal icon button matching `LangToggle`'s size and weight, with `aria-label` from i18n (`themeLight` / `themeDark` strings added to `lib/i18n.tsx`, ES + EN). Placed next to `LangToggle` in `components/HomeHeader.tsx` (mobile) and `components/NavRightCluster.tsx` (desktop), and as an item in the menu (`components/CarotMenu.tsx`) so it's reachable from every page.\n\n### 4. Replace hardcoded colors with tokens\n\n**Files**: every component in `components/` and `app/stats/page.tsx` that has a literal hex/rgba color (the grep `#[0-9a-fA-F]{6}|rgba\\(` over `components app --include='*.tsx'` is the checklist; ~60 occurrences). Swap each for the matching semantic token. Leave card-art-only values (inside `TarotCard`'s face/back) alone. After the sweep that grep should only hit intentional, theme-independent values, each with a short comment.\n\n### 5. Scenarios\n\nAdd a light variant for the main screens (see below) so both themes are captured side by side; the theme is set per scenario via the `data-theme` attribute / cookie mock, not via a launch-time env var.\n\n## Reused existing code\n\n- `CarotProvider` / `useCarot` in `lib/i18n.tsx` — cookie + localStorage persistence pattern for `setTheme`.\n- `middleware.ts` — the `carot_lang` cookie → `x-carot-lang` header pattern, extended for `carot_theme`.\n- `LangToggle` from `components/LangToggle.tsx` (glossary entry: `LangToggle`) — visual style for the new toggle.\n- `HomeHeader` from `components/HomeHeader.tsx` (glossary entry: `HomeHeader`) and `NavRightCluster` from `components/NavRightCluster.tsx` (glossary entry: `NavRightCluster`) — where the toggle lives.\n- Existing palette in `app/globals.css` — `--carot-taupe`, `--carot-ink`, `--carot-ink-soft` already exist and match the reference.\n- Existing-implementation survey: no theme state, `data-theme`, or `prefers-color-scheme` handling exists anywhere in `app/`, `components/`, `lib/` today (only `themeColor: '#202020'` in `app/layout.tsx`).\n\n## Scenarios to Demonstrate\n\n- Home — light (mobile + desktop), compared to dark.\n- Message deck carousel — light (matches the right-hand reference screen: taupe page, sage card backs, ink arrows).\n- Card reading — light, with and without question (matches the left-hand reference).\n- Question input, Gallery, About, Comments with comments, Footer — light.\n- Menu overlay open in light.\n- Toggle states: system=light with no cookie; cookie=dark overriding a light system; switching live.\n- Spanish and English labels on the toggle.",
+  "description": "El Carot ahora tiene modo claro: fondo taupe, textos y wordmark en tinta, botones y dorsos salvia; el oscuro sigue siendo el de siempre. La primera visita sigue la preferencia del dispositivo; un botón sol/luna junto a ES/EN (y un ítem en el menú de la estrella) cambia el tema, que se recuerda un año en una cookie y se aplica antes del primer pintado (sin parpadeo). Los ~60 colores fijos de los componentes pasaron a tokens de tema en globals.css, y la lógica vive en lib/theme.ts (savedTheme, setTheme, currentTheme) con 9 tests. Alcance: no había entregables abiertos del proyecto para este ciclo (los 8 ya estaban resueltos), así que no se difirió nada. Diferencias menores con el plan: algunos tintes secundarios del modo oscuro se unificaron (casi imperceptible), el fondo claro #d1c3b4 se ajustó a ojo contra la referencia, y se sumó ?theme=light|dark en la URL. Los escenarios existentes ahora fijan theme=dark porque la captura sigue la preferencia del dispositivo.",
+  "modifiedFiles": [
+    {
+      "path": ".codeyam/dependency-graph.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/glossary.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/isolation-props/Section.render.tsx",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/per-test-evidence.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/plans/assets/light-mode/reference.png\t.codeyam/plans/completed/assets/light-mode/reference.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/plans/light-mode.md\t.codeyam/plans/completed/light-mode.md",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/about-default.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/aboutscreen-mobile.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/backheader-default.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/cardfan-single-card.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/cardfan-three-cards.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/cardidentity-desktop.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/cardidentity-english.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/cardidentity-mobile.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/cardquote-desktop.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/cardquote-mobile.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/cardreading-desktop-identidad.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/cardreading-desktop-pregunta-comillas-sin-etiqueta.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/cardreading-mobile-identidad.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/cardreading-mobile-pregunta-comillas-sin-etiqueta.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/cardreading-mobile.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/carotmenu-default.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/carotmenu-privacy-tapped.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/carotprovider-english.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/carotprovider-spanish.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/commentrow-default.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/comments-with-comments.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/dailydatebadge-desktop.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/dailydatebadge-mobile.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/deckarc-card-hovered.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/deckarc-default.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/deckcarousel-default.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/desktopnav-default.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/downloadicon-default.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/drawanotherbutton-fullwidth.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/drawanotherbutton-inline.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/experiencebutton-outline.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/experiencebutton-solid.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/footer-default.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/gallery-default.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/gallerygrid-mobile.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/home-english.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/home-spanish.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/homeactions-english.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/homeactions-spanish.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/homedeckstrip-default.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/homedeckstrip-short-deck.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/homeheader-english.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/homeheader-spanish.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/hometitle-default.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/landing-english.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/landing-spanish.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/langtoggle-english.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/langtoggle-spanish.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/menuoverlay-default.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/menuoverlay-open.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/menuprovider-default.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/menutoggle-default.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/message-default.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/messageintro-mobile.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/navrightcluster-english.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/navrightcluster-spanish.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/privacy-default.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/privacyscreen-mobile.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/question-empty.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/questioninput-mobile.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/reading-default.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/readingactionlink-saving.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/readingactionlink-share.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/readingactionsdesktop-default.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/readingactionsdesktop-english.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/readingactionsmobile-default.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/readingactionsmobile-saving.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/readingbody-desktop.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/readingbody-mobile.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/readingbody-pending.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/readingdesktop-default.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/readingdesktop-diaria.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/readingdesktop-pregunta.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/readingmobile-default.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/readingmobile-diaria.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/readingmobile-pregunta.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/readingoutlinebutton-saving.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/readingoutlinebutton-share.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/readingquestion-desktop.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/readingquestion-mobile.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/readingtextcolumn-default.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/readingtextcolumn-pregunta.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/readingtoast-default.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/.capture-pipeline.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/about-default--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/aboutscreen-mobile--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/backheader-default--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/cardfan-single-card--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/cardfan-three-cards--mobile.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/cardfan-three-cards--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/cardidentity-desktop--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/cardidentity-english--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/cardidentity-mobile--mobile.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/cardidentity-mobile--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/cardquote-desktop--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/cardquote-mobile--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/cardreading-desktop-identidad--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/cardreading-desktop-identidad--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/cardreading-desktop-pregunta-comillas-sin-etiqueta--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/cardreading-desktop-pregunta-comillas-sin-etiqueta--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/cardreading-mobile--mobile.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/cardreading-mobile--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/cardreading-mobile-identidad--mobile.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/cardreading-mobile-identidad--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/cardreading-mobile-pregunta-comillas-sin-etiqueta--mobile.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/cardreading-mobile-pregunta-comillas-sin-etiqueta--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/carotmenu-default--mobile.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/carotmenu-default--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/carotmenu-privacy-tapped--mobile.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/carotmenu-privacy-tapped--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/carotprovider-english--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/carotprovider-spanish--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/commentrow-default--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/comments-with-comments--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/dailydatebadge-desktop--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/dailydatebadge-mobile--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/deckarc-card-hovered--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/deckarc-card-hovered--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/deckarc-default--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/deckarc-default--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/deckcarousel-default--mobile.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/deckcarousel-default--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/desktopnav-default--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/desktopnav-default--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/downloadicon-default--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/drawanotherbutton-fullwidth--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/drawanotherbutton-inline--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/experiencebutton-outline--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/experiencebutton-solid--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/footer-default--mobile.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/footer-default--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/gallery-default--mobile.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/gallery-default--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/gallerygrid-mobile--mobile.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/gallerygrid-mobile--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-english--mobile.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-english--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-spanish--mobile.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-spanish--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/homeactions-english--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/homeactions-spanish--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/homedeckstrip-default--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/homedeckstrip-short-deck--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/homeheader-english--mobile.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/homeheader-english--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/homeheader-spanish--mobile.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/homeheader-spanish--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/hometitle-default--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/hometitle-default--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/landing-english--mobile.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/landing-english--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/landing-spanish--mobile.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/landing-spanish--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/langtoggle-english--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/langtoggle-spanish--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/menuoverlay-default--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/menuoverlay-open--mobile.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/menuoverlay-open--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/menuprovider-default--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/menuprovider-default--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/menutoggle-default--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/message-default--mobile.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/message-default--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/messageintro-mobile--mobile.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/messageintro-mobile--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/navrightcluster-english--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/navrightcluster-english--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/navrightcluster-spanish--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/navrightcluster-spanish--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/privacy-default--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/privacyscreen-mobile--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/question-empty--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/questioninput-mobile--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/reading-default--mobile.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/reading-default--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/readingactionlink-saving--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/readingactionlink-share--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/readingactionsdesktop-default--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/readingactionsdesktop-english--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/readingactionsmobile-default--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/readingactionsmobile-saving--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/readingbody-desktop--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/readingbody-mobile--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/readingbody-pending--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/readingdesktop-default--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/readingdesktop-default--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/readingdesktop-diaria--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/readingdesktop-diaria--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/readingdesktop-pregunta--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/readingdesktop-pregunta--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/readingmobile-default--mobile.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/readingmobile-default--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/readingmobile-diaria--mobile.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/readingmobile-diaria--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/readingmobile-pregunta--mobile.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/readingmobile-pregunta--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/readingoutlinebutton-saving--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/readingoutlinebutton-share--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/readingquestion-desktop--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/readingquestion-mobile--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/readingtextcolumn-default--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/readingtextcolumn-pregunta--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/readingtoast-default--mobile.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/readingtoast-default--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/section-default--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/section-empty--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/shareicon-default--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/stardivider-default--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/stats-password-gate--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/stats-password-gate--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/statslogin-default--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/statslogin-default--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/statslogin-default--mobile.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/statslogin-unconfigured--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/statslogin-unconfigured--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/support-default--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/supportscreen-mobile--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/swayingcard-desktop--desktop.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/swayingcard-desktop--desktop.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/swayingcard-mobile--mobile.png",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/swayingcard-mobile--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/tarotcard-default--mobile.png.hash",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/section-default.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/section-empty.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/shareicon-default.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/stardivider-default.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/stats-password-gate.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/statslogin-default.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/statslogin-unconfigured.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/support-default.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/supportscreen-mobile.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/swayingcard-desktop.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/swayingcard-mobile.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/scenarios/tarotcard-default.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/state/finalize-debt.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/state/installed-by.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/state/scenario-taxonomy.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/all.json",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/647dc99040093ddc62881cfb80821b9175b19044ced7177cc2ab56e1473d409c.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/e6627cfe0fcd8d13acd93f0300c924f72c80bb3c41df0ef3600b67161b6df317.json",
+      "status": "deleted"
+    },
+    {
+      "path": ".codeyam/test-registry.json",
+      "status": "modified"
+    },
+    {
+      "path": "app/globals.css",
+      "status": "modified"
+    },
+    {
+      "path": "app/layout.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "app/stats/page.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/AboutScreen.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/BackHeader.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/CardFan.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/CardIdentity.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/CardQuote.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/CardReading.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/CarotMenu.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/Comments.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/DailyDateBadge.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/DeckArc.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/DesktopNav.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/DrawAnotherButton.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/ExperienceButton.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/Footer.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/GalleryGrid.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/Home.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/HomeDeckStrip.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/HomeHeader.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/HomeLove.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/HomeTitle.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/LangToggle.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/MenuToggle.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/MessageIntro.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/NavRightCluster.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/PrivacyScreen.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/QuestionInput.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/ReadingActionLink.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/ReadingBody.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/ReadingMobile.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/ReadingOutlineButton.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/ReadingQuestion.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/ReadingTextColumn.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/ReadingToast.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/StatsLogin.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/SupportScreen.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/SwayingCard.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "components/Wordmark.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "lib/i18n.tsx",
+      "status": "modified"
+    },
+    {
+      "path": "middleware.ts",
+      "status": "modified"
+    },
+    {
+      "path": ".codeyam/isolation-props/ThemeToggle.ts",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/aboutscreen-light-hover-draw.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/cardreading-desktop-light-identidad.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/cardreading-mobile-light-identidad.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/cardreading-mobile-light-pregunta.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/carotmenu-light.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/commentrow-light-hover.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/comments-light-form-open.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/coverage-plan/themetoggle.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/deckcarousel-light-next-card.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/desktopnav-light-hover-back.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/experiencebutton-light-outline-hover.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/footer-light-hover-link.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/gallerygrid-light-hover-card.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/home-light-spanish.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/homedeckstrip-light.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/homeheader-light-spanish.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/landing-light-spanish.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/langtoggle-light-switched.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/message-light.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/messageintro-light-next-card.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/navrightcluster-theme-toggled-to-light.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/privacyscreen-light.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/questioninput-light-typed.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/aboutscreen-light-hover-draw--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/aboutscreen-light-hover-draw--mobile.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/cardreading-desktop-light-identidad--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/cardreading-desktop-light-identidad--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/cardreading-mobile-light-identidad--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/cardreading-mobile-light-identidad--mobile.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/cardreading-mobile-light-pregunta--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/cardreading-mobile-light-pregunta--mobile.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/carotmenu-light--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/carotmenu-light--mobile.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/commentrow-light-hover--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/commentrow-light-hover--mobile.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/comments-light-form-open--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/comments-light-form-open--mobile.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/deckcarousel-light-next-card--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/deckcarousel-light-next-card--mobile.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/desktopnav-light-hover-back--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/desktopnav-light-hover-back--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/experiencebutton-light-outline-hover--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/experiencebutton-light-outline-hover--mobile.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/footer-light-hover-link--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/footer-light-hover-link--mobile.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/gallerygrid-light-hover-card--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/gallerygrid-light-hover-card--mobile.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-light-spanish--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/home-light-spanish--mobile.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/homedeckstrip-light--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/homedeckstrip-light--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/homeheader-light-spanish--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/homeheader-light-spanish--mobile.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/landing-light-spanish--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/landing-light-spanish--mobile.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/langtoggle-light-switched--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/langtoggle-light-switched--mobile.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/message-light--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/message-light--mobile.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/messageintro-light-next-card--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/messageintro-light-next-card--mobile.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/navrightcluster-theme-toggled-to-light--desktop.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/navrightcluster-theme-toggled-to-light--desktop.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/privacyscreen-light--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/privacyscreen-light--mobile.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/questioninput-light-typed--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/questioninput-light-typed--mobile.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/statslogin-light-typed--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/statslogin-light-typed--mobile.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/supportscreen-light--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/supportscreen-light--mobile.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/themetoggle-labeled-light--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/themetoggle-labeled-light--mobile.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/themetoggle-tapped-from-dark--mobile.png",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/screenshots/themetoggle-tapped-from-dark--mobile.png.hash",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/statslogin-light-typed.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/supportscreen-light.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/themetoggle-labeled-light.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/scenarios/themetoggle-tapped-from-dark.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/116d84de5e4ca35edff6a3a3746dc589b002b02292f8a071ebd4a90d93bbf068.json",
+      "status": "added"
+    },
+    {
+      "path": ".codeyam/test-cache/blobs/6746722154d1876e734b16a781e1521ccfeaf16d02ff1fc9248276f7bc09457f.json",
+      "status": "added"
+    },
+    {
+      "path": "components/MoonIcon.tsx",
+      "status": "added"
+    },
+    {
+      "path": "components/SunIcon.tsx",
+      "status": "added"
+    },
+    {
+      "path": "components/ThemeToggle.tsx",
+      "status": "added"
+    },
+    {
+      "path": "lib/theme.test.ts",
+      "status": "added"
+    },
+    {
+      "path": "lib/theme.ts",
+      "status": "added"
+    }
+  ],
+  "scenarioScreenshots": [
+    {
+      "name": "About - Default",
+      "screenshotPath": "about-default--mobile.png"
+    },
+    {
+      "name": "Gallery - Default",
+      "screenshotPath": "gallery-default--mobile.png"
+    },
+    {
+      "name": "Landing - English",
+      "screenshotPath": "landing-english--mobile.png"
+    },
+    {
+      "name": "Landing - Light Spanish",
+      "screenshotPath": "landing-light-spanish--mobile.png"
+    },
+    {
+      "name": "Landing - Spanish",
+      "screenshotPath": "landing-spanish--mobile.png"
+    },
+    {
+      "name": "Message - Default",
+      "screenshotPath": "message-default--mobile.png"
+    },
+    {
+      "name": "Message - Light",
+      "screenshotPath": "message-light--mobile.png"
+    },
+    {
+      "name": "Privacy - Default",
+      "screenshotPath": "privacy-default--mobile.png"
+    },
+    {
+      "name": "Question - Empty",
+      "screenshotPath": "question-empty--mobile.png"
+    },
+    {
+      "name": "Reading - Default",
+      "screenshotPath": "reading-default--mobile.png"
+    },
+    {
+      "name": "Stats - Password Gate",
+      "screenshotPath": "stats-password-gate--desktop.png"
+    },
+    {
+      "name": "Support - Default",
+      "screenshotPath": "support-default--mobile.png"
+    },
+    {
+      "name": "AboutScreen - Light Hover Draw",
+      "screenshotPath": "aboutscreen-light-hover-draw--mobile.png"
+    },
+    {
+      "name": "AboutScreen - Mobile",
+      "screenshotPath": "aboutscreen-mobile--mobile.png"
+    },
+    {
+      "name": "BackHeader - Default",
+      "screenshotPath": "backheader-default--mobile.png"
+    },
+    {
+      "name": "CardFan - Single Card",
+      "screenshotPath": "cardfan-single-card--mobile.png"
+    },
+    {
+      "name": "CardFan - Three Cards",
+      "screenshotPath": "cardfan-three-cards--mobile.png"
+    },
+    {
+      "name": "CardIdentity - Desktop",
+      "screenshotPath": "cardidentity-desktop--desktop.png"
+    },
+    {
+      "name": "CardIdentity - English",
+      "screenshotPath": "cardidentity-english--desktop.png"
+    },
+    {
+      "name": "CardIdentity - Mobile",
+      "screenshotPath": "cardidentity-mobile--mobile.png"
+    },
+    {
+      "name": "CardQuote - Desktop",
+      "screenshotPath": "cardquote-desktop--desktop.png"
+    },
+    {
+      "name": "CardQuote - Mobile",
+      "screenshotPath": "cardquote-mobile--mobile.png"
+    },
+    {
+      "name": "CardReading - Desktop Identidad",
+      "screenshotPath": "cardreading-desktop-identidad--desktop.png"
+    },
+    {
+      "name": "CardReading - Desktop Light Identidad",
+      "screenshotPath": "cardreading-desktop-light-identidad--desktop.png"
+    },
+    {
+      "name": "CardReading - Desktop Pregunta Comillas Sin Etiqueta",
+      "screenshotPath": "cardreading-desktop-pregunta-comillas-sin-etiqueta--desktop.png"
+    },
+    {
+      "name": "CardReading - Mobile",
+      "screenshotPath": "cardreading-mobile--mobile.png"
+    },
+    {
+      "name": "CardReading - Mobile Identidad",
+      "screenshotPath": "cardreading-mobile-identidad--mobile.png"
+    },
+    {
+      "name": "CardReading - Mobile Light Identidad",
+      "screenshotPath": "cardreading-mobile-light-identidad--mobile.png"
+    },
+    {
+      "name": "CardReading - Mobile Light Pregunta",
+      "screenshotPath": "cardreading-mobile-light-pregunta--mobile.png"
+    },
+    {
+      "name": "CardReading - Mobile Pregunta Comillas Sin Etiqueta",
+      "screenshotPath": "cardreading-mobile-pregunta-comillas-sin-etiqueta--mobile.png"
+    },
+    {
+      "name": "CarotMenu - Default",
+      "screenshotPath": "carotmenu-default--mobile.png"
+    },
+    {
+      "name": "CarotMenu - Light",
+      "screenshotPath": "carotmenu-light--mobile.png"
+    },
+    {
+      "name": "CarotMenu - Privacy Tapped",
+      "screenshotPath": "carotmenu-privacy-tapped--mobile.png"
+    },
+    {
+      "name": "CarotProvider - English",
+      "screenshotPath": "carotprovider-english--mobile.png"
+    },
+    {
+      "name": "CarotProvider - Spanish",
+      "screenshotPath": "carotprovider-spanish--mobile.png"
+    },
+    {
+      "name": "CommentRow - Default",
+      "screenshotPath": "commentrow-default--mobile.png"
+    },
+    {
+      "name": "CommentRow - Light Hover",
+      "screenshotPath": "commentrow-light-hover--mobile.png"
+    },
+    {
+      "name": "Comments - Light Form Open",
+      "screenshotPath": "comments-light-form-open--mobile.png"
+    },
+    {
+      "name": "Comments - With Comments",
+      "screenshotPath": "comments-with-comments--mobile.png"
+    },
+    {
+      "name": "DailyDateBadge - Desktop",
+      "screenshotPath": "dailydatebadge-desktop--desktop.png"
+    },
+    {
+      "name": "DailyDateBadge - Mobile",
+      "screenshotPath": "dailydatebadge-mobile--mobile.png"
+    },
+    {
+      "name": "DeckArc - Card Hovered",
+      "screenshotPath": "deckarc-card-hovered--desktop.png"
+    },
+    {
+      "name": "DeckArc - Default",
+      "screenshotPath": "deckarc-default--desktop.png"
+    },
+    {
+      "name": "DeckCarousel - Default",
+      "screenshotPath": "deckcarousel-default--mobile.png"
+    },
+    {
+      "name": "DeckCarousel - Light Next Card",
+      "screenshotPath": "deckcarousel-light-next-card--mobile.png"
+    },
+    {
+      "name": "DesktopNav - Default",
+      "screenshotPath": "desktopnav-default--desktop.png"
+    },
+    {
+      "name": "DesktopNav - Light Hover Back",
+      "screenshotPath": "desktopnav-light-hover-back--desktop.png"
+    },
+    {
+      "name": "DrawAnotherButton - FullWidth",
+      "screenshotPath": "drawanotherbutton-fullwidth--mobile.png"
+    },
+    {
+      "name": "DrawAnotherButton - Inline",
+      "screenshotPath": "drawanotherbutton-inline--desktop.png"
+    },
+    {
+      "name": "ExperienceButton - Light Outline Hover",
+      "screenshotPath": "experiencebutton-light-outline-hover--mobile.png"
+    },
+    {
+      "name": "ExperienceButton - Outline",
+      "screenshotPath": "experiencebutton-outline--mobile.png"
+    },
+    {
+      "name": "ExperienceButton - Solid",
+      "screenshotPath": "experiencebutton-solid--mobile.png"
+    },
+    {
+      "name": "Footer - Default",
+      "screenshotPath": "footer-default--mobile.png"
+    },
+    {
+      "name": "Footer - Light Hover Link",
+      "screenshotPath": "footer-light-hover-link--mobile.png"
+    },
+    {
+      "name": "GalleryGrid - Light Hover Card",
+      "screenshotPath": "gallerygrid-light-hover-card--mobile.png"
+    },
+    {
+      "name": "GalleryGrid - Mobile",
+      "screenshotPath": "gallerygrid-mobile--mobile.png"
+    },
+    {
+      "name": "Home - English",
+      "screenshotPath": "home-english--mobile.png"
+    },
+    {
+      "name": "Home - Light Spanish",
+      "screenshotPath": "home-light-spanish--mobile.png"
+    },
+    {
+      "name": "Home - Spanish",
+      "screenshotPath": "home-spanish--mobile.png"
+    },
+    {
+      "name": "HomeActions - English",
+      "screenshotPath": "homeactions-english--mobile.png"
+    },
+    {
+      "name": "HomeActions - Spanish",
+      "screenshotPath": "homeactions-spanish--mobile.png"
+    },
+    {
+      "name": "HomeDeckStrip - Default",
+      "screenshotPath": "homedeckstrip-default--desktop.png"
+    },
+    {
+      "name": "HomeDeckStrip - Light",
+      "screenshotPath": "homedeckstrip-light--desktop.png"
+    },
+    {
+      "name": "HomeDeckStrip - Short Deck",
+      "screenshotPath": "homedeckstrip-short-deck--desktop.png"
+    },
+    {
+      "name": "HomeHeader - English",
+      "screenshotPath": "homeheader-english--mobile.png"
+    },
+    {
+      "name": "HomeHeader - Light Spanish",
+      "screenshotPath": "homeheader-light-spanish--mobile.png"
+    },
+    {
+      "name": "HomeHeader - Spanish",
+      "screenshotPath": "homeheader-spanish--mobile.png"
+    },
+    {
+      "name": "HomeTitle - Default",
+      "screenshotPath": "hometitle-default--desktop.png"
+    },
+    {
+      "name": "LangToggle - English",
+      "screenshotPath": "langtoggle-english--mobile.png"
+    },
+    {
+      "name": "LangToggle - Light Switched",
+      "screenshotPath": "langtoggle-light-switched--mobile.png"
+    },
+    {
+      "name": "LangToggle - Spanish",
+      "screenshotPath": "langtoggle-spanish--mobile.png"
+    },
+    {
+      "name": "MenuOverlay - Default",
+      "screenshotPath": "menuoverlay-default--mobile.png"
+    },
+    {
+      "name": "MenuOverlay - Open",
+      "screenshotPath": "menuoverlay-open--mobile.png"
+    },
+    {
+      "name": "MenuToggle - Default",
+      "screenshotPath": "menutoggle-default--mobile.png"
+    },
+    {
+      "name": "MessageIntro - Light Next Card",
+      "screenshotPath": "messageintro-light-next-card--mobile.png"
+    },
+    {
+      "name": "MessageIntro - Mobile",
+      "screenshotPath": "messageintro-mobile--mobile.png"
+    },
+    {
+      "name": "NavRightCluster - English",
+      "screenshotPath": "navrightcluster-english--desktop.png"
+    },
+    {
+      "name": "NavRightCluster - Spanish",
+      "screenshotPath": "navrightcluster-spanish--desktop.png"
+    },
+    {
+      "name": "NavRightCluster - Theme Toggled To Light",
+      "screenshotPath": "navrightcluster-theme-toggled-to-light--desktop.png"
+    },
+    {
+      "name": "PrivacyScreen - Light",
+      "screenshotPath": "privacyscreen-light--mobile.png"
+    },
+    {
+      "name": "PrivacyScreen - Mobile",
+      "screenshotPath": "privacyscreen-mobile--mobile.png"
+    },
+    {
+      "name": "QuestionInput - Light Typed",
+      "screenshotPath": "questioninput-light-typed--mobile.png"
+    },
+    {
+      "name": "QuestionInput - Mobile",
+      "screenshotPath": "questioninput-mobile--mobile.png"
+    },
+    {
+      "name": "ReadingActionLink - Saving",
+      "screenshotPath": "readingactionlink-saving--desktop.png"
+    },
+    {
+      "name": "ReadingActionLink - Share",
+      "screenshotPath": "readingactionlink-share--desktop.png"
+    },
+    {
+      "name": "ReadingActionsDesktop - Default",
+      "screenshotPath": "readingactionsdesktop-default--desktop.png"
+    },
+    {
+      "name": "ReadingActionsDesktop - English",
+      "screenshotPath": "readingactionsdesktop-english--desktop.png"
+    },
+    {
+      "name": "ReadingActionsMobile - Default",
+      "screenshotPath": "readingactionsmobile-default--mobile.png"
+    },
+    {
+      "name": "ReadingActionsMobile - Saving",
+      "screenshotPath": "readingactionsmobile-saving--mobile.png"
+    },
+    {
+      "name": "ReadingBody - Desktop",
+      "screenshotPath": "readingbody-desktop--desktop.png"
+    },
+    {
+      "name": "ReadingBody - Mobile",
+      "screenshotPath": "readingbody-mobile--mobile.png"
+    },
+    {
+      "name": "ReadingBody - Pending",
+      "screenshotPath": "readingbody-pending--desktop.png"
+    },
+    {
+      "name": "ReadingDesktop - Default",
+      "screenshotPath": "readingdesktop-default--desktop.png"
+    },
+    {
+      "name": "ReadingDesktop - Diaria",
+      "screenshotPath": "readingdesktop-diaria--desktop.png"
+    },
+    {
+      "name": "ReadingDesktop - Pregunta",
+      "screenshotPath": "readingdesktop-pregunta--desktop.png"
+    },
+    {
+      "name": "ReadingMobile - Default",
+      "screenshotPath": "readingmobile-default--mobile.png"
+    },
+    {
+      "name": "ReadingMobile - Diaria",
+      "screenshotPath": "readingmobile-diaria--mobile.png"
+    },
+    {
+      "name": "ReadingMobile - Pregunta",
+      "screenshotPath": "readingmobile-pregunta--mobile.png"
+    },
+    {
+      "name": "ReadingOutlineButton - Saving",
+      "screenshotPath": "readingoutlinebutton-saving--mobile.png"
+    },
+    {
+      "name": "ReadingOutlineButton - Share",
+      "screenshotPath": "readingoutlinebutton-share--mobile.png"
+    },
+    {
+      "name": "ReadingQuestion - Desktop",
+      "screenshotPath": "readingquestion-desktop--desktop.png"
+    },
+    {
+      "name": "ReadingQuestion - Mobile",
+      "screenshotPath": "readingquestion-mobile--mobile.png"
+    },
+    {
+      "name": "ReadingTextColumn - Default",
+      "screenshotPath": "readingtextcolumn-default--desktop.png"
+    },
+    {
+      "name": "ReadingTextColumn - Pregunta",
+      "screenshotPath": "readingtextcolumn-pregunta--desktop.png"
+    },
+    {
+      "name": "ReadingToast - Default",
+      "screenshotPath": "readingtoast-default--mobile.png"
+    },
+    {
+      "name": "Section - Default",
+      "screenshotPath": "section-default--desktop.png"
+    },
+    {
+      "name": "Section - Empty",
+      "screenshotPath": "section-empty--desktop.png"
+    },
+    {
+      "name": "StatsLogin - Default",
+      "screenshotPath": "statslogin-default--desktop.png"
+    },
+    {
+      "name": "StatsLogin - Light Typed",
+      "screenshotPath": "statslogin-light-typed--mobile.png"
+    },
+    {
+      "name": "StatsLogin - Unconfigured",
+      "screenshotPath": "statslogin-unconfigured--desktop.png"
+    },
+    {
+      "name": "SupportScreen - Light",
+      "screenshotPath": "supportscreen-light--mobile.png"
+    },
+    {
+      "name": "SupportScreen - Mobile",
+      "screenshotPath": "supportscreen-mobile--mobile.png"
+    },
+    {
+      "name": "SwayingCard - Desktop",
+      "screenshotPath": "swayingcard-desktop--desktop.png"
+    },
+    {
+      "name": "SwayingCard - Mobile",
+      "screenshotPath": "swayingcard-mobile--mobile.png"
+    },
+    {
+      "name": "ThemeToggle - Labeled Light",
+      "screenshotPath": "themetoggle-labeled-light--mobile.png"
+    },
+    {
+      "name": "ThemeToggle - Tapped From Dark",
+      "screenshotPath": "themetoggle-tapped-from-dark--mobile.png"
+    }
+  ],
+  "testResults": {
+    "total": 33,
+    "passed": 33,
+    "failed": 0,
+    "runners": [
+      {
+        "name": "tests",
+        "total": 33,
+        "passed": 33
+      }
+    ]
+  }
+}

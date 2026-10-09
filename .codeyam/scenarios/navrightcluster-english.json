@@ -1,11 +1,12 @@
 {
   "name": "NavRightCluster - English",
   "id": "db2ba073-975a-42ca-90b2-cb0442a1f3d6",
-  "url": "/isolated-components/NavRightCluster?s=English",
+  "url": "/isolated-components/NavRightCluster?s=English&theme=dark",
   "dimensions": [
     "Desktop"
   ],
   "mocks": {},
   "componentName": "NavRightCluster",
-  "scenarioType": "component"
+  "scenarioType": "component",
+  "description": "The NavRightCluster component."
 }

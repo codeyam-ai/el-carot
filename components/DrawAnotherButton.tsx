@@ -8,8 +8,8 @@ export function DrawAnotherButton({ label, onClick, fullWidth = false }: { label
       style={{
         border: 'none',
         cursor: 'pointer',
-        background: 'var(--carot-sage-light)',
-        color: '#2b2922',
+        background: 'var(--accent-fill)',
+        color: 'var(--text-on-sage)',
         fontFamily: 'var(--font-body)',
         fontWeight: 500,
         borderRadius: 14,

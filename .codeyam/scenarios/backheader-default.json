@@ -1,11 +1,12 @@
 {
   "name": "BackHeader - Default",
   "id": "5d559222-6393-45fe-91d1-5632ed6d0226",
-  "url": "/isolated-components/BackHeader",
+  "url": "/isolated-components/BackHeader?theme=dark",
   "dimensions": [
     "Mobile"
   ],
   "mocks": {},
   "componentName": "BackHeader",
-  "scenarioType": "component"
+  "scenarioType": "component",
+  "description": "The BackHeader component."
 }

@@ -1,11 +1,12 @@
 {
   "name": "DesktopNav - Default",
   "id": "a2300bce-3e88-431a-839b-dc64ce22286b",
-  "url": "/isolated-components/DesktopNav",
+  "url": "/isolated-components/DesktopNav?theme=dark",
   "dimensions": [
     "Desktop"
   ],
   "mocks": {},
   "componentName": "DesktopNav",
-  "scenarioType": "component"
+  "scenarioType": "component",
+  "description": "The DesktopNav component."
 }

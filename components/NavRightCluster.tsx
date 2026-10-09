@@ -4,6 +4,7 @@ import React from 'react';
 import { useCarot } from '@/lib/i18n';
 import { useMenu } from '@/lib/menu';
 import { LangToggle } from '@/components/LangToggle';
+import { ThemeToggle } from '@/components/ThemeToggle';
 import { CAROT_IG_URL } from '@/lib/links';
 
 /**
@@ -18,12 +19,13 @@ export function NavRightCluster() {
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
       <LangToggle />
+      <ThemeToggle />
       <a
         href={CAROT_IG_URL}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Instagram"
-        style={{ color: 'rgba(175,188,167,.7)', display: 'inline-flex' }}
+        style={{ color: 'var(--text-eyebrow)', display: 'inline-flex' }}
       >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
           <rect x="3" y="3" width="18" height="18" rx="5" />
@@ -37,7 +39,7 @@ export function NavRightCluster() {
         style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', display: 'inline-flex', alignItems: 'center' }}
       >
         <svg width="22" height="22" viewBox="0 0 24 24" style={{ overflow: 'visible', display: 'block' }} aria-hidden="true">
-          <path d="M12 0 L14.2 8 L22 5.6 L16.4 12 L22 18.4 L14.2 16 L12 24 L9.8 16 L2 18.4 L7.6 12 L2 5.6 L9.8 8 Z" fill="var(--carot-sage-light)" />
+          <path d="M12 0 L14.2 8 L22 5.6 L16.4 12 L22 18.4 L14.2 16 L12 24 L9.8 16 L2 18.4 L7.6 12 L2 5.6 L9.8 8 Z" fill="var(--text-heading)" />
         </svg>
       </button>
     </div>

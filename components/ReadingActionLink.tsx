@@ -27,7 +27,7 @@ export function ReadingActionLink({
         fontFamily: 'var(--font-body)',
         fontWeight: 400,
         fontSize: 17,
-        color: 'var(--carot-sage-light)',
+        color: 'var(--text-heading)',
         whiteSpace: 'nowrap',
         opacity: disabled ? 0.55 : 1,
       }}

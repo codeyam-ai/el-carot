@@ -1,0 +1,12 @@
+{
+  "name": "PrivacyScreen - Light",
+  "id": "5c358750-9c6e-46c6-8f7c-2867e8632e87",
+  "url": "/isolated-components/PrivacyScreen?theme=light",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "PrivacyScreen",
+  "scenarioType": "component",
+  "description": "Política de privacidad en modo claro."
+}

@@ -1,12 +1,13 @@
 {
   "name": "Privacy - Default",
   "id": "de1ca071-1777-4780-8b30-c1eea328de49",
-  "url": "/privacy?lang=es",
+  "url": "/privacy?lang=es&theme=dark",
   "dimensions": [
     "Mobile"
   ],
   "mocks": {},
   "seed": {},
   "scenarioType": "application",
-  "pageFilePath": "app/privacy/page.tsx"
+  "pageFilePath": "app/privacy/page.tsx",
+  "description": "Privacy - Default in its empty state, with no items present."
 }

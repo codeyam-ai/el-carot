@@ -1,12 +1,13 @@
 {
   "name": "Gallery - Default",
   "id": "2826464e-369f-4f56-88fe-3e72c3d3d40d",
-  "url": "/gallery?lang=es",
+  "url": "/gallery?lang=es&theme=dark",
   "dimensions": [
     "Mobile"
   ],
   "mocks": {},
   "seed": {},
   "scenarioType": "application",
-  "pageFilePath": "app/gallery/page.tsx"
+  "pageFilePath": "app/gallery/page.tsx",
+  "description": "Gallery - Default in its empty state, with no items present."
 }

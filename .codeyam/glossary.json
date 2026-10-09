@@ -306,6 +306,18 @@
     ]
   },
   {
+    "description": "Line-drawn crescent moon icon in currentColor; offers the dark theme inside ThemeToggle.",
+    "filePath": "components/MoonIcon.tsx",
+    "name": "MoonIcon",
+    "tags": [
+      "light-mode"
+    ],
+    "untestabilityReason": {
+      "justification": "pure SVG icon, rendered and captured through ThemeToggle scenarios",
+      "kind": "trivial-wrapper"
+    }
+  },
+  {
     "description": "The desktop top-right cluster — language toggle, Instagram link, and the star menu — in one flex row so they share a baseline. Used by both the page nav bar and the home header.",
     "filePath": "components/NavRightCluster.tsx",
     "name": "NavRightCluster",
@@ -549,6 +561,18 @@
     ]
   },
   {
+    "description": "Line-drawn sun icon in currentColor; offers the light theme inside ThemeToggle.",
+    "filePath": "components/SunIcon.tsx",
+    "name": "SunIcon",
+    "tags": [
+      "light-mode"
+    ],
+    "untestabilityReason": {
+      "justification": "pure SVG icon, rendered and captured through ThemeToggle scenarios",
+      "kind": "trivial-wrapper"
+    }
+  },
+  {
     "description": "Route for the support screen, the App Store listing's Support URL.",
     "filePath": "app/support/page.tsx",
     "name": "SupportPage",
@@ -582,6 +606,18 @@
     "name": "TarotCard",
     "scenarios": [
       "tarotcard-default"
+    ]
+  },
+  {
+    "description": "Sun/moon theme switch next to ES/EN (home header, desktop nav cluster) and, with its label, in the star menu. CSS picks which icon/label shows from html data-theme, so the server render is right on first paint; a tap flips the theme and remembers it.",
+    "filePath": "components/ThemeToggle.tsx",
+    "name": "ThemeToggle",
+    "scenarios": [
+      "themetoggle-tapped-from-dark",
+      "themetoggle-labeled-light"
+    ],
+    "tags": [
+      "light-mode"
     ]
   },
   {
@@ -657,6 +693,15 @@
     "testFile": "lib/wallpaper.test.ts"
   },
   {
+    "description": "Reads the theme currently on the page from <html data-theme>; light only when explicitly light, otherwise dark.",
+    "filePath": "lib/theme.ts",
+    "name": "currentTheme",
+    "tags": [
+      "light-mode"
+    ],
+    "testFile": "lib/theme.test.ts"
+  },
+  {
     "description": "Deterministic card-of-the-day index: hashes the local Y/M/D into a deck position so the whole calendar day shows the same card.",
     "filePath": "lib/daily.ts",
     "name": "dailyCardIndex",
@@ -724,6 +769,15 @@
       "justification": "A DailyCard findUnique/create round-trip; the deterministic pick it falls back to is lib/daily.ts::dailyCardIndex, covered by lib/daily.test.ts.",
       "kind": "platform-glue"
     }
+  },
+  {
+    "description": "Type guard: true only for the exact strings light or dark; used by savedTheme to ignore junk URL and cookie values.",
+    "filePath": "lib/theme.ts",
+    "name": "isTheme",
+    "tags": [
+      "light-mode"
+    ],
+    "testFile": "lib/theme.test.ts"
   },
   {
     "description": "Load a same-origin image via a plain `<img>` (the way the reading page loads card art). No `crossOrigin` is set: same-origin images never taint the canvas, so `getImageData`/`toBlob` stay allowed. A timeout rejects rather than hangs if the image never fires load/error.",
@@ -802,6 +856,24 @@
     "filePath": "lib/wallpaper.ts",
     "name": "sampleFrameColor",
     "testFile": "lib/wallpaper.test.ts"
+  },
+  {
+    "description": "The visitor's explicit theme choice: a ?theme=light|dark URL override wins, then the carot_theme cookie; null when neither holds a valid theme, so the device's light/dark setting decides. Used by middleware and the root layout.",
+    "filePath": "lib/theme.ts",
+    "name": "savedTheme",
+    "tags": [
+      "light-mode"
+    ],
+    "testFile": "lib/theme.test.ts"
+  },
+  {
+    "description": "Applies a theme to <html data-theme>, recolours every theme-color meta for the browser chrome, and remembers the choice in the carot_theme cookie for a year plus localStorage, tolerating blocked storage.",
+    "filePath": "lib/theme.ts",
+    "name": "setTheme",
+    "tags": [
+      "light-mode"
+    ],
+    "testFile": "lib/theme.test.ts"
   },
   {
     "description": "Share a reading. On devices with the Web Share API (mobile) this opens the native sheet; otherwise (most desktops) it copies the direct link to the clipboard. Returns what actually happened so the caller can show feedback.",

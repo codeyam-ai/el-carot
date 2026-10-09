@@ -1,0 +1,18 @@
+{
+  "name": "CommentRow - Light Hover",
+  "id": "a0271300-7bbf-4f1e-8d60-d2af9a3a3b73",
+  "url": "/isolated-components/CommentRow?theme=light",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "CommentRow",
+  "scenarioType": "component",
+  "description": "Un comentario en modo claro: nombre y fecha en tinta tenue, texto en tinta.",
+  "interactions": [
+    {
+      "action": "hover",
+      "selector": "#codeyam-capture p"
+    }
+  ]
+}

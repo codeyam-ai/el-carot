@@ -20,7 +20,7 @@ export default function Home({ fan, strip }: { fan: Card[]; strip: Card[] }) {
         minHeight: '100%',
         display: 'flex',
         flexDirection: 'column',
-        background: 'var(--carot-screen)',
+        background: 'var(--surface-page)',
         padding: '0 26px 30px',
         boxSizing: 'border-box',
       }}

@@ -1,0 +1,18 @@
+{
+  "name": "DesktopNav - Light Hover Back",
+  "id": "a19cf74b-e188-4520-b7d9-f15f185d41ee",
+  "url": "/isolated-components/DesktopNav?theme=light",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "componentName": "DesktopNav",
+  "scenarioType": "component",
+  "description": "Barra de navegación de desktop en modo claro: wordmark, flecha y estrella en tinta, con el botón de luna.",
+  "interactions": [
+    {
+      "action": "hover",
+      "selector": "#codeyam-capture button"
+    }
+  ]
+}

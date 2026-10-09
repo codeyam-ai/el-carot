@@ -1,0 +1,18 @@
+{
+  "name": "MessageIntro - Light Next Card",
+  "id": "7946139c-6033-4a56-aafd-b576cc92e211",
+  "url": "/isolated-components/MessageIntro?theme=light",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "MessageIntro",
+  "scenarioType": "component",
+  "description": "Recibir un mensaje en modo claro (la pantalla de la referencia), con el cursor sobre la carta central.",
+  "interactions": [
+    {
+      "action": "hover",
+      "selector": "#codeyam-capture div[style*=\"z-index:100\"]"
+    }
+  ]
+}

@@ -1,11 +1,12 @@
 {
   "name": "Footer - Default",
   "id": "306f9f6f-f15a-4966-b840-68ea28230c0a",
-  "url": "/isolated-components/Footer",
+  "url": "/isolated-components/Footer?theme=dark",
   "dimensions": [
     "Mobile"
   ],
   "mocks": {},
   "componentName": "Footer",
-  "scenarioType": "component"
+  "scenarioType": "component",
+  "description": "The Footer component."
 }

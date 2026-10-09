@@ -14,8 +14,8 @@ export function AboutScreen() {
   const router = useRouter();
   const isDesktop = useIsDesktop();
   const display = 'var(--font-display)';
-  const sage = 'var(--carot-sage-light)';
-  const cream = 'var(--carot-cream-text)';
+  const sage = 'var(--text-heading)';
+  const cream = 'var(--text-body)';
   const p: React.CSSProperties = {
     fontFamily: 'var(--font-body)',
     fontSize: 17,
@@ -26,7 +26,7 @@ export function AboutScreen() {
   };
 
   return (
-    <div data-fullbleed style={{ minHeight: '100%', display: 'flex', flexDirection: 'column', background: 'var(--carot-screen)' }}>
+    <div data-fullbleed style={{ minHeight: '100%', display: 'flex', flexDirection: 'column', background: 'var(--surface-page)' }}>
       {isDesktop && <DesktopNav title={t.aboutTitle} />}
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: isDesktop ? 'center' : undefined, width: '100%', maxWidth: isDesktop ? 640 : undefined, margin: '0 auto', padding: '0 30px 40px', boxSizing: 'border-box' }}>
         {!isDesktop && <BackHeader title={t.aboutTitle} />}
@@ -35,7 +35,7 @@ export function AboutScreen() {
         El Carot
       </h1>
 
-      <p style={{ ...p, fontSize: 15, color: 'rgba(175,188,167,.6)', margin: '0 0 24px' }}>
+      <p style={{ ...p, fontSize: 15, color: 'var(--text-eyebrow)', margin: '0 0 24px' }}>
         {t.aboutCreditPre}
         <a href={BASTA_DANII_IG_URL} target="_blank" rel="noopener noreferrer" style={{ color: sage, fontWeight: 600, textDecoration: 'none' }}>
           @bastadanii
@@ -70,8 +70,8 @@ export function AboutScreen() {
           border: 'none',
           cursor: 'pointer',
           marginTop: 30,
-          background: sage,
-          color: '#2b2922',
+          background: 'var(--accent-fill)',
+          color: 'var(--text-on-sage)',
           fontFamily: display,
           fontWeight: 400,
           fontSize: 21,
@@ -79,7 +79,7 @@ export function AboutScreen() {
           borderRadius: 14,
         }}
       >
-        <svg width="19" height="19" viewBox="0 0 24 24" fill="#2b2922" aria-hidden="true">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="var(--text-on-sage)" aria-hidden="true">
           <path d="M12 1 L14 8.4 L21.4 6.2 L16.2 12 L21.4 17.8 L14 15.6 L12 23 L10 15.6 L2.6 17.8 L7.8 12 L2.6 6.2 L10 8.4 Z" />
         </svg>
         {t.drawCard}
@@ -102,7 +102,7 @@ export function AboutScreen() {
           fontSize: 17,
           padding: '15px 22px',
           borderRadius: 14,
-          border: '1.5px solid var(--carot-sage-light)',
+          border: '1.5px solid var(--text-heading)',
         }}
       >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">

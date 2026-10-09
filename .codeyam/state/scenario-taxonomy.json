@@ -63,6 +63,38 @@
         "status": "n-a",
         "reason": "language toggle and navigation covered by LangToggle and HomeActions component scenarios"
       }
+    },
+    "ThemeToggle": {
+      "empty": {
+        "status": "n-a",
+        "reason": "A single button with no data; it always renders one icon."
+      },
+      "single": {
+        "status": "n-a",
+        "reason": "No collection: the toggle is one control."
+      },
+      "typical": {
+        "status": "covered"
+      },
+      "many": {
+        "status": "n-a",
+        "reason": "No collection: the toggle is one control."
+      },
+      "loading": {
+        "status": "n-a",
+        "reason": "Nothing loads; the icon is chosen by CSS from the page theme."
+      },
+      "edge": {
+        "status": "n-a",
+        "reason": "Fixed copy and icons; only the label language varies."
+      },
+      "error": {
+        "status": "n-a",
+        "reason": "No visible failure path; blocked storage still switches the theme."
+      },
+      "key-interaction": {
+        "status": "added"
+      }
     }
   }
 }

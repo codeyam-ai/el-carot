@@ -26,8 +26,8 @@ export function ExperienceButton({
     boxSizing: 'border-box',
     border: 'none',
     cursor: 'pointer',
-    background: 'var(--carot-sage-light)',
-    color: '#2b2922',
+    background: 'var(--accent-fill)',
+    color: 'var(--text-on-sage)',
     fontFamily: 'var(--font-display)',
     fontWeight: 400,
     // A touch smaller on the mobile stack so the fanned cards get more room.
@@ -42,7 +42,7 @@ export function ExperienceButton({
   };
   const outline: React.CSSProperties =
     variant === 'outline'
-      ? { background: 'transparent', color: 'var(--carot-sage-light)', border: '1.5px solid var(--carot-sage-light)' }
+      ? { background: 'transparent', color: 'var(--text-heading)', border: '1.5px solid var(--text-heading)' }
       : {};
 
   const press = (e: React.MouseEvent<HTMLButtonElement>) => {

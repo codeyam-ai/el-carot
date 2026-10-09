@@ -59,6 +59,8 @@ export const STRINGS = {
     menuOpenSource: 'Open Source',
     menuInstagram: 'Instagram',
     menuPrivacy: 'Privacidad',
+    themeToLight: 'Modo claro',
+    themeToDark: 'Modo oscuro',
     menuLove: 'El Carot te ama',
     footLove: 'te ama',
     // Footer
@@ -132,6 +134,8 @@ export const STRINGS = {
     menuOpenSource: 'Open Source',
     menuInstagram: 'Instagram',
     menuPrivacy: 'Privacy',
+    themeToLight: 'Light mode',
+    themeToDark: 'Dark mode',
     menuLove: 'El Carot loves you',
     footLove: 'loves you',
     footAbout: 'About El Carot',

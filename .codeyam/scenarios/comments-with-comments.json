@@ -1,11 +1,12 @@
 {
   "name": "Comments - With Comments",
   "id": "ba04381d-9909-4d67-be43-bbd9d058882c",
-  "url": "/isolated-components/Comments",
+  "url": "/isolated-components/Comments?theme=dark",
   "dimensions": [
     "Mobile"
   ],
   "mocks": {},
   "componentName": "Comments",
-  "scenarioType": "component"
+  "scenarioType": "component",
+  "description": "The Comments component."
 }

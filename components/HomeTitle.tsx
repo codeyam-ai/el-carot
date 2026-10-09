@@ -22,7 +22,7 @@ export function HomeTitle() {
             fontFamily: 'var(--font-display)',
             fontWeight: 400,
             fontSize: 18,
-            color: 'rgba(175,188,167,.65)',
+            color: 'var(--text-eyebrow)',
             letterSpacing: '.02em',
             marginBottom: 4,
           }}

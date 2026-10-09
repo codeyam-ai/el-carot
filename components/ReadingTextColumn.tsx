@@ -45,7 +45,7 @@ export function ReadingTextColumn({
       {!question && (
         <>
           <CardQuote text={cardText(card, 'quote', lang)} />
-          <StarDivider count={3} size={12} color="#5B6256" style={{ margin: '0 0 22px', justifyContent: 'flex-start' }} />
+          <StarDivider count={3} size={12} color="var(--divider)" style={{ margin: '0 0 22px', justifyContent: 'flex-start' }} />
         </>
       )}
       <ReadingBody text={body.text} pending={body.pending} />

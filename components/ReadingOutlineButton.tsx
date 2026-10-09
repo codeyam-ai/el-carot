@@ -24,7 +24,7 @@ export function ReadingOutlineButton({
         width: '100%',
         boxSizing: 'border-box',
         background: 'transparent',
-        border: '1px solid rgba(175,188,167,.35)',
+        border: '1px solid var(--border-outline)',
         borderRadius: 14,
         padding: '15px 10px',
         cursor: 'pointer',
@@ -32,7 +32,7 @@ export function ReadingOutlineButton({
         fontWeight: 400,
         fontSize: 17,
         letterSpacing: '.01em',
-        color: 'var(--carot-sage-light)',
+        color: 'var(--text-heading)',
         whiteSpace: 'nowrap',
         opacity: disabled ? 0.55 : 1,
       }}

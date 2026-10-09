@@ -1,7 +1,7 @@
 {
   "name": "ReadingActionsDesktop - Default",
   "id": "438fae46-0584-4c01-8c6f-8115955e1aed",
-  "url": "/isolated-components/ReadingActionsDesktop?s=Default&lang=es",
+  "url": "/isolated-components/ReadingActionsDesktop?s=Default&lang=es&theme=dark",
   "dimensions": [
     "Desktop"
   ],

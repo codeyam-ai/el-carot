@@ -1,12 +1,13 @@
 {
   "name": "About - Default",
   "id": "8586d2ca-e19c-456b-8b47-a06c212a7038",
-  "url": "/about?lang=es",
+  "url": "/about?lang=es&theme=dark",
   "dimensions": [
     "Mobile"
   ],
   "mocks": {},
   "seed": {},
   "scenarioType": "application",
-  "pageFilePath": "app/about/page.tsx"
+  "pageFilePath": "app/about/page.tsx",
+  "description": "About - Default in its empty state, with no items present."
 }

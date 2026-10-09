@@ -1,0 +1,12 @@
+{
+  "name": "HomeHeader - Light Spanish",
+  "id": "d9bf041f-9627-4ca7-9aa9-89cfccef3977",
+  "url": "/isolated-components/HomeHeader?s=Spanish&theme=light",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "HomeHeader",
+  "scenarioType": "component",
+  "description": "Cabecera de la home en modo claro: ES / EN y la luna a la izquierda, ¡Bienvenido! en tinta tenue."
+}

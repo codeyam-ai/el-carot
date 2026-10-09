@@ -1,0 +1,18 @@
+{
+  "name": "AboutScreen - Light Hover Draw",
+  "id": "6a814325-e65b-4710-8a1d-6bd4e64f3aa4",
+  "url": "/isolated-components/AboutScreen?theme=light",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "AboutScreen",
+  "scenarioType": "component",
+  "description": "Pantalla Sobre El Carot en modo claro: texto en tinta, botón salvia con el cursor encima.",
+  "interactions": [
+    {
+      "action": "hover",
+      "selector": "#codeyam-capture button"
+    }
+  ]
+}

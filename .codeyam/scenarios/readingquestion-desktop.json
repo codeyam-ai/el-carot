@@ -1,7 +1,7 @@
 {
   "name": "ReadingQuestion - Desktop",
   "id": "d462d6a7-dc26-4bd9-80af-e83a89164d42",
-  "url": "/isolated-components/ReadingQuestion?s=Desktop&lang=es",
+  "url": "/isolated-components/ReadingQuestion?s=Desktop&lang=es&theme=dark",
   "dimensions": [
     "Desktop"
   ],

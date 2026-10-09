@@ -61,8 +61,8 @@ export function DeckArc({ back, onDraw }: { back: string; onDraw: () => void }) 
                   objectFit: 'cover',
                   display: 'block',
                   borderRadius: 10,
-                  border: '2px solid rgba(233,217,199,.4)',
-                  boxShadow: lifted ? '0 24px 54px rgba(0,0,0,.6)' : '0 10px 26px rgba(0,0,0,.42)',
+                  border: '2px solid var(--card-edge-strong)',
+                  boxShadow: lifted ? '0 24px 54px var(--card-shadow-strong)' : '0 10px 26px var(--card-shadow)',
                   pointerEvents: 'none',
                 }}
               />

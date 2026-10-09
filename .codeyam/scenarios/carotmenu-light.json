@@ -1,0 +1,12 @@
+{
+  "name": "CarotMenu - Light",
+  "id": "419683a7-942b-45b5-abe6-96ffa03520a5",
+  "url": "/isolated-components/CarotMenu?theme=light",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "CarotMenu",
+  "scenarioType": "component",
+  "description": "El menú de la estrella en modo claro, con el nuevo ítem 'Modo oscuro' al final."
+}

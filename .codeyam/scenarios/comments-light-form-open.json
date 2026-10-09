@@ -1,0 +1,18 @@
+{
+  "name": "Comments - Light Form Open",
+  "id": "0dbeb38c-7c85-4a6a-bd6a-41fe9f094b63",
+  "url": "/isolated-components/Comments?theme=light",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "Comments",
+  "scenarioType": "component",
+  "description": "Comentarios en modo claro con el formulario abierto tras tocar Comentar.",
+  "interactions": [
+    {
+      "action": "click",
+      "selector": "#codeyam-capture button"
+    }
+  ]
+}

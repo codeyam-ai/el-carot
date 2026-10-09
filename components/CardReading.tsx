@@ -39,7 +39,7 @@ export function CardReading({
   const shared = { card, lang, t, dailyDate, flipped, question, body, savingImage, onBack: back, onShare, onDownload };
 
   return (
-    <div data-fullbleed={isDesktop ? '' : undefined} style={{ background: 'var(--carot-screen)' }}>
+    <div data-fullbleed={isDesktop ? '' : undefined} style={{ background: 'var(--surface-page)' }}>
       {isDesktop ? <ReadingDesktop {...shared} navTitle={navTitleFor(origin, t)} /> : <ReadingMobile {...shared} />}
       <ReadingToast message={toast} />
     </div>

@@ -42,7 +42,7 @@ export function ReadingMobile({
   onDownload: () => void;
 }) {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '0 26px 0', background: 'var(--carot-screen)' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '0 26px 0', background: 'var(--surface-page)' }}>
       <BackHeader onBack={onBack} style={{ width: '100%' }} />
       {dailyDate && <DailyDateBadge label={t.dailyLabel} date={dailyDate} mobile />}
       <div style={{ marginTop: 30 }}>
@@ -64,14 +64,14 @@ export function ReadingMobile({
         <>
           <div style={{ height: 22 }} />
           <CardQuote text={cardText(card, 'quote', lang)} mobile />
-          <StarDivider count={3} size={13} color="#5B6256" style={{ margin: '20px 0 0' }} />
+          <StarDivider count={3} size={13} color="var(--divider)" style={{ margin: '20px 0 0' }} />
         </>
       )}
       <ReadingBody text={body.text} pending={body.pending} mobile marginTop={question ? 18 : 20} />
 
-      <StarDivider count={3} size={13} color="#5B6256" style={{ margin: '52px 0 50px' }} />
+      <StarDivider count={3} size={13} color="var(--divider)" style={{ margin: '52px 0 50px' }} />
       <ReadingActionsMobile t={t} savingImage={savingImage} onBack={onBack} onShare={onShare} onDownload={onDownload} />
-      <StarDivider count={3} size={13} color="#5B6256" style={{ margin: '52px 0 50px' }} />
+      <StarDivider count={3} size={13} color="var(--divider)" style={{ margin: '52px 0 50px' }} />
     </div>
   );
 }

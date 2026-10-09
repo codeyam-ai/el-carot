@@ -13,7 +13,7 @@ import { NavRightCluster } from '@/components/NavRightCluster';
 export function DesktopNav({ title, onBack }: { title?: string; onBack?: () => void }) {
   const { t } = useCarot();
   const router = useRouter();
-  const sage = 'var(--carot-sage-light)';
+  const sage = 'var(--text-heading)';
   const back = onBack ?? (() => router.push('/'));
 
   return (
@@ -28,7 +28,7 @@ export function DesktopNav({ title, onBack }: { title?: string; onBack?: () => v
                 <polyline points="11,5 4,12 11,19" />
               </svg>
             </button>
-            <span style={{ fontFamily: 'var(--font-body)', fontWeight: 300, fontSize: 16, letterSpacing: '.04em', color: 'rgba(175,188,167,.6)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+            <span style={{ fontFamily: 'var(--font-body)', fontWeight: 300, fontSize: 16, letterSpacing: '.04em', color: 'var(--text-eyebrow)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
               {title}
             </span>
           </>

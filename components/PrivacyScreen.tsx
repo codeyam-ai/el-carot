@@ -93,8 +93,8 @@ export function PrivacyScreen() {
   const isDesktop = useIsDesktop();
   const copy = COPY[lang];
 
-  const sage = 'var(--carot-sage-light)';
-  const cream = 'var(--carot-cream-text)';
+  const sage = 'var(--text-heading)';
+  const cream = 'var(--text-body)';
   const display = 'var(--font-display)';
 
   const body: React.CSSProperties = {
@@ -108,7 +108,7 @@ export function PrivacyScreen() {
   return (
     <div
       data-fullbleed
-      style={{ minHeight: '100%', display: 'flex', flexDirection: 'column', background: 'var(--carot-screen)' }}
+      style={{ minHeight: '100%', display: 'flex', flexDirection: 'column', background: 'var(--surface-page)' }}
     >
       {isDesktop && <DesktopNav title={copy.context} />}
       <div
@@ -136,14 +136,14 @@ export function PrivacyScreen() {
           {copy.title}
         </h1>
 
-        <p style={{ ...body, fontSize: 14, color: 'rgba(175,188,167,.6)', margin: '0 0 28px' }}>{copy.updated}</p>
+        <p style={{ ...body, fontSize: 14, color: 'var(--text-eyebrow)', margin: '0 0 28px' }}>{copy.updated}</p>
 
         <p
           style={{
             ...body,
             fontSize: 18,
             color: sage,
-            borderLeft: '2px solid rgba(175,188,167,.35)',
+            borderLeft: '2px solid var(--border-outline)',
             paddingLeft: 18,
             margin: '0 0 36px',
           }}

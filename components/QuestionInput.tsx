@@ -16,7 +16,7 @@ export function QuestionInput() {
   const { t } = useCarot();
   const router = useRouter();
   const isDesktop = useIsDesktop();
-  const cream = 'var(--carot-cream-text)';
+  const cream = 'var(--text-body)';
   const [q, setQ] = React.useState('');
   const ready = q.trim().length > 0;
 
@@ -26,11 +26,11 @@ export function QuestionInput() {
     router.push(`/reading?n=${n}&origin=question&q=${encodeURIComponent(q.trim())}`);
   };
 
-  const fieldBorder = '1px solid rgba(175,188,167,.35)';
+  const fieldBorder = '1px solid var(--border-outline)';
 
   if (isDesktop) {
     return (
-      <div data-fullbleed style={{ minHeight: '100%', display: 'flex', flexDirection: 'column', background: 'var(--carot-screen)' }}>
+      <div data-fullbleed style={{ minHeight: '100%', display: 'flex', flexDirection: 'column', background: 'var(--surface-page)' }}>
         <DesktopNav title={t.questionTitle} />
         <div style={{ maxWidth: 1040, margin: '0 auto', width: '100%', padding: '0 40px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <h1 style={{ margin: '64px 0 0', textAlign: 'center', fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 56, lineHeight: 1.05, color: cream }}>
@@ -69,8 +69,8 @@ export function QuestionInput() {
               marginTop: 30,
               border: 'none',
               cursor: ready ? 'pointer' : 'default',
-              background: 'var(--carot-sage-light)',
-              color: '#2b2922',
+              background: 'var(--accent-fill)',
+              color: 'var(--text-on-sage)',
               opacity: ready ? 1 : 0.5,
               fontFamily: 'var(--font-display)',
               fontWeight: 400,
@@ -88,7 +88,7 @@ export function QuestionInput() {
   }
 
   return (
-    <div style={{ minHeight: '100%', display: 'flex', flexDirection: 'column', background: 'var(--carot-screen)', boxSizing: 'border-box' }}>
+    <div style={{ minHeight: '100%', display: 'flex', flexDirection: 'column', background: 'var(--surface-page)', boxSizing: 'border-box' }}>
       <div style={{ padding: '0 24px', flex: 'none' }}>
         <BackHeader title={t.questionTitle} />
       </div>
@@ -132,8 +132,8 @@ export function QuestionInput() {
             width: '100%',
             border: 'none',
             cursor: ready ? 'pointer' : 'default',
-            background: 'var(--carot-sage-light)',
-            color: '#2b2922',
+            background: 'var(--accent-fill)',
+            color: 'var(--text-on-sage)',
             opacity: ready ? 1 : 0.5,
             fontFamily: 'var(--font-display)',
             fontWeight: 400,

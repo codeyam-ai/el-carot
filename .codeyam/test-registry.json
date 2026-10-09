@@ -280,6 +280,24 @@
       "runner": "tests"
     },
     {
+      "description": "dark is the default for an explicit dark page or a missing attribute",
+      "file": "lib/theme.test.ts",
+      "format": "vitest",
+      "key": "currentTheme › reports dark otherwise",
+      "line": 53,
+      "registeredAt": "2026-10-09T14:54:28Z",
+      "runner": "tests"
+    },
+    {
+      "description": "reads the theme the server or the no-flash script put on <html>",
+      "file": "lib/theme.test.ts",
+      "format": "vitest",
+      "key": "currentTheme › reports light when the page is light",
+      "line": 47,
+      "registeredAt": "2026-10-09T14:54:28Z",
+      "runner": "tests"
+    },
+    {
       "description": "different days generally differ (and never throw)",
       "file": "lib/daily.test.ts",
       "format": "vitest",
@@ -565,6 +583,69 @@
       "key": "readingBody › uses the English meaning in English",
       "line": 100,
       "registeredAt": "2026-10-09T00:02:55Z",
+      "runner": "tests"
+    },
+    {
+      "description": "with no URL override, the saved cookie is used",
+      "file": "lib/theme.test.ts",
+      "format": "vitest",
+      "key": "savedTheme › falls back to the cookie when the URL has no theme",
+      "line": 12,
+      "registeredAt": "2026-10-09T14:54:28Z",
+      "runner": "tests"
+    },
+    {
+      "description": "a junk URL value is ignored rather than overriding a valid cookie",
+      "file": "lib/theme.test.ts",
+      "format": "vitest",
+      "key": "savedTheme › ignores an unknown URL value",
+      "line": 18,
+      "registeredAt": "2026-10-09T14:54:28Z",
+      "runner": "tests"
+    },
+    {
+      "description": "a ?theme= URL override wins over the saved cookie",
+      "file": "lib/theme.test.ts",
+      "format": "vitest",
+      "key": "savedTheme › prefers the URL value over the cookie",
+      "line": 6,
+      "registeredAt": "2026-10-09T14:54:28Z",
+      "runner": "tests"
+    },
+    {
+      "description": "no explicit choice anywhere means the device setting decides",
+      "file": "lib/theme.test.ts",
+      "format": "vitest",
+      "key": "savedTheme › returns null when neither source holds a valid theme",
+      "line": 24,
+      "registeredAt": "2026-10-09T14:54:28Z",
+      "runner": "tests"
+    },
+    {
+      "description": "remembers the choice for the next visit in both the cookie and localStorage",
+      "file": "lib/theme.test.ts",
+      "format": "vitest",
+      "key": "setTheme › persists the choice for a year",
+      "line": 73,
+      "registeredAt": "2026-10-09T14:54:28Z",
+      "runner": "tests"
+    },
+    {
+      "description": "applies the theme to <html> and recolours the browser chrome",
+      "file": "lib/theme.test.ts",
+      "format": "vitest",
+      "key": "setTheme › sets the html attribute and every theme-color meta",
+      "line": 63,
+      "registeredAt": "2026-10-09T14:54:28Z",
+      "runner": "tests"
+    },
+    {
+      "description": "blocked storage must not stop the theme from switching",
+      "file": "lib/theme.test.ts",
+      "format": "vitest",
+      "key": "setTheme › still switches when localStorage throws",
+      "line": 84,
+      "registeredAt": "2026-10-09T14:54:28Z",
       "runner": "tests"
     },
     {

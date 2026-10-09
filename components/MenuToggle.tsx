@@ -18,7 +18,7 @@ export function MenuToggle({
   onToggle: () => void;
   label: string;
 }) {
-  const sage = 'var(--carot-sage-light)';
+  const sage = 'var(--text-heading)';
   const isDesktop = useIsDesktop();
   const star = isDesktop ? 22 : 26;
   const tween: React.CSSProperties = {

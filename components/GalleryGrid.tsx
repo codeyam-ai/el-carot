@@ -14,18 +14,18 @@ export function GalleryGrid() {
   const { t } = useCarot();
   const router = useRouter();
   const isDesktop = useIsDesktop();
-  const sage = 'var(--carot-sage-light)';
+  const sage = 'var(--text-heading)';
 
   return (
     <div
       data-fullbleed
-      style={{ minHeight: '100%', display: 'flex', flexDirection: 'column', background: 'var(--carot-screen)', boxSizing: 'border-box' }}
+      style={{ minHeight: '100%', display: 'flex', flexDirection: 'column', background: 'var(--surface-page)', boxSizing: 'border-box' }}
     >
       {isDesktop && <DesktopNav title={t.galleryTitle} />}
       <div style={{ padding: '0 22px 36px', maxWidth: isDesktop ? 1040 : undefined, margin: '0 auto', width: '100%', boxSizing: 'border-box' }}>
         {!isDesktop && <BackHeader title={t.galleryTitle} />}
 
-        <h1 style={{ margin: '22px 0 6px', textAlign: 'center', fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: isDesktop ? 42 : 34, lineHeight: 1.05, color: 'var(--carot-cream-text)' }}>
+        <h1 style={{ margin: '22px 0 6px', textAlign: 'center', fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: isDesktop ? 42 : 34, lineHeight: 1.05, color: 'var(--text-body)' }}>
           {t.galleryHeading}
         </h1>
         <p style={{ margin: '0 0 22px', textAlign: 'center', fontFamily: 'var(--font-body)', fontSize: 15, color: sage }}>
@@ -50,8 +50,8 @@ export function GalleryGrid() {
                   objectFit: 'cover',
                   display: 'block',
                   borderRadius: 10,
-                  border: '2px solid rgba(175,188,167,.45)',
-                  boxShadow: '0 8px 22px rgba(0,0,0,.4)',
+                  border: '2px solid var(--card-border)',
+                  boxShadow: '0 8px 22px var(--card-shadow)',
                 }}
               />
             </button>

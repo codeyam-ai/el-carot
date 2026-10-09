@@ -1,0 +1,12 @@
+{
+  "name": "CardReading - Mobile Light Identidad",
+  "id": "e9e0acfa-6f3d-4b44-834a-f2f5912b1c08",
+  "url": "/isolated-components/CardReading?s=MobileIdentidad&lang=es&theme=light",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "CardReading",
+  "scenarioType": "component",
+  "description": "La lectura sin pregunta en modo claro (la pantalla izquierda de la referencia): nombre, arcano, cita y estrellas en tinta."
+}

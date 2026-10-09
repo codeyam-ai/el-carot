@@ -1,0 +1,12 @@
+{
+  "name": "HomeDeckStrip - Light",
+  "id": "518d1021-ea4c-4fdd-8689-ba67e42b8f46",
+  "url": "/isolated-components/HomeDeckStrip?s=Default&theme=light",
+  "dimensions": [
+    "Desktop"
+  ],
+  "mocks": {},
+  "componentName": "HomeDeckStrip",
+  "scenarioType": "component",
+  "description": "La fila de cartas de la home de desktop en modo claro, con sombras marrones suaves."
+}

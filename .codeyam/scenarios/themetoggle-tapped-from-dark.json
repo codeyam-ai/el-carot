@@ -1,0 +1,18 @@
+{
+  "name": "ThemeToggle - Tapped From Dark",
+  "id": "1a314317-d9b5-4c2f-a3a7-5dea5ad4bb4d",
+  "url": "/isolated-components/ThemeToggle?s=Icon&theme=dark",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "ThemeToggle",
+  "scenarioType": "component",
+  "description": "Arranca en oscuro con el sol; al tocarlo la página pasa a modo claro y aparece la luna.",
+  "interactions": [
+    {
+      "action": "click",
+      "selector": "#codeyam-capture [data-testid=\"theme-toggle\"], [data-testid=\"theme-toggle\"]"
+    }
+  ]
+}

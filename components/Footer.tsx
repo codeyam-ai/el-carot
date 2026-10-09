@@ -5,12 +5,12 @@ import { useRouter } from 'next/navigation';
 import { useCarot } from '@/lib/i18n';
 import { CAROT_IG_URL } from '@/lib/links';
 
-/** Dark footer shown at the bottom of the reading and gallery. */
+/** Footer band (darker than the page in either theme) shown at the bottom of the reading and gallery. */
 export function Footer() {
   const { t } = useCarot();
   const router = useRouter();
-  const muted = 'rgba(255,255,255,.40)';
-  const sage = 'var(--carot-sage-light)';
+  const muted = 'var(--text-faint)';
+  const sage = 'var(--text-heading)';
   const mono = 'var(--font-mono)';
 
   const navLink: React.CSSProperties = {
@@ -27,7 +27,7 @@ export function Footer() {
   };
 
   return (
-    <footer style={{ background: '#111111', padding: '46px 26px 48px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    <footer style={{ background: 'var(--surface-footer)', padding: '46px 26px 48px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10 }}>
         <button style={navLink} onClick={() => router.push('/about')}>{t.footAbout}</button>
         <a style={navLink} href={CAROT_IG_URL} target="_blank" rel="noopener noreferrer">{t.footBuy}</a>
@@ -52,13 +52,13 @@ export function Footer() {
       <div style={{ textAlign: 'center', fontFamily: mono, fontSize: 13, lineHeight: 1.8, color: muted }}>
         <div>
           {t.createdBy}{' '}
-          <a href="https://www.instagram.com/bastadanii/" target="_blank" rel="noopener noreferrer" style={{ color: '#d98fd0', textDecoration: 'none' }}>
+          <a href="https://www.instagram.com/bastadanii/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--footer-link-a)', textDecoration: 'none' }}>
             bastadanii
           </a>
         </div>
         <div>
           {t.developedIn}{' '}
-          <a href="https://codeyam.com" target="_blank" rel="noopener noreferrer" style={{ color: '#8fd99a', textDecoration: 'none' }}>
+          <a href="https://codeyam.com" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--footer-link-b)', textDecoration: 'none' }}>
             CodeYam
           </a>
         </div>

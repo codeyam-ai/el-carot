@@ -1,0 +1,18 @@
+{
+  "name": "LangToggle - Light Switched",
+  "id": "be6b8534-d648-4556-8a16-b6eb338c6a5d",
+  "url": "/isolated-components/LangToggle?s=Spanish&theme=light",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "LangToggle",
+  "scenarioType": "component",
+  "description": "ES / EN en modo claro tras tocar el idioma inactivo: activo en tinta, inactivo atenuado.",
+  "interactions": [
+    {
+      "action": "click",
+      "selector": "#codeyam-capture button[aria-pressed=\"false\"]"
+    }
+  ]
+}

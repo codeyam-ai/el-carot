@@ -88,7 +88,7 @@ codeyam-editor start
 ```
 <!-- codeyam:run-and-edit:end -->
 
-<!-- codeyam:scenario-gallery:start d=0f7e47bbdee1 -->
+<!-- codeyam:scenario-gallery:start d=ccb5028ef3c2 -->
 ## Scenario gallery
 
 States captured as runnable scenarios with codeyam-editor:
@@ -96,6 +96,8 @@ States captured as runnable scenarios with codeyam-editor:
 ### About - Default
 
 <img src=".codeyam/scenarios/screenshots/about-default--mobile.png" alt="About - Default" width="280">
+
+About - Default in its empty state, with no items present.
 
 ### Stats - Password Gate
 
@@ -105,23 +107,35 @@ States captured as runnable scenarios with codeyam-editor:
 
 <img src=".codeyam/scenarios/screenshots/gallery-default--mobile.png" alt="Gallery - Default" width="280">
 
+Gallery - Default in its empty state, with no items present.
+
 ### Landing - English
 
 <img src=".codeyam/scenarios/screenshots/landing-english--mobile.png" alt="Landing - English" width="280">
+
+Landing - English in its empty state, with no items present.
 
 ### Message - Default
 
 <img src=".codeyam/scenarios/screenshots/message-default--mobile.png" alt="Message - Default" width="280">
 
+Message - Default in its empty state, with no items present.
+
 ### Privacy - Default
 
 <img src=".codeyam/scenarios/screenshots/privacy-default--mobile.png" alt="Privacy - Default" width="280">
+
+Privacy - Default in its empty state, with no items present.
 
 ### Question - Empty
 
 <img src=".codeyam/scenarios/screenshots/question-empty--mobile.png" alt="Question - Empty" width="280">
 
+Question - Empty in its empty state, with no items present.
+
 ### Reading - Default
 
 <img src=".codeyam/scenarios/screenshots/reading-default--mobile.png" alt="Reading - Default" width="280">
+
+Reading - Default in its empty state, with no items present.
 <!-- codeyam:scenario-gallery:end -->

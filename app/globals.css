@@ -65,6 +65,26 @@
   --link-color: var(--carot-sage-light);
   --link-underline: var(--carot-sage-divider);
 
+  /* ---- Theme tokens (dark values; light overrides below) ---- */
+  --text-wordmark: var(--carot-sage-light);
+  --text-eyebrow: rgba(175, 188, 167, 0.6);
+  --text-faint: rgba(255, 255, 255, 0.42);
+  --text-dim: rgba(255, 255, 255, 0.32);
+  --text-dimmer: rgba(255, 255, 255, 0.22);
+  --accent-fill: var(--carot-sage-light);
+  --border-soft: rgba(175, 188, 167, 0.16);
+  --border-faint: rgba(175, 188, 167, 0.08);
+  --border-outline: rgba(175, 188, 167, 0.35);
+  --overlay: rgba(28, 28, 28, 0.97);
+  --card-border: rgba(175, 188, 167, 0.45);
+  --card-edge: rgba(233, 217, 199, 0.25);
+  --card-edge-strong: rgba(233, 217, 199, 0.5);
+  --card-shadow: rgba(0, 0, 0, 0.45);
+  --card-shadow-strong: rgba(0, 0, 0, 0.6);
+  --surface-footer: #111111;
+  --footer-link-a: #d98fd0;
+  --footer-link-b: #8fd99a;
+
   /* ---- Typography ---- */
   --font-display: 'Maragsa Display', Georgia, 'Times New Roman', serif;
   --font-body: 'Josefin Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -119,13 +139,67 @@
   --content-max-wide: 1080px;
 }
 
+/* ── El Carot — light theme ───────────────────────────────────────────
+   Warm taupe page, ink text, sage fills. Set on <html> (saved choice or the
+   device setting); also works on any wrapper, so a subtree can be previewed
+   light. Semantic tokens are redefined directly — a var() alias resolves where
+   it is declared, so aliasing `--carot-screen` here would not reach :root's. */
+[data-theme='light'] {
+  color-scheme: light;
+  --carot-screen: #d1c3b4; /* legacy name for the page colour — still read by isolation wrappers */
+  --surface-page: #d1c3b4;
+  --text-body: var(--carot-ink);
+  --text-heading: var(--carot-ink);
+  --text-wordmark: var(--carot-ink);
+  --text-eyebrow: rgba(53, 48, 41, 0.62);
+  --text-faint: rgba(53, 48, 41, 0.58);
+  --text-dim: rgba(53, 48, 41, 0.42);
+  --text-dimmer: rgba(53, 48, 41, 0.3);
+  --divider: var(--carot-ink-soft);
+  --accent-fill: #a7b59f;
+  --border-soft: rgba(53, 48, 41, 0.16);
+  --border-faint: rgba(53, 48, 41, 0.08);
+  --border-outline: rgba(53, 48, 41, 0.35);
+  --overlay: rgba(209, 195, 180, 0.97);
+  --card-border: rgba(53, 48, 41, 0.22);
+  --card-edge: rgba(53, 48, 41, 0.1);
+  --card-edge-strong: rgba(53, 48, 41, 0.18);
+  --card-shadow: rgba(74, 56, 38, 0.24);
+  --card-shadow-strong: rgba(74, 56, 38, 0.34);
+  --surface-footer: #c3b19f;
+  --footer-link-a: #94407f;
+  --footer-link-b: #3c7a47;
+}
+:root:not([data-theme='light']) {
+  color-scheme: dark;
+}
+
+/* ThemeToggle: show the icon/label that offers the *other* theme. */
+.carot-theme-light-only {
+  display: none !important;
+}
+[data-theme='light'] .carot-theme-light-only {
+  display: inline-flex !important;
+}
+[data-theme='light'] .carot-theme-dark-only {
+  display: none !important;
+}
+.carot-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
 /* ── El Carot — global resets ─────────────────────────────────────── */
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background: var(--carot-screen); /* same as the column — seamless on desktop */
-  color: var(--carot-cream-text);
+  background: var(--surface-page); /* same as the column — seamless on desktop */
+  color: var(--text-body);
   font-family: var(--font-body);
 }
 body {
@@ -142,7 +216,7 @@ body {
   height: 100dvh;
   margin: 0 auto;
   overflow: hidden;
-  background: var(--carot-screen);
+  background: var(--surface-page);
 }
 .carot-scroll {
   height: 100%;

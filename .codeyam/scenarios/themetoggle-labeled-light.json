@@ -1,0 +1,12 @@
+{
+  "name": "ThemeToggle - Labeled Light",
+  "id": "ad8ac608-f5a4-40e1-8bca-7e25a62ef076",
+  "url": "/isolated-components/ThemeToggle?s=Labeled&theme=light",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "ThemeToggle",
+  "scenarioType": "component",
+  "description": "La versión con texto del menú, en modo claro: luna + 'Modo oscuro'."
+}

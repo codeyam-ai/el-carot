@@ -18,8 +18,8 @@ export function MessageIntro() {
   const { t } = useCarot();
   const router = useRouter();
   const isDesktop = useIsDesktop();
-  const sage = 'var(--carot-sage-light)';
-  const cream = 'var(--carot-cream-text)';
+  const sage = 'var(--text-heading)';
+  const cream = 'var(--text-body)';
 
   const draw = () => {
     const n = Math.floor(Math.random() * CAROT_CARDS.length);
@@ -30,7 +30,7 @@ export function MessageIntro() {
     return (
       <div
         data-fullbleed
-        style={{ minHeight: '100dvh', display: 'flex', flexDirection: 'column', background: 'var(--carot-screen)', overflow: 'hidden' }}
+        style={{ minHeight: '100dvh', display: 'flex', flexDirection: 'column', background: 'var(--surface-page)', overflow: 'hidden' }}
       >
         <DesktopNav title={t.messageTitle} />
 
@@ -51,7 +51,7 @@ export function MessageIntro() {
   }
 
   return (
-    <div style={{ minHeight: '100%', display: 'flex', flexDirection: 'column', background: 'var(--carot-screen)', overflow: 'hidden' }}>
+    <div style={{ minHeight: '100%', display: 'flex', flexDirection: 'column', background: 'var(--surface-page)', overflow: 'hidden' }}>
       <div style={{ padding: '0 24px' }}>
         <BackHeader title={t.messageTitle} />
       </div>
@@ -123,12 +123,12 @@ export function DeckCarousel({ back, onDraw }: { back: string; onDraw: () => voi
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    background: 'var(--carot-sage-light)',
+    background: 'var(--accent-fill)',
     border: 'none',
     padding: 0,
     cursor: atEnd ? 'default' : 'pointer',
     zIndex: 200,
-    boxShadow: '0 4px 14px rgba(0,0,0,.4)',
+    boxShadow: '0 4px 14px var(--card-shadow)',
     animation: `carot-nudge-${side} 2.4s ease-in-out infinite`,
     visibility: atEnd ? 'hidden' : 'visible',
   });
@@ -189,8 +189,8 @@ export function DeckCarousel({ back, onDraw }: { back: string; onDraw: () => voi
                   objectFit: 'cover',
                   display: 'block',
                   borderRadius: 16,
-                  border: isCenter ? '2px solid rgba(233,217,199,.6)' : '2px solid rgba(233,217,199,.22)',
-                  boxShadow: isCenter ? '0 22px 54px rgba(0,0,0,.6)' : '0 12px 32px rgba(0,0,0,.45)',
+                  border: isCenter ? '2px solid var(--card-edge-strong)' : '2px solid var(--card-edge)',
+                  boxShadow: isCenter ? '0 22px 54px var(--card-shadow-strong)' : '0 12px 32px var(--card-shadow)',
                   pointerEvents: 'none',
                 }}
               />
@@ -199,18 +199,18 @@ export function DeckCarousel({ back, onDraw }: { back: string; onDraw: () => voi
         })}
 
         <button aria-label={t.prev} onClick={() => setActive((a) => clamp(a - 1))} style={arrowStyle('left', active === 0)}>
-          <svg width="16" height="32" viewBox="0 0 13 28" fill="none" stroke="#14110e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <svg width="16" height="32" viewBox="0 0 13 28" fill="none" stroke="var(--text-on-sage)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="9.5,4 4,14 9.5,24" />
           </svg>
         </button>
         <button aria-label={t.next} onClick={() => setActive((a) => clamp(a + 1))} style={arrowStyle('right', active === N - 1)}>
-          <svg width="16" height="32" viewBox="0 0 13 28" fill="none" stroke="#14110e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <svg width="16" height="32" viewBox="0 0 13 28" fill="none" stroke="var(--text-on-sage)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="3.5,4 9,14 3.5,24" />
           </svg>
         </button>
       </div>
 
-      <div style={{ padding: '4px 0 22px', textAlign: 'center', color: 'rgba(175,188,167,.6)', fontFamily: 'var(--font-body)', fontSize: 14, letterSpacing: '.18em' }}>
+      <div style={{ padding: '4px 0 22px', textAlign: 'center', color: 'var(--text-eyebrow)', fontFamily: 'var(--font-body)', fontSize: 14, letterSpacing: '.18em' }}>
         {String(active + 1).padStart(2, '0')} / {N}
       </div>
     </>

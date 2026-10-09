@@ -1,0 +1,19 @@
+{
+  "name": "StatsLogin - Light Typed",
+  "id": "97aac617-8ea0-42c4-a464-40ab3351691c",
+  "url": "/isolated-components/StatsLogin?s=Default&theme=light",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "StatsLogin",
+  "scenarioType": "component",
+  "description": "Login de estadísticas en modo claro con la contraseña escrita.",
+  "interactions": [
+    {
+      "action": "fill",
+      "selector": "#codeyam-capture input[type=\"password\"]",
+      "value": "secreto"
+    }
+  ]
+}

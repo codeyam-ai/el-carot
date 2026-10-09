@@ -1,0 +1,13 @@
+{
+  "name": "Message - Light",
+  "id": "33c9728a-0d59-4b81-885f-1834afe9958f",
+  "url": "/message?lang=es&theme=light",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "seed": {},
+  "scenarioType": "application",
+  "pageFilePath": "app/message/page.tsx",
+  "description": "Recibir un mensaje en modo claro, la pantalla de la referencia: mazo boca abajo con dorsos salvia sobre taupe."
+}

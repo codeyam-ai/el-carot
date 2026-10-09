@@ -15,7 +15,7 @@ export function HomeLove() {
         fontFamily: 'var(--font-mono)',
         fontSize: 13,
         letterSpacing: '.08em',
-        color: 'rgba(175,188,167,.5)',
+        color: 'var(--text-eyebrow)',
       }}
     >
       ♥ {t.menuLove} ♥

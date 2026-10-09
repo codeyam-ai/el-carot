@@ -1,0 +1,12 @@
+{
+  "name": "CardReading - Mobile Light Pregunta",
+  "id": "041e8672-825e-4cfc-ba7d-3128556bbeb2",
+  "url": "/isolated-components/CardReading?s=MobilePreguntaComillasSinEtiqueta&lang=es&theme=light",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "CardReading",
+  "scenarioType": "component",
+  "description": "La lectura con pregunta en modo claro: la pregunta entre comillas en tinta sobre taupe."
+}

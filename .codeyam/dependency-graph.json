@@ -63,6 +63,13 @@
       ],
       "importedBy": []
     },
+    ".codeyam/isolation-props/Section.render.tsx": {
+      "imports": [
+        "app/stats/page.tsx",
+        "data/cards.ts"
+      ],
+      "importedBy": []
+    },
     ".codeyam/isolation-props/harness.tsx": {
       "imports": [
         "components/CarotMenu.tsx",
@@ -179,6 +186,7 @@
         "lib/i18n.tsx",
         "lib/i18n.tsx",
         "lib/menu.tsx",
+        "lib/theme.ts",
         "components/MenuOverlay.tsx",
         "components/VisitTracker.tsx"
       ],
@@ -242,7 +250,9 @@
         "data/cards.ts",
         "components/StatsLogin.tsx"
       ],
-      "importedBy": []
+      "importedBy": [
+        ".codeyam/isolation-props/Section.render.tsx"
+      ]
     },
     "app/support/page.tsx": {
       "imports": [
@@ -323,7 +333,8 @@
     "components/CarotMenu.tsx": {
       "imports": [
         "lib/i18n.tsx",
-        "lib/links.ts"
+        "lib/links.ts",
+        "components/ThemeToggle.tsx"
       ],
       "importedBy": [
         ".codeyam/isolation-props/harness.tsx",
@@ -448,6 +459,7 @@
         "lib/i18n.tsx",
         "lib/useIsDesktop.ts",
         "components/LangToggle.tsx",
+        "components/ThemeToggle.tsx",
         "components/NavRightCluster.tsx"
       ],
       "importedBy": [
@@ -514,11 +526,18 @@
         "app/message/page.tsx"
       ]
     },
+    "components/MoonIcon.tsx": {
+      "imports": [],
+      "importedBy": [
+        "components/ThemeToggle.tsx"
+      ]
+    },
     "components/NavRightCluster.tsx": {
       "imports": [
         "lib/i18n.tsx",
         "lib/menu.tsx",
         "components/LangToggle.tsx",
+        "components/ThemeToggle.tsx",
         "lib/links.ts"
       ],
       "importedBy": [
@@ -689,6 +708,12 @@
         "app/stats/page.tsx"
       ]
     },
+    "components/SunIcon.tsx": {
+      "imports": [],
+      "importedBy": [
+        "components/ThemeToggle.tsx"
+      ]
+    },
     "components/SupportScreen.tsx": {
       "imports": [
         "lib/i18n.tsx",
@@ -717,6 +742,19 @@
         "components/SwayingCard.tsx"
       ]
     },
+    "components/ThemeToggle.tsx": {
+      "imports": [
+        "lib/i18n.tsx",
+        "lib/theme.ts",
+        "components/SunIcon.tsx",
+        "components/MoonIcon.tsx"
+      ],
+      "importedBy": [
+        "components/CarotMenu.tsx",
+        "components/NavRightCluster.tsx",
+        "components/HomeHeader.tsx"
+      ]
+    },
     "components/VisitTracker.tsx": {
       "imports": [],
       "importedBy": [
@@ -739,6 +777,7 @@
       "imports": [],
       "importedBy": [
         ".codeyam/isolation-props/CardReading.render.tsx",
+        ".codeyam/isolation-props/Section.render.tsx",
         "app/reading/page.tsx",
         "app/api/interpret/route.ts",
         "app/stats/page.tsx",
@@ -860,6 +899,7 @@
         "components/ReadingMobile.test.tsx",
         "components/PrivacyScreen.tsx",
         "components/CardReading.tsx",
+        "components/ThemeToggle.tsx",
         "components/ReadingTextColumn.test.tsx",
         "components/AboutScreen.tsx",
         "components/MessageIntro.tsx",
@@ -960,6 +1000,21 @@
         "lib/share.test.ts"
       ]
     },
+    "lib/theme.test.ts": {
+      "imports": [
+        "lib/theme.ts"
+      ],
+      "importedBy": []
+    },
+    "lib/theme.ts": {
+      "imports": [],
+      "importedBy": [
+        "middleware.ts",
+        "app/layout.tsx",
+        "components/ThemeToggle.tsx",
+        "lib/theme.test.ts"
+      ]
+    },
     "lib/useCardFlip.ts": {
       "imports": [],
       "importedBy": [
@@ -1019,7 +1074,9 @@
       ]
     },
     "middleware.ts": {
-      "imports": [],
+      "imports": [
+        "lib/theme.ts"
+      ],
       "importedBy": []
     },
     "next.config.ts": {
@@ -1129,6 +1186,15 @@
       "name": "__file_root__",
       "imports": [
         ".codeyam/isolation-props/CardReading.render.tsx::__file_root__"
+      ],
+      "importedBy": []
+    },
+    ".codeyam/isolation-props/Section.render.tsx::__file_root__": {
+      "filePath": ".codeyam/isolation-props/Section.render.tsx",
+      "name": "__file_root__",
+      "imports": [
+        "app/stats/page.tsx::Section",
+        "data/cards.ts::__file_root__"
       ],
       "importedBy": []
     },
@@ -1246,6 +1312,8 @@
         "lib/i18n.tsx::CarotProvider",
         "lib/i18n.tsx::Lang",
         "lib/menu.tsx::MenuProvider",
+        "lib/theme.ts::__file_root__",
+        "lib/theme.ts::savedTheme",
         "components/MenuOverlay.tsx::MenuOverlay",
         "components/VisitTracker.tsx::VisitTracker"
       ],
@@ -1414,7 +1482,8 @@
       "name": "__file_root__",
       "imports": [
         "lib/i18n.tsx::useCarot",
-        "lib/links.ts::__file_root__"
+        "lib/links.ts::__file_root__",
+        "components/ThemeToggle.tsx::ThemeToggle"
       ],
       "importedBy": []
     },
@@ -1548,6 +1617,7 @@
         "lib/i18n.tsx::useCarot",
         "lib/useIsDesktop.ts::useIsDesktop",
         "components/LangToggle.tsx::LangToggle",
+        "components/ThemeToggle.tsx::ThemeToggle",
         "components/NavRightCluster.tsx::NavRightCluster"
       ],
       "importedBy": []
@@ -1635,6 +1705,7 @@
         "lib/i18n.tsx::useCarot",
         "lib/menu.tsx::useMenu",
         "components/LangToggle.tsx::LangToggle",
+        "components/ThemeToggle.tsx::ThemeToggle",
         "lib/links.ts::__file_root__"
       ],
       "importedBy": []
@@ -1836,6 +1907,14 @@
         "components/ReadingTextColumn.tsx::__file_root__"
       ]
     },
+    "components/SunIcon.tsx::SunIcon": {
+      "filePath": "components/SunIcon.tsx",
+      "name": "SunIcon",
+      "imports": [],
+      "importedBy": [
+        "components/ThemeToggle.tsx::__file_root__"
+      ]
+    },
     "components/SupportScreen.tsx::__file_root__": {
       "filePath": "components/SupportScreen.tsx",
       "name": "__file_root__",
@@ -1872,6 +1951,26 @@
       "importedBy": [
         "components/SwayingCard.tsx::__file_root__"
       ]
+    },
+    "components/ThemeToggle.tsx::ThemeToggle": {
+      "filePath": "components/ThemeToggle.tsx",
+      "name": "ThemeToggle",
+      "imports": [],
+      "importedBy": [
+        "components/HomeHeader.tsx::__file_root__"
+      ]
+    },
+    "components/ThemeToggle.tsx::__file_root__": {
+      "filePath": "components/ThemeToggle.tsx",
+      "name": "__file_root__",
+      "imports": [
+        "lib/i18n.tsx::useCarot",
+        "lib/theme.ts::currentTheme",
+        "lib/theme.ts::setTheme",
+        "components/SunIcon.tsx::SunIcon",
+        "components/MoonIcon.tsx::MoonIcon"
+      ],
+      "importedBy": []
     },
     "data/cards.test.ts::__file_root__": {
       "filePath": "data/cards.test.ts",
@@ -2104,6 +2203,49 @@
         "lib/share.test.ts::__file_root__"
       ]
     },
+    "lib/theme.test.ts::__file_root__": {
+      "filePath": "lib/theme.test.ts",
+      "name": "__file_root__",
+      "imports": [
+        "lib/theme.ts::__file_root__",
+        "lib/theme.ts::currentTheme",
+        "lib/theme.ts::savedTheme",
+        "lib/theme.ts::setTheme"
+      ],
+      "importedBy": []
+    },
+    "lib/theme.ts::__file_root__": {
+      "filePath": "lib/theme.ts",
+      "name": "__file_root__",
+      "imports": [],
+      "importedBy": [
+        "lib/theme.test.ts::__file_root__"
+      ]
+    },
+    "lib/theme.ts::currentTheme": {
+      "filePath": "lib/theme.ts",
+      "name": "currentTheme",
+      "imports": [],
+      "importedBy": [
+        "lib/theme.test.ts::__file_root__"
+      ]
+    },
+    "lib/theme.ts::savedTheme": {
+      "filePath": "lib/theme.ts",
+      "name": "savedTheme",
+      "imports": [],
+      "importedBy": [
+        "lib/theme.test.ts::__file_root__"
+      ]
+    },
+    "lib/theme.ts::setTheme": {
+      "filePath": "lib/theme.ts",
+      "name": "setTheme",
+      "imports": [],
+      "importedBy": [
+        "lib/theme.test.ts::__file_root__"
+      ]
+    },
     "lib/useInterpretation.ts::__file_root__": {
       "filePath": "lib/useInterpretation.ts",
       "name": "__file_root__",
@@ -2141,7 +2283,16 @@
         "data/cards.ts::Card"
       ],
       "importedBy": []
+    },
+    "middleware.ts::__file_root__": {
+      "filePath": "middleware.ts",
+      "name": "__file_root__",
+      "imports": [
+        "lib/theme.ts::__file_root__",
+        "lib/theme.ts::savedTheme"
+      ],
+      "importedBy": []
     }
   },
-  "lastUpdated": "2026-10-09T04:05:35Z"
+  "lastUpdated": "2026-10-09T15:36:22Z"
 }

@@ -41,8 +41,8 @@ export function HomeDeckStrip({ cards, className }: { cards: Card[]; className?:
                 objectFit: 'cover',
                 borderRadius: 10,
                 display: 'block',
-                boxShadow: '0 16px 32px rgba(0,0,0,.45)',
-                border: '1px solid rgba(233,217,199,.25)',
+                boxShadow: '0 16px 32px var(--card-shadow)',
+                border: '1px solid var(--card-edge)',
               }}
             />
           </div>

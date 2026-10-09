@@ -5,7 +5,7 @@ import React from 'react';
  * `pending` it shows in sage instead of cream. `marginTop` spaces it on mobile.
  */
 export function ReadingBody({ text, pending, mobile = false, marginTop = 0 }: { text: string; pending: boolean; mobile?: boolean; marginTop?: number }) {
-  const color = pending ? 'var(--carot-sage-light)' : 'var(--carot-cream-text)';
+  const color = pending ? 'var(--text-heading)' : 'var(--text-body)';
   if (mobile) {
     return (
       <p style={{ fontFamily: 'var(--font-body)', fontWeight: 300, fontSize: pending ? 17 : 18, lineHeight: 1.7, color, textAlign: 'center', margin: `${marginTop}px 0 0` }}>

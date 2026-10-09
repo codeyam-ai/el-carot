@@ -6,9 +6,9 @@ import { StatsLogin } from '@/components/StatsLogin';
 
 export const dynamic = 'force-dynamic';
 
-const cream = 'var(--carot-cream-text)';
-const sage = 'var(--carot-sage-light)';
-const muted = 'rgba(175,188,167,.55)';
+const cream = 'var(--text-body)';
+const sage = 'var(--text-heading)';
+const muted = 'var(--text-eyebrow)';
 const mono = 'var(--font-mono)';
 
 function cardLabel(n: number): string {
@@ -35,8 +35,8 @@ function place(country: string | null, region: string | null, tz: string | null)
   return [country, region].filter(Boolean).join(' / ') + (tz ? ` · ${tz}` : '') || '—';
 }
 
-const th: React.CSSProperties = { textAlign: 'left', padding: '6px 12px', color: muted, fontWeight: 400, borderBottom: '1px solid rgba(175,188,167,.16)' };
-const td: React.CSSProperties = { padding: '6px 12px', color: cream, borderBottom: '1px solid rgba(175,188,167,.08)', verticalAlign: 'top' };
+const th: React.CSSProperties = { textAlign: 'left', padding: '6px 12px', color: muted, fontWeight: 400, borderBottom: '1px solid var(--border-soft)' };
+const td: React.CSSProperties = { padding: '6px 12px', color: cream, borderBottom: '1px solid var(--border-faint)', verticalAlign: 'top' };
 
 export function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
@@ -75,7 +75,7 @@ export default async function StatsPage() {
   for (const q of questions) questionsByDay.set(utcDay(q.createdAt), (questionsByDay.get(utcDay(q.createdAt)) ?? 0) + 1);
 
   return (
-    <div data-fullbleed style={{ minHeight: '100dvh', background: '#202020', color: cream, padding: '40px 26px 80px', boxSizing: 'border-box' }}>
+    <div data-fullbleed style={{ minHeight: '100dvh', background: 'var(--surface-page)', color: cream, padding: '40px 26px 80px', boxSizing: 'border-box' }}>
       <div style={{ maxWidth: 1600, margin: '0 auto' }}>
         <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 34, color: sage, margin: 0 }}>El Carot · Stats</h1>
         <p style={{ fontFamily: mono, fontSize: 13, color: muted, marginTop: 8 }}>

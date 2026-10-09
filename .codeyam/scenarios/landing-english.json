@@ -1,12 +1,13 @@
 {
   "name": "Landing - English",
   "id": "7772feed-d1d0-4e75-8ee6-83e497d44422",
-  "url": "/?lang=en",
+  "url": "/?lang=en&theme=dark",
   "dimensions": [
     "Mobile"
   ],
   "mocks": {},
   "seed": {},
   "scenarioType": "application",
-  "pageFilePath": "app/page.tsx"
+  "pageFilePath": "app/page.tsx",
+  "description": "Landing - English in its empty state, with no items present."
 }

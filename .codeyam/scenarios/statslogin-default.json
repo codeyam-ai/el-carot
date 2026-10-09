@@ -1,7 +1,7 @@
 {
   "name": "StatsLogin - Default",
   "id": "00ac9679-7dad-40f9-9a8d-d9b58c200c25",
-  "url": "/isolated-components/StatsLogin?s=Default",
+  "url": "/isolated-components/StatsLogin?s=Default&theme=dark",
   "dimensions": [
     "Desktop",
     "Mobile"
@@ -9,5 +9,6 @@
   "mocks": {},
   "componentName": "StatsLogin",
   "scenarioType": "component",
+  "description": "The StatsLogin component in an error state.",
   "expectedConsoleErrors": true
 }

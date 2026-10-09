@@ -1,7 +1,7 @@
 {
   "name": "ReadingMobile - Default",
   "id": "3a040d85-220d-469a-99c8-7294cd74ca8b",
-  "url": "/isolated-components/ReadingMobile?s=Default&lang=es",
+  "url": "/isolated-components/ReadingMobile?s=Default&lang=es&theme=dark",
   "dimensions": [
     "Mobile"
   ],

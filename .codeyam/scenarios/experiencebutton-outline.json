@@ -1,11 +1,12 @@
 {
   "name": "ExperienceButton - Outline",
   "id": "fd40d9fb-8658-4852-a058-a1f127031868",
-  "url": "/isolated-components/ExperienceButton?s=Outline",
+  "url": "/isolated-components/ExperienceButton?s=Outline&theme=dark",
   "dimensions": [
     "Mobile"
   ],
   "mocks": {},
   "componentName": "ExperienceButton",
-  "scenarioType": "component"
+  "scenarioType": "component",
+  "description": "The ExperienceButton component."
 }

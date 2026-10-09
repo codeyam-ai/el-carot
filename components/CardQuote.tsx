@@ -10,7 +10,7 @@ export function CardQuote({ text, mobile = false }: { text: string; mobile?: boo
         fontWeight: 300,
         fontSize: mobile ? 21 : 22,
         lineHeight: 1.45,
-        color: 'var(--carot-sage-light)',
+        color: 'var(--text-heading)',
         margin: mobile ? 0 : '0 0 18px',
         ...(mobile ? { textAlign: 'center' as const } : null),
       }}

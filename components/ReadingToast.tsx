@@ -12,15 +12,15 @@ export function ReadingToast({ message }: { message: string | null }) {
         bottom: 90,
         transform: 'translateX(-50%)',
         zIndex: 500,
-        background: 'var(--carot-sage-light)',
-        color: '#2b2922',
+        background: 'var(--accent-fill)',
+        color: 'var(--text-on-sage)',
         fontFamily: 'var(--font-body)',
         fontWeight: 500,
         fontSize: 15,
         letterSpacing: '.01em',
         padding: '11px 20px',
         borderRadius: 999,
-        boxShadow: '0 8px 24px rgba(0,0,0,.4)',
+        boxShadow: '0 8px 24px var(--card-shadow)',
         pointerEvents: 'none',
       }}
     >

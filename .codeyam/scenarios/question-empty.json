@@ -1,12 +1,13 @@
 {
   "name": "Question - Empty",
   "id": "0e56bf45-c957-4fdd-aed3-ca5c81b4d6c0",
-  "url": "/question?lang=es",
+  "url": "/question?lang=es&theme=dark",
   "dimensions": [
     "Mobile"
   ],
   "mocks": {},
   "seed": {},
   "scenarioType": "application",
-  "pageFilePath": "app/question/page.tsx"
+  "pageFilePath": "app/question/page.tsx",
+  "description": "Question - Empty in its empty state, with no items present."
 }

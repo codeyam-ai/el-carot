@@ -1,11 +1,12 @@
 {
   "name": "QuestionInput - Mobile",
   "id": "45d9d75b-d1cc-44fc-a8bc-767ce1a7d2f0",
-  "url": "/isolated-components/QuestionInput",
+  "url": "/isolated-components/QuestionInput?theme=dark",
   "dimensions": [
     "Mobile"
   ],
   "mocks": {},
   "componentName": "QuestionInput",
-  "scenarioType": "component"
+  "scenarioType": "component",
+  "description": "The QuestionInput component."
 }

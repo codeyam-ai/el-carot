@@ -74,9 +74,9 @@ const SECTIONS: Record<'daily' | 'empty', { title: string; children: React.React
 
 export default async function Page({ scenario }: { scenario: 'daily' | 'empty' }) {
   const props = SECTIONS[scenario];
-  // The stats page hosts Section on a dark screen inside a 1000px column.
+  // The stats page hosts Section on the page colour inside a 1000px column.
   return (
-    <div style={{ background: '#202020', padding: '10px 26px 40px' }}>
+    <div style={{ background: 'var(--surface-page)', padding: '10px 26px 40px' }}>
       <div style={{ width: '100%', maxWidth: 1000 }}>
         <Section {...props} />
       </div>

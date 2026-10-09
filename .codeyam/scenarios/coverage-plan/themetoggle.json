@@ -1,0 +1,18 @@
+{
+  "surface": "ThemeToggle",
+  "surface_kind": "component",
+  "states": [
+    {
+      "dimension": "withLabel",
+      "value": "true",
+      "rationale": "source-derived state withLabel=true",
+      "status": "planned"
+    },
+    {
+      "dimension": "withLabel",
+      "value": "false",
+      "rationale": "source-derived state withLabel=false",
+      "status": "planned"
+    }
+  ]
+}

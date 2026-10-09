@@ -1,0 +1,18 @@
+{
+  "name": "GalleryGrid - Light Hover Card",
+  "id": "c125e4dd-ad7d-4d77-8d86-f0a136a70435",
+  "url": "/isolated-components/GalleryGrid?theme=light",
+  "dimensions": [
+    "Mobile"
+  ],
+  "mocks": {},
+  "componentName": "GalleryGrid",
+  "scenarioType": "component",
+  "description": "Las 22 cartas en modo claro, con sombras marrones suaves en vez de negras.",
+  "interactions": [
+    {
+      "action": "hover",
+      "selector": "#codeyam-capture img"
+    }
+  ]
+}

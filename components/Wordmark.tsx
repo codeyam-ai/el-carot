@@ -14,7 +14,7 @@ export function Wordmark() {
         fontSize: 'clamp(36px, 10vw, 58px)',
         lineHeight: 1,
         letterSpacing: '.03em',
-        color: 'var(--carot-sage-light)',
+        color: 'var(--text-wordmark)',
         textTransform: 'uppercase',
       }}
     >

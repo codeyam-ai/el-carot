@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { savedTheme, THEME_COOKIE } from '@/lib/theme';
 
 export const runtime = 'nodejs';
 
@@ -41,10 +42,20 @@ export function middleware(req: NextRequest) {
 
   const requestHeaders = new Headers(req.headers);
   requestHeaders.set('x-carot-lang', lang);
+  // Theme: ?theme=light|dark override -> saved cookie. Only an explicit choice is
+  // forwarded; without one the layout's inline script follows the device's
+  // light/dark setting before first paint.
+  const cookieTheme = req.cookies.get(THEME_COOKIE)?.value;
+  const theme = savedTheme(req.nextUrl.searchParams.get('theme'), cookieTheme);
+  if (theme) requestHeaders.set('x-carot-theme', theme);
+  else requestHeaders.delete('x-carot-theme');
 
   const res = NextResponse.next({ request: { headers: requestHeaders } });
   if (cookieLang !== lang) {
     res.cookies.set('carot_lang', lang, { path: '/', maxAge: 60 * 60 * 24 * 365 });
+  }
+  if (theme && cookieTheme !== theme) {
+    res.cookies.set(THEME_COOKIE, theme, { path: '/', maxAge: 60 * 60 * 24 * 365 });
   }
   return res;
 }
