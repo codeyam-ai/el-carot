@@ -65,9 +65,17 @@ export async function POST(request: Request) {
       if (text) {
         interpretation = text;
         source = 'ai';
+      } else {
+        // Logged so an empty reply shows up in the server logs instead of
+        // silently becoming the fallback.
+        console.error('[interpret] Gemini returned no text', {
+          finishReason: response.candidates?.[0]?.finishReason,
+          blockReason: response.promptFeedback?.blockReason,
+        });
       }
-    } catch {
-      /* keep the written-meaning fallback */
+    } catch (err) {
+      // Keep the written-meaning fallback, but log why the call failed.
+      console.error('[interpret] Gemini call failed:', err instanceof Error ? err.message : err);
     }
   }
 
