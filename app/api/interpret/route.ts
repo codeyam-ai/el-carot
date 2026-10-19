@@ -3,6 +3,7 @@ import { CAROT_CARDS, cardText, type Lang } from '@/data/cards';
 import { buildInterpretPrompt } from '@/lib/interpret-prompts';
 import { prisma } from '@/app/lib/prisma';
 import { geoFromHeaders } from '@/lib/geo';
+import { INTERPRET_MODELS, generateWithFallback } from '@/lib/gemini-fallback';
 
 export const dynamic = 'force-dynamic';
 
@@ -47,12 +48,13 @@ export async function POST(request: Request) {
   let source = 'fallback';
 
   if (process.env.GEMINI_API_KEY) {
-    try {
-      const { GoogleGenAI } = await import('@google/genai');
-      const client = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+    const { GoogleGenAI } = await import('@google/genai');
+    const client = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+    const contents = buildInterpretPrompt(card, question, lang);
+    const result = await generateWithFallback(INTERPRET_MODELS, async (model) => {
       const response = await client.models.generateContent({
-        model: 'gemini-3.1-flash-lite',
-        contents: buildInterpretPrompt(card, question, lang),
+        model,
+        contents,
         config: {
           maxOutputTokens: 800,
           // A 3-to-5-sentence reading needs no reasoning pass, and thinking
@@ -61,21 +63,12 @@ export async function POST(request: Request) {
           thinkingConfig: { thinkingBudget: 0 },
         },
       });
-      const text = response.text?.trim() ?? '';
-      if (text) {
-        interpretation = text;
-        source = 'ai';
-      } else {
-        // Logged so an empty reply shows up in the server logs instead of
-        // silently becoming the fallback.
-        console.error('[interpret] Gemini returned no text', {
-          finishReason: response.candidates?.[0]?.finishReason,
-          blockReason: response.promptFeedback?.blockReason,
-        });
-      }
-    } catch (err) {
-      // Keep the written-meaning fallback, but log why the call failed.
-      console.error('[interpret] Gemini call failed:', err instanceof Error ? err.message : err);
+      return response.text ?? '';
+    });
+    // null keeps the written-meaning fallback; generateWithFallback logged why.
+    if (result) {
+      interpretation = result.text;
+      source = 'ai';
     }
   }
 
